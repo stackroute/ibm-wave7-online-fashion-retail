@@ -1,0 +1,27 @@
+<!-- Navigation bar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+    <div>
+        <p id="title">Online Fashion Retail</p>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <app-searchbox></app-searchbox>
+
+        <div id="buttons">
+            <button mat-stroked-button>
+                <a routerLink="about">    About us </a>
+                                </button>
+        </div>
+        <div id="buttons"> <button mat-stroked-button>
+                Login
+                </button></div>
+
+        <div id="buttons"> <button mat-stroked-button (click)=openDialog()>
+                            Sign up   
+                        </button></div>
+    </div>
+</nav>
