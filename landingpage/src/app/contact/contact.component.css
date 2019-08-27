@@ -1,4 +1,13 @@
-h1 {
-    padding-top: 100px;
+#contact {
+    text-align: center;
+    padding-top: 10px;
+}
+
+#mail {
+    text-align: center;
+    padding-top: 300px;
+}
+
+h3 {
     text-align: center;
 }
