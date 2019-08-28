@@ -1,4 +1,4 @@
-version: '2'
+version: '2.1'
 
 services:
   eureka-server:
@@ -9,6 +9,8 @@ services:
     image: eureka-server
     ports:
       - 8761:8761
+    healthcheck:
+      test: "exit 0"
 
   config-service:
     build: config-server/
@@ -18,6 +20,8 @@ services:
     hostname: localhost
     ports:
       - 8888:8888
+    healthcheck:
+      test: "exit 0"
 
   zuul-api:
     build: zuul-api/
@@ -30,3 +34,35 @@ services:
     hostname: localhost
     ports:
       - 8080:8080
+    healthcheck:
+      test: "exit 0"
+
+  mongo:
+    image: mongo:3.4-jessie
+    ports:
+      - 27017:27017
+    expose:
+      - 27017
+    container_name: mongo
+    network_mode: host
+    hostname: localhost
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+
+  user:
+    build: user/
+    depends_on:
+      - mongo
+    restart: always
+    network_mode: host
+    container_name: userregistration
+    image: user
+    hostname: localhost
+    ports:
+      - 8088:8088
+    healthcheck:
+      test: "exit 0"
+
+
