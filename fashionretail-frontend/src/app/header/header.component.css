@@ -15,7 +15,17 @@
         height: 70px;
     }
     
-    #buttons {
+    .buttons {
+        float: left;
         padding-left: 40px;
         padding-right: 40px;
+    }
+    
+    .button3 {
+        float: left;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
     }
