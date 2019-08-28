@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule,MatFormFieldModule} from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
@@ -13,9 +14,16 @@ import { HeroComponent } from './hero/hero.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent, SignUpDialogue } from './header/header.component';
 import { AboutComponent } from './about/about.component';
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
+import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 
 
 @NgModule({
@@ -26,25 +34,37 @@ import { AboutComponent } from './about/about.component';
     ContactComponent, 
     HeroComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    SignUpDialogue,
+    SupplierviewprofileComponent,
+    ProfilebuttonComponent
   ],
   imports: [
     BrowserModule,
+    MatCardModule,
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    HttpClientModule,
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
+    MatSelectModule,
     MatMenuModule,
     MatInputModule,
     MatFormFieldModule,
     Ng2CarouselamosModule,
     MatSidenavModule,
+    MatDialogModule,
      BrowserAnimationsModule
     
   ],
   providers: [],
+  entryComponents : [SignUpDialogue],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
