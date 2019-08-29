@@ -27,8 +27,8 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
 import { CardComponent } from './card/card.component';
 import { OrderService } from './order.service';
 import { BodyComponent } from './body/body.component';
-
-
+import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -37,14 +37,18 @@ import { BodyComponent } from './body/body.component';
     FooterComponent,
     ContactComponent, 
     HeroComponent,
-    HeaderComponent,
+    // HeaderComponent,
     AboutComponent,
-    SignUpDialogue,
+    // SignUpDialogue,
     SupplierviewprofileComponent,
     ProfilebuttonComponent,
     CardComponent,
-    BodyComponent
-  ],
+    BodyComponent,
+    DesignerHomePageComponent,
+    UploadDesignsDialogue,
+    HeaderComponent,
+    SignUpDialogue,
+    ],
   imports: [
     BrowserModule,
     MatCardModule,
@@ -70,7 +74,7 @@ import { BodyComponent } from './body/body.component';
     
   ],
   providers: [OrderService],
-  entryComponents : [SignUpDialogue],
+  entryComponents : [SignUpDialogue,UploadDesignsDialogue],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
