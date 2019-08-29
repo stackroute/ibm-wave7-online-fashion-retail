@@ -15,7 +15,7 @@
               <mat-icon>menu</mat-icon>
             </button>
             <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
-            <span class="title">OnlineFashionRetails</span>
+            <span class="title">Online Fashion Retail</span>
             <span class="example-spacer"></span>
               <span class="spacer"></span>
             <div fxShow="true" fxHide.lt-md="true">
@@ -77,15 +77,17 @@
                                 <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
                                 <mat-card-content>
                                   <p>
-                                    Material Name:{{song.artist}}
-                                  </p>
+                                    Material Name:{{song.email}}</p>
                                   <p>
                                     Supplier Name: {{song.name}}
                                   </p>
                                   <p>Quantity</p><p>Price</p><p>Rating</p>
+                                  <mat-form-field>
+                                    <label>Enter Quantity:</label><input matInput type="text" placeholder="write quantity in units" [(ngModel)]="song.quantity">
+                                  </mat-form-field>
                                 </mat-card-content>
                                 <mat-card-actions >
-                                  <button mat-button (click)="nextStep()">Add</button>
+                                  <button mat-button (click)="saveMaterial(song)">Add</button>
                                   <button mat-raised-button (click)="openDialog(song)">cancel</button>
                                 </mat-card-actions> 
                               </mat-card>  

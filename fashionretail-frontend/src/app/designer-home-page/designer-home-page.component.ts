@@ -4,6 +4,7 @@ import { User } from '../modals/User';
 import { Designer } from '../modals/Designer';
 import { UserServiceService } from '../user-service.service';
 import { MatTabChangeEvent } from '@angular/material';
+import { Materials } from '../modals/Materials';
 @Component({
   selector: 'app-designer-home-page',
   templateUrl: './designer-home-page.component.html',
@@ -12,10 +13,12 @@ import { MatTabChangeEvent } from '@angular/material';
 export class DesignerHomePageComponent implements OnInit {
 
   upload_designs: Designer;
+  Materials : Materials;
   Material: User[];
   getData: User[];
   selectedIndex : number=0;
   items: Array<any> = [];
+  
   constructor(private dialogue: MatDialog, private userService: UserServiceService) { 
     this.items=[
       { name: 'assets/designer.jpg'},
@@ -35,6 +38,7 @@ export class DesignerHomePageComponent implements OnInit {
       console.log("users data",this.getData)
 
   })
+ 
   }
 
   openDialog() {
@@ -54,11 +58,17 @@ export class DesignerHomePageComponent implements OnInit {
     });
   }
   saveDesigns(designer : Designer){
-    this.userService.saveDesigns(designer).subscribe((data) =>{
-      this.upload_designs=data;
-      console.log("result ",this.upload_designs)
-    })
+   
+    // this.userService.saveDesigns(designer).subscribe((data) =>{
+    //   this.upload_designs=data;
+    //   console.log("result ",this.upload_designs)
+    // })
   } 
+
+  saveMaterial(material : User){
+    console.log(material);
+    this.nextStep();
+  }
 
   getAllUser(){
     alert("entered into get all users")

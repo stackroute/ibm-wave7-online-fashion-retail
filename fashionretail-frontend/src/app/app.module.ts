@@ -30,6 +30,7 @@ import { OrderService } from './order.service';
 import { BodyComponent } from './body/body.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
 import { from } from 'rxjs';
+import { Header1Component } from './header1/header1.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { from } from 'rxjs';
     UploadDesignsDialogue,
     HeaderComponent,
     SignUpDialogue,
+    Header1Component,
     ],
   imports: [
     BrowserModule,
