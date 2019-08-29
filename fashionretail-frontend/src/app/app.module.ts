@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule,MatFormFieldModule} from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
@@ -15,6 +15,11 @@ import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
+import { MatCardModule } from '@angular/material/card';
+import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
+import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
+import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
+
 
 
 
@@ -26,7 +31,10 @@ import { AboutComponent } from './about/about.component';
     ContactComponent, 
     HeroComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    DesignerviewprofileComponent,
+    DesignerprofileComponent,
+    DesignereditdialogueComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,8 @@ import { AboutComponent } from './about/about.component';
     MatFormFieldModule,
     Ng2CarouselamosModule,
     MatSidenavModule,
-     BrowserAnimationsModule
+     BrowserAnimationsModule,
+     MatCardModule
     
   ],
   providers: [],
