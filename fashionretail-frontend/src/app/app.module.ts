@@ -15,11 +15,19 @@ import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
+<<<<<<< HEAD:fashionretail-frontend/src/app/app.module.ts
 import { MatCardModule } from '@angular/material/card';
 import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
 import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
 import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
 
+=======
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { MatCardModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+>>>>>>> 94d52dd0c43a508cc5f2e0888afd6f81857f4c3e:fashionretail-frontend/src/app/app.module.ts
 
 
 
@@ -32,9 +40,15 @@ import { DesignereditdialogueComponent } from './designereditdialogue/designered
     HeroComponent,
     HeaderComponent,
     AboutComponent,
+<<<<<<< HEAD:fashionretail-frontend/src/app/app.module.ts
     DesignerviewprofileComponent,
     DesignerprofileComponent,
     DesignereditdialogueComponent
+=======
+    // ManufactureeditComponent,
+    ManufactureviewprofileComponent,
+    ProfilebuttonComponent
+>>>>>>> 94d52dd0c43a508cc5f2e0888afd6f81857f4c3e:fashionretail-frontend/src/app/app.module.ts
   ],
   imports: [
     BrowserModule,
@@ -50,7 +64,12 @@ import { DesignereditdialogueComponent } from './designereditdialogue/designered
     Ng2CarouselamosModule,
     MatSidenavModule,
      BrowserAnimationsModule,
+<<<<<<< HEAD:fashionretail-frontend/src/app/app.module.ts
      MatCardModule
+=======
+     MatCardModule,
+     MatDialogModule
+>>>>>>> 94d52dd0c43a508cc5f2e0888afd6f81857f4c3e:fashionretail-frontend/src/app/app.module.ts
     
   ],
   providers: [],
