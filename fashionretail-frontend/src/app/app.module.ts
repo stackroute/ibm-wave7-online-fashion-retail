@@ -22,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
@@ -65,7 +66,8 @@ import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-hom
     Ng2CarouselamosModule,
     MatSidenavModule,
     MatDialogModule,
-     BrowserAnimationsModule
+     BrowserAnimationsModule,
+     MatTabsModule,
     
   ],
   providers: [],
