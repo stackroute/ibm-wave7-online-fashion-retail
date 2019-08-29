@@ -24,6 +24,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { CardComponent } from './card/card.component';
+import { OrderService } from './order.service';
+import { BodyComponent } from './body/body.component';
+
 
 
 @NgModule({
@@ -37,7 +41,9 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
     AboutComponent,
     SignUpDialogue,
     SupplierviewprofileComponent,
-    ProfilebuttonComponent
+    ProfilebuttonComponent,
+    CardComponent,
+    BodyComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +69,7 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
      BrowserAnimationsModule
     
   ],
-  providers: [],
+  providers: [OrderService],
   entryComponents : [SignUpDialogue],
   bootstrap: [AppComponent]
 })
