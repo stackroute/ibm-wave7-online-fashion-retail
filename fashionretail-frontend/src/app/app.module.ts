@@ -14,7 +14,7 @@ import { HeroComponent } from './hero/hero.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { HeaderComponent, SignUpDialogue } from './header/header.component';
+import { HeaderComponent, SignUpDialogue } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
@@ -24,7 +24,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
-
+import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
+  import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -37,8 +38,12 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
     AboutComponent,
     // SignUpDialogue,
     SupplierviewprofileComponent,
-    ProfilebuttonComponent
-  ],
+    ProfilebuttonComponent,
+    DesignerHomePageComponent,
+    UploadDesignsDialogue,
+    HeaderComponent,
+    SignUpDialogue,
+    ],
   imports: [
     BrowserModule,
     MatCardModule,
@@ -64,7 +69,7 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
     
   ],
   providers: [],
-  
+  entryComponents: [SignUpDialogue,UploadDesignsDialogue],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
