@@ -1,0 +1,31 @@
+    .nav-item {
+        font-size: 4vh;
+        padding: 0;
+    }
+    
+    #title {
+        /* font-family: 'Zhi Mang Xing', cursive; */
+        color: black;
+        font-size: 6vh;
+        padding-left: 5px;
+    }
+    
+    .d-inline-block {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .buttons {
+        float: left;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    
+    .button3 {
+        float: left;
+    }
+    
+    a {
+        text-decoration: none;
+        color: black;
+    }

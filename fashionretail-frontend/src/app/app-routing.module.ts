@@ -5,7 +5,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HeroComponent } from './hero/hero.component';
 import { AboutComponent } from './about/about.component';
 import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
-import { HeaderComponent } from './header/header.component';
+// import { HeaderComponent } from './header/header.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 
