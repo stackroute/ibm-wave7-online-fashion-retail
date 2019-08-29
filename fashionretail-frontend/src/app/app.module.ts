@@ -25,8 +25,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { CardComponent } from './card/card.component';
+import { OrderService } from './order.service';
+import { BodyComponent } from './body/body.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
-  import { from } from 'rxjs';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-hom
     // SignUpDialogue,
     SupplierviewprofileComponent,
     ProfilebuttonComponent,
+    CardComponent,
+    BodyComponent,
     DesignerHomePageComponent,
     UploadDesignsDialogue,
     HeaderComponent,
@@ -70,8 +75,8 @@ import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-hom
      MatTabsModule,
     
   ],
-  providers: [],
-  entryComponents: [SignUpDialogue,UploadDesignsDialogue],
+  providers: [OrderService],
+  entryComponents : [SignUpDialogue,UploadDesignsDialogue],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
