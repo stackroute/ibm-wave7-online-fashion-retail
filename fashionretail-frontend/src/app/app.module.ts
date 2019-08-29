@@ -15,6 +15,11 @@ import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { MatCardModule} from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 
@@ -26,7 +31,10 @@ import { AboutComponent } from './about/about.component';
     ContactComponent, 
     HeroComponent,
     HeaderComponent,
-    AboutComponent
+    AboutComponent,
+    // ManufactureeditComponent,
+    ManufactureviewprofileComponent,
+    ProfilebuttonComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,9 @@ import { AboutComponent } from './about/about.component';
     MatFormFieldModule,
     Ng2CarouselamosModule,
     MatSidenavModule,
-     BrowserAnimationsModule
+     BrowserAnimationsModule,
+     MatCardModule,
+     MatDialogModule
     
   ],
   providers: [],
