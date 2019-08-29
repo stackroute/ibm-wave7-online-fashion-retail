@@ -8,6 +8,7 @@ import { DesignerHomePageComponent } from './designer-home-page/designer-home-pa
 // import { HeaderComponent } from './header/header.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
+import { BodyComponent } from './body/body.component';
 
 
 
@@ -21,7 +22,8 @@ const routes: Routes = [
     component: DesignerHomePageComponent
   },
   {path: 'edit', component:ProfilebuttonComponent},
-  {path: 'edit/supplierviewprofile', component:SupplierviewprofileComponent}
+  {path: 'edit/supplierviewprofile', component:SupplierviewprofileComponent},
+  {path: 'supplier/home', component: BodyComponent}
 ];
 
 @NgModule({
