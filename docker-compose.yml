@@ -38,7 +38,8 @@ services:
       test: "exit 0"
 
   mongo:
-    image: mongo:3.4-jessie
+    image: mongo:latest
+
     ports:
       - 27017:27017
     expose:
@@ -49,7 +50,6 @@ services:
     restart: always
     healthcheck:
       test: "exit 0"
-
 
   user:
     build: user/
@@ -62,6 +62,20 @@ services:
     hostname: localhost
     ports:
       - 8088:8088
+    healthcheck:
+      test: "exit 0"
+
+  neo4j:
+    build: neo4j/
+    depends_on:
+      - mongo
+    restart: always
+    network_mode: host
+    container_name: neo4j
+    image: neo4j
+    hostname: localhost
+    ports:
+      - 8090:8090
     healthcheck:
       test: "exit 0"
 

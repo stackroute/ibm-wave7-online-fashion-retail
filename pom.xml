@@ -30,6 +30,8 @@
 		<module>config-server</module>
 		<module>eureka-server</module>
 		<module>zuul-api</module>
+		<module>neo4j</module>
+		<module>user</module>
 	</modules>
 
 	<dependencies>
@@ -72,6 +74,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>5.1.9.RELEASE</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
