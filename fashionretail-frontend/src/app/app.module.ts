@@ -31,6 +31,14 @@ import { BodyComponent } from './body/body.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
 import { from } from 'rxjs';
 import { Header1Component } from './header1/header1.component';
+import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
+import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
+import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
+
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+
+
 
 @NgModule({
   declarations: [
@@ -51,6 +59,14 @@ import { Header1Component } from './header1/header1.component';
     HeaderComponent,
     SignUpDialogue,
     Header1Component,
+    AboutComponent,
+    DesignerviewprofileComponent,
+    DesignerprofileComponent,
+    DesignereditdialogueComponent,
+    // ManufactureeditComponent,
+    ManufactureviewprofileComponent,
+    ProfilebuttonComponent,
+
     ],
   imports: [
     BrowserModule,
@@ -60,6 +76,7 @@ import { Header1Component } from './header1/header1.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     HttpClientModule,
+    
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
@@ -79,6 +96,10 @@ import { Header1Component } from './header1/header1.component';
   ],
   providers: [OrderService],
   entryComponents : [SignUpDialogue,UploadDesignsDialogue],
+    
   bootstrap: [AppComponent]
+  
+ 
+  
 })
 export class AppModule { }

@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   public user : User;
   constructor(private dialog: MatDialog, private userService : UserServiceService) { }
+  
 
   ngOnInit() {
   }
@@ -62,3 +63,5 @@ export class HeaderComponent implements OnInit {
     }
   }
   
+ 
+
