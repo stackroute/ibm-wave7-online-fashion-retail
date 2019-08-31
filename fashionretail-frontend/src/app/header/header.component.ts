@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '../modals/User';
 import { UserServiceService } from '../user-service.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -10,9 +11,10 @@ import { UserServiceService } from '../user-service.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  title = 'Angular Form Validation Tutorial';
+  angForm: FormGroup;
   public user : User;
-  constructor(private dialog: MatDialog, private userService : UserServiceService) { }
+  constructor(private dialog: MatDialog, private userService : UserServiceService, private fb : FormBuilder) { }
   
 
   ngOnInit() {
@@ -28,10 +30,19 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result != undefined) {
          this.saveUser(result);
+         this.createForm();
         console.log(result);
       }
     });
   }
+  createForm() {
+    this.angForm = this.fb.group({
+       name: ['', Validators.required ],
+       address: ['', Validators.required ]
+    });
+  }
+
+  
   
   saveUser(user : User){
     let num=Math.floor(Math.random() * (999999 - 100000)) + 100000;

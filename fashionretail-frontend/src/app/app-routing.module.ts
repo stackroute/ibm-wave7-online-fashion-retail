@@ -29,7 +29,8 @@ const routes: Routes = [
   {path: 'supplier/home', component: BodyComponent},
   {path:'edit',component:DesignerprofileComponent},
   {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
-  {path:'edit/designerviewprofile/designerEdit',component:DesignereditdialogueComponent}
+  {path:'edit/designerviewprofile/designerEdit',component:DesignereditdialogueComponent},
+  { path : '**/LogOut' ,component: HeroComponent},
 
 ];
 

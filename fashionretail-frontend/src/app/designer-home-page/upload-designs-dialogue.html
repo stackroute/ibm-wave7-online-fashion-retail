@@ -3,23 +3,31 @@
       <mat-card-title>Upload Designs</mat-card-title>
     </mat-card-header>
     <mat-card-content>
+
+
 <div class="example-container">
     <mat-form-field>
       <input matInput type="text" placeholder="name of the design" [(ngModel)]="data.name">
     </mat-form-field>
     <mat-form-field>
-      <input type="text" matInput placeholder="name of the designer" [(ngModel)]="data.d_name">
+      <input type="number" matInput [disabled]="true" placeholder="price" [(ngModel)]="data.price">
     </mat-form-field>
 
     <mat-form-field>
-        <input type="text" matInput placeholder="price" [(ngModel)]="data.design_img" >
+        <input type="number" matInput [disabled]="true" placeholder="discount percentage (%)" [(ngModel)]="data.discount" >
       </mat-form-field>
+      <mat-form-field>
+          <input type="number" matInput [disabled]="true" placeholder="profit percentage (%)" [(ngModel)]="data.profit" >
+        </mat-form-field>
+        <mat-form-field>
+            <input type="number" matInput placeholder="Quality Of Design" [(ngModel)]="data.QualityOfDesign" >
+          </mat-form-field>
 <p>
       <!-- <button mat-button (click)="onClick()">Browse
         <mat-icon>file_upload</mat-icon>
         {{text}}
         </button> -->
-        <input type="file" placeholder="file">
+        <input type="file" placeholder="file" [(ngModel)]="data.dimage">
     </p>
   
   </div>

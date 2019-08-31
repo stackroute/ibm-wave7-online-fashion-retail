@@ -37,8 +37,8 @@ import { DesignereditdialogueComponent } from './designereditdialogue/designered
 
 //import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
 import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
-
-
+//  import { ReactiveFormsModule } from '@angular/forms';
+//  import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -92,6 +92,7 @@ import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufa
     MatDialogModule,
      BrowserAnimationsModule,
      MatTabsModule,
+     ReactiveFormsModule
     
   ],
   providers: [OrderService],

@@ -8,7 +8,7 @@ export interface Dorder{
     designOrder : DesignerOrder
     // mapping : Mapping
     manufacturer : Manufacturer
-    material : Materials
+    material : Array<Materials>
     // DesignerOrder : object;
     // Mapping : object;
     // Manufacturer : object;

@@ -1,9 +1,14 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
-  <div (click)="cancelClick($event)" class="dropdown">
+  <div class="dropdown">
     <button mat-button color="primary">View Profile</button><br>
     <button mat-button color="primary">View Previous orders</button>
     <mat-divider></mat-divider>
-    <button mat-button color="primary">LogOut</button>
+    <!-- <div class="buttons">
+        <button mat-stroked-button>
+            <a routerLink="about">    About us </a>
+                            </button>
+    </div> -->
+    <button mat-button color="primary"><a [routerLink] = "LogOut">LogOut</a></button>
   </div>
 </mat-menu>
 
@@ -67,6 +72,7 @@
     <!-- <button  (click)="getAllUser()">djiewuji</button> -->
     <mat-tab label="select Supplier Materials" (click)="getAllUser()">
       <div style="padding-top: 50px">
+        <button mat-button (click)="nextStep()"> placeOrder</button>
         <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
         <div class="cardList">
 
@@ -102,6 +108,7 @@
     </mat-tab>
     <mat-tab label="Select Manufacturers">
       <div style="padding-top: 50px">
+        <button mat-button (click)="submitOrder()"> submitOrder</button>
         <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
         <div class="cardList">
 
@@ -130,7 +137,7 @@
               <button mat-raised-button (click)="openDialog()">cancel</button>
             </mat-card-actions>
           </mat-card>
-          <button (click)="submitOrder()"></button>
+         
         </div>
       </div>
     </mat-tab>

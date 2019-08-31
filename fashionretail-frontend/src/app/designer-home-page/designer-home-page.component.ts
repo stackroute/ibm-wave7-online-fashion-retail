@@ -16,24 +16,25 @@ import { Dorder } from '../modals/Dorder';
 })
 export class DesignerHomePageComponent implements OnInit {
 
-  upload_designs: DesignerOrder;
+  upload_designs: DesignerOrder ;
   Materials: Materials[];
   manufacturer: Manufacturer[];
   selectedIndex: number = 0;
   items: Array<any> = [];
-  material : Materials;
+  material : Array<Materials> = [];
   savaManufacture : Manufacturer;
   orderlist : Dorder[];
     submitModel : Dorder = {
     id : 0,
     designOrder : {
-      id : 0,
+      id : "string",
       name : "String",
     price : 1,
     discount : 1,
     profit : 1,
     QualityOfDesign : 1,
     OrderStatus : "String",
+    dimage : "string",
     },
     manufacturer : {
       id : 1,
@@ -42,13 +43,8 @@ export class DesignerHomePageComponent implements OnInit {
       city : "string",
       specification : "string",
     },
-    material : {
-      name : "string",
-    M_image : "string",
-    categiry : "string",
-    quantity : "string",
-    }
-  };
+    material : [],
+    };
 
   constructor(private dialogue: MatDialog, private userService: UserServiceService) {
     this.items = [
@@ -105,25 +101,36 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   saveMaterial(material: Materials) {
-    this.material = material;
+    // this.material = material;
+    this.material.push(material);
     console.log(material);
-    this.nextStep();
+    // this.nextStep();
+    
   }
 
+  previousStep(){
+    this.selectedIndex = 0;
+  }
   saveManufacture(manufacturer : Manufacturer)
   {
       this.savaManufacture = manufacturer;
+      console.log(this.savaManufacture)
+     
   }
 
   submitOrder()
   {
-      this.submitModel.designOrder = this.upload_designs;
+    console.log("designs: ",this.upload_designs);
+    console.log("manufacturer: ",this.savaManufacture);
+    console.log("material: ",this.material);  
+    this.submitModel.designOrder = this.upload_designs;
       this.submitModel.manufacturer = this.savaManufacture;
       this.submitModel.material =  this.material
       this.userService.submitOrder(this.submitModel).subscribe(
         (data) => {
             console.log(data);
         })
+        this.previousStep();
   }
 
   getAllUser() {
