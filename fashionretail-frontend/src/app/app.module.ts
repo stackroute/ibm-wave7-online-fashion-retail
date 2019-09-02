@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule,MatFormFieldModule} from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 import { MatListModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent, SignUpDialogue } from './header/header.component';
+import { SupplierEditDialogue } from './supplierviewprofile/supplierviewprofile.component';
 import { AboutComponent } from './about/about.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
@@ -31,13 +33,14 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
     AppComponent,
     SearchboxComponent,
     FooterComponent,
-    ContactComponent, 
+    ContactComponent,
     HeroComponent,
     HeaderComponent,
     AboutComponent,
     SignUpDialogue,
     SupplierviewprofileComponent,
-    ProfilebuttonComponent
+    ProfilebuttonComponent,
+    SupplierEditDialogue
   ],
   imports: [
     BrowserModule,
@@ -61,10 +64,10 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
     MatSidenavModule,
     MatDialogModule,
      BrowserAnimationsModule
-    
+
   ],
   providers: [],
-  entryComponents : [SignUpDialogue],
+  entryComponents : [SignUpDialogue,SupplierEditDialogue],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
