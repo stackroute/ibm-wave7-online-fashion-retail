@@ -24,9 +24,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { CardComponent } from './card/card.component';
+import { OrderService } from './order.service';
+import { BodyComponent } from './body/body.component';
+import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
+import { from } from 'rxjs';
+import { Header1Component } from './header1/header1.component';
+import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
+import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
+import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
 
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+//  import { ReactiveFormsModule } from '@angular/forms';
+//  import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -35,13 +49,28 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
     FooterComponent,
     ContactComponent,
     HeroComponent,
-    HeaderComponent,
+    // HeaderComponent,
     AboutComponent,
-    SignUpDialogue,
+    // SignUpDialogue,
     SupplierviewprofileComponent,
     ProfilebuttonComponent,
     SupplierEditDialogue
-  ],
+    CardComponent,
+    BodyComponent,
+    DesignerHomePageComponent,
+    UploadDesignsDialogue,
+    HeaderComponent,
+    SignUpDialogue,
+    Header1Component,
+    AboutComponent,
+    DesignerviewprofileComponent,
+    DesignerprofileComponent,
+    DesignereditdialogueComponent,
+    // ManufactureeditComponent,
+    ManufactureviewprofileComponent,
+    ProfilebuttonComponent,
+
+    ],
   imports: [
     BrowserModule,
     MatCardModule,
@@ -50,6 +79,7 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
     ReactiveFormsModule,
     MatAutocompleteModule,
     HttpClientModule,
+
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
@@ -66,8 +96,13 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
      BrowserAnimationsModule
 
   ],
-  providers: [],
-  entryComponents : [SignUpDialogue,SupplierEditDialogue],
+  providers: [OrderService],
+  entryComponents : [SignUpDialogue,SupplierEditDialogue,UploadDesignsDialogue
+     BrowserAnimationsModule,
+     MatTabsModule,
+     ReactiveFormsModule
+  ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

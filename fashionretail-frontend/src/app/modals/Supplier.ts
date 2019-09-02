@@ -6,3 +6,5 @@ export interface Supplier{
     rating : String;
     contactNumber : number;
  }
+
+
