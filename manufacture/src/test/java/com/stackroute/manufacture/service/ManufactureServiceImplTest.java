@@ -38,6 +38,7 @@ public class ManufactureServiceImplTest {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(manufactureService).build();
         manufacture = new Manufacture(1,"Bhargavi", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
+
     }
 
     @Test
@@ -54,22 +55,11 @@ public class ManufactureServiceImplTest {
     {
         List<Manufacture> list = new ArrayList<>();
         Manufacture manufacture1 = new Manufacture(1,"Bhargavi", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
+
         list.add(manufacture1);
         list.add(manufacture);
         when(manufactureRepository.findAll()).thenReturn(list);
         List<Manufacture> retrievedDetails = manufactureService.getAllManufactures();
         Assert.assertEquals(list,retrievedDetails);
     }
-
-//    @Test
-//    public void deleteTrackTest()
-//    {
-//        Optional<User> optionalTrack = Optional.of(user);
-//        when(userRepository.findById(1)).thenReturn(optionalTrack);
-//        Boolean result = userService.deleteUser(1);
-//        Assert.assertTrue(result);
-//        verify(userRepository,times(1)).delete(Mockito.any(User.class));
-//    }
-
-
 }

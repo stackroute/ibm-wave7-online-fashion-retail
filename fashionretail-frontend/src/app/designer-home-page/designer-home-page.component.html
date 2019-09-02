@@ -1,33 +1,37 @@
-
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
-	<div (click)="cancelClick($event)" class="dropdown">
-       <button mat-button color="primary">View Profile</button><br>
-       <button mat-button color="primary">View Previous orders</button>
-       <mat-divider></mat-divider>
-       <button mat-button color="primary">LogOut</button>
-	</div>
-</mat-menu> 
+  <div class="dropdown">
+    <button mat-button color="primary">View Profile</button><br>
+    <button mat-button color="primary">View Previous orders</button>
+    <mat-divider></mat-divider>
+    <!-- <div class="buttons">
+        <button mat-stroked-button>
+            <a routerLink="about">    About us </a>
+                            </button>
+    </div> -->
+    <button mat-button color="primary"><a [routerLink] = "LogOut">LogOut</a></button>
+  </div>
+</mat-menu>
 
-<div style="height: 100vh;" >
-        <mat-toolbar style="background-color: #f8f9fa!important;">
-          <mat-toolbar-row>
-            <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-              <mat-icon>menu</mat-icon>
-            </button>
-            <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
-            <span class="title">OnlineFashionRetails</span>
-            <span class="example-spacer"></span>
-              <span class="spacer"></span>
-            <div fxShow="true" fxHide.lt-md="true">
-              <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-              <button mat-stroked-button style="color: black">Home</button>
-            <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd" style="color: black">
-            Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button> 
-            
-          </div>
-          </mat-toolbar-row>
-        </mat-toolbar>
-        <!-- <mat-sidenav-container fxFlexFill>
+<div style="height: 100vh;">
+  <mat-toolbar style="background-color: #f8f9fa!important;">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+      <span class="title">Online Fashion Retail</span>
+      <span class="example-spacer"></span>
+      <span class="spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <button mat-stroked-button style="color: black">Home</button>
+        <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd" style="color: black">
+          Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
+
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <!-- <mat-sidenav-container fxFlexFill>
           <mat-sidenav #sidenav>
             <mat-nav-list style="padding-top: 100px;width: 105%">
                     <mat-list-item><button mat-button color="primary">Home</button></mat-list-item>
@@ -42,102 +46,109 @@
           <mat-sidenav-content fxFlexFill style="widows: 105px;">
         </mat-sidenav-content>
         </mat-sidenav-container> -->
-        <mat-tab-group animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex" (selectedTabChange)="tabChanged($event)">
-            <mat-tab label="UploadDesigns">
-                <div id="container" style="padding-top: 30px">
-                    <div ng2-carouselamos class="slides-wrapper" [width]="1500" [items]="items" [$prev]="prev" [$next]="next" [$item]="item">
-                    </div>
-                    <ng-template #prev>
-                        <img src="assets/img/left.jpeg" id="left"/>
-                    </ng-template>
-                    <ng-template #next>
-                        <img src="assets/right.jpeg" id="right" />
-                    </ng-template>
-                    <ng-template #item let-item let-i="index">
-                        <div class="items">
-                            <img src="{{ item.name }}" />
-                        </div>
-                    </ng-template>
-                 </div>  
-              <div style="padding-top: 30px" class="uploadDesign">Designer add a new Designs <button mat-button (click)="openDialog()">Upload Designs</button></div></mat-tab>
-            <!-- <mat-tab label="Consumer orders">Content 2</mat-tab> -->
-            <!-- <button  (click)="getAllUser()">djiewuji</button> -->
-              <mat-tab label="select Supplier Materials" (click)="getAllUser()">
-                  <div style="padding-top: 50px">
-                      <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
-                          <div class="cardList">
-                            
-                            <!-- <div *ngFor="let song of tracks"> -->
-                            <mat-card class="card-picture"  *ngFor="let song of getData">
-                                <mat-card-header>
-                                  <!-- <div mat-card-avatar class="example-header-image"></div>  -->
-                                   <mat-card-title>Material</mat-card-title>
-                                  <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
-                                </mat-card-header>
-                                <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
-                                <mat-card-content>
-                                  <p>
-                                    Material Name:{{song.artist}}
-                                  </p>
-                                  <p>
-                                    Supplier Name: {{song.name}}
-                                  </p>
-                                  <p>Quantity</p><p>Price</p><p>Rating</p>
-                                </mat-card-content>
-                                <mat-card-actions >
-                                  <button mat-button (click)="nextStep()">Add</button>
-                                  <button mat-raised-button (click)="openDialog(song)">cancel</button>
-                                </mat-card-actions> 
-                              </mat-card>  
-                              </div>
-                              </div>
-            </mat-tab>
-            <mat-tab label="Select Manufacturers">
-                <div style="padding-top: 50px">
-                    <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
-                        <div class="cardList">
-                          
-                          <!-- <div *ngFor="let song of tracks"> -->
-                          <mat-card class="card-picture"  *ngFor="let song of getData">
-                              <mat-card-header>
-                                <!-- <div mat-card-avatar class="example-header-image"></div>  -->
-                                 <mat-card-title>Manufacturer</mat-card-title>
-                                <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
-                              </mat-card-header>
-                              <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
-                              <mat-card-content>
-                                <p>
-                                  Manufacturer Name:{{song.artist}}
-                                </p>
-                                <p>
-                                  <!-- Supplier Name: {{song.name}} -->
-                                </p>
-                                <p>Quantity</p>
-                                <!-- <p>Price</p> -->
-                                <p>Rating</p>
-                              </mat-card-content>
-                              <mat-card-actions >
-                                <button mat-button>View</button>
-                                <button mat-button>select</button>
-                                <button mat-raised-button (click)="openDialog(song)">cancel</button>
-                              </mat-card-actions> 
-                            </mat-card>  
-                            </div>
-                            </div>
-            </mat-tab>
-          </mat-tab-group>  
-          
-
-          <mat-card *ngFor="let song of Material">
-              <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div> 
-                 <mat-card-title>Track</mat-card-title>
-                <mat-card-subtitle>{{song.email}}</mat-card-subtitle>
-              </mat-card-header>
-              </mat-card>
+  <mat-tab-group animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex"
+    (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="UploadDesigns">
+      <div id="container" style="padding-top: 30px">
+        <div ng2-carouselamos class="slides-wrapper" [width]="1500" [items]="items" [$prev]="prev" [$next]="next"
+          [$item]="item">
+        </div>
+        <ng-template #prev>
+          <img src="assets/img/left.jpeg" id="left" />
+        </ng-template>
+        <ng-template #next>
+          <img src="assets/right.jpeg" id="right" />
+        </ng-template>
+        <ng-template #item let-item let-i="index">
+          <div class="items">
+            <img src="{{ item.name }}" />
+          </div>
+        </ng-template>
       </div>
+      <div style="padding-top: 30px" class="uploadDesign">Designer add a new Designs <button mat-button
+          (click)="openDialog()">Upload Designs</button></div>
+    </mat-tab>
+    <!-- <mat-tab label="Consumer orders">Content 2</mat-tab> -->
+    <!-- <button  (click)="getAllUser()">djiewuji</button> -->
+    <mat-tab label="select Supplier Materials" (click)="getAllUser()">
+      <div style="padding-top: 50px">
+        <button mat-button (click)="nextStep()"> placeOrder</button>
+        <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
+        <div class="cardList">
 
-     
-    
+          <!-- <div *ngFor="let song of tracks"> -->
+          <mat-card class="card-picture" *ngFor="let material of Materials">
+            <mat-card-header>
+              <!-- <div mat-card-avatar class="example-header-image"></div>  -->
+              <mat-card-title>Material</mat-card-title>
+              <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
+            </mat-card-header>
+            <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
+            <mat-card-content>
+              <p>
+                Material: {{material.name}}</p>
+              <p>
+                Supplier Name: {{material.categiry}}
+              </p>
+              <p>Quantity</p>
+              <p>Price</p>
+              <p>Rating</p>
+              <mat-form-field>
+                <label>Enter Quantity:</label><input matInput type="text" placeholder="write quantity in units"
+                  [(ngModel)]="material.quantity">
+              </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button (click)="saveMaterial(material)">Add</button>
+              <button mat-raised-button (click)="openDialog(material)">cancel</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Select Manufacturers">
+      <div style="padding-top: 50px">
+        <button mat-button (click)="submitOrder()"> submitOrder</button>
+        <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
+        <div class="cardList">
 
-  
+          <!-- <div *ngFor="let song of tracks"> -->
+          <mat-card class="card-picture" *ngFor="let manufacturer of manufacturer">
+            <mat-card-header>
+              <!-- <div mat-card-avatar class="example-header-image"></div>  -->
+              <mat-card-title>Manufacturer</mat-card-title>
+              <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
+            </mat-card-header>
+            <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
+            <mat-card-content>
+              <p>
+                Manufacturer Name:{{manufacturer.name}}
+              </p>
+              <p>
+                <!-- Supplier Name: {{song.name}} -->
+              </p>
+              <p>Quantity</p>
+              <!-- <p>Price</p> -->
+              <p>Rating</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>View</button>
+              <button mat-button (click)="saveManufacture(manufacturer)">select</button>
+              <button mat-raised-button (click)="openDialog()">cancel</button>
+            </mat-card-actions>
+          </mat-card>
+         
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
+  <mat-card *ngFor="let song of Material">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Track</mat-card-title>
+      <mat-card-subtitle>{{song.email}}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+</div>

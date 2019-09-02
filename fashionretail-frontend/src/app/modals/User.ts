@@ -5,4 +5,5 @@ export interface User{
     email : String;
     password : String;
     designation : String;
+    quantity : string;
 }

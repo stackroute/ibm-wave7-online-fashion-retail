@@ -7,6 +7,12 @@ import { AboutComponent } from './about/about.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
 import { AddmaterialsbuttonComponent } from './addmaterialsbutton/addmaterialsbutton.component';
+import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
+import { BodyComponent } from './body/body.component';
+import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
+import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
+import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
+import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
 
 
 
@@ -18,7 +24,17 @@ const routes: Routes = [
   {path:'edit', component:ProfilebuttonComponent},
   {path:'edit/manufactureviewprofile', component:ManufactureviewprofileComponent},
   // {path:'login',component:LoginComponent}
-   {path:'addMaterial',component:AddmaterialsbuttonComponent}
+   {path:'addMaterial',component:AddmaterialsbuttonComponent},
+  {path: 'designer',component: DesignerHomePageComponent
+  },
+  {path: 'edit', component:ProfilebuttonComponent},
+  {path: 'edit/supplierviewprofile', component:SupplierviewprofileComponent},
+  {path: 'supplier/home', component: BodyComponent},
+  {path:'edit',component:DesignerprofileComponent},
+  {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
+  {path:'edit/designerviewprofile/designerEdit',component:DesignereditdialogueComponent},
+  { path : '**/LogOut' ,component: HeroComponent},
+
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ public class UserController {
 
     UserService userService;
     User user= new User();
+    User savedUser;
 
     @Autowired
     public UserController(UserService userService) {
@@ -28,18 +29,14 @@ public class UserController {
 
     private static final String TOPIC = "Kafka_Example";
 
-    @PostMapping("publish")
-    public String post() {
-        kafkaTemplate.send(TOPIC, new User(user.getId(),user.getName(),user.getPassword(),user.getEmail(),user.getDesignation()));
-        return "Published successfully";
-    }
 
     //Post mapping to save the user details
     @PostMapping("user")
     public ResponseEntity<?> saveTrack(@RequestBody User user) {
         ResponseEntity responseEntity;
         try {
-            userService.saveUser(user);
+            savedUser=userService.saveUser(user);
+            kafkaTemplate.send(TOPIC,savedUser);
             responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);

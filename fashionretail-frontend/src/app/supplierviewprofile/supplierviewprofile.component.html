@@ -1,0 +1,28 @@
+<div class="example-card">
+  <mat-card-header>
+    <mat-card-title>Supplier Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <br>
+    <div class="example-container">
+<!--    <div *ngFor=" let supplier of supplier">-->
+      <h6>  User Name: {{supplier.name}} <br> </h6>
+<!--        <input matInput type="text" [(ngModel)]="name" disabled>-->
+<!--      <mat-form-field>-->
+      <h6>  Email Id: {{supplier.email}} <br> </h6>
+<!--      </mat-form-field><br>-->
+
+<!--      <mat-form-field>-->
+       <h6> City: {{supplier.city}}<br> </h6>
+      <!--      </mat-form-field><br>-->
+
+<!--      <mat-form-field>-->
+      <h6>  Contact Number: {{supplier.contactNumber}}<br> </h6>
+<!--      </mat-form-field>-->
+    </div>
+<!--    </div>-->
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>
+  </mat-card-actions>
+</div>

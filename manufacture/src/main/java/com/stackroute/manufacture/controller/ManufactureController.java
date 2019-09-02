@@ -29,6 +29,8 @@ public class ManufactureController {
 
     private static final String TOPIC = "Kafka_Example";
 
+
+
     //Post mapping to save the user details
     @PostMapping("manufacture")
     public ResponseEntity<?> save(@RequestBody Manufacture manufacture) {

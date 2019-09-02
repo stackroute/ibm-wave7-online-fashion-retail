@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule,MatFormFieldModule} from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
+import { MatListModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchboxComponent } from './searchbox/searchbox.component';
@@ -13,26 +15,44 @@ import { HeroComponent } from './hero/hero.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent, SignUpDialogue } from './header/header.component';
+import { SupplierEditDialogue } from './supplierviewprofile/supplierviewprofile.component';
 import { AboutComponent } from './about/about.component';
-import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
-import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { MatCardModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { AddmaterialsbuttonComponent, manufactureAddDialog } from './addmaterialsbutton/addmaterialsbutton.component';
 import { DisplaymaterialsComponent } from './displaymaterials/displaymaterials.component';
 
 
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material';
+import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
+import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { CardComponent } from './card/card.component';
+import { OrderService } from './order.service';
+import { BodyComponent } from './body/body.component';
+import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
+import { from } from 'rxjs';
+import { Header1Component } from './header1/header1.component';
+import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
+import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
+import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
+
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
+//  import { ReactiveFormsModule } from '@angular/forms';
+//  import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchboxComponent,
     FooterComponent,
-    ContactComponent, 
+    ContactComponent,
     HeroComponent,
     HeaderComponent,
     AboutComponent,
@@ -41,11 +61,32 @@ import { DisplaymaterialsComponent } from './displaymaterials/displaymaterials.c
     manufactureEditDialog,
     AddmaterialsbuttonComponent,
     DisplaymaterialsComponent,
-    manufactureAddDialog
+    manufactureAddDialog, 
+    SupplierEditDialogue,
+    CardComponent,
+    BodyComponent,
+    DesignerHomePageComponent,
+    UploadDesignsDialogue,
+    HeaderComponent,
+    SignUpDialogue,
+    Header1Component,
+    AboutComponent,
+    DesignerviewprofileComponent,
+    DesignerprofileComponent,
+    DesignereditdialogueComponent,
+        ManufactureviewprofileComponent,
+    ProfilebuttonComponent,
 
-  ],
+    ],
   imports: [
     BrowserModule,
+    MatCardModule,
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    HttpClientModule,
+
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
@@ -62,12 +103,14 @@ import { DisplaymaterialsComponent } from './displaymaterials/displaymaterials.c
      MatDialogModule,
      HttpClientModule,
      FormsModule
-     
-
     
   ],
-  providers: [],
-  entryComponents: [manufactureEditDialog,manufactureAddDialog],
+  
+  providers: [OrderService],
+  entryComponents : [SignUpDialogue,SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog
+    
+  ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

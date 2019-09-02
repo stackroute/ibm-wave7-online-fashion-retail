@@ -62,7 +62,6 @@ public class ManufactureServiceImpl implements ManufactureService {
         manufacture.setCity(manufacture.getCity());
         manufacture.setSpecifications(specifications);
         manufacture.setContact_number(manufacture.getContact_number());
-
         Manufacture savedManufacture = manufactureRepository.save(manufacture);
         return savedManufacture;
     }

@@ -51,6 +51,7 @@ public class UserRepositoryTest {
     {
         List<Manufacture> users = new ArrayList<>();
         Manufacture user1 = new Manufacture(1,"sarah", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
+
         users.add(manufacture);
         users.add(user1);
         List<Manufacture> userslist = manufactureRepository.findAll();
