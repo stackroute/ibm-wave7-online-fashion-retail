@@ -37,7 +37,7 @@ public class ManufactureServiceImplTest {
     {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(manufactureService).build();
-        manufacture = new Manufacture(1,"Sindhu", "sindhura", 8000, "lehenga");
+        manufacture = new Manufacture(1,"Bhargavi", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
     }
 
     @Test
@@ -53,7 +53,7 @@ public class ManufactureServiceImplTest {
     public void getAllManufactureTest()
     {
         List<Manufacture> list = new ArrayList<>();
-        Manufacture manufacture1 = new Manufacture(2, "sarah","sahasra",3000,"lehenga");
+        Manufacture manufacture1 = new Manufacture(1,"Bhargavi", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
         list.add(manufacture1);
         list.add(manufacture);
         when(manufactureRepository.findAll()).thenReturn(list);

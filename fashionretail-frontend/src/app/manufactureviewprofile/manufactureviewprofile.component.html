@@ -3,33 +3,21 @@
       <mat-card-title>My Profile</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <div class="example-container">
-        <mat-form-field>
-          User Name: Sindhu
-        </mat-form-field><br>
-        <mat-form-field>
-          Email Id: sindhu@gmail.com
-        </mat-form-field><br>
-        <mat-form-field>
-            Specification: Ornaments
-          </mat-form-field><br>
-        <mat-form-field>
-          City:
-        </mat-form-field><br>
-        <mat-form-field>
-          Contact Number:
-        </mat-form-field>
+      <div class="example-container" >
+       
+          User Name: {{manufacture.name}} <br>
+        
+          Email Id: {{manufacture.email}}<br>
+       
+          Specification: {{manufacture.specifications}}<br>
+         
+          City: {{manufacture.city}}<br>
+       
+         Contact Number: {{manufacture.contact_number}}<br>
+       
       </div>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)=openDialog(Manufacture)>Edit</button>
-    </mat-card-actions>
-
-    <mat-card-actions>
-      <a style="margin-left: 10px" routerLink="/login">
-          <mat-divider></mat-divider> 
-  
-      <button mat-raised-button (click)="saveManufacture(Manufacture)" color="primary">Submit</button>
-      <button mat-raised-button (click)="login()" color="primary">cancel</button></a>
-    </mat-card-actions>
+      <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>
+       </mat-card-actions>    
    </div>

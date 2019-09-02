@@ -16,6 +16,7 @@ import java.util.List;
 public class ManufactureController {
 
     ManufactureService manufactureService;
+    Manufacture savedManufacture;
     Manufacture manufacture = new Manufacture();
 
     @Autowired
@@ -28,18 +29,13 @@ public class ManufactureController {
 
     private static final String TOPIC = "Kafka_Example";
 
-    @PostMapping("publish")
-    public String post() {
-        kafkaTemplate.send(TOPIC, new Manufacture(manufacture.getId(), manufacture.getName(), manufacture.getEmail(), manufacture.getPrice(),manufacture.getSpecifications()));
-        return "Published successfully";
-    }
-
     //Post mapping to save the user details
     @PostMapping("manufacture")
     public ResponseEntity<?> save(@RequestBody Manufacture manufacture) {
         ResponseEntity responseEntity;
         try {
-            manufactureService.saveManufacture(manufacture);
+            savedManufacture=manufactureService.saveManufacture(manufacture);
+            kafkaTemplate.send(TOPIC,savedManufacture);
             responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
@@ -55,6 +51,17 @@ public class ManufactureController {
             responseEntity = new ResponseEntity<List<Manufacture>>(manufactureService.getAllManufactures(), HttpStatus.OK);
         } catch (Exception exception) {
 
+            responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
+
+    @GetMapping("manufacture/{id}")
+    public ResponseEntity<?> getDesigner(@PathVariable int id) {
+        ResponseEntity responseEntity;
+        try {
+            responseEntity = new ResponseEntity<>(manufactureService.getManufacture(id), HttpStatus.OK);
+        } catch (Exception exception) {
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;

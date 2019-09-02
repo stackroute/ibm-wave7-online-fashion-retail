@@ -15,11 +15,15 @@ import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
-//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
-import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { MatCardModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { AddmaterialsbuttonComponent, manufactureAddDialog } from './addmaterialsbutton/addmaterialsbutton.component';
+import { DisplaymaterialsComponent } from './displaymaterials/displaymaterials.component';
+
 
 
 
@@ -32,9 +36,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     HeroComponent,
     HeaderComponent,
     AboutComponent,
-    // ManufactureeditComponent,
     ManufactureviewprofileComponent,
-    ProfilebuttonComponent
+    ProfilebuttonComponent,
+    manufactureEditDialog,
+    AddmaterialsbuttonComponent,
+    DisplaymaterialsComponent,
+    manufactureAddDialog
+
   ],
   imports: [
     BrowserModule,
@@ -51,10 +59,15 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
      BrowserAnimationsModule,
      MatCardModule,
-     MatDialogModule
+     MatDialogModule,
+     HttpClientModule,
+     FormsModule
+     
+
     
   ],
   providers: [],
+  entryComponents: [manufactureEditDialog,manufactureAddDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

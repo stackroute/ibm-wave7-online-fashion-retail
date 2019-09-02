@@ -6,6 +6,7 @@ import { HeroComponent } from './hero/hero.component';
 import { AboutComponent } from './about/about.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+import { AddmaterialsbuttonComponent } from './addmaterialsbutton/addmaterialsbutton.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'about', component:AboutComponent},
   {path:'edit', component:ProfilebuttonComponent},
   {path:'edit/manufactureviewprofile', component:ManufactureviewprofileComponent},
-  {path:'login',component:LoginComponent}
+  // {path:'login',component:LoginComponent}
+   {path:'addMaterial',component:AddmaterialsbuttonComponent}
 ];
 
 @NgModule({

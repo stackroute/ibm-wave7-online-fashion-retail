@@ -25,12 +25,14 @@ public class UserRepositoryTest {
 
         @Before
         public void setUp() {
-            manufacture = new Manufacture( 1,"bhargavi", "bhargavi@gmail.com", 89000, "saree");
+            manufacture = new Manufacture( 1,"Bhargavi", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
             manufacture.setId(1);
             manufacture.setName("bhargavi");
             manufacture.setEmail("bhargavi@gmail.com");
-            manufacture.setPrice(89000);
+            manufacture.setCity("hyderabad");
             manufacture.setSpecifications("saree");
+            manufacture.setRating(5);
+            manufacture.setContact_number(987777777);
         }
 
         @After
@@ -48,7 +50,7 @@ public class UserRepositoryTest {
     public void getAllTracks()
     {
         List<Manufacture> users = new ArrayList<>();
-        Manufacture user1 = new Manufacture(2,"sarah","sahasra",8765,"saree");
+        Manufacture user1 = new Manufacture(1,"sarah", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
         users.add(manufacture);
         users.add(user1);
         List<Manufacture> userslist = manufactureRepository.findAll();

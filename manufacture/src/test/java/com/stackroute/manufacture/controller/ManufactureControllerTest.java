@@ -40,7 +40,7 @@ public class ManufactureControllerTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         mockMvc = MockMvcBuilders.standaloneSetup(manufactureController).build();
-        manufacture = new Manufacture(1,"Bhargavi", "bhargavi@gmail.com", 8000, "clothing");
+        manufacture = new Manufacture(1,"Bhargavi", "bhargavi@gmail.com", "hyderabad", "clothing",5,987777777);
 
     }
 

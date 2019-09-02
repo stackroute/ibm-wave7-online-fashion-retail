@@ -9,8 +9,10 @@ public class Manufacture {
     private int id;
     private String name;
     private String email;
-    private int price;
+    private String city;
     private String specifications;
+    private int rating;
+    private int contact_number;
 
     public int getId() {
         return id;
@@ -36,12 +38,12 @@ public class Manufacture {
         this.email = email;
     }
 
-    public int getPrice() {
-        return price;
+    public String getCity() {
+        return city;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getSpecifications() {
@@ -52,18 +54,32 @@ public class Manufacture {
         this.specifications = specifications;
     }
 
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public int getContact_number() {
+        return contact_number;
+    }
+
+    public void setContact_number(int contact_number) {
+        this.contact_number = contact_number;
+    }
 
     public Manufacture() {
     }
 
-    public Manufacture(int id, String name, String email, int price, String specifications) {
+    public Manufacture(int id, String name, String email, String city, String specifications, int rating, int contact_number) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.price = price;
+        this.city = city;
         this.specifications = specifications;
+        this.rating = rating;
+        this.contact_number = contact_number;
     }
-
-
-
 }
