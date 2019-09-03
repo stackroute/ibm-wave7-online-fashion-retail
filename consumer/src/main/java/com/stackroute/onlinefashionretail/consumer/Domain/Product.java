@@ -11,7 +11,7 @@ public class Product {
     private String id;
     private String name;
     private String category;
-    private String designerName;
+    private Designer designer;
     private double price;
     private double discount;
     private float rating;
@@ -46,12 +46,12 @@ public class Product {
         this.category = category;
     }
 
-    public String getDesignerName() {
-        return designerName;
+    public Designer getDesigner() {
+        return designer;
     }
 
-    public void setDesignerName(String designerName) {
-        this.designerName = designerName;
+    public void setDesigner(Designer designer) {
+        this.designer = designer;
     }
 
     public double getPrice() {
@@ -93,11 +93,23 @@ public class Product {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
-                ", designerName='" + designerName + '\'' +
+                ", designerName='" + designer + '\'' +
                 ", price=" + price +
                 ", discount=" + discount +
                 ", rating=" + rating +
                 ", image='" + image + '\'' +
                 '}';
+    }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof Product)) {
+            return false;
+        }
+        Product other = (Product) o;
+        return name.equals(other.name) && id.equals(other.id) && designer.getName().equals(other.designer.getName());
+    }
+
+    public int hashCode() {
+        return name.hashCode();
     }
 }

@@ -11,7 +11,7 @@ public class Address {
     private String firstLine;
     private String secondLine;
     private String thirdLine;
-    private String State;
+    private String state;
     private String city;
     private String pinCode;
 
@@ -53,11 +53,11 @@ public class Address {
     }
 
     public String getState() {
-        return State;
+        return state;
     }
 
     public void setState(String state) {
-        State = state;
+        this.state = state;
     }
 
     public String getCity() {
@@ -83,7 +83,7 @@ public class Address {
                 "firstLine='" + firstLine + '\'' +
                 ", secondLine='" + secondLine + '\'' +
                 ", thirdLine='" + thirdLine + '\'' +
-                ", State='" + State + '\'' +
+                ", State='" + state + '\'' +
                 ", city='" + city + '\'' +
                 ", pinCode='" + pinCode + '\'' +
                 '}';

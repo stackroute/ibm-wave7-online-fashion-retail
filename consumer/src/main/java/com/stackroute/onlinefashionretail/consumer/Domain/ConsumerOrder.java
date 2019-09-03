@@ -1,5 +1,6 @@
 package com.stackroute.onlinefashionretail.consumer.Domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,11 +12,12 @@ import java.util.List;
 public class ConsumerOrder {
     @Id
     private String id;
-    private String ConsumerId;
+    private String consumerId;
     private List<Product> products;
     private double totalAmount;
     private Address shippingAddress;
     private String status;
+    @JsonFormat(pattern="dd/MM/yyyy-HH:mm:ss")
     private Date date;
 
     //no args constructor
@@ -32,11 +34,11 @@ public class ConsumerOrder {
     }
 
     public String getConsumerId() {
-        return ConsumerId;
+        return consumerId;
     }
 
     public void setConsumerId(String consumerId) {
-        ConsumerId = consumerId;
+        this.consumerId = consumerId;
     }
 
     public List<Product> getProducts() {
@@ -85,7 +87,7 @@ public class ConsumerOrder {
     public String toString() {
         return "ConsumerOrder{" +
                 "id='" + id + '\'' +
-                ", ConsumerId='" + ConsumerId + '\'' +
+                ", ConsumerId='" + consumerId + '\'' +
                 ", products=" + products +
                 ", totalAmount=" + totalAmount +
                 ", shippingAddress=" + shippingAddress +

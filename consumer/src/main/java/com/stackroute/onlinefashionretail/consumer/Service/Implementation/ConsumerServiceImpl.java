@@ -140,7 +140,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     public Address removeAddress(String consumerId, Address address) throws ConsumerNotFoundException {
         try {
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
-            consumer.getAddresses().remove(address.getId(),address);
+            consumer.getAddresses().remove(address.getId());
             consumerRepository.save(consumer);
             return address;
         }
@@ -279,7 +279,10 @@ public class ConsumerServiceImpl implements ConsumerService {
         try {
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             //add product to cart
+            logger.info(product.toString());
+            logger.info(consumer.getCart().contains(product)+"");
             consumer.getCart().remove(product);
+            logger.info(consumer.getCart().toString());
             //save to the consumer repository
             consumerRepository.save(consumer);
             return product;
