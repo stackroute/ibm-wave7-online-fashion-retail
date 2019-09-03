@@ -29,53 +29,53 @@
 //    MockMvc mockMvc;
 //
 //    @Mock
-//    SupplierService userService;
+//    SupplierService supplierService;
 //
 //    @InjectMocks
 //    SupplierController supplierController;
 //
-//    Supplier user;
+//    Supplier supplier;
 //
 //    @Before
 //    public void setup() {
 //        MockitoAnnotations.initMocks(this);
 //        mockMvc = MockMvcBuilders.standaloneSetup(supplierController).build();
-//        user = new Supplier(1,"Sindhu", "sindhura", "sindhura@gmail.com", "designer");
+//        supplier = new Supplier(1,"Suchita", "skanchh1@in.ibm.com", "Lucknow", "5star");
 //
 //    }
 //
 //    @Test
-//    public void saveUserTest() throws Exception {
-//        when(userService.saveUser(user)).thenReturn(user);
-//        mockMvc.perform(post("/user")
+//    public void saveSupplierTest() throws Exception {
+//        when(supplierService.saveSupplier(supplier)).thenReturn(supplier);
+//        mockMvc.perform(post("/supplier")
 //                .contentType(MediaType.APPLICATION_JSON)
-//                .content(asJsonString(user)))
+//                .content(asJsonString(supplier)))
 //                .andExpect(status().isCreated());
-//        verify(userService, times(1)).saveUser(Mockito.any(Supplier.class));
-//        verifyNoMoreInteractions(userService);
+//        verify(supplierService, times(1)).saveSupplier(Mockito.any(Supplier.class));
+//        verifyNoMoreInteractions(supplierService);
 //    }
 //
 //    @Test
-//    public void getAllUsers() throws Exception{
-//        List<Supplier> userslist = new ArrayList<>();
-//        userslist.add(user);
-//        when(userService.getAllUsers()).thenReturn(userslist);
-//        mockMvc.perform(post("/user")
+//    public void getAllSuppliers() throws Exception{
+//        List<Supplier> supplierList = new ArrayList<>();
+//        supplierList.add(supplier);
+//        when(supplierService.getAllSuppliers()).thenReturn(supplierList);
+//        mockMvc.perform(post("/supplier")
 //                .contentType(MediaType.APPLICATION_JSON)
-//                .content(asJsonString(user)))
+//                .content(asJsonString(supplier)))
 //                .andExpect(status().isCreated());
 //
 //    }
 //
 //    @Test
-//    public void deleteUserTest() throws Exception
+//    public void deleteSupplierTest() throws Exception
 //    {
-//        when(userService.deleteUser(1)).thenReturn(true);
-//        mockMvc.perform(delete("/user/1")
+//        when(supplierService.deleteSupplier(1)).thenReturn(true);
+//        mockMvc.perform(delete("/supplier/1")
 //                .contentType(MediaType.APPLICATION_JSON))
 //                .andExpect(status().isOk());
-//        verify(userService, times(1)).deleteUser(1);
-//        verifyNoMoreInteractions(userService);
+//        verify(supplierService, times(1)).deleteSupplier(1);
+//        verifyNoMoreInteractions(supplierService);
 //    }
 //
 //    private static String asJsonString(final Object obj) {

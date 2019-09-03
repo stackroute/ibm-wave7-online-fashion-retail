@@ -1,57 +1,64 @@
 package com.stackroute.user.controller;
 
-import com.stackroute.user.domain.Material;
-import com.stackroute.user.domain.Supplier;
-import com.stackroute.user.services.MaterialService;
+import com.stackroute.user.services.MappingService;
+import com.stackroute.user.domain.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value="api/v2")
-public class MaterialController {
-
-    MaterialService materialService;
-    Material material = new Material();
+public class MappingController {
 
 
-  @Autowired
-  public MaterialController(MaterialService materialService) {
-    this.materialService = materialService;
-  }
+  private MappingService mappingService;
 
-  @Autowired
-  private KafkaTemplate<String, Material> kafkaTemplate2;
+  private KafkaTemplate<String, Mapping> kafkaTemplate2;
 
   private static final String TOPIC = "Kafka_Example";
 
+  @Autowired
+  public MappingController(MappingService mappingService, KafkaTemplate<String, Mapping> kafkaTemplate2) {
+    this.mappingService = mappingService;
+    this.kafkaTemplate2 = kafkaTemplate2;
+  }
+
+  //@PostMapping("publish")
+  private String post(Mapping mapping) {
+    kafkaTemplate2.send(TOPIC,mapping);
+    return "Published successfully";
+  }
 
   //Post mapping to save the user details
   @PostMapping("material")
-  public ResponseEntity<?> saveMaterial(@RequestBody Material material) {
+  public ResponseEntity<?> saveMaterial(@RequestBody Mapping mapping) {
+    System.out.println("in here");
+    System.out.println(mapping.toString());
     ResponseEntity responseEntity;
     try {
-      materialService.saveMaterial(material);
-      kafkaTemplate2.send(TOPIC,material);
+      System.out.println("In try block");
+      mapping = mappingService.saveMapping(mapping);
       responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
     } catch (Exception ex) {
+      System.out.println("In exception block");
+      System.out.println(ex.toString());
       responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
     }
     return responseEntity;
   }
 
   @GetMapping("material")
-  public ResponseEntity<?> getAllMaterials() {
+  public ResponseEntity<?> getAllMaterials(@RequestParam String email) {
     ResponseEntity responseEntity;
 
     try {
-      responseEntity = new ResponseEntity<List<Material>>(materialService.getAllMaterials(), HttpStatus.OK);
+      System.out.println("in get all in mapping controller");
+      responseEntity = new ResponseEntity<>(mappingService.getAllMappings(email), HttpStatus.OK);
     } catch (Exception exception) {
+      System.out.println("in catch in mapping controller");
 
       responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
     }
@@ -62,7 +69,7 @@ public class MaterialController {
   public ResponseEntity<?> deleteMaterial(@PathVariable int id) {
     ResponseEntity responseEntity;
     try {
-      materialService.deleteMaterial(id);
+      mappingService.deleteMapping(id);
       responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
     } catch (Exception exception) {
       responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
@@ -71,11 +78,11 @@ public class MaterialController {
   }
 
   @PutMapping("material/{id}")
-  public ResponseEntity<?> updateMaterial(@RequestBody Material material, @PathVariable int id) {
+  public ResponseEntity<?> updateMaterial(@RequestBody Mapping mapping, @PathVariable int id) {
     ResponseEntity responseEntity;
     try {
-      materialService.updateMaterial(material,id);
-      responseEntity = new ResponseEntity<List<Material>>(materialService.getAllMaterials(), HttpStatus.CREATED);
+
+      responseEntity = new ResponseEntity<>(mappingService.updateMapping(mapping,id), HttpStatus.OK);
     } catch (Exception exception1) {
       responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
     }

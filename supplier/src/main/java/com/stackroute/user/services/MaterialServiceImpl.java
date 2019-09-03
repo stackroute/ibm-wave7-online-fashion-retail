@@ -19,8 +19,8 @@ public class MaterialServiceImpl implements MaterialService {
 
   @Override
   public Material saveMaterial(Material material) {
-    Material savedMaterial = materialRepository.save(material);
-    return savedMaterial;
+    System.out.println("In save Material");
+    return materialRepository.save(material);
   }
 
   @Override
@@ -55,5 +55,10 @@ public class MaterialServiceImpl implements MaterialService {
 
     Material savedMaterial = materialRepository.save(material);
     return savedMaterial;
+  }
+
+  @Override
+  public Material findById(int id) {
+    return materialRepository.findById(id).orElse(null);
   }
 }
