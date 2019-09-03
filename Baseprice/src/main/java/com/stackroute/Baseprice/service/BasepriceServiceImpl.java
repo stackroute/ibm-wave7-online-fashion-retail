@@ -59,12 +59,6 @@ public class BasepriceServiceImpl implements BasepriceService
             return savedBaseprice;
         }
 
-    @Override
-    public Optional<Baseprice> getAllBasePriceById(int id) {
-//        Designer designer = designerRepository.findById(id);
-        return basepriceRepository.findById(id);
     }
-
-}
 
 

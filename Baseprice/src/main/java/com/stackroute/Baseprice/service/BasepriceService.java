@@ -3,7 +3,6 @@ package com.stackroute.Baseprice.service;
 import com.stackroute.Baseprice.domain.Baseprice;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface BasepriceService
 {
@@ -17,6 +16,5 @@ public interface BasepriceService
 
         public Baseprice updateBaseprice(Baseprice baseprice, int id);
 
-    public Optional<Baseprice> getAllBasePriceById(int id);
     }
 
