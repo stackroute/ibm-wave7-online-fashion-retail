@@ -1,0 +1,27 @@
+<div class="flex-container">
+  <mat-card class="example-card" *ngFor="let product of products"
+            [ngStyle]="{'background': 'linear-gradient(rgba(255, 255, 255, .45), rgba(255, 255, 255, .45)), url(' + product.image + ')'}">
+    <mat-card-content>
+      <div class="track-name">{{product.name}}</div>
+      <div class="track-artist">{{product.designerName}}</div>
+      <div class="track-comment">{{product.price}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-button>
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </mat-card-actions>
+<!--    <div ([ngModel])="track.exists" *ngIf="track.exists; then thenBlock else elseBlock"></div>-->
+<!--    <ng-template #thenBlock>-->
+<!--      <app-icon-tray [icons] = savedIcons [parentTrack] = track (childEvent)="getTracks()"></app-icon-tray>-->
+<!--    </ng-template>-->
+<!--    <ng-template #elseBlock>-->
+<!--      <app-icon-tray [icons] = unsavedIcons [parentTrack] = track (childEvent)="getTracks()"></app-icon-tray>-->
+<!--    </ng-template>-->
+
+  </mat-card>
+</div>
+

@@ -1,0 +1,27 @@
+.example-card {
+  width: 300px;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 20px;
+  display: inline;
+  background-size: contain;
+  background: no-repeat center center;
+  position: relative;
+  min-height: 250px;
+}
+.track-name {
+  font-size: 30px;
+}
+.track-artist {
+  font-size: 17px;
+}
+.track-comment {
+  font-size: 15px;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 100px;
+  margin-top: 120px;
+}
