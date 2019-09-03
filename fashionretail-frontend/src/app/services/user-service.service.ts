@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from './modals/User';
+import { User } from '../modals/User';
 import { Observable } from 'rxjs';
-import { Designer } from './modals/Designer';
-import { Materials } from './modals/Materials';
-import { Manufacturer } from './modals/Manufacturer';
-import { Dorder } from './modals/Dorder';
+import { Designer } from '../modals/Designer';
+import { Materials } from '../modals/Materials';
+import { Manufacturer } from '../modals/Manufacturer';
+import { Dorder } from '../modals/Dorder';
 
 const httpOptions={
   headers: new HttpHeaders({

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Manufacture } from './modals/Manufacture';
+import { Manufacture } from '../modals/Manufacture';
 import { Observable } from 'rxjs';
-import { BasePrice } from './modals/BasePrice';
+import { BasePrice } from '../modals/BasePrice';
 
 
 const httpOptions = {
@@ -17,7 +17,7 @@ const httpOptions = {
 })
 export class ManufactureserviceService {
 
-  
+
 
   constructor(private httpClient:HttpClient) { }
   updateManufacture(id:number,manufacture:Manufacture):Observable<Manufacture>

@@ -9,14 +9,15 @@
   position: relative;
   min-height: 250px;
 }
-.track-name {
-  font-size: 30px;
+.mat-card-image {
+  max-height: 300px;
 }
-.track-artist {
-  font-size: 17px;
-}
-.track-comment {
+.product-price {
+  text-decoration: line-through;
   font-size: 15px;
+}
+.product-discounted {
+  font-size: 18px;
 }
 .flex-container {
   display: flex;

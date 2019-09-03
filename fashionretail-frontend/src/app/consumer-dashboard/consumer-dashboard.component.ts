@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../classes/product';
+import {ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
+import {ProductService} from '../services/product.service';
 
 @Component({
   selector: 'app-consumer-dashboard',
@@ -10,11 +13,16 @@ export class ConsumerDashboardComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor() { }
-
-  ngOnInit() {
-    this.products.push(new Product('1', 'abc', 'clothing', 'def', 764, 20, 4.5, ''));
-    this.products.push(new Product('2', 'abkc', 'clomthing', 'dmef', 774, 40, 3.5, ''));
+  constructor(private productService: ProductService, private route: ActivatedRoute, private httpClient: HttpClient) {
   }
 
+  public getProducts() {
+    this.productService.getAllProducts().subscribe(data => {
+      this.products = data;
+    });
+  }
+
+  ngOnInit() {
+    this.getProducts();
+  }
 }

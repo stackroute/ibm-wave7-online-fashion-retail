@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '../modals/User';
 import { Designer } from '../modals/Designer';
-import { UserServiceService } from '../user-service.service';
+import { UserServiceService } from '../services/user-service.service';
 import { MatTabChangeEvent } from '@angular/material';
 import { Materials } from '../modals/Materials';
 import { DesignerOrder } from '../modals/DesignerOrder';
@@ -105,7 +105,7 @@ export class DesignerHomePageComponent implements OnInit {
     this.material.push(material);
     console.log(material);
     // this.nextStep();
-    
+
   }
 
   previousStep(){
@@ -115,14 +115,14 @@ export class DesignerHomePageComponent implements OnInit {
   {
       this.savaManufacture = manufacturer;
       console.log(this.savaManufacture)
-     
+
   }
 
   submitOrder()
   {
     console.log("designs: ",this.upload_designs);
     console.log("manufacturer: ",this.savaManufacture);
-    console.log("material: ",this.material);  
+    console.log("material: ",this.material);
     this.submitModel.designOrder = this.upload_designs;
       this.submitModel.manufacturer = this.savaManufacture;
       this.submitModel.material =  this.material

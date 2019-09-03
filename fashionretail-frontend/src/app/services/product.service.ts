@@ -14,8 +14,8 @@ export class ProductService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getSavedTracks(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://localhost:8080/api/v1/track', {headers: this.headers});
+  public getAllProducts(): Observable<Product[]> {
+    return this.httpClient.get<Product[]>('http://localhost:8080/api/v1/product', {headers: this.headers});
   }
 
   public tracksExists(track: Product) {

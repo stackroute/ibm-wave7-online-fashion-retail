@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '../modals/User';
-import { UserServiceService } from '../user-service.service';
+import { UserServiceService } from '../services/user-service.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   angForm: FormGroup;
   public user : User;
   constructor(private dialog: MatDialog, private userService : UserServiceService, private fb : FormBuilder) { }
-  
+
 
   ngOnInit() {
   }
@@ -42,8 +42,8 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  
-  
+
+
   saveUser(user : User){
     let num=Math.floor(Math.random() * (999999 - 100000)) + 100000;
         console.log("random number is ",num);
@@ -54,25 +54,25 @@ export class HeaderComponent implements OnInit {
       })
     }
   }
-  
-  
-  
+
+
+
   @Component({
     selector: 'signUp-dialogue',
     templateUrl: 'signUp-dialogue.html',
   })
-  
+
   export class SignUpDialogue {
-  
+
     constructor(
-  
+
       public dialogRef: MatDialogRef<SignUpDialogue>,
       @Inject(MAT_DIALOG_DATA) public data: User) { }
-  
+
     onNoClick(): void {
       this.dialogRef.close();
     }
   }
-  
- 
+
+
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Manufacture } from '../modals/Manufacture';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ManufactureserviceService } from '../manufactureservice.service';
+import { ManufactureserviceService } from '../services/manufactureservice.service';
 
 export interface DialogData{
   city: string;
@@ -19,7 +19,7 @@ export class ManufactureviewprofileComponent implements OnInit {
   contact_number: number;
    public updatedManu: Manufacture;
   manufacture: Manufacture
-  
+
   constructor(private dialog: MatDialog, private manufactureService: ManufactureserviceService) { }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class ManufactureviewprofileComponent implements OnInit {
     this.manufactureService.updateManufacture(manufacture.id,manufacture).subscribe((data)=> {
       console.log("result is ", data);
       this.manufactureService.getManufacture().subscribe(data => {this.manufacture=data})
-      
+
     });
   }
 
@@ -49,7 +49,7 @@ export class ManufactureviewprofileComponent implements OnInit {
         this.data = result;
         console.log(result);
         this.updateManufacture(result);
-        
+
       });
   }
 }
@@ -61,12 +61,12 @@ export class ManufactureviewprofileComponent implements OnInit {
      manufacture: Manufacture;
       city: string;
     contact_number: number;
-   
+
     constructor(
       public dialogRef: MatDialogRef<manufactureEditDialog>,
       @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureserviceService) {}
       onNoClick(): void {
         this.dialogRef.close();
       }
-     
+
    }

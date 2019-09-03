@@ -14,6 +14,7 @@ import { DesignerviewprofileComponent } from './designerviewprofile/designerview
 import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
 import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
 import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
+import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
 
 
 
@@ -36,6 +37,9 @@ const routes: Routes = [
   {path:'edit/designerviewprofile/designerEdit',component:DesignereditdialogueComponent},
   {
     path: 'materials' , component:AddmaterialPageComponent
+  },
+  {
+    path: 'consumer' , component: ConsumerDashboardComponent
   },
   {
       path: '', component: BodyComponent
