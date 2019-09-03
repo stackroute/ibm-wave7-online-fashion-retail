@@ -17,6 +17,7 @@ public class SupplierController {
 
     SupplierService supplierService;
     Supplier supplier = new Supplier();
+  Supplier savedSupplier;
 
     @Autowired
     public SupplierController(SupplierService supplierService) {
@@ -26,26 +27,32 @@ public class SupplierController {
     @Autowired
     private KafkaTemplate<String, Supplier> kafkaTemplate1;
 
-    private static final String TOPIC = "Kafka_Example";
+    private static final String TOPIC = "Kafka_Example1";
 
-    @PostMapping("publish")
-    public String post() {
-        kafkaTemplate1.send(TOPIC, new Supplier(supplier.getId(), supplier.getName() , supplier.getEmail(), supplier.getCity() , supplier.getRating()));
-        return "Published successfully";
-    }
 
     //Post mapping to save the user details
     @PostMapping("supplier")
     public ResponseEntity<?> saveSupplier(@RequestBody Supplier supplier) {
         ResponseEntity responseEntity;
         try {
-            supplierService.saveSupplier(supplier);
+            savedSupplier=supplierService.saveSupplier(supplier);
+          kafkaTemplate1.send(TOPIC,savedSupplier);
             responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
+  @GetMapping("supplier/{id}")
+  public ResponseEntity<?> getSupplier(@PathVariable int id) {
+    ResponseEntity responseEntity;
+    try {
+      responseEntity = new ResponseEntity<>(supplierService.getSupplier(id), HttpStatus.OK);
+    } catch (Exception exception) {
+      responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+    }
+    return responseEntity;
+  }
 
     @GetMapping("supplier")
     public ResponseEntity<?> getAllSuppliers() {
@@ -59,8 +66,6 @@ public class SupplierController {
         }
         return responseEntity;
     }
-
-
 
     @DeleteMapping("supplier/{id}")
     public ResponseEntity<?> deleteSupplier(@PathVariable int id) {

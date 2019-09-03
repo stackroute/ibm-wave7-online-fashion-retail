@@ -31,6 +31,9 @@ public class SupplierServiceImpl implements SupplierService {
     }
 
     @Override
+    public Optional<Supplier> getSupplier(int id) { return supplierRepository.findById(id); }
+
+    @Override
     public boolean deleteSupplier(int id ){
       // Optional<User> user1 = userRepository.findById(id);
 
@@ -46,35 +49,23 @@ public class SupplierServiceImpl implements SupplierService {
             return false;
         }
     }
-    @Override
-    public Supplier updateSupplier(Supplier supplier, int id)
-    {
-        Optional<Supplier> supplier1 = supplierRepository.findById(id);
-
-        supplier.setName(supplier.getName());
-        supplier.setEmail(supplier.getEmail());
-        supplier.setCity(supplier.getCity());
-        supplier.setRating(supplier.getRating());
-
-        Supplier savedSupplier = supplierRepository.save(supplier);
-        return savedSupplier;
-    }
-
   @Override
-  public Supplier getLoggedInSupplier(String email) {
-      if (supplierRepository.findByEmail(email).isEmpty()) {
-        try {
-          throw new Exception("supplier not found!");
-        } catch (Exception e) {
-          e.printStackTrace();
-          return null;
-        }
-      }
-      else
-      {
-        System.out.println("in get logged in supplier service: "+supplierRepository.findByEmail(email).get(0).toString());
-        return supplierRepository.findByEmail(email).get(0);
-      }
+  public Supplier updateSupplier(Supplier supplier, int id)
+  {
+    Optional<Supplier> supplier1 = supplierRepository.findById(id);
+    String name=supplier1.get().getName();
+    String email=supplier1.get().getEmail();
+
+
+    supplier.setId(id);
+    supplier.setName(name);
+    supplier.setEmail(email);
+    supplier.setCity(supplier.getCity());
+    supplier.setRating(supplier.getRating());
+    supplier.setContactNumber(supplier.getContactNumber());
+
+    Supplier savedSupplier = supplierRepository.save(supplier);
+    return savedSupplier;
   }
 
 }

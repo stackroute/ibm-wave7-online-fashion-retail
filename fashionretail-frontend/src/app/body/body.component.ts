@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../order.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body',
@@ -9,7 +7,7 @@ import { Router } from '@angular/router';
 })
 export class BodyComponent implements OnInit {
 
-  constructor(private _orderService:OrderService,private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
   }

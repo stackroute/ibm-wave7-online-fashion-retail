@@ -1,6 +1,5 @@
 package com.stackroute.user.config;
 
-import com.stackroute.user.domain.Mapping;
 import com.stackroute.user.domain.Material;
 import com.stackroute.user.domain.Supplier;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -18,8 +17,24 @@ import java.util.Map;
 @Configuration
 public class KafkaConfiguration {
 
+    @Bean
+    public ProducerFactory<String, Supplier> producerFactory1() {
+        Map<String, Object> config = new HashMap<>();
+
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        return new DefaultKafkaProducerFactory<>(config);
+    }
+
+    @Bean
+    public KafkaTemplate<String, Supplier> kafkaTemplate1()
+    {
+        return new KafkaTemplate<>(producerFactory1());
+    }
+
   @Bean
-  public ProducerFactory<String, Supplier> producerFactory1() {
+  public ProducerFactory<String, Material> producerFactory2() {
     Map<String, Object> config = new HashMap<>();
 
     config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
@@ -29,23 +44,7 @@ public class KafkaConfiguration {
   }
 
   @Bean
-  public KafkaTemplate<String, Supplier> kafkaTemplate1()
-  {
-    return new KafkaTemplate<>(producerFactory1());
-  }
-
-  @Bean
-  public ProducerFactory<String, Mapping> producerFactory2() {
-    Map<String, Object> config = new HashMap<>();
-
-    config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-    config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-    config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
-    return new DefaultKafkaProducerFactory<>(config);
-  }
-
-  @Bean
-  public KafkaTemplate<String, Mapping> kafkaTemplate2()
+  public KafkaTemplate<String, Material> kafkaTemplate2()
   {
     return new KafkaTemplate<>(producerFactory2());
   }
