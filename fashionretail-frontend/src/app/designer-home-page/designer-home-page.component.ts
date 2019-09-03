@@ -9,6 +9,7 @@ import { DesignerOrder } from '../modals/DesignerOrder';
 import { Manufacturer } from '../modals/Manufacturer';
 import { Manufacture } from '../modals/Manufacture';
 import { Dorder } from '../modals/Dorder';
+import { Mapping } from '../modals/Mapping';
 @Component({
   selector: 'app-designer-home-page',
   templateUrl: './designer-home-page.component.html',
@@ -17,8 +18,9 @@ import { Dorder } from '../modals/Dorder';
 export class DesignerHomePageComponent implements OnInit {
 
   upload_designs: DesignerOrder ;
-  Materials: Materials[];
+  Mapping: Mapping[];
   manufacturer: Manufacturer[];
+  Designer : Designer;
   selectedIndex: number = 0;
   items: Array<any> = [];
   material : Array<Materials> = [];
@@ -43,7 +45,15 @@ export class DesignerHomePageComponent implements OnInit {
       city : "string",
       specification : "string",
     },
-    material : [],
+    designer : {
+      id : 0,
+      contact: 0,
+     name: "",
+      location: "",
+      email: "",
+      rating: 0,
+    },
+    mapping : [],
     };
 
   constructor(private dialogue: MatDialog, private userService: UserServiceService) {
@@ -61,8 +71,8 @@ export class DesignerHomePageComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getAllMaterial().subscribe((data) => {
-      this.Materials = data;
-      console.log("materials data", this.Materials)
+      this.Mapping = data;
+      console.log("materials data", this.Mapping)
 
     })
     this.userService.getAllManufacture().subscribe((data) => {
@@ -73,6 +83,10 @@ export class DesignerHomePageComponent implements OnInit {
     this.userService.getAllOrders().subscribe((data)=>{
       this.orderlist = data;
       console.log("orders list",this.orderlist)
+    })
+    this.userService.getDesigner().subscribe((data) => {
+      this.Designer = data;
+      console.log(this.Designer);
     })
   }
 
@@ -125,7 +139,8 @@ export class DesignerHomePageComponent implements OnInit {
     console.log("material: ",this.material);  
     this.submitModel.designOrder = this.upload_designs;
       this.submitModel.manufacturer = this.savaManufacture;
-      this.submitModel.material =  this.material
+      this.submitModel.mapping =  this.Mapping
+      this.submitModel.designer = this.Designer
       this.userService.submitOrder(this.submitModel).subscribe(
         (data) => {
             console.log(data);

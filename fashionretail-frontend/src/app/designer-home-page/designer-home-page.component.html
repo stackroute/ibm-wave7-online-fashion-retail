@@ -1,6 +1,6 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div class="dropdown">
-    <button mat-button color="primary">View Profile</button><br>
+    <button mat-button color="primary"><a routerLink="/designerviewprofile">View Profile</a></button><br>
     <button mat-button color="primary">View Previous orders</button>
     <mat-divider></mat-divider>
     <!-- <div class="buttons">
@@ -77,7 +77,7 @@
         <div class="cardList">
 
           <!-- <div *ngFor="let song of tracks"> -->
-          <mat-card class="card-picture" *ngFor="let material of Materials">
+          <mat-card class="card-picture" *ngFor="let material of Mapping">
             <mat-card-header>
               <!-- <div mat-card-avatar class="example-header-image"></div>  -->
               <mat-card-title>Material</mat-card-title>
@@ -86,9 +86,9 @@
             <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
             <mat-card-content>
               <p>
-                Material: {{material.name}}</p>
+                Material: {{material.quantity}}</p>
               <p>
-                Supplier Name: {{material.categiry}}
+                Supplier Name: {{material.Price}}
               </p>
               <p>Quantity</p>
               <p>Price</p>

@@ -1,6 +1,10 @@
 export interface Supplier{
     id : number;
-    name : string;
-    email : string;
-    city : string;
-}
+    name : String;
+    email : String;
+    city : String;
+    rating : String;
+    contactNumber : number;
+ }
+
+

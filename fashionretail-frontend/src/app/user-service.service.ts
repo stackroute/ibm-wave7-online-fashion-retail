@@ -6,6 +6,7 @@ import { Designer } from './modals/Designer';
 import { Materials } from './modals/Materials';
 import { Manufacturer } from './modals/Manufacturer';
 import { Dorder } from './modals/Dorder';
+import { Mapping } from './modals/Mapping';
 
 const httpOptions={
   headers: new HttpHeaders({
@@ -23,11 +24,11 @@ export class UserServiceService {
   private designerUrl : string;
   private materialUrl : string;
   private manufactureUrl : string;
-  private submitOrderUrl : string;
+  // private submitOrderUrl : string;
 
   constructor(private http: HttpClient) {
 
-    this.materialUrl = 'http://localhost:8089/material'
+    this.materialUrl = 'http://172.23.238.218:8089/api/v2/materials';
     this.manufactureUrl = 'http://localhost:8090/manufacture';
     this.userUrl = 'http://localhost:8088/user';
     this.designerUrl = 'http://localhost:8080/designs';
@@ -43,8 +44,8 @@ export class UserServiceService {
     return this.http.get<User[]>(this.userUrl);
   }
 
-  public getAllMaterial(): Observable<Materials[]>{
-    return this.http.get<Materials[]>(this.materialUrl);
+  public getAllMaterial(): Observable<Mapping[]>{
+    return this.http.get<Mapping[]>(this.materialUrl);
   }
 
   public getAllManufacture(): Observable<Manufacturer[]>{
@@ -63,6 +64,18 @@ export class UserServiceService {
 
    public getAllOrders(): Observable<Dorder[]>{
     return this.http.get<Dorder[]>(this.designerUrl);
+  }
+  getDesigner():Observable<Designer>
+  {
+    const url="http://localhost:8080/designer";
+    const getUrl=`${url}/3`
+     return this.http.get<Designer>(getUrl);
+      
+  }
+  updateDesigner(id:number,designer:Designer):Observable<Designer>{
+    const url="http://localhost:8080/designer";
+     const updateUrl=`${url}/3`;
+    return this.http.put<Designer>(updateUrl,designer,httpOptions);
   }
   // constructor(private http: HttpClient) {
   //   this.userUrl = 'http://localhost:8088/user';

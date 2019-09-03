@@ -3,8 +3,8 @@ import { Supplier } from './Supplier';
 
 export interface Mapping{
     id : number;
-    quantity : Uint16Array;
-    price : DoubleRange;
+    quantity : string;
+    price : number;
     material : Materials;
     Supplier : Supplier;
 }

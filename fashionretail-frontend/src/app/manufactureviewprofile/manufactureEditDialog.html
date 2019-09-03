@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+    <mat-card-header>
+ <mat-card-title>Manufacture Edit</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="example-container">
+        
+              <mat-form-field>
+                <input matInput type="text" placeholder="enter city" [(ngModel)]="data.city">
+              </mat-form-field>
+           
+        
+        <mat-form-field>
+          <input type="text" matInput placeholder="Contact number" [(ngModel)]="data.contact_number" >
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="Primary" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+      <button mat-raised-button color="Primary" (click)="onNoClick()" >Cancel</button>
+    </mat-card-actions>
+   </mat-card>

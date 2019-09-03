@@ -9,7 +9,7 @@ import { IOrder } from './modals/Order';
 export class OrderService {
 
   public data: string;
-  private _url : string="http://localhost:3000/orders";
+  private _url : string="http://172.23.238.218:3000/orders";
   constructor(private http: HttpClient) { }
   getOrders() : Observable<IOrder[]>
  {
