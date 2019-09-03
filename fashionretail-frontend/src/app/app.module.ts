@@ -35,6 +35,8 @@ import { ProfilebuttonComponent } from './profilebutton/profilebutton.component'
 import { CardComponent } from './card/card.component';
 import { OrderService } from './order.service';
 import { BodyComponent } from './body/body.component';
+import  {ManufactureBodyComponent} from './manufacturebody/manufacturebody.component';
+import  {ManufactureCardComponent} from './manufacturecard/manufacturecard.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
 import { from } from 'rxjs';
 import { Header1Component } from './header1/header1.component';
@@ -77,7 +79,9 @@ import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.co
     DesignereditdialogueComponent,
         ManufactureviewprofileComponent,
     ProfilebuttonComponent,
-    AddmaterialPageComponent
+    AddmaterialPageComponent,
+    ManufactureBodyComponent,
+    ManufactureCardComponent
 
     ],
   imports: [
