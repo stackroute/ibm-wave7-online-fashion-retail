@@ -29,6 +29,7 @@ import { OrderService } from './order.service';
 import { BodyComponent } from './body/body.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
 import { from } from 'rxjs';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { from } from 'rxjs';
     UploadDesignsDialogue,
     HeaderComponent,
     SignUpDialogue,
+    
     ],
   imports: [
     BrowserModule,
@@ -70,7 +72,8 @@ import { from } from 'rxjs';
     Ng2CarouselamosModule,
     MatSidenavModule,
     MatDialogModule,
-     BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTabsModule
     
   ],
   providers: [OrderService],
