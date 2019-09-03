@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule,MatFormFieldModule} from '@angular/material';
-import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule,MatIconModule, MatButtonModule,MatMenuModule} from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material';
 import { MatListModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,13 +16,20 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatSidenavModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent, SignUpDialogue } from './header/header.component';
+import { SupplierEditDialogue } from './supplierviewprofile/supplierviewprofile.component';
 import { AboutComponent } from './about/about.component';
+import { MatCardModule} from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
-import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
+import { AddmaterialsbuttonComponent, manufactureAddDialog } from './addmaterialsbutton/addmaterialsbutton.component';
+import { DisplaymaterialsComponent } from './displaymaterials/displaymaterials.component';
+
+
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { CardComponent } from './card/card.component';
@@ -29,27 +37,48 @@ import { OrderService } from './order.service';
 import { BodyComponent } from './body/body.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
 import { from } from 'rxjs';
-import {MatTabsModule} from '@angular/material/tabs';
+import { Header1Component } from './header1/header1.component';
+import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
+import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
+import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
+
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
+//  import { ReactiveFormsModule } from '@angular/forms';
+//  import { BrowserModule } from '@angular/platform-browser';
+import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchboxComponent,
     FooterComponent,
-    ContactComponent, 
+    ContactComponent,
     HeroComponent,
-    // HeaderComponent,
+    HeaderComponent,
     AboutComponent,
-    // SignUpDialogue,
-    SupplierviewprofileComponent,
+    ManufactureviewprofileComponent,
     ProfilebuttonComponent,
+    manufactureEditDialog,
+    AddmaterialsbuttonComponent,
+    DisplaymaterialsComponent,
+    manufactureAddDialog, 
+    SupplierEditDialogue,
     CardComponent,
     BodyComponent,
     DesignerHomePageComponent,
     UploadDesignsDialogue,
     HeaderComponent,
     SignUpDialogue,
-    
+    Header1Component,
+    AboutComponent,
+    DesignerviewprofileComponent,
+    DesignerprofileComponent,
+    DesignereditdialogueComponent,
+        ManufactureviewprofileComponent,
+    ProfilebuttonComponent,
+    AddmaterialPageComponent
+
     ],
   imports: [
     BrowserModule,
@@ -59,25 +88,31 @@ import {MatTabsModule} from '@angular/material/tabs';
     ReactiveFormsModule,
     MatAutocompleteModule,
     HttpClientModule,
+
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatSelectModule,
     MatMenuModule,
     MatInputModule,
     MatFormFieldModule,
     Ng2CarouselamosModule,
     MatSidenavModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
-    MatTabsModule
+     BrowserAnimationsModule,
+     MatCardModule,
+     MatDialogModule,
+     HttpClientModule,
+     FormsModule
     
   ],
+  
   providers: [OrderService],
-  entryComponents : [SignUpDialogue,UploadDesignsDialogue],
+  entryComponents : [SignUpDialogue,SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog
+    
+  ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

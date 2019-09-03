@@ -1,0 +1,25 @@
+<p>addmaterialsbutton works!</p>
+<mat-card-actions>
+<button mat-raised-button color="primary" (click)=openDialog(baseprice)>Add Materials</button>
+</mat-card-actions>
+
+
+    <div class="example-card">
+        <mat-card-header>
+          <mat-card-title>Added Materials</mat-card-title>
+        </mat-card-header>
+        
+          <div class="example-container1" >
+
+            <div *ngFor="let baseprice of baseprice">
+
+              UserName: {{baseprice.name}} <br>
+           
+            BasePrice: {{baseprice.price}} <br>
+           
+          </div>  
+          </div>
+        
+       </div> 
+
+
