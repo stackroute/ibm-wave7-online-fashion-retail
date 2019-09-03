@@ -16,6 +16,10 @@ export class AddmaterialsbuttonComponent implements OnInit {
   constructor(private dialog:MatDialog, private manufactureService: ManufactureserviceService) { }
 
   ngOnInit() {
+    this.manufactureService.getAllBasePrice().subscribe((data)=>{
+      this.baseprice=data;
+      console.log(this.baseprice)
+    })
   }
 
   // updateBasePrice(baseprice:BasePrice) {
@@ -41,7 +45,7 @@ export class AddmaterialsbuttonComponent implements OnInit {
   }
 
   data;
-openDialog(baseprice: BasePrice){
+openDialog(){
     const dialogRef = this.dialog.open(manufactureAddDialog,
       {
         width : '250px',

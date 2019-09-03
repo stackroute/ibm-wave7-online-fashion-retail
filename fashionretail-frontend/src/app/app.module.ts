@@ -23,7 +23,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { AddmaterialsbuttonComponent, manufactureAddDialog } from './addmaterialsbutton/addmaterialsbutton.component';
 import { DisplaymaterialsComponent } from './displaymaterials/displaymaterials.component';
-
+import {MatTableModule} from '@angular/material/table';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,10 +42,9 @@ import { DesignerviewprofileComponent } from './designerviewprofile/designerview
 import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
 import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
 
-//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+
 import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
-//  import { ReactiveFormsModule } from '@angular/forms';
-//  import { BrowserModule } from '@angular/platform-browser';
+
 
 @NgModule({
   declarations: [
@@ -76,6 +75,7 @@ import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufa
     DesignereditdialogueComponent,
         ManufactureviewprofileComponent,
     ProfilebuttonComponent,
+    SupplierviewprofileComponent
 
     ],
   imports: [
@@ -102,7 +102,11 @@ import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufa
      MatCardModule,
      MatDialogModule,
      HttpClientModule,
-     FormsModule
+     FormsModule,
+     MatTabsModule,
+     MatSelectModule,
+     MatTableModule
+     
     
   ],
   

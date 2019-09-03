@@ -42,7 +42,7 @@ export class ManufactureserviceService {
 
  getAllBasePrice():Observable<BasePrice>
  {
-   const url="http://localhost:8999/baseprice/3";
+   const url="http://localhost:8999/baseprice";
     // const getUrl=`${url}/5`
     return this.httpClient.get<BasePrice>(url);
  }

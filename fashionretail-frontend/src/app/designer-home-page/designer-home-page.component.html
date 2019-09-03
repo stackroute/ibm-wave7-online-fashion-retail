@@ -3,11 +3,7 @@
     <button mat-button color="primary">View Profile</button><br>
     <button mat-button color="primary">View Previous orders</button>
     <mat-divider></mat-divider>
-    <!-- <div class="buttons">
-        <button mat-stroked-button>
-            <a routerLink="about">    About us </a>
-                            </button>
-    </div> -->
+    
     <button mat-button color="primary"><a [routerLink] = "LogOut">LogOut</a></button>
   </div>
 </mat-menu>
@@ -31,21 +27,7 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-  <!-- <mat-sidenav-container fxFlexFill>
-          <mat-sidenav #sidenav>
-            <mat-nav-list style="padding-top: 100px;width: 105%">
-                    <mat-list-item><button mat-button color="primary">Home</button></mat-list-item>
-                    <button mat-flat-button color="primary" #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
-                    Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button> 
-              
-              <a (click)="sidenav.toggle()" mat-list-item>
-                <mat-icon>close</mat-icon> Close
-              </a> 
-            </mat-nav-list>
-          </mat-sidenav>
-          <mat-sidenav-content fxFlexFill style="widows: 105px;">
-        </mat-sidenav-content>
-        </mat-sidenav-container> -->
+ 
   <mat-tab-group animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex"
     (selectedTabChange)="tabChanged($event)">
     <mat-tab label="UploadDesigns">
@@ -68,22 +50,21 @@
       <div style="padding-top: 30px" class="uploadDesign">Designer add a new Designs <button mat-button
           (click)="openDialog()">Upload Designs</button></div>
     </mat-tab>
-    <!-- <mat-tab label="Consumer orders">Content 2</mat-tab> -->
-    <!-- <button  (click)="getAllUser()">djiewuji</button> -->
+    
     <mat-tab label="select Supplier Materials" (click)="getAllUser()">
       <div style="padding-top: 50px">
         <button mat-button (click)="nextStep()"> placeOrder</button>
-        <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
+        
         <div class="cardList">
 
-          <!-- <div *ngFor="let song of tracks"> -->
+          
           <mat-card class="card-picture" *ngFor="let material of Materials">
             <mat-card-header>
-              <!-- <div mat-card-avatar class="example-header-image"></div>  -->
+             
               <mat-card-title>Material</mat-card-title>
-              <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
+             
             </mat-card-header>
-            <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
+           
             <mat-card-content>
               <p>
                 Material: {{material.name}}</p>
@@ -109,26 +90,26 @@
     <mat-tab label="Select Manufacturers">
       <div style="padding-top: 50px">
         <button mat-button (click)="submitOrder()"> submitOrder</button>
-        <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
+       
         <div class="cardList">
 
-          <!-- <div *ngFor="let song of tracks"> -->
+          
           <mat-card class="card-picture" *ngFor="let manufacturer of manufacturer">
             <mat-card-header>
-              <!-- <div mat-card-avatar class="example-header-image"></div>  -->
+              
               <mat-card-title>Manufacturer</mat-card-title>
-              <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
+              
             </mat-card-header>
-            <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
+           
             <mat-card-content>
               <p>
                 Manufacturer Name:{{manufacturer.name}}
               </p>
               <p>
-                <!-- Supplier Name: {{song.name}} -->
+               
               </p>
               <p>Quantity</p>
-              <!-- <p>Price</p> -->
+              
               <p>Rating</p>
             </mat-card-content>
             <mat-card-actions>
