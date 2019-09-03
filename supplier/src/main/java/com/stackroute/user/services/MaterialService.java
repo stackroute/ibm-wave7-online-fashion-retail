@@ -13,4 +13,6 @@ public interface MaterialService {
   public boolean deleteMaterial(int id ) ;
 
   public Material updateMaterial(Material material, int id);
+
+  public Material findById(int id);
 }

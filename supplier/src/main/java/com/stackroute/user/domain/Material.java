@@ -20,6 +20,12 @@ public class Material {
     this.image = image;
   }
 
+  public Material(String category, String name, Image image) {
+    this.category = category;
+    this.name = name;
+    this.image = image;
+  }
+
   public Material() {
   }
 
@@ -53,5 +59,15 @@ public class Material {
 
   public void setImage(Image image) {
     this.image = image;
+  }
+
+  @Override
+  public String toString() {
+    return "Material{" +
+      "id=" + id +
+      ", category='" + category + '\'' +
+      ", name='" + name + '\'' +
+      ", image=" + image +
+      '}';
   }
 }

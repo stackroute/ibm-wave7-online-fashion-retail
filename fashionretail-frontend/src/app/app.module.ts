@@ -46,6 +46,7 @@ import { DesignereditdialogueComponent } from './designereditdialogue/designered
 import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
 //  import { ReactiveFormsModule } from '@angular/forms';
 //  import { BrowserModule } from '@angular/platform-browser';
+import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufa
     DesignereditdialogueComponent,
         ManufactureviewprofileComponent,
     ProfilebuttonComponent,
+    AddmaterialPageComponent
 
     ],
   imports: [

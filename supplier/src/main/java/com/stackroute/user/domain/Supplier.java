@@ -14,16 +14,12 @@ public class Supplier {
     private String rating;
 
 
-  private long contactNumber;
-
-
-    public Supplier(int id, String name,String email, String city, String rating, long contactNumber ) {
+    public Supplier(int id, String name,String email, String city, String rating) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.city = city;
         this.rating=rating;
-        this.contactNumber=contactNumber;
     }
 
 
@@ -58,8 +54,14 @@ public class Supplier {
 
     public void setRating(String rating) { this.rating = rating;}
 
-  public long getContactNumber() { return contactNumber; }
-
-  public void setContactNumber(long contactNumber) { this.contactNumber = contactNumber; }
-
+  @Override
+  public String toString() {
+    return "Supplier{" +
+      "id=" + id +
+      ", name='" + name + '\'' +
+      ", email='" + email + '\'' +
+      ", city='" + city + '\'' +
+      ", rating='" + rating + '\'' +
+      '}';
+  }
 }

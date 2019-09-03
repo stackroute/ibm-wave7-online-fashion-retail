@@ -13,6 +13,7 @@ import { DesignerprofileComponent } from './designerprofile/designerprofile.comp
 import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
 import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
 import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
+import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
 
 
 
@@ -33,7 +34,14 @@ const routes: Routes = [
   {path:'edit',component:DesignerprofileComponent},
   {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {path:'edit/designerviewprofile/designerEdit',component:DesignereditdialogueComponent},
+  {
+    path: 'materials' , component:AddmaterialPageComponent
+  },
+  {
+      path: '', component: BodyComponent
+  },
   { path : '**/LogOut' ,component: HeroComponent},
+
 
 ];
 

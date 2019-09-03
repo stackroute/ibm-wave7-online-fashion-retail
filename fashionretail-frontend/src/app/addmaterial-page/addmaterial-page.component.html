@@ -1,0 +1,29 @@
+<mat-card>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter the name of the material ">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Enter the price per unit">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter the quantity">
+    </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Select the Category</mat-label>
+        <select matNativeControl id="mySelectId">
+          <option value="" disabled selected></option>
+          <option value="jewellery">Jewellery</option>
+          <option value="clothing">Clothing</option>
+          <option value="footware">Footware</option>
+        </select>
+      </mat-form-field> 
+
+      <div class="example-button-row">
+        <button mat-raised-button color="primary">Submit</button>        
+     </div>
+  </form>
+</mat-card>
