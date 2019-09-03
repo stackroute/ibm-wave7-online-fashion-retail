@@ -12,6 +12,8 @@ import { BodyComponent } from './body/body.component';
 import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
 import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
 import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
+import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -20,6 +22,8 @@ const routes: Routes = [
   {path:'',component:HeroComponent},
   {path:'contact',component:ContactComponent},
   {path:'about', component:AboutComponent},
+  {path: 'login', component : LoginComponent},
+  {path: 'sign-up',component : SignUpComponent},
   {
     path: 'designer',
     component: DesignerHomePageComponent
@@ -30,8 +34,8 @@ const routes: Routes = [
   {path:'edit',component:DesignerprofileComponent},
   {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {path:'edit/designerviewprofile/designerEdit',component:DesignereditdialogueComponent},
-  { path : '**/LogOut' ,component: HeroComponent},
-
+  { path : '**' ,component: HeroComponent},
+  
 ];
 
 @NgModule({

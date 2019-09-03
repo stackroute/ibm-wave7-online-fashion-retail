@@ -10,6 +10,6 @@ constructor(id: number,customer_name:string,material:string,unit:string,quantity
     this.customer_name=customer_name;
     this.material=material;
     this.unit=unit;
-    this.quantity=quantity;
+    this.quantity = quantity;
 }
 }

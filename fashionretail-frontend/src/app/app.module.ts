@@ -37,6 +37,8 @@ import { DesignereditdialogueComponent } from './designereditdialogue/designered
 
 //import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
 import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginComponent } from './login/login.component';
 //  import { ReactiveFormsModule } from '@angular/forms';
 //  import { BrowserModule } from '@angular/platform-browser';
 
@@ -66,6 +68,8 @@ import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufa
     // ManufactureeditComponent,
     ManufactureviewprofileComponent,
     ProfilebuttonComponent,
+    SignUpComponent,
+    LoginComponent,
 
     ],
   imports: [
