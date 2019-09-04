@@ -49,6 +49,11 @@ public class MappingServiceImpl implements MappingService {
   }
 
   @Override
+  public List<Mapping> getMappings() {
+    return mappingRepository.findAll();
+  }
+
+  @Override
   public boolean deleteMapping(int id ){
     // Optional<User> user1 = userRepository.findById(id);
 

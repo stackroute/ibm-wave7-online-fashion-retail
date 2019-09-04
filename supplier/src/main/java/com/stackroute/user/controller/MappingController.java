@@ -65,6 +65,21 @@ public class MappingController {
     return responseEntity;
   }
 
+  @GetMapping("materials")
+  public ResponseEntity<?> getMaterials() {
+    ResponseEntity responseEntity;
+
+    try {
+      System.out.println("in get all in mapping controller");
+      responseEntity = new ResponseEntity<>(mappingService.getMappings(), HttpStatus.OK);
+    } catch (Exception exception) {
+      System.out.println("in catch in mapping controller");
+
+      responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+    }
+    return responseEntity;
+  }
+
   @DeleteMapping("material/{id}")
   public ResponseEntity<?> deleteMaterial(@PathVariable int id) {
     ResponseEntity responseEntity;

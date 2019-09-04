@@ -11,6 +11,8 @@ public interface MappingService {
 
   public List<Mapping> getAllMappings(String email);
 
+  public List<Mapping> getMappings();
+
   public boolean deleteMapping(int id ) ;
 
   public Mapping updateMapping(Mapping mapping, int id);
