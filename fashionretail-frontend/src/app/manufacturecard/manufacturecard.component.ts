@@ -3,7 +3,7 @@ import { IOrder } from '../services/order';
 import { OrderService } from '../services/order.service';
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-manufacturecard',
   templateUrl: './manufacturecard.component.html',
   styleUrls: ['./manufacturecard.component.css']
 })

@@ -26,3 +26,16 @@
   margin-bottom: 100px;
   margin-top: 120px;
 }
+.cart-button{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+mat-form-field{
+  width: stretch;
+}

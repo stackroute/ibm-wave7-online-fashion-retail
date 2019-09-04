@@ -41,10 +41,18 @@ import {Header1Component} from './header1/header1.component';
 import {DesignerviewprofileComponent} from './designerviewprofile/designerviewprofile.component';
 import {DesignerprofileComponent} from './designerprofile/designerprofile.component';
 import {DesignereditdialogueComponent} from './designereditdialogue/designereditdialogue.component';
-import {ManufactureviewprofileComponent, manufactureEditDialog} from './manufactureviewprofile/manufactureviewprofile.component';
+import {
+  ManufactureviewprofileComponent,
+  manufactureEditDialog
+} from './manufactureviewprofile/manufactureviewprofile.component';
 import {AddmaterialPageComponent} from './addmaterial-page/addmaterial-page.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
+import {CartBottomSheetComponent} from "./cart-bottom-sheet/cart-bottom-sheet.component";
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {ConsumerService} from "./services/consumer.service";
+import {ProductService} from "./services/product.service";
 
 
 @NgModule({
@@ -79,7 +87,8 @@ import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboar
     SupplierviewprofileComponent,
     AddmaterialPageComponent,
     ManufactureCardComponent,
-    ConsumerDashboardComponent
+    ConsumerDashboardComponent,
+    CartBottomSheetComponent
 
   ],
   imports: [
@@ -110,12 +119,14 @@ import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboar
     MatTabsModule,
     MatSelectModule,
     MatTableModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatBadgeModule,
+    MatSnackBarModule
   ],
 
-  providers: [OrderService],
-  entryComponents: [SignUpDialogue, SupplierEditDialogue, UploadDesignsDialogue, manufactureEditDialog, manufactureAddDialog
-
+  providers: [OrderService,ProductService,ConsumerService],
+  entryComponents: [SignUpDialogue, SupplierEditDialogue, UploadDesignsDialogue, manufactureEditDialog,
+    manufactureAddDialog, CartBottomSheetComponent
   ],
   bootstrap: [AppComponent]
 
