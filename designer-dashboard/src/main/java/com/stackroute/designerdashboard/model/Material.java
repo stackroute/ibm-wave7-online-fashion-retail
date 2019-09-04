@@ -1,17 +1,23 @@
 package com.stackroute.designerdashboard.model;
 
+import org.springframework.data.annotation.Id;
+
+import java.awt.*;
+
 public class Material {
+    @Id
+    private int id;
+    private String category;
     private String name;
-    private String M_image;
-    private String Categiry;
+    private String image;
 
     public Material() {
     }
 
-    public Material(String name, String m_image, String categiry) {
+    public Material(String name, String image, String category) {
         this.name = name;
-        M_image = m_image;
-        Categiry = categiry;
+        this.image = image;
+        this.category = category;
     }
 
     public String getName() {
@@ -22,19 +28,19 @@ public class Material {
         this.name = name;
     }
 
-    public String getM_image() {
-        return M_image;
+    public String getImage() {
+        return image;
     }
 
-    public void setM_image(String m_image) {
-        M_image = m_image;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getCategiry() {
-        return Categiry;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategiry(String categiry) {
-        Categiry = categiry;
+    public void setCategory(String category) {
+        category = category;
     }
 }

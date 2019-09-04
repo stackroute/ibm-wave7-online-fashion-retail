@@ -31,15 +31,20 @@ public class OrderServiceImpl implements OderService {
     }
 
     @Override
-    public Order updateDesigns(Order designer, int id) {
+    public Order updateDesigns(Order designer, String id) {
         return null;
     }
 
     @Override
-    public Optional<Dorder> deleteDesigns(int id) {
+    public Optional<Dorder> deleteDesigns(String id) {
         Optional<Dorder> order = orderRepository.findById(id);
          orderRepository.deleteById(id);
 
          return  order;
+    }
+
+    @Override
+    public Optional<Dorder> getOrderById(String id) {
+      return orderRepository.findById(id);
     }
 }

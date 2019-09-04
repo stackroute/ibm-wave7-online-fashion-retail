@@ -16,19 +16,19 @@ public class MappingController {
 
   private MappingService mappingService;
 
-  private KafkaTemplate<String, Mapping> kafkaTemplate2;
-
-  private static final String TOPIC = "Kafka_Example";
+//  private KafkaTemplate<String, Mapping> kafkaTemplate2;
+//
+//  private static final String TOPIC = "Kafka_Example";
 
   @Autowired
   public MappingController(MappingService mappingService, KafkaTemplate<String, Mapping> kafkaTemplate2) {
     this.mappingService = mappingService;
-    this.kafkaTemplate2 = kafkaTemplate2;
+//    this.kafkaTemplate2 = kafkaTemplate2;
   }
 
   //@PostMapping("publish")
   private String post(Mapping mapping) {
-    kafkaTemplate2.send(TOPIC,mapping);
+//    kafkaTemplate2.send(TOPIC,mapping);
     return "Published successfully";
   }
 

@@ -1,11 +1,13 @@
 footer {
     /* position: fixed; */
-    left: 0;
+   height: fit-content;
     bottom: 0;
     width: 100%;
     background-color: khaki;
     color: black;
     height: 80px;
+    overflow: hidden;
+
 }
 
 img {

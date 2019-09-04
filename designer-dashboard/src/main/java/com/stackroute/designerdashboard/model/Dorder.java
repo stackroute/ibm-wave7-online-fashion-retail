@@ -1,8 +1,11 @@
 package com.stackroute.designerdashboard.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Dorder {
 //    private  static  int count=0;
-//    private int id;
+    @Id
+    private String _id;
     private Order designOrder;
     private Mapping[] mapping;
     private Manufacturer manufacturer;
@@ -12,11 +15,20 @@ public class Dorder {
 //        id = ++count;
     }
 
-    public Dorder(Order designOrder, Mapping[] mapping, Manufacturer manufacturer,Designer designer) {
+    public Dorder(String id,Order designOrder, Mapping[] mapping, Manufacturer manufacturer,Designer designer) {
+        this._id = id;
         this.designOrder = designOrder;
         this.mapping = mapping;
         this.manufacturer = manufacturer;
         this.designer =designer;
+    }
+
+    public String getId() {
+        return _id;
+    }
+
+    public void setId(String id) {
+        this._id = id;
     }
 
     public Order getDesignOrder() {
@@ -27,11 +39,11 @@ public class Dorder {
         this.designOrder = designOrder;
     }
 
-    public Mapping[] getMaterial() {
+    public Mapping[] getMapping() {
         return mapping;
     }
 
-    public void setMaterial(Material[] material) {
+    public void setMapping(Material[] material) {
         this.mapping = mapping;
     }
 

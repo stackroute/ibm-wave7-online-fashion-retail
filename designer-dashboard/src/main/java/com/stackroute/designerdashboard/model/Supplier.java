@@ -1,19 +1,22 @@
 package com.stackroute.designerdashboard.model;
 
+import org.springframework.data.annotation.Id;
+
 public class Supplier {
+    @Id
     private int id;
     private String name;
-    private String Email;
+    private String email;
     private String city;
-    private int rating;
+    private String rating;
 
     public Supplier() {
     }
 
-    public Supplier(int id, String name, String email, String city, int rating) {
+    public Supplier(int id, String name, String email, String city, String rating) {
         this.id = id;
         this.name = name;
-        Email = email;
+        this.email = email;
         this.city = city;
         this.rating = rating;
     }
@@ -35,11 +38,11 @@ public class Supplier {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String email) {
-        Email = email;
+        this.email = email;
     }
 
     public String getCity() {
@@ -50,11 +53,11 @@ public class Supplier {
         this.city = city;
     }
 
-    public int getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Supplier } from '../modals/Supplier';
-import { SupplierServiceService } from '../supplier-service.service';
+import { SupplierServiceService } from '../services/supplier-service.service';
 
 export interface DialogData{
   city:string;

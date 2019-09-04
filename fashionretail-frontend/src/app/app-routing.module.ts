@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
 import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
+import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
 
 
 
@@ -38,7 +39,11 @@ const routes: Routes = [
   {path: 'supplier', component: BodyComponent},
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {
-    path: 'supplier/materials' , component:AddmaterialPageComponent
+    path: 'supplier/materials' , component:AddmaterialPageComponent},{
+    path: 'consumer' , component: ConsumerDashboardComponent
+  },
+  {
+      path: '', component: BodyComponent
   },
 
   {path:'designerviewprofile',component:DesignerviewprofileComponent},

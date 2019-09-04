@@ -3,6 +3,7 @@ package com.stackroute.designerdashboard.model;
 public class Mapping {
     private int id;
     private String Quantity;
+    private  String designerEnterQuantity;
     private int price;
     private Material material;
     private Supplier supplier;
@@ -10,12 +11,13 @@ public class Mapping {
     public Mapping() {
     }
 
-    public Mapping(int id, String quantity, int price, Material material, Supplier supplier) {
+    public Mapping(int id, String quantity, int price, Material material, Supplier supplier,String designerEnterQuantity) {
         this.id = id;
-        Quantity = quantity;
+        this.Quantity = quantity;
         this.price = price;
         this.material = material;
         this.supplier = supplier;
+        this.designerEnterQuantity = designerEnterQuantity;
     }
 
     public int getId() {
@@ -56,5 +58,13 @@ public class Mapping {
 
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
+    }
+
+    public String getDesignerEnterQuantity() {
+        return designerEnterQuantity;
+    }
+
+    public void setDesignerEnterQuantity(String designerEnterQuantity) {
+        this.designerEnterQuantity = designerEnterQuantity;
     }
 }

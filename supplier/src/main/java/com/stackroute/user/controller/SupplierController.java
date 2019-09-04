@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
-//@RequestMapping(value="api/v1")
+@RequestMapping(value="api/v1")
 public class SupplierController {
 
     SupplierService supplierService;

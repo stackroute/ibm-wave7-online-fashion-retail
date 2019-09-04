@@ -1,7 +1,7 @@
 export interface Materials{
+    id : number;
     name : string;
-    M_image : string;
-    categiry : string;
-    quantity : string;
+    category : string;
+    image : string;
     
 }

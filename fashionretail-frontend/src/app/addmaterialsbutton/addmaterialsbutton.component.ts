@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BasePrice } from '../modals/BasePrice';
-import { ManufactureserviceService } from '../manufactureservice.service';
+import { ManufactureserviceService } from '../services/manufactureservice.service';
 
 
 @Component({
@@ -16,6 +16,10 @@ export class AddmaterialsbuttonComponent implements OnInit {
   constructor(private dialog:MatDialog, private manufactureService: ManufactureserviceService) { }
 
   ngOnInit() {
+    this.manufactureService.getAllBasePrice().subscribe((data)=>{
+      this.baseprice=data;
+      console.log(this.baseprice)
+    })
   }
 
   // updateBasePrice(baseprice:BasePrice) {
@@ -25,7 +29,7 @@ export class AddmaterialsbuttonComponent implements OnInit {
   //   this.manufactureService.saveBasePrice(baseprice).subscribe((data)=> {
   //     console.log("result is ", data);
   //     this.manufactureService.getAllBasePrice().subscribe(data => {this.baseprice=data})
-      
+
   //   });
   // }
 
@@ -41,19 +45,19 @@ export class AddmaterialsbuttonComponent implements OnInit {
   }
 
   data;
-openDialog(baseprice: BasePrice){
+openDialog(){
     const dialogRef = this.dialog.open(manufactureAddDialog,
       {
         width : '250px',
         data:{}
       });
-     
+
       dialogRef.afterClosed().subscribe(result => {
         console.log("hi");
         this.data = result;
         console.log(result);
         this.saveBasePrice(result);
-        
+
       });
   }
 
@@ -70,7 +74,7 @@ openDialog(baseprice: BasePrice){
   constructor(
     public dialogRef: MatDialogRef<manufactureAddDialog>,
       @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureserviceService) {}
-  
+
 
   ngOnInit() {
   }

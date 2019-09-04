@@ -5,7 +5,7 @@ import { Materials } from './Materials';
 import { Designer } from './Designer';
 
 export interface Dorder{
-    id : number;
+    id : String;
     designOrder : DesignerOrder
     // mapping : Mapping
     manufacturer : Manufacturer

@@ -1,11 +1,15 @@
 package com.stackroute.Baseprice.domain;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class Baseprice
 {
+    public Baseprice(int id, String name, int price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+
     @Id
     private int id;
     private String name;

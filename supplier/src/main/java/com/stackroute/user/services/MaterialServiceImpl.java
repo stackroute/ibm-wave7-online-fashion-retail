@@ -14,6 +14,7 @@ public class MaterialServiceImpl implements MaterialService {
   @Autowired
   public MaterialServiceImpl(MaterialRepository materialRepository)
   {
+
     this.materialRepository = materialRepository;
   }
 
@@ -25,6 +26,7 @@ public class MaterialServiceImpl implements MaterialService {
 
   @Override
   public List<Material> getAllMaterials() {
+
     return materialRepository.findAll();
   }
 

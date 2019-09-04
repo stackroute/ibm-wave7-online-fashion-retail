@@ -9,10 +9,12 @@
                             </button>
     </div> -->
     <button mat-button color="primary"><a routerLink = "logout">LogOut</a></button>
+    
+    <!-- <button mat-button color="primary"><a [routerLink] = "LogOut">LogOut</a></button> -->
   </div>
 </mat-menu>
 
-<div style="height: 100vh;">
+<div>
   <mat-toolbar style="background-color: #f8f9fa!important;">
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
@@ -31,21 +33,7 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-  <!-- <mat-sidenav-container fxFlexFill>
-          <mat-sidenav #sidenav>
-            <mat-nav-list style="padding-top: 100px;width: 105%">
-                    <mat-list-item><button mat-button color="primary">Home</button></mat-list-item>
-                    <button mat-flat-button color="primary" #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
-                    Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button> 
-              
-              <a (click)="sidenav.toggle()" mat-list-item>
-                <mat-icon>close</mat-icon> Close
-              </a> 
-            </mat-nav-list>
-          </mat-sidenav>
-          <mat-sidenav-content fxFlexFill style="widows: 105px;">
-        </mat-sidenav-content>
-        </mat-sidenav-container> -->
+ 
   <mat-tab-group animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex"
     (selectedTabChange)="tabChanged($event)">
     <mat-tab label="UploadDesigns">
@@ -53,12 +41,12 @@
         <div ng2-carouselamos class="slides-wrapper" [width]="1500" [items]="items" [$prev]="prev" [$next]="next"
           [$item]="item">
         </div>
-        <ng-template #prev>
+        <!-- <ng-template #prev>
           <img src="assets/img/left.jpeg" id="left" />
         </ng-template>
         <ng-template #next>
           <img src="assets/right.jpeg" id="right" />
-        </ng-template>
+        </ng-template> -->
         <ng-template #item let-item let-i="index">
           <div class="items">
             <img src="{{ item.name }}" />
@@ -67,35 +55,68 @@
       </div>
       <div style="padding-top: 30px" class="uploadDesign">Designer add a new Designs <button mat-button
           (click)="openDialog()">Upload Designs</button></div>
+
+
+<div class="cardList">
+
+          
+    <mat-card class="card-picture" *ngFor="let designs of orderlist | slice :9; let i =index;">
+      <mat-card-header>
+        
+        <mat-card-title>Designs</mat-card-title>
+        
+      </mat-card-header>
+     
+      <mat-card-content>
+        <p>
+          Manufacturer Name: {{designs.designOrder.name}}
+        </p>
+        <p>
+         {{designs.id}}
+        </p>
+        <p>Quantity</p>
+        
+        <p>Rating</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openDialogPrice()">Add price</button>
+        <!-- <button mat-button (click)="saveManufacture(manufacturer)">select</button> -->
+        <!-- <button mat-raised-button (click)="openDialog()">cancel</button> -->
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
     </mat-tab>
-    <!-- <mat-tab label="Consumer orders">Content 2</mat-tab> -->
-    <!-- <button  (click)="getAllUser()">djiewuji</button> -->
+    
     <mat-tab label="select Supplier Materials" (click)="getAllUser()">
       <div style="padding-top: 50px">
         <button mat-button (click)="nextStep()"> placeOrder</button>
-        <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
+        
         <div class="cardList">
 
           <!-- <div *ngFor="let song of tracks"> -->
           <mat-card class="card-picture" *ngFor="let material of Mapping">
+          
+          <!-- <mat-card class="card-picture" *ngFor="let material of Materials"> -->
             <mat-card-header>
-              <!-- <div mat-card-avatar class="example-header-image"></div>  -->
+             
               <mat-card-title>Material</mat-card-title>
-              <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
+             
             </mat-card-header>
-            <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
+           
             <mat-card-content>
+              <p> Material name: <b>{{material.material.name}}</b></p>
+              <p>Material category: <b>{{material.material.category}}</b></p>
+              <!-- <p><img src="{{material.material.image}}"></p> -->
               <p>
-                Material: {{material.quantity}}</p>
+                Available quantity: <b>{{material.quantity}}</b></p>
               <p>
-                Supplier Name: {{material.Price}}
+                Material price: <b>{{material.price}}</b>
               </p>
-              <p>Quantity</p>
-              <p>Price</p>
-              <p>Rating</p>
+              <p>Rating: <b>{{material.supplier.rating}}</b></p>
               <mat-form-field>
                 <label>Enter Quantity:</label><input matInput type="text" placeholder="write quantity in units"
-                  [(ngModel)]="material.quantity">
+                  [(ngModel)]="material.designerEnterQuantity">
               </mat-form-field>
             </mat-card-content>
             <mat-card-actions>
@@ -109,26 +130,26 @@
     <mat-tab label="Select Manufacturers">
       <div style="padding-top: 50px">
         <button mat-button (click)="submitOrder()"> submitOrder</button>
-        <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="1%" fxLayoutAlign="center"> -->
+       
         <div class="cardList">
 
-          <!-- <div *ngFor="let song of tracks"> -->
+          
           <mat-card class="card-picture" *ngFor="let manufacturer of manufacturer">
             <mat-card-header>
-              <!-- <div mat-card-avatar class="example-header-image"></div>  -->
+              
               <mat-card-title>Manufacturer</mat-card-title>
-              <!-- <mat-card-subtitle>{{song.email}}</mat-card-subtitle> -->
+              
             </mat-card-header>
-            <!-- <a href="{{song.url}}" ><img mat-card-image src="assets/img/music.jpg" alt="Photo of a Shiba Inu"></a> -->
+           
             <mat-card-content>
               <p>
                 Manufacturer Name:{{manufacturer.name}}
               </p>
               <p>
-                <!-- Supplier Name: {{song.name}} -->
+               
               </p>
               <p>Quantity</p>
-              <!-- <p>Price</p> -->
+              
               <p>Rating</p>
             </mat-card-content>
             <mat-card-actions>
@@ -141,6 +162,7 @@
         </div>
       </div>
     </mat-tab>
+
   </mat-tab-group>
 
 
@@ -151,4 +173,6 @@
       <mat-card-subtitle>{{song.email}}</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
-</div>
+ 
+
+

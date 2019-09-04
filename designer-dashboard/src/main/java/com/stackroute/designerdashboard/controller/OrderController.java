@@ -47,9 +47,15 @@ public class OrderController {
     }
 
     @DeleteMapping("/designs/{id}")
-    public ResponseEntity<?> deleteDesign(@PathVariable int id){
+    public ResponseEntity<?> deleteDesign(@PathVariable String id){
         Optional<Dorder> track1=oderService.deleteDesigns(id);
         return new ResponseEntity<Optional<Dorder>>(track1, HttpStatus.OK);
+    }
+
+    @GetMapping("/designs/{id}")
+    public ResponseEntity<?> getDesignById(@PathVariable String id)
+    {
+        return new ResponseEntity<Optional<Dorder>>(oderService.getOrderById(id),HttpStatus.OK);
     }
 
 }

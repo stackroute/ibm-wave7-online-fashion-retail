@@ -13,7 +13,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
-//@RequestMapping(value="api/v2")
+@RequestMapping(value="api/v2")
 public class MaterialController {
 
     MaterialService materialService;
@@ -25,8 +25,8 @@ public class MaterialController {
     this.materialService = materialService;
   }
 
-//  @Autowired
-//  private KafkaTemplate<String, Material> kafkaTemplate2;
+  @Autowired
+  private KafkaTemplate<String, Material> kafkaTemplate2;
 
   private static final String TOPIC = "Kafka_Example";
 
@@ -37,7 +37,7 @@ public class MaterialController {
     ResponseEntity responseEntity;
     try {
       materialService.saveMaterial(material);
-//      kafkaTemplate2.send(TOPIC,material);
+      kafkaTemplate2.send(TOPIC,material);
       responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
     } catch (Exception ex) {
       responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);

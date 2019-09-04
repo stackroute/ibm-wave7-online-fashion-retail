@@ -15,7 +15,7 @@ import java.util.List;
 public class BasepriceController
 {
     BasepriceService basepriceService;
-        Baseprice baseprice = new Baseprice();
+//        Baseprice baseprice = new Baseprice();
 
         @Autowired
         public BasepriceController(BasepriceService basepriceService) {
@@ -53,17 +53,6 @@ public class BasepriceController
             }
             return responseEntity;
         }
-
-    @GetMapping("baseprice/{id}")
-    public ResponseEntity<?> getManufacture(@PathVariable int id) {
-        ResponseEntity responseEntity;
-        try {
-            responseEntity = new ResponseEntity<>(basepriceService.getAllBasePriceById(id), HttpStatus.OK);
-        } catch (Exception exception) {
-            responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
-        }
-        return responseEntity;
-    }
 
         @DeleteMapping("baseprice/{id}")
         public ResponseEntity<?> delete(@PathVariable int id) {
