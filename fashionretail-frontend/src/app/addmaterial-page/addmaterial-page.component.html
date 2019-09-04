@@ -1,20 +1,20 @@
 <mat-card>
 <form class="example-form">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter the name of the material ">
+      <input matInput placeholder="Enter the name of the material" #name>
     </mat-form-field>
   
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter the price per unit">
+      <input matInput placeholder="Enter the price per unit" #price>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Enter the quantity">
+        <input matInput placeholder="Enter the quantity" #quantity>
     </mat-form-field>
 
       <mat-form-field>
         <mat-label>Select the Category</mat-label>
-        <select matNativeControl id="mySelectId">
+        <select matNativeControl id="mySelectId" #category>
           <option value="" disabled selected></option>
           <option value="jewellery">Jewellery</option>
           <option value="clothing">Clothing</option>
@@ -23,7 +23,7 @@
       </mat-form-field> 
 
       <div class="example-button-row">
-        <button mat-raised-button color="primary">Submit</button>        
+        <button mat-raised-button color="primary" (click)="submit(name.value,price.value,quantity.value,category.value)">Submit</button>        
      </div>
   </form>
 </mat-card>

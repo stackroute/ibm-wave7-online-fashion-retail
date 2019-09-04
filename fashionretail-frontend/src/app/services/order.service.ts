@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IOrder } from './order';
 import { HttpClient } from '@angular/common/http';
-import { IOrder } from '../modals/Order';
 
 @Injectable({
   providedIn: 'root'
@@ -15,4 +15,10 @@ export class OrderService {
  {
      return this.http.get<IOrder[]>(this._url);
  }
+
+ submit(mapping)
+ {
+   return this.http.post("http://localhost:8089/api/v2/material",mapping);
+ }
+
 }
