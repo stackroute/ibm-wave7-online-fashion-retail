@@ -25,26 +25,22 @@ import {AddmaterialsbuttonComponent, manufactureAddDialog} from './addmaterialsb
 import {DisplaymaterialsComponent} from './displaymaterials/displaymaterials.component';
 import {MatTableModule} from '@angular/material/table';
 
-
-// import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-// import {MatAutocompleteModule} from '@angular/material/autocomplete';
-// import {MatSelectModule} from '@angular/material/select';
-// import {MatTabsModule} from '@angular/material';
-// import {SupplierviewprofileComponent} from './supplierviewprofile/supplierviewprofile.component';
-// import {ProfilebuttonComponent} from './profilebutton/profilebutton.component';
-// import {CardComponent} from './card/card.component';
-// import {OrderService} from './services/order.service';
+import {OrderService} from './services/order.service';
 // import {BodyComponent} from './body/body.component';
-// import {ManufactureCardComponent} from './manufacturecard/manufacturecard.component';
-// import {DesignerHomePageComponent, UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
-// import {Header1Component} from './header1/header1.component';
-// import {DesignerviewprofileComponent} from './designerviewprofile/designerviewprofile.component';
-// import {DesignerprofileComponent} from './designerprofile/designerprofile.component';
-// import {DesignereditdialogueComponent} from './de';
-import {ManufactureviewprofileComponent, manufactureEditDialog} from './manufactureviewprofile/manufactureviewprofile.component';
+import {ManufactureCardComponent} from './manufacturecard/manufacturecard.component';
+
+import {
+  ManufactureviewprofileComponent,
+  manufactureEditDialog
+} from './manufactureviewprofile/manufactureviewprofile.component';
 import {AddmaterialPageComponent} from './addmaterial-page/addmaterial-page.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
+import {CartBottomSheetComponent} from "./cart-bottom-sheet/cart-bottom-sheet.component";
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {ConsumerService} from "./services/consumer.service";
+import {ProductService} from "./services/product.service";
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -62,11 +58,7 @@ import { DesignerviewprofileComponent,designerEditDialogue } from './designervie
 
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
-import {CartBottomSheetComponent} from "./cart-bottom-sheet/cart-bottom-sheet.component";
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatSnackBarModule} from '@angular/material/snack-bar'
-import {ConsumerService} from "./services/consumer.service";
-import {ProductService} from "./services/product.service";
+
 @NgModule({
   declarations: [
     AppComponent,

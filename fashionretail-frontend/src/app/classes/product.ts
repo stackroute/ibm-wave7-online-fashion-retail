@@ -27,4 +27,5 @@ export class Product {
     this.rating = rating;
     this.image = image;
   }
+
 }
