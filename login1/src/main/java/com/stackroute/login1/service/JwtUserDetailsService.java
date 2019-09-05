@@ -1,0 +1,98 @@
+package com.stackroute.login1.service;
+
+import java.util.ArrayList;
+
+import com.stackroute.login1.dao.UserDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.stackroute.login1.model.DAOUser;
+import com.stackroute.login1.model.UserDTO;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+@Service
+public class JwtUserDetailsService implements UserDetailsService {
+
+    @Autowired
+    private UserDao userDao;
+    @Autowired
+    private JavaMailSender javaMailSender;
+
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
+
+    private  UserDTO userDTO;
+
+    public JwtUserDetailsService(UserDao userDao)
+    {
+        this.userDao=userDao;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        DAOUser user = userDao.findByusername(username);
+        System.out.println(user);
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
+                new ArrayList<>());
+    }
+    public  DAOUser getUserData(String username){
+        DAOUser daoUser=userDao.findByusername(username);
+        return daoUser;
+    }
+
+    public DAOUser save(UserDTO userDTO) {
+        DAOUser newUser = new DAOUser();
+        newUser.setUsername(userDTO.getUsername());
+        newUser.setPassword(bcryptEncoder.encode(userDTO.getPassword()));
+        newUser.setDesignation(userDTO.getDesignation());
+        return userDao.save(newUser);
+    }
+
+    public String forgotPassword(String username) throws MessagingException {
+        String status = "Failed";
+        System.out.println(username);
+        System.out.println(userDao.findByusername(username));
+        System.out.println("abcd");
+        if (userDao.findByusername(username) != null) {
+            System.out.println(username);
+            System.out.println("efgh");
+            MimeMessage message=javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+            helper.setTo(username);
+            helper.setSubject("Link for Reset your Password");
+            helper.setText("http://localhost:4200/reset-password");
+            javaMailSender.send(message);
+            System.out.println("hello");
+            status = "Sent";
+        }
+        else {
+
+        }
+        return status;
+    }
+
+//    @Override
+    public DAOUser update(String username, UserDTO userDTO) throws Exception {
+        DAOUser newUser = new DAOUser();
+        if (userDao.findByusername(username) != null) {
+            newUser.setPassword(bcryptEncoder.encode(userDTO.getPassword()));
+        }
+        return userDao.save(newUser);
+//        } else {
+//            throw new RecepientProfileNotFoundException();
+//        }
+        }
+    }
+
+

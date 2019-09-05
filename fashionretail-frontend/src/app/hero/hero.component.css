@@ -1,0 +1,30 @@
+img {
+    width: 100%;
+    height: 600px;
+    /* padding-top: 20px; */
+    margin-top: 100px;
+}
+
+.hero-body {
+    width: 100%;
+}
+
+h1 {
+    font-size: 45px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#text1 {
+    color: brown;
+    text-align: center;
+}
+
+#text2 {
+    color: purple;
+    text-align: center;
+}
+
+#text3 {
+    color: forestgreen;
+    text-align: center;
+}

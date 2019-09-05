@@ -1,0 +1,18 @@
+footer {
+    /* position: fixed; */
+   height: fit-content;
+    bottom: 0;
+    width: 100%;
+    background-color: khaki;
+    color: black;
+    height: 80px;
+    overflow: hidden;
+
+}
+
+img {
+    padding-left: 5px;
+    float: right;
+    height: 40px;
+    width: 40px;
+}

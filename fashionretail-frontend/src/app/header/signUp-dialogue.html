@@ -1,0 +1,41 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Sign Up</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+<div class="example-container">
+    <mat-form-field>
+      <input matInput placeholder="Your Name" type="text" [(ngModel)]="data.name">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="email" matInput placeholder="Your email" [(ngModel)]="data.email">
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="password" matInput placeholder="Password" [(ngModel)]="data.password">
+      </mat-form-field>
+
+    <mat-form-field>
+        <input type="password" matInput placeholder="Confirm Password" [(ngModel)]="data.password">
+      </mat-form-field>
+      <mat-form-field>
+            <mat-label>Select an option</mat-label>
+            <mat-select [(ngModel)]="data.designation">
+              <mat-option>None</mat-option>
+              <mat-option value="Designer">Designer</mat-option>
+              <mat-option value="Supplier">Supplier</mat-option>
+              <mat-option value="Manufacturer">Manufacturer</mat-option>
+              <mat-option value="Consumer">Consumer</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+
+  </div>
+  </mat-card-content>
+  <mat-card-actions>
+        <button mat-raised-button color="Primary" [mat-dialog-close]="data" cdkFocusInitial>Sign-up</button>
+        <!-- <button mat-raised-button (click)="onNoClick()" color="primary">Sign-up</button> -->
+    <a style="margin-left: 10px" routerLink="/login">
+    <button mat-raised-button (click)="onNoClick()" color="primary">Existing user? Login</button></a>
+  </mat-card-actions>
+  </mat-card>
