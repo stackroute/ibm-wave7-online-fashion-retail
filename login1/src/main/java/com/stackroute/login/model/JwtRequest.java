@@ -1,5 +1,4 @@
-package com.stackroute.login1.model;
-import java.io.Serializable;
+package com.stackroute.login.model;
 
 public class JwtRequest {
     private static final long serialVersionUID = 5926468583005150707L;

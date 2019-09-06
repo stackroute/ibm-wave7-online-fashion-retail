@@ -1,4 +1,4 @@
-package com.stackroute.login1.model;
+package com.stackroute.login.model;
 
 public class UserDTO {
     private String username;

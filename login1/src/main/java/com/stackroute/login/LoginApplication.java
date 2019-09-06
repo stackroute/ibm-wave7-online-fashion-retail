@@ -1,13 +1,13 @@
-package com.stackroute.login1;
+package com.stackroute.login;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Login1Application {
+public class LoginApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Login1Application.class, args);
+		SpringApplication.run(LoginApplication.class, args);
 	}
 
 }

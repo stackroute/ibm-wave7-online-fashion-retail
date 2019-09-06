@@ -1,5 +1,4 @@
-package com.stackroute.login1.config;
-import java.io.Serializable;
+package com.stackroute.login.config;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;

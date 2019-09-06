@@ -1,11 +1,5 @@
 //package com.stackroute.login1.listener;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stackroute.login1.dao.UserDao;
-import com.stackroute.login1.model.DAOUser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.stereotype.Service;
 //
 //import java.io.IOException;

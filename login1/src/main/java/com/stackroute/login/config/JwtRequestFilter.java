@@ -1,4 +1,4 @@
-package com.stackroute.login1.config;
+package com.stackroute.login.config;
 import java.io.IOException;
 
 import javax.servlet.FilterChain;
@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.stackroute.login1.service.JwtUserDetailsService;
+import com.stackroute.login.service.JwtUserDetailsService;
 
 import io.jsonwebtoken.ExpiredJwtException;
 

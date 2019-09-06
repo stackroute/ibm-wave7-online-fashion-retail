@@ -1,8 +1,8 @@
-package com.stackroute.login1.service;
+package com.stackroute.login.service;
 
 import java.util.ArrayList;
 
-import com.stackroute.login1.dao.UserDao;
+import com.stackroute.login.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,19 +12,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.stackroute.login1.model.DAOUser;
-import com.stackroute.login1.model.UserDTO;
+import com.stackroute.login.model.DAOUser;
+import com.stackroute.login.model.UserDTO;
 
-import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
-
-    @Autowired
-    private UserDao userDao;
     @Autowired
     private JavaMailSender javaMailSender;
+    @Autowired
+    private UserDao userDao;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
@@ -42,10 +39,6 @@ public class JwtUserDetailsService implements UserDetailsService {
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 new ArrayList<>());
-    }
-    public  DAOUser getUserData(String username){
-        DAOUser daoUser=userDao.findByusername(username);
-        return daoUser;
     }
 
     public DAOUser save(UserDTO userDTO) {

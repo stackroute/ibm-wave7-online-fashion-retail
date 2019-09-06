@@ -17,8 +17,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthenticateService {
-  private apiUrl = "http://localhost:7777/register";
-  private apiUrl2 = "http://localhost:7777/authenticate";
+  private apiUrl = "http://localhost:8193/register";
+  private apiUrl2 = "http://localhost:8193/authenticate";
   private user: User1;
 
   private loggedIn=new BehaviorSubject<boolean>(false);
@@ -39,11 +39,11 @@ export class AuthenticateService {
    
   }
 
-  private apiUrl3 = "http://localhost:7777/forgot-password";
+  private apiUrl3 = "http://localhost:8193/forgot-password";
    forgotpassword(data: User1): Observable<any>{
    return this.httpClient.post<any>(this.apiUrl3,data);
  }
- private apiUrl4 = "http://localhost:7777/reset-password";
+ private apiUrl4 = "http://localhost:8193/reset-password";
  resetpassword(data: LoginUser): Observable<any> {
    return this.httpClient.put<any>(this.apiUrl4, data);
  }
