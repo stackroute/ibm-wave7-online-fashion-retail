@@ -17,12 +17,14 @@ import com.stackroute.login1.model.UserDTO;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
-    @Autowired
-    private JavaMailSender javaMailSender;
+
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Autowired
     private PasswordEncoder bcryptEncoder;
@@ -40,6 +42,10 @@ public class JwtUserDetailsService implements UserDetailsService {
         }
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 new ArrayList<>());
+    }
+    public  DAOUser getUserData(String username){
+        DAOUser daoUser=userDao.findByusername(username);
+        return daoUser;
     }
 
     public DAOUser save(UserDTO userDTO) {

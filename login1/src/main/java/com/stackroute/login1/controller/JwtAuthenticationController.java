@@ -1,4 +1,5 @@
 package com.stackroute.login1.controller;
+
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -14,6 +15,9 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import com.stackroute.login1.config.JwtTokenUtil;
@@ -48,12 +52,46 @@ public class JwtAuthenticationController {
         final String token = jwtTokenUtil.generateToken(userDetails);
         Map<Object,Object> model=new HashMap<>();
         model.put("role",userDTO.getDesignation());
+        DAOUser daoUser = userDetailsService.getUserData(userDTO.getUsername());
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        Map<Object,Object> model=new HashMap<>();
+        model.put("designation",daoUser.getDesignation());
+        model.put("id", daoUser.getId());
         model.put("token",token);
         return ok(model);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ResponseEntity<?> saveUser(@RequestBody UserDTO user) throws Exception {
+        return ok(userDetailsService.save(user));
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/forgot-password", method = RequestMethod.POST)
+    public ResponseEntity<?> getEmail(@RequestBody String username) throws Exception {
+        System.out.println("in here");
+        JsonFactory jsonFactory = new JsonFactory();
+        ObjectMapper objectMapper = new ObjectMapper(jsonFactory);
+
+        JsonNode rootNode = objectMapper.readTree(username);
+
+        final String userDetails = userDetailsService.forgotPassword(rootNode.get("username").asText());
+        return ok(userDetails);
+    }
+//    String username="kotagirisrija123@gmail.com";
+//    @RequestMapping(value = "/reset-password/{username}", method = RequestMethod.PUT)
+//    public ResponseEntity<?> getNewPassword(@PathVariable String username, @RequestBody String password) throws Exception {
+//        ResponseEntity responseEntity;
+//        responseEntity = new ResponseEntity<>(userDetailsService.update(username,userDTO), HttpStatus.OK);
+//        return responseEntity;
+//    }
+
+    @RequestMapping(value = "/reset-password", method = RequestMethod.POST)
+    public ResponseEntity<?> getNewPassword(@RequestBody String username) throws Exception {
+        System.out.println("in here");
+        System.out.println(username);
+        final String userDetails = userDetailsService.forgotPassword(username);
+        return ResponseEntity.ok(userDetails);
         return ResponseEntity.ok(userDetailsService.save(user));
     }
 
@@ -76,6 +114,7 @@ public class JwtAuthenticationController {
         final String userDetails = userDetailsService.forgotPassword(username);
         return ResponseEntity.ok(userDetails);
     }
+}
 
     // String username="konugantimagi1977@gmail.com";
     @RequestMapping(value = "/reset-password", method = RequestMethod.PUT)
@@ -86,3 +125,5 @@ public class JwtAuthenticationController {
         return responseEntity;
     }
 }
+
+
