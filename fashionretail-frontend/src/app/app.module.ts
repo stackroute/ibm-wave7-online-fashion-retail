@@ -36,9 +36,13 @@ import { Header1Component } from './header1/header1.component';
 import { DesignerviewprofileComponent } from './designerviewprofile/designerviewprofile.component';
 import { DesignerprofileComponent } from './designerprofile/designerprofile.component';
 import { DesignereditdialogueComponent } from './designereditdialogue/designereditdialogue.component';
+import { ReportServiceService } from './report-service.service';
+import { PieChartComponent } from 'angular-d3-charts'; // this is needed!
+
 
 //import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
 import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufactureviewprofile.component';
+import { DashboardreportsComponent } from './dashboardreports/dashboardreports.component';
 //  import { ReactiveFormsModule } from '@angular/forms';
 //  import { BrowserModule } from '@angular/platform-browser';
 
@@ -54,7 +58,7 @@ import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufa
     // SignUpDialogue,
     SupplierviewprofileComponent,
     ProfilebuttonComponent,
-    SupplierEditDialogue
+    SupplierEditDialogue,
     CardComponent,
     BodyComponent,
     DesignerHomePageComponent,
@@ -69,6 +73,8 @@ import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufa
     // ManufactureeditComponent,
     ManufactureviewprofileComponent,
     ProfilebuttonComponent,
+    DashboardreportsComponent,
+    PieChartComponent
 
     ],
   imports: [
@@ -79,7 +85,6 @@ import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufa
     ReactiveFormsModule,
     MatAutocompleteModule,
     HttpClientModule,
-
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
@@ -93,14 +98,12 @@ import { ManufactureviewprofileComponent } from './manufactureviewprofile/manufa
     Ng2CarouselamosModule,
     MatSidenavModule,
     MatDialogModule,
-     BrowserAnimationsModule
+     BrowserAnimationsModule,
+     MatTabsModule
 
   ],
-  providers: [OrderService],
+  providers: [OrderService, ReportServiceService],
   entryComponents : [SignUpDialogue,SupplierEditDialogue,UploadDesignsDialogue
-     BrowserAnimationsModule,
-     MatTabsModule,
-     ReactiveFormsModule
   ],
   bootstrap: [AppComponent]
 

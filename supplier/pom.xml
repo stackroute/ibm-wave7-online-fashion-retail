@@ -11,7 +11,7 @@
 	<groupId>com.stackroute</groupId>
 	<artifactId>supplier</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>user</name>
+	<name>supplier</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

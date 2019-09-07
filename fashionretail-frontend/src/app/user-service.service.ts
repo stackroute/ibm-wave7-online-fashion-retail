@@ -29,7 +29,7 @@ export class UserServiceService {
 
     this.materialUrl = 'http://localhost:8089/material'
     this.manufactureUrl = 'http://localhost:8090/manufacture';
-    this.userUrl = 'http://localhost:8088/user';
+    this.userUrl = 'http://localhost:8192/user';
     this.designerUrl = 'http://localhost:8080/designs';
 
    }
