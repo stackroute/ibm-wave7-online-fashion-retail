@@ -24,10 +24,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {AddmaterialsbuttonComponent, manufactureAddDialog} from './addmaterialsbutton/addmaterialsbutton.component';
 import {DisplaymaterialsComponent} from './displaymaterials/displaymaterials.component';
 import {MatTableModule} from '@angular/material/table';
-
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import {OrderService} from './services/order.service';
 // import {BodyComponent} from './body/body.component';
 import {ManufactureCardComponent} from './manufacturecard/manufacturecard.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 import {
   ManufactureviewprofileComponent,
@@ -58,6 +59,7 @@ import { DesignerviewprofileComponent,designerEditDialogue } from './designervie
 
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -100,7 +102,7 @@ import { LoginComponent } from './login/login.component';
     AddmaterialPageComponent,
     // ManufactureCardComponent,
     ConsumerDashboardComponent,
-    AddPriceDialogue
+    AddPriceDialogue,ForgotpasswordComponent,ResetPasswordComponent
 
   ],
   imports: [

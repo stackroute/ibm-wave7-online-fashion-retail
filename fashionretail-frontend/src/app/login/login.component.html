@@ -1,28 +1,42 @@
-<app-header></app-header>
-<mat-card class="example-card">
-        <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="example-container">
-            <mat-form-field>
-              <input matInput placeholder="Username" required>
-            </mat-form-field>
-          
-            <mat-form-field>
-              <textarea matInput placeholder="Password"></textarea>
-            </mat-form-field>
-          </div>
-        </mat-card-content>
-        <mat-card-actions>
-                <p>For Create A New Account? <a routerLink="/sign-up">Sign-Up</a></p>
-          <button mat-raised-button (click)="login()" color="primary">Login</button>
-          
-            
-            <!-- <button mat-raised-button (click)="login()" color="primary">Sign-up</button> -->
-          
-        </mat-card-actions>
-        <mat-divider></mat-divider>
-      <span><p>Forgot password? <a href="#">Click Here</a></p></span>
-      </mat-card>
+
+<button mat-raised-button (click)="logout()" color="primary">LogOut</button>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
       
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" [formGroup]="loginForm">
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <input matInput placeholder="Username" formControlName="username" name="username" required>
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+         
+          </tr>
+          <tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
+          </mat-form-field>
+        </td>
+        </tr>
+</table>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="loginUser()" color="primary">Login</button>
+    </mat-card-actions>
+
+    <mat-card-actions>
+      <button mat-raised-button (click)="openDialog()" color="primary">Sign up</button>
+    </mat-card-actions>
+
+    <mat-card-actions>
+      <p>Forgot password?</p>
+      <button mat-raised-button [routerLink]="['/forgotpassword']" >Click Here</button>
+    </mat-card-actions>
+  </mat-card>
