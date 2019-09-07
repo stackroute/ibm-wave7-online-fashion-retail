@@ -8,6 +8,6 @@ import java.util.List;
 
 
 @Repository
-public interface SupplierRepository extends MongoRepository<Supplier,Integer> {
+public interface SupplierRepository extends MongoRepository<Supplier,String> {
   List<Supplier> findByEmail(String email);
 }

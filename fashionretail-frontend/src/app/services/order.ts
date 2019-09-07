@@ -1,15 +1,22 @@
+import { Material } from './material';
 export class IOrder {
-    id:number;
-    customer_name:string;
-    material:string;
-    unit:string;
+    id:string;
+    designerName:string;
+    material:Material;
     quantity:number;
-constructor(id: number,customer_name:string,material:string,unit:string,quantity:number)
+    orderStatus:string;
+    tagId:string;
+
+    
+
+    
+constructor(id: string,designerName:string,material:Material,quantity:number,orderStatus:string,tagId: string)
 {
     this.id=id;
-    this.customer_name=customer_name;
+    this.designerName=designerName;
     this.material=material;
-    this.unit=unit;
-    this.quantity = quantity;
+    this.quantity=quantity;
+    this.orderStatus=orderStatus;
+    this.tagId=tagId;
 }
 }

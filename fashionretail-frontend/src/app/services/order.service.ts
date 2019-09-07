@@ -18,7 +18,7 @@ export class OrderService {
 
  submit(mapping)
  {
-   return this.http.post("http://localhost:8089/api/v2/material",mapping);
+   return this.http.post("http://172.23.238.169:8080/activiti/add-material",mapping);
  }
 
 }

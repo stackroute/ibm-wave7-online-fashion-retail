@@ -15,22 +15,24 @@ public class MappingController {
 
 
   private MappingService mappingService;
+  Mapping savedMapping;
 
-//  private KafkaTemplate<String, Mapping> kafkaTemplate2;
-//
-//  private static final String TOPIC = "Kafka_Example";
+  @Autowired
+  private KafkaTemplate<String, Mapping> kafkaTemplate2;
+
+  private static final String TOPIC = "Kafka_Example";
 
   @Autowired
   public MappingController(MappingService mappingService, KafkaTemplate<String, Mapping> kafkaTemplate2) {
     this.mappingService = mappingService;
-//    this.kafkaTemplate2 = kafkaTemplate2;
+    this.kafkaTemplate2 = kafkaTemplate2;
   }
 
   //@PostMapping("publish")
-  private String post(Mapping mapping) {
+//  private String post(Mapping mapping) {
 //    kafkaTemplate2.send(TOPIC,mapping);
-    return "Published successfully";
-  }
+//    return "Published successfully";
+//  }
 
   //Post mapping to save the user details
   @PostMapping("material")
@@ -40,7 +42,8 @@ public class MappingController {
     ResponseEntity responseEntity;
     try {
       System.out.println("In try block");
-      mapping = mappingService.saveMapping(mapping);
+      savedMapping = mappingService.saveMapping(mapping);
+      kafkaTemplate2.send(TOPIC,savedMapping);
       responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
     } catch (Exception ex) {
       System.out.println("In exception block");
@@ -81,7 +84,7 @@ public class MappingController {
   }
 
   @DeleteMapping("material/{id}")
-  public ResponseEntity<?> deleteMaterial(@PathVariable int id) {
+  public ResponseEntity<?> deleteMaterial(@PathVariable String id) {
     ResponseEntity responseEntity;
     try {
       mappingService.deleteMapping(id);
@@ -93,7 +96,7 @@ public class MappingController {
   }
 
   @PutMapping("material/{id}")
-  public ResponseEntity<?> updateMaterial(@RequestBody Mapping mapping, @PathVariable int id) {
+  public ResponseEntity<?> updateMaterial(@RequestBody Mapping mapping, @PathVariable String id) {
     ResponseEntity responseEntity;
     try {
 

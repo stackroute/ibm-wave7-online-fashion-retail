@@ -13,8 +13,8 @@ public interface MappingService {
 
   public List<Mapping> getMappings();
 
-  public boolean deleteMapping(int id ) ;
+  public boolean deleteMapping(String id ) ;
 
-  public Mapping updateMapping(Mapping mapping, int id);
+  public Mapping updateMapping(Mapping mapping, String id);
 
 }

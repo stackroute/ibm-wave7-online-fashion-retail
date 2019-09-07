@@ -10,9 +10,9 @@ public interface MaterialService {
 
   public List<Material> getAllMaterials();
 
-  public boolean deleteMaterial(int id ) ;
+  public boolean deleteMaterial(String id ) ;
 
-  public Material updateMaterial(Material material, int id);
+  public Material updateMaterial(Material material, String id);
 
-  public Material findById(int id);
+  public Material findById(String id);
 }
