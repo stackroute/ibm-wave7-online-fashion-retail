@@ -1,6 +1,6 @@
 package com.stackroute.manufacture.controller;
 
-import com.stackroute.manufacture.domain.Manufacture;
+import com.stackroute.manufacture.domain.Manufacturer;
 import com.stackroute.manufacture.services.ManufactureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,28 +16,28 @@ import java.util.List;
 public class ManufactureController {
 
     ManufactureService manufactureService;
-    Manufacture savedManufacture;
-    Manufacture manufacture = new Manufacture();
+    Manufacturer savedManufacturer;
+    Manufacturer manufacturer = new Manufacturer();
 
     @Autowired
     public ManufactureController(ManufactureService manufactureService) {
         this.manufactureService = manufactureService;
     }
 
-    @Autowired
-    private KafkaTemplate<String, Manufacture> kafkaTemplate;
-
-    private static final String TOPIC = "Kafka_Example";
+//    @Autowired
+//    private KafkaTemplate<String, Manufacturer> kafkaTemplate;
+//
+//    private static final String TOPIC = "Kafka_Example";
 
 
 
     //Post mapping to save the user details
     @PostMapping("manufacture")
-    public ResponseEntity<?> save(@RequestBody Manufacture manufacture) {
+    public ResponseEntity<?> save(@RequestBody Manufacturer manufacturer) {
         ResponseEntity responseEntity;
         try {
-            savedManufacture=manufactureService.saveManufacture(manufacture);
-            kafkaTemplate.send(TOPIC,savedManufacture);
+            savedManufacturer =manufactureService.saveManufacture(manufacturer);
+//            kafkaTemplate.send(TOPIC, savedManufacturer);
             responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
@@ -50,7 +50,7 @@ public class ManufactureController {
         ResponseEntity responseEntity;
 
         try {
-            responseEntity = new ResponseEntity<List<Manufacture>>(manufactureService.getAllManufactures(), HttpStatus.OK);
+            responseEntity = new ResponseEntity<List<Manufacturer>>(manufactureService.getAllManufactures(), HttpStatus.OK);
         } catch (Exception exception) {
 
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
@@ -59,7 +59,7 @@ public class ManufactureController {
     }
 
     @GetMapping("manufacture/{id}")
-    public ResponseEntity<?> getDesigner(@PathVariable int id) {
+    public ResponseEntity<?> getDesigner(@PathVariable String id) {
         ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity<>(manufactureService.getManufacture(id), HttpStatus.OK);
@@ -70,7 +70,7 @@ public class ManufactureController {
     }
 
     @DeleteMapping("manufacture/{id}")
-    public ResponseEntity<?> delete(@PathVariable int id) {
+    public ResponseEntity<?> delete(@PathVariable String id) {
         ResponseEntity responseEntity;
         try {
             manufactureService.deleteManufacture(id);
@@ -82,11 +82,11 @@ public class ManufactureController {
     }
 
     @PutMapping("manufacture/{id}")
-    public ResponseEntity<?> updatedetails(@RequestBody Manufacture manufacture, @PathVariable int id) {
+    public ResponseEntity<?> updatedetails(@RequestBody Manufacturer manufacturer, @PathVariable String id) {
         ResponseEntity responseEntity;
         try {
-            manufactureService.updateManufacture(manufacture,id);
-            responseEntity = new ResponseEntity<List<Manufacture>>(manufactureService.getAllManufactures(), HttpStatus.CREATED);
+            manufactureService.updateManufacture(manufacturer,id);
+            responseEntity = new ResponseEntity<List<Manufacturer>>(manufactureService.getAllManufactures(), HttpStatus.CREATED);
         } catch (Exception exception1) {
             responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
         }

@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class OrderService {
 
   public data: string;
-  private _url : string="http://172.23.238.218:3000/orders";
+  private _url : string="http://172.23.239.125:8187/designs";
   constructor(private http: HttpClient) { }
   getOrders() : Observable<IOrder[]>
  {

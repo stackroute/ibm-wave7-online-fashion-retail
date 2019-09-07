@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Manufacture } from '../modals/Manufacture';
 import { Observable } from 'rxjs';
 import { BasePrice } from '../modals/BasePrice';
+import { ManufacturerOrder } from '../modals/ManufacturerOrder';
+import { Manufacturer } from '../modals/Manufacturer';
 
 
 const httpOptions = {
@@ -20,30 +21,35 @@ export class ManufactureserviceService {
 
 
   constructor(private httpClient:HttpClient) { }
-  updateManufacture(id:number,manufacture:Manufacture):Observable<Manufacture>
+  updateManufacture(id:number,manufacture:Manufacturer):Observable<Manufacturer>
   {
     const url="http://localhost:8090/manufacture";
     const updateUrl=`${url}/1`
-   return this.httpClient.put<Manufacture>(updateUrl,manufacture,httpOptions);
+   return this.httpClient.put<Manufacturer>(updateUrl,manufacture,httpOptions);
   }
 
-  getManufacture():Observable<Manufacture>
+  getManufacture():Observable<Manufacturer>
  {
    const url="http://localhost:8090/manufacture/1";
     const getUrl=`${url}/5`
-    return this.httpClient.get<Manufacture>(url);
+    return this.httpClient.get<Manufacturer>(url);
  }
  saveBasePrice(baseprice:BasePrice):Observable<BasePrice>
  {
-  const url="http://172.23.238.243:8999/baseprice";
+  const url="http://localhost:8090/baseprice";
   // const updateUrl=`${url}/5`
  return this.httpClient.post<BasePrice>(url,baseprice,httpOptions);
  }
 
  getAllBasePrice():Observable<BasePrice>
  {
-   const url="http://172.23.238.243:8999/baseprice";
+   const url="http://localhost:8090/baseprice";
     // const getUrl=`${url}/5`
     return this.httpClient.get<BasePrice>(url);
+ }
+ getManufactureOrder():Observable<ManufacturerOrder>
+ {
+   const url="http://localhost:8090/manufacture";
+   return this.httpClient.get<ManufacturerOrder>(url);
  }
 }

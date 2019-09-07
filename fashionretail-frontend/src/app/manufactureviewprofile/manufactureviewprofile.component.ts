@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Manufacture } from '../modals/Manufacture';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ManufactureserviceService } from '../services/manufactureservice.service';
+import { Manufacturer } from '../modals/Manufacturer';
 
 export interface DialogData{
   city: string;
@@ -17,8 +17,11 @@ export class ManufactureviewprofileComponent implements OnInit {
 
   city: string;
   contact_number: number;
-   public updatedManu: Manufacture;
-  manufacture: Manufacture
+   public updatedManu: Manufacturer;
+
+  manufacture:{
+
+  }
 
   constructor(private dialog: MatDialog, private manufactureService: ManufactureserviceService) { }
 
@@ -28,7 +31,7 @@ export class ManufactureviewprofileComponent implements OnInit {
       console.log(this.manufacture);
     })
   }
-  updateManufacture(manufacture:Manufacture) {
+  updateManufacture(manufacture:Manufacturer) {
         console.log(manufacture);
     this.manufactureService.updateManufacture(manufacture.id,manufacture).subscribe((data)=> {
       console.log("result is ", data);
@@ -38,7 +41,7 @@ export class ManufactureviewprofileComponent implements OnInit {
   }
 
   data;
-  openDialog(manufacture:Manufacture) {
+  openDialog(manufacture:Manufacturer) {
     this.updatedManu = manufacture;
     const dialogRef = this.dialog.open(manufactureEditDialog,
       {
@@ -58,7 +61,7 @@ export class ManufactureviewprofileComponent implements OnInit {
     templateUrl: 'manufactureEditDialog.html',
    })
    export class manufactureEditDialog {
-     manufacture: Manufacture;
+     manufacture: Manufacturer;
       city: string;
     contact_number: number;
 

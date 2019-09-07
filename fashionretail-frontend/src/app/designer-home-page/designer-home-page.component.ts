@@ -1,14 +1,13 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from '../modals/User';
+// import { User } from '../modals/User';
 import { Designer } from '../modals/Designer';
 import { UserServiceService } from '../services/user-service.service';
 import { MatTabChangeEvent } from '@angular/material';
 import { Materials } from '../modals/Materials';
 import { DesignerOrder } from '../modals/DesignerOrder';
 import { Manufacturer } from '../modals/Manufacturer';
-import { Manufacture } from '../modals/Manufacture';
-import { Dorder } from '../modals/Dorder';
+// import { Manufacture } from '../modals/Manufacture';
 import { Mapping } from '../modals/Mapping';
 @Component({
   selector: 'app-designer-home-page',
@@ -26,37 +25,30 @@ export class DesignerHomePageComponent implements OnInit {
   items: Array<any> = [];
   material : Array<Materials> = [];
   savaManufacture : Manufacturer;
-  orderlist : Dorder[];
-  orderDetails : Dorder;
-    submitModel : Dorder = {
-    id : "",
-    designOrder : {
-      id : "string",
-      name : "String",
-    price : 1,
-    discount : 1,
-    profit : 1,
-    QuantityOfDesign : 1,
-    OrderStatus : "String",
-    design_img : "string",
-    },
-    manufacturer : {
-      id : 1,
-      name : "string",
-      email : "string",
-      city : "string",
-      specification : "string",
-    },
-    designer : {
-      id : 0,
-      contact: 0,
-     name: "",
-      location: "",
-      email: "",
-      rating: 0,
-    },
-    mapping : [],
-    };
+  orderlist : DesignerOrder[];
+  orderDetails : DesignerOrder;
+    // submitModel : DesignerOrder = {
+    // id : "",
+    // designOrder : {
+    //   id : "string",
+    //   name : "String",
+    // price : 1,
+    // discountPercentage : 1,
+    // profitPercentage : 1,
+    // QuantityOfDesign : 1,
+    // OrderStatus : "String",
+    // design_img : "string",
+    // },
+    // manufacturer : {
+    //   id : 1,
+    //   name : "string",
+    //   email : "string",
+    //   city : "string",
+    //   specification : "string",
+
+    // },
+    // mapping : [],
+    // };
     // orderdetails : 
 
   constructor(private dialogue: MatDialog, private userService: UserServiceService) {
@@ -121,22 +113,22 @@ export class DesignerHomePageComponent implements OnInit {
 
   }
 
-  submitOrder()
-  {
-    console.log("designs: ",this.upload_designs);
-    console.log("manufacturer: ",this.savaManufacture);
-    console.log("material: ",this.material);
-    this.submitModel.designOrder = this.upload_designs;
-      this.submitModel.manufacturer = this.savaManufacture;
-      this.submitModel.mapping =  this.Mapping
-      this.submitModel.designer = this.Designer
-      this.userService.submitOrder(this.submitModel).subscribe(
-        (data) => {
-          this.orderDetails = data
-            console.log(data);
-        })
-        this.previousStep();
-  }
+  // submitOrder()
+  // {
+  //   console.log("designs: ",this.upload_designs);
+  //   console.log("manufacturer: ",this.savaManufacture);
+  //   console.log("material: ",this.material);
+  //   this.submitModel.designOrder = this.upload_designs;
+  //     this.submitModel.manufacturer = this.savaManufacture;
+  //     this.submitModel.mapping =  this.Mapping
+  //     this.submitModel.designer = this.Designer
+  //     this.userService.submitOrder(this.submitModel).subscribe(
+  //       (data) => {
+  //         this.orderDetails = data
+  //           console.log(data);
+  //       })
+  //       this.previousStep();
+  // }
   getAllUser() {
     alert("entered into get all users")
     this.userService.getAllUsers().subscribe((data) => {
@@ -195,7 +187,7 @@ export class AddPriceDialogue {
 
   constructor(
     public dialogRef: MatDialogRef<AddPriceDialogue>,
-    @Inject(MAT_DIALOG_DATA) public data: Dorder[]) { }
+    @Inject(MAT_DIALOG_DATA) public data: DesignerOrder[]) { }
 
     ngOnInit()
     {

@@ -1,9 +1,13 @@
+import { List } from 'lodash';
+import { SupplierOrder } from './SupplierOrder';
+
 export interface Supplier{
-    id : number;
+    id : string;
     name : String;
     email : String;
     city : String;
-    rating : String;
+    rating : number;
+    supplierOrderList : List<SupplierOrder>
  }
 
-
+ 

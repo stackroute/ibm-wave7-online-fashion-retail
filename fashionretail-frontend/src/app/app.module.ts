@@ -58,6 +58,8 @@ import { DesignerviewprofileComponent,designerEditDialogue } from './designervie
 
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
+import { ManufacturerDashboardComponent } from './manufacturer-dashboard/manufacturer-dashboard.component';
+import { DesignerviewordersComponent } from './designervieworders/designervieworders.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +102,9 @@ import { LoginComponent } from './login/login.component';
     AddmaterialPageComponent,
     // ManufactureCardComponent,
     ConsumerDashboardComponent,
-    AddPriceDialogue
+    AddPriceDialogue,
+    ManufacturerDashboardComponent,
+    DesignerviewordersComponent
 
   ],
   imports: [

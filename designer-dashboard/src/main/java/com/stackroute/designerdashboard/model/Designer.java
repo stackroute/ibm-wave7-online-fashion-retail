@@ -1,56 +1,66 @@
 package com.stackroute.designerdashboard.model;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import java.util.List;
 
-
-
-public class Designer {
-
+@AllArgsConstructor
+@NoArgsConstructor
+@NodeEntity
+public class Designer
+{
     @Id
-    private int id;
-    private long contact;
+    private String id;
     private String name;
-    private String location;
+    private String city;
+    private float rating;
     private String email;
-    private int rating;
+    private long contactNumber;
 
+    @Relationship(type = "has_ordered")
+    private List<DesignerOrder> orderList;
 
-    public Designer(int id,long contact, String name, String location, String email, int rating) {
-        this.id=id;
-        this.contact = contact;
-        this.name = name;
-        this.location = location;
-        this.email = email;
-        this.rating = rating;
+    public List<DesignerOrder> getOrderList() {
+        return orderList;
     }
 
-
-    public Designer() {
+    public void setOrderList(List<DesignerOrder> orderList) {
+        this.orderList = orderList;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public long getContact() { return contact; }
-
-    public void setContact(long contact) { this.contact = contact; }
-
-    public String getName() { return name; }
-
-    public void setName(String name) { this.name = name; }
-
-    public String getLocation() {
-        return location;
+    public String getName() {
+        return name;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
     }
 
     public String getEmail() {
@@ -61,12 +71,24 @@ public class Designer {
         this.email = email;
     }
 
-    public int getRating() {
-        return rating;
+    public long getContactNumber() {
+        return contactNumber;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setContactNumber(long contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
+    @Override
+    public String toString() {
+        return "Designer{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", rating=" + rating +
+                ", email='" + email + '\'' +
+                ", contactNumber=" + contactNumber +
+                ", orderList=" + orderList +
+                '}';
+    }
 }

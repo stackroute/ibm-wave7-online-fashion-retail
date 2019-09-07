@@ -35,8 +35,8 @@ export class AddmaterialsbuttonComponent implements OnInit {
 
   saveBasePrice(baseprice : BasePrice){
     let num=Math.floor(Math.random()* (999999 - 100000)) + 100000;
-    console.log("Random number is", num);
-    baseprice.id= num;
+    console.log("Random number is", "num");
+    baseprice.id= "num";
     console.log(baseprice)
     this.manufactureService.saveBasePrice(baseprice).subscribe((data)=>{
       console.log("result is ", data);
