@@ -11,16 +11,16 @@ public class Material {
   private int id;
   private String category;
   private String name;
-  private Image image;
+  private String image;
 
-  public Material(int id, String category, String name, Image image) {
+  public Material(int id, String category, String name, String image) {
     this.id = id;
     this.category = category;
     this.name = name;
     this.image = image;
   }
 
-  public Material(String category, String name, Image image) {
+  public Material(String category, String name, String image) {
     this.category = category;
     this.name = name;
     this.image = image;
@@ -53,11 +53,11 @@ public class Material {
     this.name = name;
   }
 
-  public Image getImage() {
+  public String getImage() {
     return image;
   }
 
-  public void setImage(Image image) {
+  public void setImage(String image) {
     this.image = image;
   }
 

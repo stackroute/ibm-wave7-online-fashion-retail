@@ -1,0 +1,28 @@
+<app-header></app-header>
+<mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="example-container">
+            <mat-form-field>
+              <input matInput placeholder="Username" required>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <textarea matInput placeholder="Password"></textarea>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+                <p>For Create A New Account? <a routerLink="/sign-up">Sign-Up</a></p>
+          <button mat-raised-button (click)="login()" color="primary">Login</button>
+          
+            
+            <!-- <button mat-raised-button (click)="login()" color="primary">Sign-up</button> -->
+          
+        </mat-card-actions>
+        <mat-divider></mat-divider>
+      <span><p>Forgot password? <a href="#">Click Here</a></p></span>
+      </mat-card>
+      

@@ -15,11 +15,11 @@ export class ProductService {
   }
 
   public getAllProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://localhost:8080/api/v1/product', {headers: this.headers});
+    return this.httpClient.get<Product[]>('http://172.23.238.169:8080/api/v1/product', {headers: this.headers});
   }
 
   public tracksExists(track: Product) {
-    return this.httpClient.post('http://localhost:8080/api/v1/track/find', track, {headers: this.headers});
+    return this.httpClient.post('http://172.23.238.169:8080/api/v1/track/find', track, {headers: this.headers});
   }
 
   // public searchTracks(searchItem): Observable<Product[]> {

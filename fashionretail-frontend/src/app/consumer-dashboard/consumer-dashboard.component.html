@@ -1,5 +1,6 @@
-<div class="flex-container">
-  <mat-toolbar color="primary">
+<app-header1></app-header1>
+<div class="flex-container" style="padding-top: 100px;">
+  <!-- <mat-toolbar color="primary">
   <span>
     <mat-form-field>
       <input #searchText matInput placeholder="Search for products">
@@ -7,7 +8,7 @@
     <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
       <mat-icon>search</mat-icon>
     </button></span>
-  </mat-toolbar>
+  </mat-toolbar> -->
   <mat-card class="example-card" *ngFor="let product of products">
     <mat-card-header>
       <mat-card-title>{{product.name}}</mat-card-title>

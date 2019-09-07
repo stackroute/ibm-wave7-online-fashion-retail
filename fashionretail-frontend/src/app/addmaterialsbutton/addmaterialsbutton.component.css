@@ -7,4 +7,15 @@ button{
 }
 table{
     padding-top: 100px;
+    margin-left: 30%;
+}
+
+table th{
+    width: 338px;
+    height: 100px;
+    text-align: center;
+}
+
+table tr{
+    height: 50px;
 }

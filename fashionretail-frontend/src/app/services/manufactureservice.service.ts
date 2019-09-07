@@ -35,14 +35,14 @@ export class ManufactureserviceService {
  }
  saveBasePrice(baseprice:BasePrice):Observable<BasePrice>
  {
-  const url="http://localhost:8999/baseprice";
+  const url="http://172.23.238.243:8999/baseprice";
   // const updateUrl=`${url}/5`
  return this.httpClient.post<BasePrice>(url,baseprice,httpOptions);
  }
 
  getAllBasePrice():Observable<BasePrice>
  {
-   const url="http://localhost:8999/baseprice";
+   const url="http://172.23.238.243:8999/baseprice";
     // const getUrl=`${url}/5`
     return this.httpClient.get<BasePrice>(url);
  }

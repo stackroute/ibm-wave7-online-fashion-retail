@@ -25,22 +25,10 @@ import {AddmaterialsbuttonComponent, manufactureAddDialog} from './addmaterialsb
 import {DisplaymaterialsComponent} from './displaymaterials/displaymaterials.component';
 import {MatTableModule} from '@angular/material/table';
 
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatSelectModule} from '@angular/material/select';
-import {MatTabsModule} from '@angular/material';
-import {SupplierviewprofileComponent} from './supplierviewprofile/supplierviewprofile.component';
-import {ProfilebuttonComponent} from './profilebutton/profilebutton.component';
-import {CardComponent} from './card/card.component';
 import {OrderService} from './services/order.service';
-import {BodyComponent} from './body/body.component';
+// import {BodyComponent} from './body/body.component';
 import {ManufactureCardComponent} from './manufacturecard/manufacturecard.component';
-import {DesignerHomePageComponent, UploadDesignsDialogue} from './designer-home-page/designer-home-page.component';
-import {Header1Component} from './header1/header1.component';
-import {DesignerviewprofileComponent} from './designerviewprofile/designerviewprofile.component';
-import {DesignerprofileComponent} from './designerprofile/designerprofile.component';
-import {DesignereditdialogueComponent} from './designereditdialogue/designereditdialogue.component';
+
 import {
   ManufactureviewprofileComponent,
   manufactureEditDialog
@@ -54,6 +42,22 @@ import {MatSnackBarModule} from '@angular/material/snack-bar'
 import {ConsumerService} from "./services/consumer.service";
 import {ProductService} from "./services/product.service";
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material';
+import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
+import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { CardComponent } from './card/card.component';
+// import { OrderService } from './order.service';
+import { BodyComponent } from './body/body.component';
+import { DesignerHomePageComponent , UploadDesignsDialogue,AddPriceDialogue} from './designer-home-page/designer-home-page.component';
+import { from } from 'rxjs';
+import { Header1Component } from './header1/header1.component';
+import { DesignerviewprofileComponent,designerEditDialogue } from './designerviewprofile/designerviewprofile.component';
+
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -80,15 +84,23 @@ import {ProductService} from "./services/product.service";
     Header1Component,
     AboutComponent,
     DesignerviewprofileComponent,
-    DesignerprofileComponent,
-    DesignereditdialogueComponent,
+        ManufactureviewprofileComponent,
+    ProfilebuttonComponent,
+    SignUpComponent,
+    LoginComponent,
+    AddmaterialPageComponent,
+    SupplierviewprofileComponent,
+    designerEditDialogue,
+    CartBottomSheetComponent,
+    // DesignerprofileComponent,
+    // DesignereditdialogueComponent,
     ManufactureviewprofileComponent,
     ProfilebuttonComponent,
     SupplierviewprofileComponent,
     AddmaterialPageComponent,
-    ManufactureCardComponent,
+    // ManufactureCardComponent,
     ConsumerDashboardComponent,
-    CartBottomSheetComponent
+    AddPriceDialogue
 
   ],
   imports: [
@@ -111,6 +123,14 @@ import {ProductService} from "./services/product.service";
     MatFormFieldModule,
     Ng2CarouselamosModule,
     MatSidenavModule,
+     BrowserAnimationsModule,
+     MatCardModule,
+     MatDialogModule,
+     HttpClientModule,
+     FormsModule,
+     MatSelectModule,
+     MatTabsModule,
+    
     BrowserAnimationsModule,
     MatCardModule,
     MatDialogModule,
@@ -121,13 +141,12 @@ import {ProductService} from "./services/product.service";
     MatTableModule,
     MatBottomSheetModule,
     MatBadgeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
 
-  providers: [OrderService,ProductService,ConsumerService],
-  entryComponents: [SignUpDialogue, SupplierEditDialogue, UploadDesignsDialogue, manufactureEditDialog,
-    manufactureAddDialog, CartBottomSheetComponent
-  ],
+  providers: [ProductService,ConsumerService],
+  // entryComponents : [SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog,],
+  entryComponents: [SignUpDialogue, SupplierEditDialogue, UploadDesignsDialogue, manufactureEditDialog, manufactureAddDialog,designerEditDialogue,AddPriceDialogue,CartBottomSheetComponent],
   bootstrap: [AppComponent]
 
 })
