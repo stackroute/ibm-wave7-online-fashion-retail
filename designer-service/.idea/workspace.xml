@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="34123237-9c43-4ab8-84ee-31ec9e74f264" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/DesignerDashboardApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/config/KafkaConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/controller/DesignerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/controller/OrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Designer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Dorder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Manufacturer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Mapping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Material.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Supplier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/repository/DesignerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/repository/OrderRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/DesignerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/DesignerServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/OderService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/OrderServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/test/java/com/stackroute/designerdashboard/DesignerDashboardApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/addmaterialsbutton/addmaterialsbutton.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/addmaterialsbutton/addmaterialsbutton.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/AddPriceDialogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/AddPriceDialogue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/upload-designs-dialogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/upload-designs-dialogue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designerviewprofile/designerEditDialogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designerviewprofile/designerEditDialogue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/header1/header1.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/header1/header1.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/manufactureviewprofile/manufactureviewprofile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/manufactureviewprofile/manufactureviewprofile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/BasePrice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/BasePrice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Designer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Designer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/DesignerOrder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/DesignerOrder.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Dorder.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Manufacture.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Manufacturer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Manufacturer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Mapping.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Mapping.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Materials.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Materials.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Supplier.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Supplier.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/manufactureservice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/manufactureservice.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/supplier-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/supplier-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/user-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/user-service.service.ts" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1Pzb1I41rHfSVual2BC73dRSNdd" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/example/designerdashboard/repository" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.example.designerdashboard.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/designerdashboard/repository" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/designerdashboard/service" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/designerdashboard/controller" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/designerdashboard/model" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.DesignerDashboardApplication (1)">
+    <configuration name="DesignerDashboardApplication (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.stackroute.designerdashboard.DesignerDashboardApplication" />
+      <module name="designer-dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.stackroute.designerdashboard.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DesignerDashboardApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.designerdashboard.DesignerDashboardApplication" />
+      <module name="designer-dashboard" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.designerdashboard.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.DesignerDashboardApplication (1)" />
+        <item itemvalue="Application.DesignerDashboardApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="34123237-9c43-4ab8-84ee-31ec9e74f264" name="Default Changelist" comment="" />
+      <created>1566879655920</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566879655920</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
