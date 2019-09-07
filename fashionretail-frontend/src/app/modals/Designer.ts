@@ -1,9 +1,14 @@
+import { List } from 'lodash';
+import { DesignerOrder } from './DesignerOrder';
+
 export interface Designer{
     
-    id: number;
-    contact: number;
+    id: string;
+    contactNumber: number;
      name: string;
-      location: string;
+      city: string;
       email: string;
       rating: number;
+      orderList : List<DesignerOrder>
 }
+

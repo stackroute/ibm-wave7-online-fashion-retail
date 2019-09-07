@@ -1,6 +1,6 @@
 package com.stackroute.manufacture.services;
 
-import com.stackroute.manufacture.domain.Manufacture;
+import com.stackroute.manufacture.domain.Manufacturer;
 import com.stackroute.manufacture.repository.ManufactureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,7 @@ import java.util.Optional;
 public class ManufactureServiceImpl implements ManufactureService {
     ManufactureRepository manufactureRepository;
 
+
     @Autowired
     public ManufactureServiceImpl(ManufactureRepository manufactureRepository)
     {
@@ -19,24 +20,24 @@ public class ManufactureServiceImpl implements ManufactureService {
     }
 
     @Override
-    public Manufacture saveManufacture(Manufacture manufacture) {
-        Manufacture savedManufacture = manufactureRepository.save(manufacture);
-        return savedManufacture;
+    public Manufacturer saveManufacture(Manufacturer manufacturer) {
+        Manufacturer savedManufacturer = manufactureRepository.save(manufacturer);
+        return savedManufacturer;
     }
 
     @Override
-    public Optional<Manufacture> getManufacture(int id) {
+    public Optional<Manufacturer> getManufacture(String id) {
 //        Designer designer = designerRepository.findById(id);
         return manufactureRepository.findById(id);
     }
 
     @Override
-    public List<Manufacture> getAllManufactures() {
+    public List<Manufacturer> getAllManufactures() {
         return manufactureRepository.findAll();
     }
 
     @Override
-    public boolean deleteManufacture(int id ){
+    public boolean deleteManufacture(String id ){
       // Optional<User> user1 = userRepository.findById(id);
 
         try {
@@ -49,21 +50,21 @@ public class ManufactureServiceImpl implements ManufactureService {
         }
     }
     @Override
-    public Manufacture updateManufacture(Manufacture manufacture, int id)
+    public Manufacturer updateManufacture(Manufacturer manufacturer, String id)
     {
-        Optional<Manufacture> user1 = manufactureRepository.findById(id);
+        Optional<Manufacturer> user1 = manufactureRepository.findById(id);
         String name = user1.get().getName();
         String email=user1.get().getEmail();
         String specifications= user1.get().getSpecifications();
 
-        manufacture.setId(id);
-        manufacture.setName(name);
-        manufacture.setEmail(email);
-        manufacture.setCity(manufacture.getCity());
-        manufacture.setSpecifications(specifications);
-        manufacture.setContact_number(manufacture.getContact_number());
-        Manufacture savedManufacture = manufactureRepository.save(manufacture);
-        return savedManufacture;
+        manufacturer.setId(id);
+        manufacturer.setName(name);
+        manufacturer.setEmail(email);
+        manufacturer.setCity(manufacturer.getCity());
+        manufacturer.setSpecifications(specifications);
+        manufacturer.setContact_number(manufacturer.getContact_number());
+        Manufacturer savedManufacturer = manufactureRepository.save(manufacturer);
+        return savedManufacturer;
     }
 
 }

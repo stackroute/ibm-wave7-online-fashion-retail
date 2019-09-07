@@ -27,7 +27,7 @@ public class DesignerServiceImpl implements DesignerService {
 
 
     @Override
-    public Optional<Designer> getDesigner(int id) {
+    public Optional<Designer> getDesigner(String id) {
 //        Designer designer = designerRepository.findById(id);
         return designerRepository.findById(id);
     }
@@ -39,7 +39,7 @@ public class DesignerServiceImpl implements DesignerService {
     }
 
     @Override
-    public boolean deleteDesigner(int id ){
+    public boolean deleteDesigner(String id ){
       // Optional<User> user1 = userRepository.findById(id);
 
         try {
@@ -55,7 +55,7 @@ public class DesignerServiceImpl implements DesignerService {
         }
     }
     @Override
-    public Designer updateDesigner(Designer designer, int id)
+    public Designer updateDesigner(Designer designer, String id)
     {
         Optional<Designer> designer1 = designerRepository.findById(id);
         String name=designer1.get().getName();
@@ -64,8 +64,8 @@ Designer designer2=new Designer();
 designer2.setId(id);
         designer2.setName(name);
         designer2.setEmail(email);
-        designer2.setContact(designer.getContact());
-        designer2.setLocation(designer.getLocation());
+     designer2.setContactNumber(designer.getContactNumber());
+        designer2.setCity(designer.getCity());
         designer2.setRating(designer.getRating());
 
         Designer savedDesigner = designerRepository.save(designer2);

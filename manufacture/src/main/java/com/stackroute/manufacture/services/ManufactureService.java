@@ -1,20 +1,20 @@
 package com.stackroute.manufacture.services;
 
-import com.stackroute.manufacture.domain.Manufacture;
+import com.stackroute.manufacture.domain.Manufacturer;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ManufactureService {
 
-    public Manufacture saveManufacture(Manufacture manufacture);
+    public Manufacturer saveManufacture(Manufacturer manufacturer);
 
-    public List<Manufacture> getAllManufactures();
+    public List<Manufacturer> getAllManufactures();
 
-    public boolean deleteManufacture(int id) ;
+    public boolean deleteManufacture(String id) ;
 
-    public Optional<Manufacture> getManufacture(int id);
+    public Optional<Manufacturer> getManufacture(String id);
 
-    public Manufacture updateManufacture(Manufacture manufacture, int id);
+    public Manufacturer updateManufacture(Manufacturer manufacturer, String id);
 
 }

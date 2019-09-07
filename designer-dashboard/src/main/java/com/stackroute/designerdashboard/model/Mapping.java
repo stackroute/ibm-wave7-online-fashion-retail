@@ -1,47 +1,46 @@
 package com.stackroute.designerdashboard.model;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@NodeEntity
 public class Mapping {
-    private int id;
-    private String Quantity;
-    private  String designerEnterQuantity;
-    private int price;
+
+    @Id
+    private String id;
+    private double price;
+    private double quantity;
     private Material material;
     private Supplier supplier;
+    private String unit;
 
-    public Mapping() {
-    }
-
-    public Mapping(int id, String quantity, int price, Material material, Supplier supplier,String designerEnterQuantity) {
-        this.id = id;
-        this.Quantity = quantity;
-        this.price = price;
-        this.material = material;
-        this.supplier = supplier;
-        this.designerEnterQuantity = designerEnterQuantity;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getQuantity() {
-        return Quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        Quantity = quantity;
-    }
-
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(double quantity) {
+        this.quantity = quantity;
     }
 
     public Material getMaterial() {
@@ -60,11 +59,23 @@ public class Mapping {
         this.supplier = supplier;
     }
 
-    public String getDesignerEnterQuantity() {
-        return designerEnterQuantity;
+    public String getUnit() {
+        return unit;
     }
 
-    public void setDesignerEnterQuantity(String designerEnterQuantity) {
-        this.designerEnterQuantity = designerEnterQuantity;
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    @Override
+    public String toString() {
+        return "Mapping{" +
+                "id='" + id + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", material=" + material +
+                ", supplier=" + supplier +
+                ", unit='" + unit + '\'' +
+                '}';
     }
 }

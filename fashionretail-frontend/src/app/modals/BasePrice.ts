@@ -1,5 +1,6 @@
 export interface BasePrice{
-    id: number;
+    id: string;
     name: string;
     price: number;
 }
+

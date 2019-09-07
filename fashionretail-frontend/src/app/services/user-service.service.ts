@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 import { Mapping } from '../modals/Mapping';
 import { Manufacturer } from '../modals/Manufacturer';
 import { Designer } from '../modals/Designer';
-import { Dorder } from '../modals/Dorder';
 import { DesignerOrder } from '../modals/DesignerOrder';
+import { Design } from '../modals/Design';
 
 
 const httpOptions={
@@ -59,21 +59,21 @@ export class UserServiceService {
       return this.http.post<Designer>(this.designerUrl,designs,httpOptions);
    }
 
-   getDesignsById(): Observable<DesignerOrder[]>{
+   getDesignsById(): Observable<Design[]>{
      const url = `${this.designerUrl}/{{id}}`
-     return this.http.get<DesignerOrder[]>(url);
+     return this.http.get<Design[]>(url);
    }
 
-   submitOrder(dOrder : Dorder) : Observable<Dorder>
+   submitOrder(dOrder : DesignerOrder) : Observable<DesignerOrder>
    {
      console.log(dOrder);
-    return this.http.request<Dorder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
+    return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
       'Access-Control-Allow-Origin':'*',
     })});
    }
 
-   public getAllOrders(): Observable<Dorder[]>{
-    return this.http.get<Dorder[]>(this.designerUrl);
+   public getAllOrders(): Observable<DesignerOrder[]>{
+    return this.http.get<DesignerOrder[]>(this.designerUrl);
   }
   getDesigner():Observable<Designer>
   {
@@ -82,7 +82,7 @@ export class UserServiceService {
      return this.http.get<Designer>(getUrl);
       
   }
-  updateDesigner(id:number,designer:Designer):Observable<Designer>{
+  updateDesigner(id:string,designer:Designer):Observable<Designer>{
     const url="http://localhost:8080/designer";
      const updateUrl=`${url}/3`;
     return this.http.put<Designer>(updateUrl,designer,httpOptions);

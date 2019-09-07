@@ -15,6 +15,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
 import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
 import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
+import {ManufacturerDashboardComponent} from './manufacturer-dashboard/manufacturer-dashboard.component'
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
@@ -51,11 +52,13 @@ const routes: Routes = [
   },
 
   {path:'designerviewprofile',component:DesignerviewprofileComponent},
+  { path : 'manufacturer' , component : ManufacturerDashboardComponent},
   // {
   //     path: '', component: BodyComponent
   // },
   { path : '**/LogOut' ,component: HeroComponent},
   { path : '**' ,component: HeroComponent},
+
 
 ];
 

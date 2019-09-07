@@ -9,11 +9,11 @@ public interface DesignerService {
 
     public Designer saveDesigner(Designer designer);
 
-    public Optional<Designer> getDesigner(int id);
+    public Optional<Designer> getDesigner(String id);
     public List<Designer> getAllDesigners();
 
-    public boolean deleteDesigner(int id) ;
+    public boolean deleteDesigner(String id) ;
 
-    public Designer updateDesigner(Designer designer, int id);
+    public Designer updateDesigner(Designer designer, String id);
 
 }
