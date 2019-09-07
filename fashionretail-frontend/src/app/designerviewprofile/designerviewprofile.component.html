@@ -1,24 +1,49 @@
+<app-header1></app-header1>
 <div class="example-card">
+
+    <mat-card>
     <mat-card-header>
-        <mat-card-title>My Profile</mat-card-title>
+        <mat-card-title>
+            <h3>My Profile</h3>
+        </mat-card-title>
+        <br>
+        <br>
     </mat-card-header>
-    <mat-card-content>
-        <div class="example-container">
-            <mat-form-field>
-                User Name: Sindhu
-            </mat-form-field><br>
-            <mat-form-field>
-                Email Id: sindhu@gmail.com
-            </mat-form-field><br>
-            <mat-form-field>
-                City:
-            </mat-form-field><br>
-            <mat-form-field>
-                Contact Number:
-            </mat-form-field>
-        </div>
-    </mat-card-content>
+ 
+
+    <div class="example-container" >
+            <mat-card-content>
+        <!-- <div *ngFor="let designer of designer"> -->
+       
+
+            <h5>User Name:</h5> {{designer.name}}
+            <!-- </mat-form-field><br> -->
+            <!-- <mat-form-field> -->
+            <br>
+
+            <h5>Email Id:</h5> {{designer.email}}
+            <!-- </mat-form-field><br> -->
+            <!-- <mat-form-field> -->
+            <br>
+
+            <h5>City:</h5>{{designer.location}}
+
+            <!-- </mat-form-field>-->
+            <br>
+            <!-- <mat-form-field> -->
+
+            <h5>Contact Number:</h5> {{designer.contact}}
+
+            <!-- </mat-form-field> -->
+            <!-- </form> -->
+        <!-- </mat-card-content> -->
+        <!-- </div> -->
+</mat-card-content>
+
+    </div>
+
     <mat-card-actions>
-        <button mat-raised-button color="primary" (click)=edit()>Edit</button>
+        <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>
     </mat-card-actions>
+    </mat-card>
 </div>

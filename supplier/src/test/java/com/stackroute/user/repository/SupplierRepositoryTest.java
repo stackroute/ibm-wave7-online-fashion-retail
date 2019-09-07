@@ -1,6 +1,6 @@
 //package com.stackroute.user.repository;
 //
-//import com.stackroute.user.domain.User;
+//import com.stackroute.user.domain.Supplier;
 //import org.junit.After;
 //import org.junit.Assert;
 //import org.junit.Before;
@@ -15,43 +15,42 @@
 //
 //@RunWith(SpringRunner.class)
 //@DataMongoTest
-//public class UserRepositoryTest {
+//public class SupplierRepositoryTest {
 //
 //        @Autowired
-//        UserRepository userRepository;
+//        SupplierRepository supplierRepository;
 //
-//        User user;
+//        Supplier supplier;
 //
 //        @Before
 //        public void setUp() {
-//            user = new User( 1,"Sindhu", "sindhura", "sindhura@gmail.com", "designer");
-//            user.setId(1);
-//            user.setName("Sindhu");
-//            user.setName("Sindhu");
-//            user.setPassword("sindhura");
-//            user.setEmail("sindhura.gmail.com");
-//            user.setDesignation("designer");
+//            supplier = new Supplier( 1,"Suchita", "skanchh1@in.ibm.com", "Lucknow", "5star");
+//            supplier.setId(1);
+//            supplier.setName("Suchita");
+//            supplier.setEmail("skanchh1@in.ibm.com");
+//            supplier.setCity("Lucknow");
+//            supplier.setRating("5star");
 //        }
 //
 //        @After
 //        public void tearDown() {
-//            userRepository.deleteAll();
+//            supplierRepository.deleteAll();
 //        }
 //
 //    @Test
-//    public void testSaveTrack(){
-//        userRepository.save(user);
-//        User fetchTrack = userRepository.findById(user.getId()).get();
+//    public void testSaveSupplier(){
+//        supplierRepository.save(supplier);
+//        Supplier fetchTrack = supplierRepository.findById(supplier.getId()).get();
 //        Assert.assertEquals(1,fetchTrack.getId());
 //    }
 //    @Test
-//    public void getAllTracks()
+//    public void getAllSuppliers()
 //    {
-//        List<User> users = new ArrayList<>();
-//        User user1 = new User(2,"sarah","sahasra","www.sarah.gmail.com","designer");
-//        users.add(user);
-//        users.add(user1);
-//        List<User> userslist = userRepository.findAll();
+//        List<Supplier> users = new ArrayList<>();
+//        Supplier supplier1 = new Supplier(2,"sarah","www.sarah.gmail.com","Delhi","3star");
+//        users.add(supplier);
+//        users.add(supplier1);
+//        List<Supplier> userslist = supplierRepository.findAll();
 //        Assert.assertEquals("sarah",users.get(1).getName());
 //    }
 //}

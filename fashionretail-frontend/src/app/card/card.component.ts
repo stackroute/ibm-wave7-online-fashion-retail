@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../order.service';
-import { IOrder } from '../modals/Order';
+import { IOrder } from '../services/order';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-card',

@@ -6,7 +6,7 @@ export interface DesignerOrder{
     price : number;
     discount : number;
     profit : number;
-    QualityOfDesign : number;
+    QuantityOfDesign : number;
     OrderStatus : String;
-    dimage : string;
+    design_img : string;
 }

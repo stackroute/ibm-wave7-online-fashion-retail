@@ -4,7 +4,6 @@ export interface Supplier{
     email : String;
     city : String;
     rating : String;
-    contactNumber : number;
  }
 
 

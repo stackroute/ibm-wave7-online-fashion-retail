@@ -19,8 +19,8 @@ public class MaterialServiceImpl implements MaterialService {
 
   @Override
   public Material saveMaterial(Material material) {
-    Material savedMaterial = materialRepository.save(material);
-    return savedMaterial;
+    System.out.println("In save Material");
+    return materialRepository.save(material);
   }
 
   @Override
@@ -29,7 +29,7 @@ public class MaterialServiceImpl implements MaterialService {
   }
 
   @Override
-  public boolean deleteMaterial(int id ){
+  public boolean deleteMaterial(String id ){
     // Optional<User> user1 = userRepository.findById(id);
 
     try {
@@ -45,7 +45,7 @@ public class MaterialServiceImpl implements MaterialService {
     }
   }
   @Override
-  public Material updateMaterial(Material material, int id)
+  public Material updateMaterial(Material material, String id)
   {
     Optional<Material> material1 = materialRepository.findById(id);
 
@@ -55,5 +55,10 @@ public class MaterialServiceImpl implements MaterialService {
 
     Material savedMaterial = materialRepository.save(material);
     return savedMaterial;
+  }
+
+  @Override
+  public Material findById(String id) {
+    return materialRepository.findById(id).orElse(null);
   }
 }

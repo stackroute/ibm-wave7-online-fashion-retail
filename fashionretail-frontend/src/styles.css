@@ -9,3 +9,8 @@ body {
     margin: auto;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+<<<<<<< HEAD
+=======
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+>>>>>>> 7d7195c19ab7fc903d052692dcc7853eced25b05

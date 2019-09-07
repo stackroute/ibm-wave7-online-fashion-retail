@@ -1,0 +1,25 @@
+<div class="flex">
+    <mat-card class="tp-card" *ngFor="let order of receivedOrders">
+        <mat-card-header>
+           <div mat-card-avatar class="tp-header-image"></div>
+           <mat-card-title><h4>Order ID: {{order.id}}</h4></mat-card-title>
+           <!-- <mat-card-subtitle><h3>Manufacture Name:{{order.customer_name}}</h3></mat-card-subtitle> -->
+         </mat-card-header>
+           <mat-card-content>
+              <h3>Id :</h3>
+              <h3>Name: </h3>
+              <h3>Price: </h3>
+              <h3>Discount:</h3>
+              <h3>Profit:</h3>
+              <h3>Mapping:</h3>
+              <h3>Manufacture:</h3>
+              <h3>Designer:</h3>
+              <h3>Quantity of Design:</h3>
+              <h3>Order Status:</h3>
+           </mat-card-content>
+           <mat-card-actions>
+              <button mat-button>Accept</button>
+              <button mat-button>Reject</button>
+           </mat-card-actions>
+     </mat-card>
+     </div>

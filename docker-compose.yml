@@ -39,7 +39,6 @@ services:
 
   mongo:
     image: mongo:latest
-
     ports:
       - 27017:27017
     expose:
@@ -75,8 +74,67 @@ services:
     image: neo4j
     hostname: localhost
     ports:
+      - 8099:8099
+    healthcheck:
+      test: "exit 0"
+
+  manufacture:
+    build: manufacture/
+    depends_on:
+      - mongo
+      - user
+    restart: always
+    network_mode: host
+    container_name: manufacture
+    image: manufacture
+    hostname: localhost
+    ports:
       - 8090:8090
     healthcheck:
       test: "exit 0"
 
+  supplier:
+    build: supplier/
+    depends_on:
+      - mongo
+      - user
+    restart: always
+    network_mode: host
+    container_name: supplier
+    image: supplier
+    hostname: supplier
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: "exit 0"
+      
+  designer-dashboard:
+    build: designer/
+    depends_on:
+      - mongo
+      - user
+    restart: always
+    network_mode: host
+    container_name: designer
+    image: designer
+    hostname: designer
+    ports:
+      - 8080:8080
+    healthcheck:
+      test: "exit 0"
+      
+  consumer:
+    build: consumer/
+      depends_on:
+        - mongo
+        - user
+      restart: always
+      network_mode: host
+      container_name: consumer
+      image: consumer
+      hostname: consumer
+      ports:
+        - 8080:8080
+      healthcheck:
+        test: "exit 0"
 

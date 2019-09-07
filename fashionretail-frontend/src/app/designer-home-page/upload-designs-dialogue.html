@@ -9,7 +9,7 @@
     <mat-form-field>
       <input matInput type="text" placeholder="name of the design" [(ngModel)]="data.name">
     </mat-form-field>
-    <mat-form-field>
+    <!-- <mat-form-field>
       <input type="number" matInput [disabled]="true" placeholder="price" [(ngModel)]="data.price">
     </mat-form-field>
 
@@ -18,22 +18,22 @@
       </mat-form-field>
       <mat-form-field>
           <input type="number" matInput [disabled]="true" placeholder="profit percentage (%)" [(ngModel)]="data.profit" >
-        </mat-form-field>
+        </mat-form-field> -->
         <mat-form-field>
-            <input type="number" matInput placeholder="Quality Of Design" [(ngModel)]="data.QualityOfDesign" >
+            <input type="number" matInput placeholder="Quality Of Design" [(ngModel)]="data.QuantityOfDesign" >
           </mat-form-field>
 <p>
       <!-- <button mat-button (click)="onClick()">Browse
         <mat-icon>file_upload</mat-icon>
         {{text}}
         </button> -->
-        <input type="file" placeholder="file" [(ngModel)]="data.dimage">
+        <input type="file" placeholder="file" [(ngModel)]="data.design_img">
     </p>
   
   </div>
   </mat-card-content>
   <mat-card-actions>
-        <button mat-raised-button color="Primary" [mat-dialog-close]="data" cdkFocusInitial>Upload</button>
+        <button mat-raised-button color="Primary" [mat-dialog-close]="data" cdkFocusInitial>upload</button>
         <!-- <button mat-raised-button color="Primary" [mat-dialog-close]="data" cdkFocusInitial (click)="nextStep()">Upload</button> -->
         <!-- <button mat-raised-button (click)="onNoClick()" color="primary">Sign-up</button> -->
     <!-- <a style="margin-left: 10px" routerLink="/login"> -->

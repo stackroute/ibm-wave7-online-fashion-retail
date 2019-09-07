@@ -1,3 +1,4 @@
+
 package com.stackroute.manufacture;
 
 import org.springframework.boot.SpringApplication;

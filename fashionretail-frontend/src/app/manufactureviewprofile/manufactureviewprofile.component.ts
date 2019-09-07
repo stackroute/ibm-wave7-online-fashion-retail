@@ -1,7 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Manufacture } from '../modals/Manufacture';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ManufactureregistrationService } from '../manufactureregistration.service';
+import { ManufactureserviceService } from '../services/manufactureservice.service';
+
+export interface DialogData{
+  city: string;
+  contact_number: number;
+}
 
 @Component({
   selector: 'app-manufactureviewprofile',
@@ -9,57 +14,59 @@ import { ManufactureregistrationService } from '../manufactureregistration.servi
   styleUrls: ['./manufactureviewprofile.component.css']
 })
 export class ManufactureviewprofileComponent implements OnInit {
-  manufacture: Manufacture
-  public updatedEmail:String
-  public updateManufacture: Manufacture
 
-  constructor(){}
-  // constructor(private registrationService: ManufactureregistrationService, private dialog: MatDialog) { }
+  city: string;
+  contact_number: number;
+   public updatedManu: Manufacture;
+  manufacture: Manufacture
+
+  constructor(private dialog: MatDialog, private manufactureService: ManufactureserviceService) { }
 
   ngOnInit() {
+    this.manufactureService.getManufacture().subscribe((data)=>{
+      this.manufacture=data;
+      console.log(this.manufacture);
+    })
+  }
+  updateManufacture(manufacture:Manufacture) {
+        console.log(manufacture);
+    this.manufactureService.updateManufacture(manufacture.id,manufacture).subscribe((data)=> {
+      console.log("result is ", data);
+      this.manufactureService.getManufacture().subscribe(data => {this.manufacture=data})
+
+    });
+  }
+
+  data;
+  openDialog(manufacture:Manufacture) {
+    this.updatedManu = manufacture;
+    const dialogRef = this.dialog.open(manufactureEditDialog,
+      {
+        width : '250px',
+        data:{}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.data = result;
+        console.log(result);
+        this.updateManufacture(result);
+
+      });
   }
 }
-  // openDialog(manufacture:Manufacture) {
-    
-  //   const dialogRef = this.dialog.open(DialogComponent,
-  //     {
-  //       width : '250px',
-  //       data : {}
-  //     });
-  //     dialogRef.afterClosed().subscribe(result => {
-  //       this.updatedEmail = result;
-  //       console.log('Dialog result: ${result}');
-  //       console.log('updated comment:' , this.updatedEmail);
-  //       this.updateManufacture;
-  //     });
-  //   }
+  @Component({
+    selector: 'app-manufactureEditDialog',
+    templateUrl: 'manufactureEditDialog.html',
+   })
+   export class manufactureEditDialog {
+     manufacture: Manufacture;
+      city: string;
+    contact_number: number;
 
-  // //   onclick(){
-  // //     //console.log(user);
-  // //     this.registrationService.updateUser(this.updateManufacture.email,this.updateManufacture).subscribe((data)=> {
-  // //        this.manufacture = data;
-  // //       console.log("result is ", data);
-  // //     });
-  // // }
-  // // saveManufacture(manufacture:Manufacture) {
-  // //   console.log(manufacture);
-  // //   this.registrationService.saveManufacture(manufacture).subscribe((data)=> {
-  // //      this.manufacture = data;
-  // //     console.log("result is ", manufacture);
-  // //   });
-  // // }
-  
-  // }
+    constructor(
+      public dialogRef: MatDialogRef<manufactureEditDialog>,
+      @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureserviceService) {}
+      onNoClick(): void {
+        this.dialogRef.close();
+      }
 
-  // @Component({
-  //   selector: 'app-dialogComponent',
-  //   templateUrl: 'dialogComponent.html',
-  //  })
-  //  export class DialogComponent {
-  //   constructor(
-  //     public dialogRef: MatDialogRef<DialogComponent>,
-  //     @Inject(MAT_DIALOG_DATA) public data: Manufacture) {}
-  //     onNoClick(): void {
-  //       this.dialogRef.close();
-  //     }
-  //  }
+   }

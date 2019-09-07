@@ -1,0 +1,17 @@
+.tp-card {
+    width: 300px;
+    margin: 20px 20px 20px 20px;
+    min-width: 100px;
+  }
+  
+  .tp-header-image {
+    background-image: url('https://cdn.shopify.com/s/files/1/0916/0836/products/44915_Gibson_SG_112790111_1_220x.jpg?v=1565301688');
+    background-size: cover;
+  }
+  .flex
+  {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom: 100px;
+  }

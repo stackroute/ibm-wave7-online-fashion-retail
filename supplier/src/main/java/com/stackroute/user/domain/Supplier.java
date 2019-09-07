@@ -1,49 +1,41 @@
 package com.stackroute.user.domain;
 
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document
-public class Supplier {
-
+public class Supplier
+{
     @Id
-    private int id;
+    private String id;
     private String name;
-    private String email;
     private String city;
-    private String rating;
+    private float rating;
+    private String email;
+    private List<SupplierOrder> supplierOrders;
 
+  public Supplier() {
+    supplierOrders = new ArrayList<>();
+  }
 
-  private long contactNumber;
+  public String getId() {
+        return id;
+    }
 
-
-    public Supplier(int id, String name,String email, String city, String rating, long contactNumber ) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
-        this.email = email;
-        this.city = city;
-        this.rating=rating;
-        this.contactNumber=contactNumber;
-    }
-
-
-    public Supplier() {
-    }
-
-    public int getId() { return id; }
-
-    public void setId(int id) { this.id = id; }
-
-    public String getName() { return name; }
-
-    public void setName(String name) { this.name = name; }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getCity() {
@@ -54,12 +46,38 @@ public class Supplier {
         this.city = city;
     }
 
-     public String getRating() { return rating; }
+    public float getRating() {
+        return rating;
+    }
 
-    public void setRating(String rating) { this.rating = rating;}
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
 
-  public long getContactNumber() { return contactNumber; }
+    public String getEmail() {
+        return email;
+    }
 
-  public void setContactNumber(long contactNumber) { this.contactNumber = contactNumber; }
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public List<SupplierOrder> getSupplierOrders() {
+        return supplierOrders;
+    }
+
+    public void setSupplierOrders(List<SupplierOrder> supplierOrders) {
+        this.supplierOrders = supplierOrders;
+    }
+
+    @Override
+    public String toString() {
+        return "Supplier{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                ", rating=" + rating +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
