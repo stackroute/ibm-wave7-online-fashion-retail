@@ -15,6 +15,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
 import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
 import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 
 
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path:'about', component:AboutComponent},
   {path: 'login', component : LoginComponent},
   {path: 'sign-up',component : SignUpComponent},
+  {path:'reset-password',component:ResetPasswordComponent},
+  {path:'forgotpassword',component:ForgotpasswordComponent},
   {
     path: 'designer',
     component: DesignerHomePageComponent},
