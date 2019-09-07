@@ -54,7 +54,7 @@ public class MappingServiceImpl implements MappingService {
   }
 
   @Override
-  public boolean deleteMapping(int id ){
+  public boolean deleteMapping(String id ){
     // Optional<User> user1 = userRepository.findById(id);
 
     try {
@@ -73,7 +73,7 @@ public class MappingServiceImpl implements MappingService {
     }
   }
   @Override
-  public Mapping updateMapping(Mapping mapping, int id)
+  public Mapping updateMapping(Mapping mapping, String id)
   {
     Optional<Mapping> mapping1 = mappingRepository.findById(id);
 

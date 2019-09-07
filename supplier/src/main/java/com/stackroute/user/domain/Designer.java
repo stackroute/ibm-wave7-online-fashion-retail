@@ -1,28 +1,27 @@
 package com.stackroute.user.domain;
 
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Document
-public class Supplier
+public class Designer
 {
-    @Id
+
     private String id;
     private String name;
     private String city;
     private float rating;
     private String email;
-    private List<SupplierOrder> supplierOrders;
+    private long contactNumber;
+    private List<DesignerOrder> orderList;
 
-  public Supplier() {
-    supplierOrders = new ArrayList<>();
-  }
+    public List<DesignerOrder> getOrderList() {
+        return orderList;
+    }
 
-  public String getId() {
+    public void setOrderList(List<DesignerOrder> orderList) {
+        this.orderList = orderList;
+    }
+
+    public String getId() {
         return id;
     }
 
@@ -62,22 +61,24 @@ public class Supplier
         this.email = email;
     }
 
-    public List<SupplierOrder> getSupplierOrders() {
-        return supplierOrders;
+    public long getContactNumber() {
+        return contactNumber;
     }
 
-    public void setSupplierOrders(List<SupplierOrder> supplierOrders) {
-        this.supplierOrders = supplierOrders;
+    public void setContactNumber(long contactNumber) {
+        this.contactNumber = contactNumber;
     }
 
     @Override
     public String toString() {
-        return "Supplier{" +
-                "id=" + id +
+        return "Designer{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", rating=" + rating +
                 ", email='" + email + '\'' +
+                ", contactNumber=" + contactNumber +
+                ", orderList=" + orderList +
                 '}';
     }
 }

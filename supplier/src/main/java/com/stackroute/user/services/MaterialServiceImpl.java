@@ -14,7 +14,6 @@ public class MaterialServiceImpl implements MaterialService {
   @Autowired
   public MaterialServiceImpl(MaterialRepository materialRepository)
   {
-
     this.materialRepository = materialRepository;
   }
 
@@ -26,12 +25,11 @@ public class MaterialServiceImpl implements MaterialService {
 
   @Override
   public List<Material> getAllMaterials() {
-
     return materialRepository.findAll();
   }
 
   @Override
-  public boolean deleteMaterial(int id ){
+  public boolean deleteMaterial(String id ){
     // Optional<User> user1 = userRepository.findById(id);
 
     try {
@@ -47,7 +45,7 @@ public class MaterialServiceImpl implements MaterialService {
     }
   }
   @Override
-  public Material updateMaterial(Material material, int id)
+  public Material updateMaterial(Material material, String id)
   {
     Optional<Material> material1 = materialRepository.findById(id);
 
@@ -60,7 +58,7 @@ public class MaterialServiceImpl implements MaterialService {
   }
 
   @Override
-  public Material findById(int id) {
+  public Material findById(String id) {
     return materialRepository.findById(id).orElse(null);
   }
 }

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface MappingRepository extends MongoRepository<Mapping,Integer> {
+public interface MappingRepository extends MongoRepository<Mapping,String> {
   List<Mapping> findBySupplier(Supplier supplier);
   List<Mapping> findByMaterial(Material material);
 }
