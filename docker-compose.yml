@@ -4,19 +4,21 @@ services:
   eureka-server:
     build: eureka-server/
     restart: always
-    network_mode: "host"
+    network_mode: host
     hostname: localhost
     image: eureka-server
+    container_name: eureka
     ports:
       - 8761:8761
     healthcheck:
       test: "exit 0"
 
-  config-service:
+  config-server:
     build: config-server/
     restart: always
-    network_mode: "host"
-    image: config-service
+    network_mode: host
+    image: config-server
+    container_name: configserver
     hostname: localhost
     ports:
       - 8888:8888
@@ -29,7 +31,7 @@ services:
       - config-service
       - eureka-server
     restart: always
-    network_mode: "host"
+    network_mode: host
     image: zuul-api
     hostname: localhost
     ports:
@@ -41,8 +43,6 @@ services:
     image: mongo:latest
     ports:
       - 27018:27018
-    expose:
-      - 27018
     container_name: mongo
     network_mode: host
     hostname: localhost
@@ -50,10 +50,13 @@ services:
     healthcheck:
       test: "exit 0"
 
-  user:
+  user-service:
     build: user/
     depends_on:
       - mongo
+      - config-service
+      - eureka-server
+      - zuul-api
     restart: always
     network_mode: host
     container_name: userregistration
@@ -64,25 +67,29 @@ services:
     healthcheck:
       test: "exit 0"
 
-  neo4j:
-    build: neo4j/
-    depends_on:
-      - mongo
-    restart: always
-    network_mode: host
-    container_name: neo4j
-    image: neo4j
-    hostname: localhost
-    ports:
-      - 8191:8191
-    healthcheck:
-      test: "exit 0"
+  #  recomendation-service :
+  #   build: neo4j/
+  #   depends_on:
+  #     - consumer-service
+  #     - designer-service
+  #     - supplier-service
+  #     - manufacturer-service
+  #     - user-service
+  #   restart: always
+  #   network_mode: host
+  #   container_name: neo4j
+  #   image: neo4j
+  #   hostname: localhost
+  #   ports:
+  #     - 8191:8191
+  #   healthcheck:
+  #     test: "exit 0"
 
-  manufacture:
+  manufacturer-service:
     build: manufacture/
     depends_on:
       - mongo
-      - user
+      - user-service
     restart: always
     network_mode: host
     container_name: manufacture
@@ -93,11 +100,11 @@ services:
     healthcheck:
       test: "exit 0"
 
-  supplier:
+  supplier-service:
     build: supplier/
     depends_on:
       - mongo
-      - user
+      - user-service
     restart: always
     network_mode: host
     container_name: supplier
@@ -108,11 +115,13 @@ services:
     healthcheck:
       test: "exit 0"
       
-  designer-dashboard:
+  designer-service:
     build: designer/
     depends_on:
       - mongo
-      - user
+      - user-service
+      - manufacturer-service
+      - supplier-service
     restart: always
     network_mode: host
     container_name: designer
@@ -123,34 +132,107 @@ services:
     healthcheck:
       test: "exit 0"
       
-  consumer:
+  consumer-service:
     build: consumer/
-      depends_on:
-        - mongo
-        - user
-      restart: always
-      network_mode: host
-      container_name: consumer
-      image: consumer
-      hostname: consumer
-      ports:
-        - 8190:8190
-      healthcheck:
-        test: "exit 0"
+    depends_on:
+      - mongo
+      - user-service
+    restart: always
+    network_mode: host
+    container_name: consumer
+    image: consumer
+    hostname: consumer
+    ports:
+      - 8190:8190
+    healthcheck:
+      test: "exit 0"
 
-  login:
+  login-service:
     build: login/
-      depends_on:
-        - mongo
-        - user
-      restart: always
-      network_mode: host
-      container_name: login
-      image: login
-      hostname: login
-      ports:
-        - 8190:8190
-      healthcheck:
-        test: "exit 0"
+    depends_on:
+      - mongo
+      - user-service
+    restart: always
+    network_mode: host
+    container_name: login
+    image: login
+    hostname: login
+    ports:
+      - 8190:8190
+    healthcheck:
+      test: "exit 0"
 
+  reports-service:
+    build: reports/
+    depends_on:
+      - mongo
+      - user-service
+      - consumer-service
+      - designer-service
+    restart: always
+    network_mode: host
+    container_name: reports
+    image: reports
+    hostname: reports
+    ports:
+      - 8190:8190
+    healthcheck:
+      test: "exit 0"
   
+  zookeeper:
+    image: zookeeper
+    container_name: zookeeper
+    network_mode: host
+    hostname: localhost
+    ports:
+      - 2181:2181
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+  kafka:
+    image: kafka
+    container_name: kafka
+    network_mode: host
+    hostname: localhost
+    ports:
+      - 9096:9096
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_CREATE_TOPICS: "test-1, test-2"
+    restart: always
+    healthcheck:
+      test: "exit 0"
+
+  workflow-service:
+    build: workflow/
+    depends_on:
+      - mongo
+      - user-service
+    restart: always
+    network_mode: host
+    container_name: workflow
+    image: workflow
+    hostname: workflow
+    ports:
+      - 8194:8194
+    healthcheck:
+      test: "exit 0"
+
+  fashionretail-frontend:
+    build: fashionretail/
+    restart: always
+    network_mode: host
+    container_name: fashionretail
+    image: fashionretail
+    hostname: fashionretail
+    ports:
+      - 4201:4201
+    healthcheck:
+      test: "exit 0"
+

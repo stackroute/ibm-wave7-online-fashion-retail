@@ -57,10 +57,9 @@
           (click)="openDialog()">Upload Designs</button></div>
 
 
-<div class="cardList">
-
-          
-    <mat-card class="card-picture" *ngFor="let designs of orderlist | slice :9; let i =index;">
+<div class="cardList">      
+    <mat-card class="card-picture" *ngFor="let designs of orderlist">
+        <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist | slice :9; let i =index;"> -->
       <mat-card-header>
         
         <mat-card-title>Designs</mat-card-title>
