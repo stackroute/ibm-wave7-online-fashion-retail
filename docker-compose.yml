@@ -180,7 +180,7 @@ services:
       test: "exit 0"
   
   zookeeper:
-    image: zookeeper
+    image: wurstmeister/zookeeper
     container_name: zookeeper
     network_mode: host
     hostname: localhost
@@ -191,7 +191,7 @@ services:
       test: "exit 0"
 
   kafka:
-    image: kafka
+    image: wurstmeister/kafka
     container_name: kafka
     network_mode: host
     hostname: localhost
