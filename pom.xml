@@ -31,7 +31,7 @@
 		<module>eureka-server</module>
 		<module>zuul-api</module>
 		<module>neo4j</module>
-		<module>user</module>
+		<module>user-service</module>
 	</modules>
 
 	<dependencies>

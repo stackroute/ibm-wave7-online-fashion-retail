@@ -45,9 +45,9 @@ export class HeaderComponent implements OnInit {
 
 
   saveUser(user : User){
-    let num=Math.floor(Math.random() * (999999 - 100000)) + 100000;
-        console.log("random number is ",num);
-        user.id=num;
+//     let num=Math.floor(Math.random() * (999999 - 100000)) + 100000;
+//         console.log("random number is ",num);
+//         user.id=num;
       this.userService.saveUser(user).subscribe((data) =>{
         this.user=data;
         console.log("result ",this.user)

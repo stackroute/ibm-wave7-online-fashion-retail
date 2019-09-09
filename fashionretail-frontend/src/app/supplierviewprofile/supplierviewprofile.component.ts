@@ -42,7 +42,6 @@ openDialog(supplier:Supplier) {
     const dialogRef = this.dialog.open(SupplierEditDialogue,
       {
         width: '350px',
-//         data: {city:this.city, contactNumber: this.contactNumber}
         data:{}
       });
 
@@ -50,9 +49,6 @@ openDialog(supplier:Supplier) {
     this.data=result;
     console.log(result);
     this.updateSupplier(result);
-//       if (result != undefined) {
-//          this.updateSupplier(result);
-//         console.log(result);
     });
   }
 }

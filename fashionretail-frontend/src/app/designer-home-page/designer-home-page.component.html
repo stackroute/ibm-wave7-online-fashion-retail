@@ -3,6 +3,7 @@
     <button mat-button color="primary"><a routerLink="/designerviewprofile">View Profile</a></button><br>
     <button mat-button color="primary">View Previous orders</button>
     <mat-divider></mat-divider>
+    <button mat-button color="primary"><a [routerLink] = "LogOut">LogOut</a></button>
     <!-- <div class="buttons">
         <button mat-stroked-button>
             <a routerLink="about">    About us </a>
@@ -158,7 +159,7 @@
               <button mat-raised-button (click)="openDialog()">cancel</button>
             </mat-card-actions>
           </mat-card>
-         
+
         </div>
       </div>
     </mat-tab>

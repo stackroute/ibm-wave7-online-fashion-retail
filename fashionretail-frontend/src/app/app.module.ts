@@ -25,15 +25,7 @@ import {AddmaterialsbuttonComponent, manufactureAddDialog} from './addmaterialsb
 import {DisplaymaterialsComponent} from './displaymaterials/displaymaterials.component';
 import {MatTableModule} from '@angular/material/table';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import {OrderService} from './services/order.service';
-// import {BodyComponent} from './body/body.component';
-import {ManufactureCardComponent} from './manufacturecard/manufacturecard.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-
-import {
-  ManufactureviewprofileComponent,
-  manufactureEditDialog
-} from './manufactureviewprofile/manufactureviewprofile.component';
 import {AddmaterialPageComponent} from './addmaterial-page/addmaterial-page.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
@@ -53,8 +45,15 @@ import { CardComponent } from './card/card.component';
 // import { OrderService } from './order.service';
 import { BodyComponent } from './body/body.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue,AddPriceDialogue} from './designer-home-page/designer-home-page.component';
-import { from } from 'rxjs';
 import { Header1Component } from './header1/header1.component';
+import { PieChartComponent } from 'angular-d3-charts'; // this is needed!
+
+
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
+import { DashboardreportsComponent } from './dashboardreports/dashboardreports.component';
+//  import { ReactiveFormsModule } from '@angular/forms';
+//  import { BrowserModule } from '@angular/platform-browser';
 import { DesignerviewprofileComponent,designerEditDialogue } from './designerviewprofile/designerviewprofile.component';
 
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -100,6 +99,8 @@ import { DesignerviewordersComponent } from './designervieworders/designerviewor
     // DesignereditdialogueComponent,
     ManufactureviewprofileComponent,
     ProfilebuttonComponent,
+    DashboardreportsComponent,
+    PieChartComponent,
     SupplierviewprofileComponent,
     AddmaterialPageComponent,
     // ManufactureCardComponent,
@@ -118,7 +119,6 @@ import { DesignerviewordersComponent } from './designervieworders/designerviewor
     ReactiveFormsModule,
     MatAutocompleteModule,
     HttpClientModule,
-
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
@@ -135,14 +135,6 @@ import { DesignerviewordersComponent } from './designervieworders/designerviewor
      MatDialogModule,
      HttpClientModule,
      FormsModule,
-     MatSelectModule,
-     MatTabsModule,
-    
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatDialogModule,
-    HttpClientModule,
-    FormsModule,
     MatTabsModule,
     MatSelectModule,
     MatTableModule,
