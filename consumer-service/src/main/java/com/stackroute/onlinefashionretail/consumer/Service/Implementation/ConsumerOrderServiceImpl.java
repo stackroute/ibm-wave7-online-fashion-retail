@@ -108,4 +108,21 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
             return null;
         }
     }
+
+    @Override
+    public Integer getProductCount() {
+        try {
+            int count = 0;
+            List<ConsumerOrder> orders = consumerOrderRepository.findAll();
+            for (ConsumerOrder order :
+                    orders) {
+                count += order.getProducts().size();
+            }
+            return count;
+        }
+        catch (MongoSocketOpenException exception){
+            logger.error("Error connecting to database: ",exception);
+            return null;
+        }
+    }
 }
