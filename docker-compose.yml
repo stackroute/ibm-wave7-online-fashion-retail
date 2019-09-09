@@ -51,7 +51,7 @@ services:
       test: "exit 0"
 
   user-service:
-    build: user/
+    build: user-service/
     depends_on:
       - mongo
       - config-service
@@ -101,7 +101,7 @@ services:
       test: "exit 0"
 
   supplier-service:
-    build: supplier/
+    build: supplier-service/
     depends_on:
       - mongo
       - user-service
@@ -116,7 +116,7 @@ services:
       test: "exit 0"
       
   designer-service:
-    build: designer/
+    build: designer-service/
     depends_on:
       - mongo
       - user-service
@@ -133,7 +133,7 @@ services:
       test: "exit 0"
       
   consumer-service:
-    build: consumer/
+    build: consumer-service/
     depends_on:
       - mongo
       - user-service
@@ -148,7 +148,7 @@ services:
       test: "exit 0"
 
   login-service:
-    build: login/
+    build: login-service/
     depends_on:
       - mongo
       - user-service
@@ -163,7 +163,7 @@ services:
       test: "exit 0"
 
   reports-service:
-    build: reports/
+    build: reports-service/
     depends_on:
       - mongo
       - user-service
@@ -210,7 +210,7 @@ services:
       test: "exit 0"
 
   workflow-service:
-    build: workflow/
+    build: workflow-service/
     depends_on:
       - mongo
       - user-service
