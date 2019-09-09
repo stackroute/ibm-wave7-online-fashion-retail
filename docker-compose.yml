@@ -158,7 +158,7 @@ services:
     image: login
     hostname: login
     ports:
-      - 8190:8190
+      - 8193:8193
     healthcheck:
       test: "exit 0"
 
@@ -175,7 +175,7 @@ services:
     image: reports
     hostname: reports
     ports:
-      - 8190:8190
+      - 8195:8195
     healthcheck:
       test: "exit 0"
   
@@ -224,15 +224,15 @@ services:
     healthcheck:
       test: "exit 0"
 
-  fashionretail-frontend:
-    build: fashionretail/
-    restart: always
-    network_mode: host
-    container_name: fashionretail
-    image: fashionretail
-    hostname: fashionretail
-    ports:
-      - 4201:4201
-    healthcheck:
-      test: "exit 0"
+  # fashionretail-frontend:
+  #   build: fashionretail/
+  #   restart: always
+  #   network_mode: host
+  #   container_name: fashionretail
+  #   image: fashionretail
+  #   hostname: fashionretail
+  #   ports:
+  #     - 4201:4201
+  #   healthcheck:
+  #     test: "exit 0"
 
