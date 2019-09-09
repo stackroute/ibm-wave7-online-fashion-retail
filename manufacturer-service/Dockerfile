@@ -1,4 +1,4 @@
 FROM openjdk:11
-ADD ./target/manufacturer-0.0.1-SNAPSHOT.jar manufacturer-0.0.1-SNAPSHOT.jar
+ADD ./target/manufacturer-service-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8189
-ENTRYPOINT ["java","-jar", "manufacturer-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar", "app.jar"]
