@@ -30,8 +30,13 @@
 		<module>config-server</module>
 		<module>eureka-server</module>
 		<module>zuul-api</module>
-<!--		<module>neo4j</module>-->
 		<module>user-service</module>
+		<module>login-service</module>
+		<module>consumer-service</module>
+		<module>manufacturer-service</module>
+		<module>supplier-service</module>
+		<module>workflow-service</module>
+		<module>reports-service</module>
 	</modules>
 
 	<dependencies>
