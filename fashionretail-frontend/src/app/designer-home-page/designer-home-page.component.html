@@ -3,6 +3,9 @@
     <button mat-button color="primary"><a routerLink="/designerviewprofile">View Profile</a></button><br>
     <button mat-button color="primary">View Previous orders</button>
     <mat-divider></mat-divider>
+<<<<<<< HEAD
+    <button mat-button color="primary"><a [routerLink] = "LogOut">LogOut</a></button>
+=======
     <!-- <div class="buttons">
         <button mat-stroked-button>
             <a routerLink="about">    About us </a>
@@ -11,6 +14,7 @@
     <button mat-button color="primary"><a routerLink = "logout">LogOut</a></button>
     
     <!-- <button mat-button color="primary"><a [routerLink] = "LogOut">LogOut</a></button> -->
+>>>>>>> 7d7195c19ab7fc903d052692dcc7853eced25b05
   </div>
 </mat-menu>
 
@@ -33,7 +37,10 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
+<<<<<<< HEAD
+=======
  
+>>>>>>> 7d7195c19ab7fc903d052692dcc7853eced25b05
   <mat-tab-group animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex"
     (selectedTabChange)="tabChanged($event)">
     <mat-tab label="UploadDesigns">
@@ -87,6 +94,18 @@
   </div>
   
     </mat-tab>
+<<<<<<< HEAD
+
+    <mat-tab label="select Supplier Materials" (click)="getAllUser()">
+      <div style="padding-top: 50px">
+        <button mat-button (click)="nextStep()"> placeOrder</button>
+        <div class="cardList">
+
+          <mat-card class="card-picture" *ngFor="let material of Materials">
+            <mat-card-header>
+              <mat-card-title>Material</mat-card-title>
+            </mat-card-header>
+=======
     
     <mat-tab label="select Supplier Materials" (click)="getAllUser()">
       <div style="padding-top: 50px">
@@ -104,6 +123,7 @@
              
             </mat-card-header>
            
+>>>>>>> 7d7195c19ab7fc903d052692dcc7853eced25b05
             <mat-card-content>
               <p> Material name: <b>{{material.material.name}}</b></p>
               <p>Material category: <b>{{material.material.category}}</b></p>
@@ -130,6 +150,14 @@
     <mat-tab label="Select Manufacturers">
       <div style="padding-top: 50px">
         <button mat-button (click)="submitOrder()"> submitOrder</button>
+<<<<<<< HEAD
+        <div class="cardList">
+
+          <mat-card class="card-picture" *ngFor="let manufacturer of manufacturer">
+            <mat-card-header>
+              <mat-card-title>Manufacturer</mat-card-title>
+            </mat-card-header>
+=======
        
         <div class="cardList">
 
@@ -141,15 +169,21 @@
               
             </mat-card-header>
            
+>>>>>>> 7d7195c19ab7fc903d052692dcc7853eced25b05
             <mat-card-content>
               <p>
                 Manufacturer Name:{{manufacturer.name}}
               </p>
               <p>
+<<<<<<< HEAD
+              </p>
+              <p>Quantity</p>
+=======
                
               </p>
               <p>Quantity</p>
               
+>>>>>>> 7d7195c19ab7fc903d052692dcc7853eced25b05
               <p>Rating</p>
             </mat-card-content>
             <mat-card-actions>
@@ -173,6 +207,10 @@
       <mat-card-subtitle>{{song.email}}</mat-card-subtitle>
     </mat-card-header>
   </mat-card>
+<<<<<<< HEAD
+</div>
+=======
  
 
 
+>>>>>>> 7d7195c19ab7fc903d052692dcc7853eced25b05
