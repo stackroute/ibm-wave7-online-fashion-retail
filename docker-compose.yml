@@ -64,19 +64,19 @@ services:
     healthcheck:
       test: "exit 0"
 
-  neo4j:
-    build: neo4j/
-    depends_on:
-      - mongo
-    restart: always
-    network_mode: host
-    container_name: neo4j
-    image: neo4j
-    hostname: localhost
-    ports:
-      - 8191:8191
-    healthcheck:
-      test: "exit 0"
+#  neo4j:
+#    build: neo4j/
+#    depends_on:
+#      - mongo
+#    restart: always
+#    network_mode: host
+#    container_name: neo4j
+#    image: neo4j
+#    hostname: localhost
+#    ports:
+#      - 8191:8191
+#    healthcheck:
+#      test: "exit 0"
 
   manufacture:
     build: manufacture/

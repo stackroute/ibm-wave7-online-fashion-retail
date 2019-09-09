@@ -30,7 +30,7 @@
 		<module>config-server</module>
 		<module>eureka-server</module>
 		<module>zuul-api</module>
-		<module>neo4j</module>
+<!--		<module>neo4j</module>-->
 		<module>user-service</module>
 	</modules>
 

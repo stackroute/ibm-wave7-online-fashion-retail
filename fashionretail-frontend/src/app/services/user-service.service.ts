@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../modals/User';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { Mapping } from '../modals/Mapping';
 import { Manufacturer } from '../modals/Manufacturer';
 import { Designer } from '../modals/Designer';
 import { DesignerOrder } from '../modals/DesignerOrder';
 import { Design } from '../modals/Design';
+import { environment } from '../../environments/environment';
 
 
 const httpOptions={
@@ -67,9 +68,10 @@ export class UserServiceService {
    submitOrder(dOrder : DesignerOrder) : Observable<DesignerOrder>
    {
      console.log(dOrder);
-    return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
-      'Access-Control-Allow-Origin':'*',
-    })});
+     return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
+    // return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
+    //   'Access-Control-Allow-Origin':'*',
+    // })});
    }
 
    public getAllOrders(): Observable<DesignerOrder[]>{
