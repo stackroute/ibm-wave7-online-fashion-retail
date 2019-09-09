@@ -54,7 +54,7 @@ services:
     build: user-service/
     depends_on:
       - mongo
-      - config-service
+      - config-server
       - eureka-server
       - zuul-api
     restart: always
