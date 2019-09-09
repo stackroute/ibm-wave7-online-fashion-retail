@@ -28,7 +28,7 @@ services:
   zuul-api:
     build: zuul-api/
     depends_on:
-      - config-service
+      - config-server
       - eureka-server
     restart: always
     network_mode: host
