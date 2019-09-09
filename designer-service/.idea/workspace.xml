@@ -2,53 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34123237-9c43-4ab8-84ee-31ec9e74f264" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/DesignerDashboardApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/config/KafkaConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/controller/DesignerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/controller/OrderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Designer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Dorder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Manufacturer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Mapping.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Material.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/model/Supplier.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/repository/DesignerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/repository/OrderRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/DesignerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/DesignerServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/OderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/java/com/stackroute/designerdashboard/service/OrderServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../designer-dashboard/src/test/java/com/stackroute/designerdashboard/DesignerDashboardApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/addmaterialsbutton/addmaterialsbutton.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/addmaterialsbutton/addmaterialsbutton.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/AddPriceDialogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/AddPriceDialogue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/designer-home-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/upload-designs-dialogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designer-home-page/upload-designs-dialogue.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designerviewprofile/designerEditDialogue.html" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/designerviewprofile/designerEditDialogue.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/footer/footer.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/header1/header1.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/header1/header1.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/manufactureviewprofile/manufactureviewprofile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/manufactureviewprofile/manufactureviewprofile.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/BasePrice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/BasePrice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Designer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Designer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/DesignerOrder.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/DesignerOrder.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Dorder.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Manufacture.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Manufacturer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Manufacturer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Mapping.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Mapping.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Materials.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Materials.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Supplier.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/modals/Supplier.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/manufactureservice.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/manufactureservice.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/order.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/supplier-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/supplier-service.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/user-service.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/app/services/user-service.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fashionretail-frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../fashionretail-frontend/src/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user/Dockerfile" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

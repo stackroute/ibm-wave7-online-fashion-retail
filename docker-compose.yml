@@ -50,7 +50,7 @@ services:
     healthcheck:
       test: "exit 0"
 
-  user:
+  user-service:
     build: user/
     depends_on:
       - mongo
