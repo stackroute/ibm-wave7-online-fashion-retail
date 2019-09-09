@@ -19,7 +19,7 @@ export class SupplierServiceService {
 //    this.userUrl = 'http://localhost:8089/api/v1/supplier';
   }
 
-  updateSupplier(supplier: Supplier, id: number): Observable<Supplier> {
+  updateSupplier(supplier: Supplier, id: string): Observable<Supplier> {
     const url = 'http://localhost:8089/api/v1/supplier/2';
     const updatedUrl = '${url}/2';
     return this.http.put<Supplier>(url, supplier, httpOptions);

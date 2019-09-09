@@ -2,10 +2,10 @@ import { Materials } from './Materials';
 import { Supplier } from './Supplier';
 
 export interface Mapping{
-    id : number;
-    Quantity : string;
+    id : string;
+    Quantity : number;
     price : number;
-    designerEnterQuantity: string;
+    unit : string;
     material : Materials;
     supplier : Supplier;
 }

@@ -24,15 +24,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {AddmaterialsbuttonComponent, manufactureAddDialog} from './addmaterialsbutton/addmaterialsbutton.component';
 import {DisplaymaterialsComponent} from './displaymaterials/displaymaterials.component';
 import {MatTableModule} from '@angular/material/table';
-
-import {OrderService} from './services/order.service';
-// import {BodyComponent} from './body/body.component';
-import {ManufactureCardComponent} from './manufacturecard/manufacturecard.component';
-
-import {
-  ManufactureviewprofileComponent,
-  manufactureEditDialog
-} from './manufactureviewprofile/manufactureviewprofile.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import {AddmaterialPageComponent} from './addmaterial-page/addmaterial-page.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
@@ -52,12 +45,22 @@ import { CardComponent } from './card/card.component';
 // import { OrderService } from './order.service';
 import { BodyComponent } from './body/body.component';
 import { DesignerHomePageComponent , UploadDesignsDialogue,AddPriceDialogue} from './designer-home-page/designer-home-page.component';
-import { from } from 'rxjs';
 import { Header1Component } from './header1/header1.component';
+import { PieChartComponent } from 'angular-d3-charts'; // this is needed!
+
+
+//import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+import { ManufactureviewprofileComponent, manufactureEditDialog } from './manufactureviewprofile/manufactureviewprofile.component';
+import { DashboardreportsComponent } from './dashboardreports/dashboardreports.component';
+//  import { ReactiveFormsModule } from '@angular/forms';
+//  import { BrowserModule } from '@angular/platform-browser';
 import { DesignerviewprofileComponent,designerEditDialogue } from './designerviewprofile/designerviewprofile.component';
 
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
+import { ManufacturerDashboardComponent } from './manufacturer-dashboard/manufacturer-dashboard.component';
+import { DesignerviewordersComponent } from './designervieworders/designervieworders.component';
+
 
 @NgModule({
   declarations: [
@@ -96,11 +99,16 @@ import { LoginComponent } from './login/login.component';
     // DesignereditdialogueComponent,
     ManufactureviewprofileComponent,
     ProfilebuttonComponent,
+    DashboardreportsComponent,
+    PieChartComponent,
     SupplierviewprofileComponent,
     AddmaterialPageComponent,
     // ManufactureCardComponent,
     ConsumerDashboardComponent,
-    AddPriceDialogue
+    AddPriceDialogue,
+    ManufacturerDashboardComponent,
+    DesignerviewordersComponent,
+    AddPriceDialogue,ForgotpasswordComponent,ResetPasswordComponent
 
   ],
   imports: [
@@ -111,7 +119,6 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     MatAutocompleteModule,
     HttpClientModule,
-
     AppRoutingModule,
     MatToolbarModule,
     MatJumbotronModule,
@@ -128,14 +135,6 @@ import { LoginComponent } from './login/login.component';
      MatDialogModule,
      HttpClientModule,
      FormsModule,
-     MatSelectModule,
-     MatTabsModule,
-    
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatDialogModule,
-    HttpClientModule,
-    FormsModule,
     MatTabsModule,
     MatSelectModule,
     MatTableModule,

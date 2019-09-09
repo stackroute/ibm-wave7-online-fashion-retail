@@ -14,7 +14,6 @@ import java.util.Optional;
 public class SupplierServiceImpl implements SupplierService {
 
     SupplierRepository supplierRepository;
-
     @Autowired
     public SupplierServiceImpl(SupplierRepository supplierRepository)
     {

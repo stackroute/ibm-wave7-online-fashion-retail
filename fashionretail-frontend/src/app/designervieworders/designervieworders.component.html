@@ -1,0 +1,21 @@
+<p>designervieworders works!</p>
+
+
+
+<div style="padding-top: 100px">
+    <table border="2" style="margin-left: 30%">
+      <tr class="table-align">
+      
+        <th>Product Name</th>
+        <th>BasePrice</th>
+      </tr>
+       <tr *ngFor="let base of baseprice">  
+
+          <td>Product Name: {{base.name}}</td>
+            
+             <td>BasePrice: {{base.price}}</td> 
+           
+        
+      </tr>
+      </table> 
+      </div>  
