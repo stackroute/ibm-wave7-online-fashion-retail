@@ -86,7 +86,7 @@ services:
   #     test: "exit 0"
 
   manufacturer-service:
-    build: manufacture/
+    build: manufacturer-service/
     depends_on:
       - mongo
       - user-service
