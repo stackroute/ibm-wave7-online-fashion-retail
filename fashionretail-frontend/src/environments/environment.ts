@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  designerUrl : "http://172.23.238.222:8187"
+  designerUrl : "http://172.23.238.222:8187",
+  supplierUrl : "http://172.23.238.218:8188",
+  loginBaseURI : "http://172.23.238.222:8192"
   
 };
 

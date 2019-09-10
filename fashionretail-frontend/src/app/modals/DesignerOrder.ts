@@ -7,14 +7,15 @@ import { List } from 'lodash';
 import { Manufacturer } from './Manufacturer';
 
 export interface DesignerOrder{
-  designOrder: Design;
-  mapping: any;
-  designer: Designer;
+  // designOrder: Design;
+  // mapping: any;
+  // designer: Designer;
     id : String;
     tagId : string;
     design : Design;
     manufacturer : Manufacturer;
-    supplierList : List<Map<Mapping,number>>
+    supplierList : Map<string,number>[];
+    // materialQuantity : number;
     // designer : Designer;
 
 }  

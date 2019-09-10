@@ -58,8 +58,8 @@
 
 
 <div class="cardList">      
-    <mat-card class="card-picture" *ngFor="let designs of orderlist">
-        <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist | slice :9; let i =index;"> -->
+    <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist"> -->
+        <mat-card class="card-picture" *ngFor="let designs of orderlist | slice :13; let i =index;">
       <mat-card-header>
         
         <mat-card-title>Designs</mat-card-title>
@@ -68,10 +68,10 @@
      
       <mat-card-content>
         <p>
-          Manufacturer Name: {{designs.designOrder.name}}
+          Manufacturer Name: {{designs.design.name}}
         </p>
         <p>
-         {{designs.id}}
+         {{designs.design.quantityOfDesign}}
         </p>
         <p>Quantity</p>
         
@@ -94,7 +94,7 @@
         <div class="cardList">
 
           <!-- <div *ngFor="let song of tracks"> -->
-          <mat-card class="card-picture" *ngFor="let material of Mapping">
+          <mat-card class="card-picture" *ngFor="let material of mapping">
           
           <!-- <mat-card class="card-picture" *ngFor="let material of Materials"> -->
             <mat-card-header>

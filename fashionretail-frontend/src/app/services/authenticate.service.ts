@@ -18,7 +18,7 @@ const httpOptions = {
 })
 export class AuthenticateService {
   private apiUrl = "http://localhost:8193/register";
-  private apiUrl2 = "http://localhost:8193/authenticate";
+  private apiUrl2 = "http://localhost:8186/authenticate";
   private user: User1;
 
   private loggedIn=new BehaviorSubject<boolean>(false);

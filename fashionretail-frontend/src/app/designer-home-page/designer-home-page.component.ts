@@ -1,14 +1,16 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-// import { User } from '../modals/User';
+import { User } from '../modals/User';
 import { Designer } from '../modals/Designer';
 import { UserServiceService } from '../services/user-service.service';
 import { MatTabChangeEvent } from '@angular/material';
 import { Materials } from '../modals/Materials';
-import { DesignerOrder } from '../modals/DesignerOrder';
 import { Manufacturer } from '../modals/Manufacturer';
-// import { Manufacture } from '../modals/Manufacture';
 import { Mapping } from '../modals/Mapping';
+import { Design } from '../modals/Design';
+import { DesignerOrder } from '../modals/DesignerOrder';
+import { ManufacturerOrder } from '../modals/ManufacturerOrder';
+import { BasePrice } from '../modals/BasePrice';
 @Component({
   selector: 'app-designer-home-page',
   templateUrl: './designer-home-page.component.html',
@@ -16,39 +18,55 @@ import { Mapping } from '../modals/Mapping';
 })
 export class DesignerHomePageComponent implements OnInit {
 
-  upload_designs: DesignerOrder ;
-  upload_designs1 : DesignerOrder[];
-  Mapping: Mapping[];
+  upload_designs: Design ;
+  upload_designs1 : Design[];
   manufacturer: Manufacturer[];
   Designer : Designer;
   selectedIndex: number = 0;
   items: Array<any> = [];
-  material : Array<Materials> = [];
+  // material : Array<Materials> = [];
+
   savaManufacture : Manufacturer;
   orderlist : DesignerOrder[];
   orderDetails : DesignerOrder;
-    // submitModel : DesignerOrder = {
-    // id : "",
-    // designOrder : {
-    //   id : "string",
-    //   name : "String",
-    // price : 1,
-    // discountPercentage : 1,
-    // profitPercentage : 1,
-    // QuantityOfDesign : 1,
-    // OrderStatus : "String",
-    // design_img : "string",
-    // },
-    // manufacturer : {
-    //   id : 1,
-    //   name : "string",
-    //   email : "string",
-    //   city : "string",
-    //   specification : "string",
 
-    // },
-    // mapping : [],
-    // };
+  manufacturerOrder : Array<ManufacturerOrder>= [];
+  basePricess : Array<BasePrice> = [];
+  mapping : Mapping[];
+  supplierMaterialList : Array<Map<string,number>> ; 
+  updatedOrder : DesignerOrder = {
+    id : "",
+    tagId : "",
+    design: {
+      id : "",
+      name : "",
+      price : 0,
+      discountPercentage : 0,
+      profitPercentage : 0,
+      QuantityOfDesign : 0,
+      OrderStatus : "",
+      design_img : "",
+    },
+    manufacturer : {
+      id : 0,
+    name : "",
+    email : "",
+    contact_number: 0, 
+    specifications: "",
+    city: "",
+    rating: 0,
+    basePrice : this.basePricess,
+    manufacturerOrder : this.manufacturerOrder
+    },
+   
+    supplierList : this.supplierMaterialList = [],
+    };
+
+  material: Mapping[] =[];
+  MaterialQuantity : number;
+
+
+  private quantityMap :Map<string, number> = new Map([]);
     // orderdetails : 
 
   constructor(private dialogue: MatDialog, private userService: UserServiceService) {
@@ -59,8 +77,8 @@ export class DesignerHomePageComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getAllMaterial().subscribe((data) => {
-      this.Mapping = data;
-      console.log("materials data", this.Mapping)
+      this.mapping = data;
+      console.log("materials data", this.mapping)
 
     })
     this.userService.getAllManufacture().subscribe((data) => {
@@ -68,13 +86,22 @@ export class DesignerHomePageComponent implements OnInit {
       console.log("manufacturer data", this.manufacturer)
     })
 
-    this.userService.getAllOrders().subscribe((data)=>{
-      this.orderlist = data;
-      console.log("orders list",this.orderlist)
-    })
+    this.getAllorders();
+
     this.userService.getDesigner().subscribe((data) => {
       this.Designer = data;
       console.log(this.Designer);
+    })
+  }
+  Mapping(arg0: string, Mapping: any) {
+    throw new Error("Method not implemented.");
+  }
+
+  getAllorders()
+  {
+    this.userService.getAllOrders().subscribe((data)=>{
+      this.orderlist = data;
+      console.log("orders list",this.orderlist)
     })
   }
 
@@ -94,18 +121,19 @@ export class DesignerHomePageComponent implements OnInit {
       }
     });
   }
-  saveDesigns(designer: Designer) {
+  saveDesigns(design : Design) {
   }
 
-  saveMaterial(material: Materials) {
-    this.material.push(material);
-    console.log(material);
-
+  saveMaterial(mapping: Mapping) {
+    console.log(mapping);
+    this.material.push(mapping);
+    this.quantityMap.set(mapping.id, mapping.materialQuantity);
+    this.updatedOrder.design = this.upload_designs;
+    this.updatedOrder.supplierList.push(this.quantityMap);
+    console.log(this.updatedOrder);
   }
 
-  previousStep(){
-    this.selectedIndex = 0;
-  }
+  
   saveManufacture(manufacturer : Manufacturer)
   {
       this.savaManufacture = manufacturer;
@@ -113,22 +141,24 @@ export class DesignerHomePageComponent implements OnInit {
 
   }
 
-  // submitOrder()
-  // {
-  //   console.log("designs: ",this.upload_designs);
-  //   console.log("manufacturer: ",this.savaManufacture);
-  //   console.log("material: ",this.material);
-  //   this.submitModel.designOrder = this.upload_designs;
-  //     this.submitModel.manufacturer = this.savaManufacture;
-  //     this.submitModel.mapping =  this.Mapping
-  //     this.submitModel.designer = this.Designer
-  //     this.userService.submitOrder(this.submitModel).subscribe(
-  //       (data) => {
-  //         this.orderDetails = data
-  //           console.log(data);
-  //       })
-  //       this.previousStep();
-  // }
+  submitOrder()
+  {
+    console.log("designs: ",this.upload_designs);
+    console.log("manufacturer: ",this.savaManufacture);
+    console.log("material: ",this.supplierMaterialList);
+      this.updatedOrder.design = this.upload_designs;
+      this.updatedOrder.manufacturer = this.savaManufacture;
+      console.log("updated order",this.updatedOrder);
+      let num=Math.floor(Math.random() * (999999 - 100000)) + 100000;
+       console.log("random number is ",num);
+       this.updatedOrder.id=""+num;
+      this.userService.submitOrder(this.updatedOrder).subscribe(
+        (data) => {
+          this.orderDetails = data
+            console.log( "orderlist",this.orderDetails);
+        })
+        this.previousStep();
+  }
   getAllUser() {
     alert("entered into get all users")
     this.userService.getAllUsers().subscribe((data) => {
@@ -141,23 +171,26 @@ export class DesignerHomePageComponent implements OnInit {
     this.selectedIndex += 1;
   }
 
-  openDialogPrice(id : DesignerOrder) {
+  previousStep(){
+    this.selectedIndex = 0;
+  }
+
+  openDialogPrice(dorderData : DesignerOrder) {
     const dialogRef = this.dialogue.open(AddPriceDialogue,
       {
         width: '350px',
-        data: this.orderlist
+        data: dorderData
       });
         
     dialogRef.afterClosed().subscribe(result => {
-      if (result != undefined) {
-        this.saveDesigns(result);
-        // this.nextStep();
-        console.log(result);
-        this.upload_designs = result;
-      }
-    });
+      console.log(result);
+    //   if (result != undefined) {
+    //     this.userService.updateOrder(result,result.id).subscribe((data) => {
+    //       this.getAllorders();
+    //     })
+    //   }
+   });
   }
-
 }
 
 @Component({
