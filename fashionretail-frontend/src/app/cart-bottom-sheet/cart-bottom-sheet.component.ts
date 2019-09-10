@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
-import {Product} from "../classes/product";
+import {Product} from "../model/product";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ConsumerService} from "../services/consumer.service";
 

@@ -1,14 +1,16 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-// import { User } from '../modals/User';
-import { Designer } from '../modals/Designer';
-import { UserServiceService } from '../services/user-service.service';
+import { User } from '../models/User';
+import { Designer } from '../models/Designer';
+import { UserService } from '../services/user.service';
 import { MatTabChangeEvent } from '@angular/material';
-import { Materials } from '../modals/Materials';
-import { DesignerOrder } from '../modals/DesignerOrder';
-import { Manufacturer } from '../modals/Manufacturer';
-// import { Manufacture } from '../modals/Manufacture';
-import { Mapping } from '../modals/Mapping';
+import { Material } from '../models/Material';
+import { Manufacturer } from '../models/Manufacturer';
+import { Mapping } from '../models/Mapping';
+import { Design } from '../models/Design';
+import { DesignerOrder } from '../models/DesignerOrder';
+import { ManufacturerOrder } from '../models/ManufacturerOrder';
+import { BasePrice } from '../models/BasePrice';
 @Component({
   selector: 'app-designer-home-page',
   templateUrl: './designer-home-page.component.html',
@@ -16,42 +18,58 @@ import { Mapping } from '../modals/Mapping';
 })
 export class DesignerHomePageComponent implements OnInit {
 
-  upload_designs: DesignerOrder ;
-  upload_designs1 : DesignerOrder[];
-  Mapping: Mapping[];
+  uploadDesigns: Design ;
+  uploadDesigns1: Design[];
   manufacturer: Manufacturer[];
-  Designer : Designer;
-  selectedIndex: number = 0;
+  Designer: Designer;
+  selectedIndex = 0;
   items: Array<any> = [];
-  material : Array<Materials> = [];
-  savaManufacture : Manufacturer;
-  orderlist : DesignerOrder[];
-  orderDetails : DesignerOrder;
-    // submitModel : DesignerOrder = {
-    // id : "",
-    // designOrder : {
-    //   id : "string",
-    //   name : "String",
-    // price : 1,
-    // discountPercentage : 1,
-    // profitPercentage : 1,
-    // QuantityOfDesign : 1,
-    // OrderStatus : "String",
-    // design_img : "string",
-    // },
-    // manufacturer : {
-    //   id : 1,
-    //   name : "string",
-    //   email : "string",
-    //   city : "string",
-    //   specification : "string",
+  // material : Array<Materials> = [];
 
-    // },
-    // mapping : [],
-    // };
-    // orderdetails : 
+  savaManufacture: Manufacturer;
+  orderlist: DesignerOrder[];
+  orderDetails: DesignerOrder;
 
-  constructor(private dialogue: MatDialog, private userService: UserServiceService) {
+  manufacturerOrder: Array<ManufacturerOrder> = [];
+  basePricess: Array<BasePrice> = [];
+  mapping: Mapping[];
+  supplierMaterialList: Array<Map<string, number>> ;
+  updatedOrder: DesignerOrder = {
+    id : '',
+    tagId : '',
+    designOrder: {
+      id : '',
+      name : '',
+      price : 0,
+      discountPercent : 0,
+      profitPercent : 0,
+      quantityOfDesign : 0,
+      orderStatus : '',
+      design_img : '',
+    },
+    manufacturer : {
+      id : '0',
+    name : '',
+    email : '',
+    contact_number: 0,
+    specifications: '',
+    city: '',
+    rating: 0,
+    basePrices : this.basePricess,
+    manufacturerOrders : this.manufacturerOrder
+    },
+
+    supplierList : this.supplierMaterialList = [],
+    };
+
+  material: Mapping[] = [];
+  MaterialQuantity: number;
+
+
+  private quantityMap: Map<string, number> = new Map([]);
+    // orderdetails :
+
+  constructor(private dialogue: MatDialog, private userService: UserService) {
     this.items = [
       { name: 'assets/designer.jpg' },
     ];
@@ -59,80 +77,89 @@ export class DesignerHomePageComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getAllMaterial().subscribe((data) => {
-      this.Mapping = data;
-      console.log("materials data", this.Mapping)
+      this.mapping = data;
+      console.log('materials data', this.mapping);
 
-    })
+    });
     this.userService.getAllManufacture().subscribe((data) => {
       this.manufacturer = data;
-      console.log("manufacturer data", this.manufacturer)
-    })
+      console.log('manufacturer data', this.manufacturer);
+    });
 
-    this.userService.getAllOrders().subscribe((data)=>{
-      this.orderlist = data;
-      console.log("orders list",this.orderlist)
-    })
+    this.getAllorders();
+
     this.userService.getDesigner().subscribe((data) => {
       this.Designer = data;
       console.log(this.Designer);
-    })
+    });
+  }
+  Mapping(arg0: string, mapping: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  getAllorders() {
+    this.userService.getAllOrders().subscribe((data) => {
+      this.orderlist = data;
+      console.log('orders list', this.orderlist);
+    });
   }
 
   openDialog() {
-    const dialogRef = this.dialogue.open(UploadDesignsDialogue,
+    const dialogRef = this.dialogue.open(UploadDesignsDialogueComponent,
       {
         width: '350px',
         data: {}
       });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result != undefined) {
+      if (result !== undefined) {
         this.saveDesigns(result);
         this.nextStep();
         console.log(result);
-        this.upload_designs = result;
+        this.uploadDesigns = result;
       }
     });
   }
-  saveDesigns(designer: Designer) {
+  saveDesigns(design: Design) {
   }
 
-  saveMaterial(material: Materials) {
-    this.material.push(material);
-    console.log(material);
-
+  saveMaterial(mapping: Mapping) {
+    console.log(mapping);
+    this.material.push(mapping);
+    this.quantityMap.set(mapping.id, mapping.quantity);
+    this.updatedOrder.designOrder = this.uploadDesigns;
+    this.updatedOrder.supplierList.push(this.quantityMap);
+    console.log(this.updatedOrder);
   }
 
-  previousStep(){
-    this.selectedIndex = 0;
-  }
-  saveManufacture(manufacturer : Manufacturer)
-  {
+
+  saveManufacture(manufacturer: Manufacturer) {
       this.savaManufacture = manufacturer;
-      console.log(this.savaManufacture)
+      console.log(this.savaManufacture);
 
   }
 
-  // submitOrder()
-  // {
-  //   console.log("designs: ",this.upload_designs);
-  //   console.log("manufacturer: ",this.savaManufacture);
-  //   console.log("material: ",this.material);
-  //   this.submitModel.designOrder = this.upload_designs;
-  //     this.submitModel.manufacturer = this.savaManufacture;
-  //     this.submitModel.mapping =  this.Mapping
-  //     this.submitModel.designer = this.Designer
-  //     this.userService.submitOrder(this.submitModel).subscribe(
-  //       (data) => {
-  //         this.orderDetails = data
-  //           console.log(data);
-  //       })
-  //       this.previousStep();
-  // }
+  submitOrder() {
+    console.log('designs: ', this.uploadDesigns);
+    console.log('manufacturer: ', this.savaManufacture);
+    console.log('material: ', this.supplierMaterialList);
+    this.updatedOrder.designOrder = this.uploadDesigns;
+    this.updatedOrder.manufacturer = this.savaManufacture;
+    console.log('updated order', this.updatedOrder);
+    const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    console.log('random number is ', num);
+    this.updatedOrder.id = '' + num;
+    this.userService.submitOrder(this.updatedOrder).subscribe(
+        (data) => {
+          this.orderDetails = data;
+          console.log( 'orderlist', this.orderDetails);
+        });
+    this.previousStep();
+  }
   getAllUser() {
-    alert("entered into get all users")
+    alert('entered into get all users');
     this.userService.getAllUsers().subscribe((data) => {
-    })
+    });
   }
   public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
     this.selectedIndex = tabChangeEvent.index;
@@ -141,56 +168,58 @@ export class DesignerHomePageComponent implements OnInit {
     this.selectedIndex += 1;
   }
 
-  openDialogPrice(id : DesignerOrder) {
-    const dialogRef = this.dialogue.open(AddPriceDialogue,
-      {
-        width: '350px',
-        data: this.orderlist
-      });
-        
-    dialogRef.afterClosed().subscribe(result => {
-      if (result != undefined) {
-        this.saveDesigns(result);
-        // this.nextStep();
-        console.log(result);
-        this.upload_designs = result;
-      }
-    });
+  previousStep() {
+    this.selectedIndex = 0;
   }
 
+  openDialogPrice(dorderData: DesignerOrder) {
+    const dialogRef = this.dialogue.open(AddPriceDialogueComponent,
+      {
+        width: '350px',
+        data: dorderData
+      });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    //   if (result != undefined) {
+    //     this.userService.updateOrder(result,result.id).subscribe((data) => {
+    //       this.getAllorders();
+    //     })
+    //   }
+   });
+  }
 }
 
 @Component({
-  selector: 'upload-designs-dialogue',
+  selector: 'app-upload-designs-dialogue',
   templateUrl: 'upload-designs-dialogue.html',
 })
 
-export class UploadDesignsDialogue {
+export class UploadDesignsDialogueComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<UploadDesignsDialogue>,
+    public dialogRef: MatDialogRef<UploadDesignsDialogueComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DesignerOrder) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
- 
+
 }
 
 @Component({
-  selector: 'AddPrice-dialogue',
+  selector: 'app-add-price-dialogue',
   templateUrl: 'AddPriceDialogue.html',
 })
 
-export class AddPriceDialogue {
+export class AddPriceDialogueComponent implements OnInit{
 
   constructor(
-    public dialogRef: MatDialogRef<AddPriceDialogue>,
+    public dialogRef: MatDialogRef<AddPriceDialogueComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DesignerOrder[]) { }
 
-    ngOnInit()
-    {
+    ngOnInit() {
       console.log(this.data);
     }
 

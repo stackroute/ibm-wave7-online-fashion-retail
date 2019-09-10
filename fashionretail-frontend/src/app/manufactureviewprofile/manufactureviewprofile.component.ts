@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ManufactureserviceService } from '../services/manufactureservice.service';
-import { Manufacturer } from '../modals/Manufacturer';
+import { ManufactureService } from '../services/manufacture.service';
+import { Manufacturer } from '../models/Manufacturer';
 
-export interface DialogData{
+export interface DialogData {
   city: string;
   contact_number: number;
 }
@@ -15,40 +15,40 @@ export interface DialogData{
 })
 export class ManufactureviewprofileComponent implements OnInit {
 
+  constructor(private dialog: MatDialog, private manufactureService: ManufactureService) { }
+
   city: string;
-  contact_number: number;
+  contactNumber: number;
    public updatedManu: Manufacturer;
 
-  manufacture:{
+  manufacture: {
 
-  }
+  };
 
-  constructor(private dialog: MatDialog, private manufactureService: ManufactureserviceService) { }
+  data;
 
   ngOnInit() {
-    this.manufactureService.getManufacture().subscribe((data)=>{
-      this.manufacture=data;
+    this.manufactureService.getManufacture().subscribe((data) => {
+      this.manufacture = data;
       console.log(this.manufacture);
-    })
+    });
   }
-  updateManufacture(manufacture:Manufacturer) {
+  updateManufacture(manufacture: Manufacturer) {
         console.log(manufacture);
-    this.manufactureService.updateManufacture(manufacture.id,manufacture).subscribe((data)=> {
-      console.log("result is ", data);
-      this.manufactureService.getManufacture().subscribe(data => {this.manufacture=data})
+        this.manufactureService.updateManufacture(manufacture.id, manufacture).subscribe((data) => {
+      console.log('result is ', data);
+      this.manufactureService.getManufacture().subscribe(data1 => {this.manufacture = data1; });
 
     });
   }
-
-  data;
-  openDialog(manufacture:Manufacturer) {
+  openDialog(manufacture: Manufacturer) {
     this.updatedManu = manufacture;
-    const dialogRef = this.dialog.open(manufactureEditDialog,
+    const dialogRef = this.dialog.open(ManufactureEditDialogComponent,
       {
         width : '250px',
-        data:{}
+        data: {}
       });
-      dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(result => {
         this.data = result;
         console.log(result);
         this.updateManufacture(result);
@@ -56,18 +56,18 @@ export class ManufactureviewprofileComponent implements OnInit {
       });
   }
 }
-  @Component({
+@Component({
     selector: 'app-manufactureEditDialog',
     templateUrl: 'manufactureEditDialog.html',
    })
-   export class manufactureEditDialog {
+   export class ManufactureEditDialogComponent {
      manufacture: Manufacturer;
       city: string;
-    contact_number: number;
+    contactNumber: number;
 
     constructor(
-      public dialogRef: MatDialogRef<manufactureEditDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureserviceService) {}
+      public dialogRef: MatDialogRef<ManufactureEditDialogComponent>,
+      @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureService) {}
       onNoClick(): void {
         this.dialogRef.close();
       }

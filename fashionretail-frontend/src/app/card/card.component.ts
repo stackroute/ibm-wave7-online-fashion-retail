@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IOrder } from '../services/order';
+import { SupplierOrder } from '../models/SupplierOrder';
 import { OrderService } from '../services/order.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { OrderService } from '../services/order.service';
 })
 export class CardComponent implements OnInit {
 
-  public receivedOrders: IOrder[];
+  public receivedOrders: SupplierOrder[];
   constructor(private _orderService: OrderService) { }
 
   ngOnInit() {

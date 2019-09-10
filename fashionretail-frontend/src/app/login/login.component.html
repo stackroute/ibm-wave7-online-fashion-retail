@@ -1,5 +1,6 @@
 
-<button mat-raised-button (click)="logout()" color="primary">LogOut</button>
+<app-header></app-header>
+<!-- <button mat-raised-button (click)="logout()" color="primary">LogOut</button> -->
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
@@ -26,13 +27,14 @@
 </table>
       </form>
     </mat-card-content>
+    <p> For creating New Account <a routerLink="/sign-up">Sign-Up</a></p>
     <mat-card-actions>
       <button mat-raised-button (click)="loginUser()" color="primary">Login</button>
     </mat-card-actions>
 
-    <mat-card-actions>
-      <button mat-raised-button (click)="openDialog()" color="primary">Sign up</button>
-    </mat-card-actions>
+    <!-- <mat-card-actions>
+      <button mat-raised-button color="primary">Sign up</button>
+    </mat-card-actions> -->
 
     <mat-card-actions>
       <p>Forgot password?</p>

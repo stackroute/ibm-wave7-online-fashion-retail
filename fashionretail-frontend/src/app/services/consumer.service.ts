@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import {Product} from '../classes/product';
+import {Product} from '../model/product';
 import {Observable} from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,14 @@ export class ConsumerService {
   }
 
   public viewCart(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>('http://172.23.238.169:8080/api/v1/consumer/1/cart', {headers: this.headers});
+    return this.httpClient.get<Product[]>(environment.consumerUrl + '/api/v1/consumer/1/cart', {headers: this.headers});
   }
   public addToCart(product: Product): Observable<Product> {
-    return this.httpClient.post<Product>('http://172.23.238.169:8080/api/v1/consumer/1/cart', product,{headers: this.headers});
+    return this.httpClient.post<Product>(environment.consumerUrl + '/api/v1/consumer/1/cart', product, {headers: this.headers});
   }
   public removeFromCart(product: Product): Observable<Product> {
-    return this.httpClient.request<Product>('delete', 'http://172.23.238.169:8080/api/v1/consumer/1/cart', {body: product, headers: this.headers});
+    return this.httpClient.request<Product>('delete',
+      environment.consumerUrl + '/api/v1/consumer/1/cart',
+      {body: product, headers: this.headers});
   }
 }

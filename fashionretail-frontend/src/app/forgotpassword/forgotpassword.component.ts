@@ -3,7 +3,7 @@ import { AuthenticateService } from '../services/authenticate.service';
 import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Users } from '../modals/Users';
+import { LoginUser } from '../models/LoginUser';
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.component.html',
@@ -12,13 +12,16 @@ import { Users } from '../modals/Users';
 
 
 export class ForgotpasswordComponent implements OnInit {
-  private user= new Users();
+  private user = new LoginUser('', '', '');
   private emailid;
-  constructor(private authenticateService: AuthenticateService, private formBuilder: FormBuilder,private router:Router,private http:HttpClient) { }
-  
+  constructor(private authenticateService: AuthenticateService,
+              private formBuilder: FormBuilder,
+              private router: Router,
+              private http: HttpClient) { }
+
   ngOnInit() {
   }
-  
+
   reset() {
     console.log(this.emailid);
     this.user.username = this.emailid;
@@ -29,4 +32,4 @@ export class ForgotpasswordComponent implements OnInit {
 
   }
 }
-  
+

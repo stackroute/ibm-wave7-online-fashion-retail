@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Supplier } from '../services/supplier';
-import { Material } from '../services/material';
-import { Mapping } from '../services/mapping';
+import { Supplier } from '../models/Supplier';
+import { Material } from '../models/Material';
+import { Mapping } from '../models/Mapping';
 import { OrderService } from '../services/order.service';
 
 
@@ -22,19 +22,18 @@ export class AddmaterialPageComponent implements OnInit {
   //   'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
   //   'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
   // ];
-  constructor(private _orderService: OrderService, private activatedRoute : ActivatedRoute, private router: Router) { }
+  constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  name;
 
   ngOnInit() {
   }
-  name;
-  
-  submit(name,price,quantity,category)
-  {
-    let supplier = new Supplier(1,"nilakshi","nilakshi@gmail.com","bangalore","5")
-    let material= new Material(2,category,name,"")
-    let mapping = new Mapping(1,quantity,price,material,supplier)
-    
-    this._orderService.submit(mapping).subscribe(data => {this.name = data;});
+
+  submit(name, price, quantity, category) {
+    const supplier = new Supplier('1', 'nilakshi', 'nilakshi@gmail.com', 'bangalore', '5');
+    const material = new Material('2', category, name, '');
+    const mapping = new Mapping('1', quantity, price, material, supplier, '');
+
+    this._orderService.submit(mapping).subscribe(data => {this.name = data; });
   }
 
 }

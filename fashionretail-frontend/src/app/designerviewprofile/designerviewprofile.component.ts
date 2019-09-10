@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Designer } from '../modals/Designer'
-import { UserServiceService } from '../services/user-service.service';
+import { Designer } from '../models/Designer'
+import { UserService } from '../services/user.service';
 export interface DialogData {
   location: string;
   contact: number;
@@ -16,7 +16,7 @@ export class DesignerviewprofileComponent implements OnInit {
   designer: Designer;
   location: string;
   contact: number;
-  constructor(private dialog: MatDialog, private designerService: UserServiceService) { }
+  constructor(private dialog: MatDialog, private designerService: UserService) { }
 
   ngOnInit() {
     this.designerService.getDesigner().subscribe((data) => {
@@ -32,11 +32,11 @@ export class DesignerviewprofileComponent implements OnInit {
       (data) => {
         console.log("updated Designer ", data);
         this.designerService.getDesigner().subscribe(
-         
+
           data => { this.designer = data }
 
         )
-       
+
       }
     );
   }

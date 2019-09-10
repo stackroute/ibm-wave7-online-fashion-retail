@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from '../modals/User';
-import { UserServiceService } from '../services/user-service.service';
+import { User } from '../models/User';
+import { UserService } from '../services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   title = 'Angular Form Validation Tutorial';
   angForm: FormGroup;
   public user : User;
-  constructor(private dialog: MatDialog, private userService : UserServiceService, private fb : FormBuilder) { }
+  constructor(private dialog: MatDialog, private userService : UserService, private fb : FormBuilder) { }
 
 
   ngOnInit() {

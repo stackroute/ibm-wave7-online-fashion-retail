@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BasePrice } from '../modals/BasePrice';
-import { ManufactureserviceService } from '../services/manufactureservice.service';
+import { BasePrice } from '../models/BasePrice';
+import { ManufactureService } from '../services/manufacture.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class AddmaterialsbuttonComponent implements OnInit {
   public updatedbase: BasePrice;
   baseprice:BasePrice;
 
-  constructor(private dialog:MatDialog, private manufactureService: ManufactureserviceService) { }
+  constructor(private dialog:MatDialog, private manufactureService: ManufactureService) { }
 
   ngOnInit() {
     this.manufactureService.getAllBasePrice().subscribe((data)=>{
@@ -73,7 +73,7 @@ openDialog(){
    price: number;
   constructor(
     public dialogRef: MatDialogRef<manufactureAddDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureserviceService) {}
+      @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureService) {}
 
 
   ngOnInit() {

@@ -4,8 +4,15 @@
 
 export const environment = {
   production: false,
-  designerUrl : "http://172.23.238.222:8187"
-  
+  designerUrl : "http://localhost:8187",
+  supplierUrl : "http://localhost:8188",
+  manufacturerUrl : "http://localhost:8189",
+  consumerUrl : "http://localhost:8190",
+  recommendationUrl : "http://localhost:8191",
+  userUrl : "http://localhost:8192",
+  loginUrl : "http://localhost:8193",
+  workflowUrl : "http://localhost:8194",
+  reportsUrl : "http://localhost:8195"  
 };
 
 /*

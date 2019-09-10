@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Supplier } from '../modals/Supplier';
-import { SupplierServiceService } from '../services/supplier-service.service';
+import { Supplier } from '../models/Supplier';
+import { SupplierService } from '../services/supplier.service';
 
 export interface DialogData{
   city:string;
@@ -19,7 +19,7 @@ export class SupplierviewprofileComponent implements OnInit {
  city:string;
  contactNumber:number;
 
-  constructor(private dialog: MatDialog, private supplierService: SupplierServiceService ) { }
+  constructor(private dialog: MatDialog, private supplierService: SupplierService ) { }
 
 
   ngOnInit() {
@@ -68,7 +68,7 @@ openDialog(supplier:Supplier) {
     constructor(
 
       public dialogRef: MatDialogRef<SupplierEditDialogue>,
-       @Inject(MAT_DIALOG_DATA) public data: Supplier, private supplierService: SupplierServiceService) { }
+       @Inject(MAT_DIALOG_DATA) public data: Supplier, private supplierService: SupplierService) { }
 
     onNoClick(): void {
       this.dialogRef.close();
