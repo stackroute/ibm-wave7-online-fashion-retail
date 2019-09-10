@@ -1,0 +1,68 @@
+<mat-menu #dd="matMenu" [overlapTrigger]="false">
+    <div (click)="cancelClick($event)" class="dropdown">
+        <button mat-button color="primary">View Profile</button><br>
+        <button mat-button color="primary" (click)="vieworders()">View Previous orders</button>
+        <!-- <mat-divider></mat-divider> -->
+        <button mat-button color="primary"><a routerLink = "logout">LogOut</a></button>
+    </div>
+ </mat-menu> 
+ 
+ <div>
+         <mat-toolbar style="background-color: #f8f9fa!important;">
+           <mat-toolbar-row>
+             <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+               <mat-icon>menu</mat-icon>
+             </button>
+             <img src="assets/assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+             <span class="title">Online Fashion Retail</span>
+             <span class="example-spacer"></span>
+               <span class="spacer"></span>
+             <div fxShow="true" fxHide.lt-md="true">
+                 <span>
+                     <mat-form-field>
+                       <input #searchText matInput placeholder="Search for products">
+                     </mat-form-field>
+                     <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
+                       <mat-icon>search</mat-icon>
+                     </button></span>
+               <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+               <button mat-stroked-button style="color: black">Home</button>
+             <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd" style="color: black">
+             Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button> 
+             
+           </div>
+           </mat-toolbar-row>
+         </mat-toolbar>
+         </div>
+
+
+<div class="flex">
+    <mat-card class="tp-card" *ngFor="let order of receivedOrders">
+            <div *ngIf ="order.orderStatus === 'accepted' || order.orderStatus === 'rejected' ">
+        <mat-card-header>
+           <div mat-card-avatar class="tp-header-image"></div>
+           <mat-card-title><h4>Order ID: {{order.id}}</h4></mat-card-title>
+           <mat-card-subtitle><h3>Designer Name:{{order.designerName}}</h3></mat-card-subtitle>
+         </mat-card-header>
+           <mat-card-content>
+               <h3>Order Category</h3>{{order.material.category}}
+              <h3>The material required is: </h3>{{order.material.name}}
+               <h3>Quantity: </h3>{{order.quantity}}
+               <h3>Order Status:</h3>{{order.orderStatus}}
+              
+            
+           </mat-card-content>
+        </div>
+        </mat-card>
+     </div>
+
+     <!-- Footer of the page -->
+<div>
+    <footer>
+        <p>
+            For any queries please <a routerLink="contact">contact us</a>
+        </p>
+        <img src="assets/facebook.png" />
+        <img src="assets/instagram.png" />
+    </footer>
+    </div>

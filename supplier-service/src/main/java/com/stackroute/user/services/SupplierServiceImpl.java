@@ -14,6 +14,7 @@ import java.util.Optional;
 public class SupplierServiceImpl implements SupplierService {
 
     SupplierRepository supplierRepository;
+
     @Autowired
     public SupplierServiceImpl(SupplierRepository supplierRepository)
     {
@@ -93,6 +94,8 @@ public class SupplierServiceImpl implements SupplierService {
   @Override
   public List<SupplierOrder> getAllOrders(String id) {
     Supplier save =supplierRepository.findById(id).orElse(null);
+    System.out.println(save);
+    System.out.println(save.getSupplierOrders());
     return save.getSupplierOrders();
   }
 
@@ -118,9 +121,11 @@ public class SupplierServiceImpl implements SupplierService {
       supplier.getSupplierOrders()) {
       if (sup.getId().equals(supplierOrder.getId()))
       {
+        System.out.println("inside");
         sup.setMaterial(supplierOrder.getMaterial());
         sup.setQuantity(supplierOrder.getQuantity());
         sup.setOrderStatus(supplierOrder.getOrderStatus());
+        supplierRepository.save(supplier);
         return sup;
       }
     }
