@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule} from '@angular/material';
+import {MatToolbarModule, MatButtonModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatListModule} from '@angular/material';
@@ -39,6 +39,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material';
+import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
 import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
 import { CardComponent } from './card/card.component';
@@ -62,6 +65,7 @@ import { ManufacturerDashboardComponent } from './manufacturer-dashboard/manufac
 import { DesignerviewordersComponent } from './designervieworders/designervieworders.component';
 import { LoginserviceService } from './services/loginservice.service';
 import { AuthenticateService } from './services/authenticate.service';
+import { OrderService } from './services/order.service';
 
 
 @NgModule({
@@ -110,7 +114,8 @@ import { AuthenticateService } from './services/authenticate.service';
     AddPriceDialogue,
     ManufacturerDashboardComponent,
     DesignerviewordersComponent,
-    AddPriceDialogue,ForgotpasswordComponent,ResetPasswordComponent
+    AddPriceDialogue,ForgotpasswordComponent,ResetPasswordComponent,
+    ViewOrdersComponent
 
   ],
   imports: [
@@ -122,6 +127,9 @@ import { AuthenticateService } from './services/authenticate.service';
     MatAutocompleteModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatDialogModule,
     MatToolbarModule,
     MatJumbotronModule,
     MatIconModule,
@@ -143,13 +151,14 @@ import { AuthenticateService } from './services/authenticate.service';
     MatBottomSheetModule,
     MatBadgeModule,
     MatSnackBarModule,
+    MatMenuModule,
+    MatIconModule
   ],
 
-  providers: [ProductService,ConsumerService,LoginserviceService,AuthenticateService],
+  providers: [ProductService,ConsumerService,LoginserviceService,AuthenticateService,OrderService],
   // entryComponents : [SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog,],
   entryComponents: [SignUpDialogue, SupplierEditDialogue, UploadDesignsDialogue, manufactureEditDialog, manufactureAddDialog,designerEditDialogue,AddPriceDialogue,CartBottomSheetComponent],
   bootstrap: [AppComponent]
 
 })
-export class AppModule {
-}
+export class AppModule { }

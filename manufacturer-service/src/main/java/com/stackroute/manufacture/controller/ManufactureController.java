@@ -28,6 +28,10 @@ public class ManufactureController {
     private KafkaTemplate<String, Manufacturer> kafkaTemplate;
     private static final String TOPIC = "Kafka_Example";
 
+    @GetMapping("test")
+    public String test() {
+        return "HI Service is up";    
+    }
 
     //Post mapping to save the user details
     @PostMapping("manufacture")

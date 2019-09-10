@@ -13,22 +13,33 @@ public class Consumer {
 
     @Autowired
     ReportRepository reportRepository;
+    Reports obj = new Reports();
+    int designerCount=0;
 
-    @KafkaListener(topics="Kafka_Example1",groupId = "group_id")
-    public void consume(Reports reports) throws IOException {
+    @KafkaListener(topics = "Kafka_Example1", groupId = "group_id")
+    public void consume(String reports) throws IOException {
         System.out.println("Inside Designer");
         System.out.println(reports);
-        Reports obj=new Reports();
-        obj.setId(reports.getId());
-        System.out.println(obj.getId());
-        reportRepository.save(obj);
+        obj.setId(reports);
+//        obj.setCount(null);
+        System.out.println("id is:" + obj.getId()+"count is : "+obj.getCount());
+      reportRepository.save(obj);
     }
-    @KafkaListener(topics="PRODUCTS_BOUGHT",groupId = "group_id")
-    public void consumecustomer(Reports reports) throws IOException {
+
+    @KafkaListener(topics = "PRODUCTS_BOUGHT", groupId = "group")
+    public void consumecustomer(String count) throws IOException {
         System.out.println("Inside Customer");
-        System.out.println(reports);
-        Reports obj=new Reports();
-        obj.setCount(reports.getCount());
+        System.out.println(count);
+        obj.setCount(count);
+        obj.setId(null);
+        System.out.println(obj.getCount() + "------" + obj.getId());
         reportRepository.save(obj);
     }
+//    @KafkaListener(topics="Kafka_Example1",groupId = "group")
+//    public void consume(String id) throws IOException {
+//        System.out.println("Inside Designer");
+//        System.out.println(id);
+//        reports.setCount(id);
+//        reportRepository.save(reports);
+//    }
 }

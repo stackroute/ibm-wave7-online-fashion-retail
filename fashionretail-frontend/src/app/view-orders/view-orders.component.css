@@ -10,12 +10,11 @@
   }
   .flex
   {
-    margin-top: 3cm;  
-    display: flex;
+      display: flex;
       flex-wrap: wrap;
-      flex-direction: row;
       justify-content: space-around;
-      margin-bottom: 5.6cm;
+      margin-bottom: 100px;
+      margin-top: 15%;
   }
   footer {
     position: fixed;
@@ -72,4 +71,3 @@ mat-toolbar{
 .button{
     color: white;
 }
- 

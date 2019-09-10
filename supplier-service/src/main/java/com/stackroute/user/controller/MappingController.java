@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RestController
 @RequestMapping(value="api/v2")
 public class MappingController {
@@ -43,6 +43,7 @@ public class MappingController {
     try {
       System.out.println("In try block");
       savedMapping = mappingService.saveMapping(mapping);
+      System.out.println(savedMapping);
       kafkaTemplate2.send(TOPIC,savedMapping);
       responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
     } catch (Exception ex) {

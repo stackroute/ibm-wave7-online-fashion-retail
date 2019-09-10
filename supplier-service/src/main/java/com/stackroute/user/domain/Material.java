@@ -45,4 +45,14 @@ public class Material
     public void setImage(String image) {
         this.image = image;
     }
+
+  @Override
+  public String toString() {
+    return "Material{" +
+      "id='" + id + '\'' +
+      ", category='" + category + '\'' +
+      ", name='" + name + '\'' +
+      ", image='" + image + '\'' +
+      '}';
+  }
 }

@@ -14,6 +14,7 @@ public class ReportServiceImpl implements ReportService {
 
     ReportRepository reportRepository;
     Reports savedReport;
+    Reports report;
 
     @Autowired
     public ReportServiceImpl(ReportRepository reportRepository)
@@ -21,32 +22,45 @@ public class ReportServiceImpl implements ReportService {
         this.reportRepository = reportRepository;
     }
 
-
     @Override
     public List<Reports> getAllReports() {
-        List<Reports> reports =reportRepository.findAll();
-        return reports;
+        return reportRepository.findAll();
     }
 
     @Override
     public List designCount()
     {
+        String c=null;
+        int designs=0;
         List list = new ArrayList();
         List<Reports> reports =reportRepository.findAll();
-        System.out.println(reports.size());
-        list.add(reports.size());
+//        System.out.println("report size");
+//        System.out.println(reports.size());
+//        if(report.getCount()==null) {
+//            list.add(reports.size());
+//        }
+        for( Reports report : reports)
+        {
+            if(report.getCount()==null)
+                designs++;
+
+            if(report.getCount()== null)
+                continue;
+                c = (report.getCount());
+
+
+        }
+        list.add(designs);
+        list.add(Integer.parseInt(c));
+        System.out.println(list);
         return list;
     }
+
     @Override
     public boolean deleteUser(){
-        // Optional<User> user1 = userRepository.findById(id);
-
         try {
-
             reportRepository.deleteAll();
-
             return true;
-
         }
         catch (Exception exception)
         {
