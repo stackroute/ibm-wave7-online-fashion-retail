@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'designer',
     component: DesignerHomePageComponent},
   {path:'edit', component:ProfilebuttonComponent},
-  {path:'edit/manufactureviewprofile', component:ManufactureviewprofileComponent},
+  {path:'manufacturer/manufactureviewprofile', component:ManufactureviewprofileComponent},
   // {path:'login',component:LoginComponent}
    {path:'addMaterial',component:AddmaterialsbuttonComponent},
   {path: 'designer',component: DesignerHomePageComponent

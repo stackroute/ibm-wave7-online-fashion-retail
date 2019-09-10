@@ -9,9 +9,7 @@
 		 <relativePath/> <!--lookup parent from repository -->
 	</parent>
 	
-	<groupId>com.stackroute</groupId>
 	<artifactId>manufacturer-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>manufacturer-service</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -34,7 +32,6 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
-			<version>2.1.9.RELEASE</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
@@ -48,8 +45,6 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
-
 
 	</dependencies>
 
