@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RestController
 @RequestMapping(value="api/v1")
 public class SupplierController {
@@ -133,9 +133,11 @@ public class SupplierController {
   @PutMapping("order/{id}")
   public ResponseEntity<?> updateOrder(@RequestBody SupplierOrder supplierOrder, @PathVariable String id) {
     ResponseEntity responseEntity;
+    System.out.println(supplierOrder);
     try {
-      supplierService.updateOrder(supplierOrder,id);
-      responseEntity = new ResponseEntity<List<SupplierOrder>>(supplierService.getAllOrders(id), HttpStatus.CREATED);
+
+      responseEntity = new ResponseEntity(supplierService.updateOrder(supplierOrder,id), HttpStatus.OK);
+      System.out.println(responseEntity);
     } catch (Exception exception1) {
       responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
     }

@@ -82,6 +82,19 @@ public class UserController {
         return responseEntity;
     }
 
+    @GetMapping("useremail")
+    public ResponseEntity<?> getByName(@RequestParam String email){
+        ResponseEntity responseEntity;
+        try {
+            userService.findUserByEmail(email);
+            responseEntity = new ResponseEntity<User>(userService.findUserByEmail(email), HttpStatus.CREATED);
+        } catch (Exception e){
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+
+        }
+        return responseEntity;
+    }
+
     @GetMapping("user/report")
     public ResponseEntity<?> getReport() {
         ResponseEntity responseEntity;

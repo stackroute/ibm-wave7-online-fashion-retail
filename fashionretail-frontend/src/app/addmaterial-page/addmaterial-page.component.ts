@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../order.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Supplier } from '../services/supplier';
-import { Material } from '../services/material';
-import { Mapping } from '../services/mapping';
-import { OrderService } from '../services/order.service';
-
+import { Supplier } from '../supplier';
+import { Material } from '../material';
+import { Mapping } from '../mapping';
 
 @Component({
   selector: 'app-addmaterial-page',
@@ -13,15 +12,6 @@ import { OrderService } from '../services/order.service';
 })
 export class AddmaterialPageComponent implements OnInit {
 
-  // states: string[] = [
-  //   'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-  //   'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-  //   'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-  //   'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
-  //   'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
-  //   'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-  //   'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-  // ];
   constructor(private _orderService: OrderService, private activatedRoute : ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

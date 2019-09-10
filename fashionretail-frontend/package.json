@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0",
     "@angular/router": "~8.2.0",
     "angular-d3-charts": "^5.0.0",
+    "angular-webstorage-service": "^1.0.2",
     "canvas": "^2.6.0",
     "canvasjs": "^1.8.1",
     "chart.js": "^2.8.0",

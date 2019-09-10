@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../modals/User';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { Mapping } from '../modals/Mapping';
 import { Manufacturer } from '../modals/Manufacturer';
 import { Designer } from '../modals/Designer';
 import { DesignerOrder } from '../modals/DesignerOrder';
 import { Design } from '../modals/Design';
+import { environment } from '../../environments/environment';
 
 
 const httpOptions={
@@ -21,6 +22,9 @@ const httpOptions={
   providedIn: 'root'
 })
 export class UserServiceService {
+  updateOrder(result: any, id: any) {
+    throw new Error("Method not implemented.");
+  }
 
   private userUrl : string;
   private designerUrl : string;
@@ -33,7 +37,7 @@ export class UserServiceService {
     this.materialUrl = 'http://172.23.238.218:8089/api/v2/materials';
     this.manufactureUrl = 'http://localhost:8090/manufacture';
     this.userUrl = 'http://localhost:8192/user';
-    this.designerUrl = 'http://localhost:8080/designs';
+    // this.designerUrl = 'http://localhost:8080/designs';
 
    }
 
@@ -47,7 +51,7 @@ export class UserServiceService {
   }
 
   public getAllMaterial(): Observable<Mapping[]>{
-    return this.http.get<Mapping[]>(this.materialUrl);
+    return this.http.get<Mapping[]>(environment.supplierUrl+"/materials");
   }
 
   public getAllManufacture(): Observable<Manufacturer[]>{
@@ -67,13 +71,14 @@ export class UserServiceService {
    submitOrder(dOrder : DesignerOrder) : Observable<DesignerOrder>
    {
      console.log(dOrder);
-    return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
-      'Access-Control-Allow-Origin':'*',
-    })});
+     return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
+    // return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
+    //   'Access-Control-Allow-Origin':'*',
+    // })});
    }
 
    public getAllOrders(): Observable<DesignerOrder[]>{
-    return this.http.get<DesignerOrder[]>(this.designerUrl);
+    return this.http.get<DesignerOrder[]>(environment.designerUrl+"/designs");
   }
   getDesigner():Observable<Designer>
   {

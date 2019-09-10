@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0kpw5l1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="5.0.4">
+  <bpmn:process id="designer_workflow" isExecutable="true" name="designer_workflow">
+    <bpmn:startEvent id="StartEvent_12pezmj" name="Start">
+      <bpmn:outgoing>SequenceFlow_0xyjtcp</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_18vrdju" name="End">
+      <bpmn:incoming>SequenceFlow_155sn6f</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_155sn6f" sourceRef="Task_13boper" targetRef="EndEvent_18vrdju" />
+    <bpmn:sequenceFlow id="SequenceFlow_0xyjtcp" sourceRef="StartEvent_12pezmj" targetRef="Task_13boper" />
+    <bpmn:userTask id="Task_13boper" name="Upload Design">
+      <bpmn:incoming>SequenceFlow_0xyjtcp</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_155sn6f</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="designer_workflow">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_12pezmj">
+        <dc:Bounds x="156" y="81" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162" y="124" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_18vrdju_di" bpmnElement="EndEvent_18vrdju">
+        <dc:Bounds x="442" y="81" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="450" y="124" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_155sn6f_di" bpmnElement="SequenceFlow_155sn6f">
+        <di:waypoint x="360" y="99" />
+        <di:waypoint x="442" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0xyjtcp_di" bpmnElement="SequenceFlow_0xyjtcp">
+        <di:waypoint x="192" y="99" />
+        <di:waypoint x="260" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="UserTask_1otlj2u_di" bpmnElement="Task_13boper">
+        <dc:Bounds x="260" y="59" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

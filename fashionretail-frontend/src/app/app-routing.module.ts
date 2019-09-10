@@ -18,6 +18,9 @@ import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboar
 import {ManufacturerDashboardComponent} from './manufacturer-dashboard/manufacturer-dashboard.component'
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { CardComponent } from './card/card.component';
+
 
 
 
@@ -34,17 +37,22 @@ const routes: Routes = [
     path: 'designer',
     component: DesignerHomePageComponent},
   {path:'edit', component:ProfilebuttonComponent},
-  {path:'edit/manufactureviewprofile', component:ManufactureviewprofileComponent},
+  {path:'manufacturer/manufactureviewprofile', component:ManufactureviewprofileComponent},
   // {path:'login',component:LoginComponent}
    {path:'addMaterial',component:AddmaterialsbuttonComponent},
   {path: 'designer',component: DesignerHomePageComponent
   },
   {path: 'edit', component:ProfilebuttonComponent},
   {path: 'edit/supplierviewprofile', component:SupplierviewprofileComponent},
-  {path: 'supplier', component: BodyComponent},
+{
+path:'suppliers',component:CardComponent
+},
+{
+path:'vieworders',component:ViewOrdersComponent
+}
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {
-    path: 'supplier/materials' , component:AddmaterialPageComponent},{
+    path: '/materials' , component:AddmaterialPageComponent},{
     path: 'consumer' , component: ConsumerDashboardComponent
   },
   {

@@ -1,1 +1,0 @@
-A benchmark microservice.

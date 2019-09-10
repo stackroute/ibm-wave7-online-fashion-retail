@@ -14,7 +14,7 @@ export class SignUpComponent implements OnInit {
 
 
   user:  User={
-    id: 0,
+    id: "0",
     name: "",
     password : "",
     email : "",
@@ -29,15 +29,18 @@ export class SignUpComponent implements OnInit {
      'name' : [this.user.name,[
        Validators.required]
      ],
-     'email': [this.user.email,[Validators.required,
-    Validators.email]],
+     'email': [this.user.email,[Validators.required,Validators.email]],
      'password' : [this.user.password,[Validators.required,Validators.minLength(8),Validators.maxLength(15)]],
      'designation':[this.user.designation,[Validators.required]]
     })
     }
-    onRegisterSubmit() {
+    onRegisterSubmit(user: User) {
+      console.log("inside register");
+      let num=Math.floor(Math.random() * (999999 - 100000)) + 100000;
+       console.log("random number is ","num");
+       user.id=""+num;
       // alert(this.user.name + ' ' + this.user.email + ' ' + this.user.password);
-      this.userService.saveUser(this.user).subscribe((data)=>{
+      this.userService.saveUser(user).subscribe((data)=>{
         this.user=data;
         console.log(this.user)
         this.router.navigateByUrl('login')

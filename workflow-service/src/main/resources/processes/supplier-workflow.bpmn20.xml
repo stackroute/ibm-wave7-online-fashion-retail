@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1m0strk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="5.0.4">
+  <bpmn:process id="supplier_workflow" isExecutable="true" name="supplier_workflow">
+    <bpmn:startEvent id="StartEvent_130ppdv" name="Start">
+      <bpmn:outgoing>SequenceFlow_1rou255</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_0xx5aau" name="End">
+      <bpmn:incoming>SequenceFlow_0msbmt9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:userTask id="Task_0ihk9u0" name="Add Material">
+      <bpmn:incoming>SequenceFlow_1rou255</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0msbmt9</bpmn:outgoing>
+      <bpmn:potentialOwner>
+        <bpmn:resourceAssignmentExpression>
+          <bpmn:formalExpression>activitiTeam</bpmn:formalExpression>
+        </bpmn:resourceAssignmentExpression>
+      </bpmn:potentialOwner>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="SequenceFlow_1rou255" sourceRef="StartEvent_130ppdv" targetRef="Task_0ihk9u0" />
+    <bpmn:sequenceFlow id="SequenceFlow_0msbmt9" sourceRef="Task_0ihk9u0" targetRef="EndEvent_0xx5aau" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="supplier_workflow">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_130ppdv">
+        <dc:Bounds x="192" y="81" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="198" y="124" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0xx5aau_di" bpmnElement="EndEvent_0xx5aau">
+        <dc:Bounds x="442" y="81" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="450" y="124" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_0ihk9u0_di" bpmnElement="Task_0ihk9u0">
+        <dc:Bounds x="290" y="59" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1rou255_di" bpmnElement="SequenceFlow_1rou255">
+        <di:waypoint x="228" y="99" />
+        <di:waypoint x="290" y="99" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0msbmt9_di" bpmnElement="SequenceFlow_0msbmt9">
+        <di:waypoint x="390" y="99" />
+        <di:waypoint x="442" y="99" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User1 } from '../modals/User1';
 import { AuthenticateService } from '../services/authenticate.service';
+import { LoginserviceService } from '../services/loginservice.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,8 +15,7 @@ export class LoginComponent implements OnInit {
   private user = new User1();
   loginForm: FormGroup;
 
-  constructor(private authenticateService: AuthenticateService, private formBuilder: FormBuilder,private router: Router) { }
-
+  constructor(private authenticateService: AuthenticateService, private formBuilder: FormBuilder,private router: Router,private loginService: LoginserviceService) { }
   ngOnInit() {
         // this.authenticateService.login(this.user)
     // .subscribe(data=>this.result=data);
@@ -35,8 +35,13 @@ export class LoginComponent implements OnInit {
     console.log(this.user)
     this.authenticateService.login(this.user)
       .subscribe(data => {
+        
+        this.loginService.getByName(this.user.username).subscribe((data)=>{
+          this.user = data
+          console.log(this.user)
+        })
         let id = data.id;
-        if(data.designation == 'supplier') {
+        if(data.designation = 'Supplier') {
           this.router.navigate(['/supplier'], {queryParams : {id: id}});
         }
         else if (data.designation='designer'){
