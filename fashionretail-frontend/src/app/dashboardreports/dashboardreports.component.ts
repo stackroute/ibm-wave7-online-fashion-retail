@@ -27,7 +27,7 @@ export class DashboardreportsComponent implements OnInit {
       this.manufacturerCount = res[2];
       this.BarChart = new Chart('barChart',
               {
-                type: 'bar',
+                type: 'pie',
                 animationEnabled: true,
                 data:
                 {
@@ -36,11 +36,11 @@ export class DashboardreportsComponent implements OnInit {
                     [{
                       label: 'number of users registered',
                       data: [this.designerCount, this.supplierCount, this.manufacturerCount],
-                      backgroundColor:['olive_teal'],
+                      backgroundColor:["#D68910", "#1A917F","#D35400"],
                       // data: [12, 20, 30],
                       fill: true,
                       lineTension: 1,
-                      borderColor: "black",
+                      borderColor: "#566573",
                       borderWidth: 2
                     }]
                 },
@@ -53,7 +53,6 @@ export class DashboardreportsComponent implements OnInit {
                   },
                   scales: {
                     yaxes: [{
-
                       ticks: {
                         beginAtZero: true,
                          viewportMinimum: 0,
@@ -67,7 +66,9 @@ export class DashboardreportsComponent implements OnInit {
 
     this.reports.getDesignReport().subscribe(res => {
           console.log("response is ", res);
-          this.designerCount = res[0]
+          let designsUploaded = res[0];
+          let productsSold= res[1];
+
           this.BarChart = new Chart('barChart1',
                   {
                     type: 'bar',
@@ -75,21 +76,19 @@ export class DashboardreportsComponent implements OnInit {
                     animationEnabled: true,
                     data:
                     {
-                      labels: ["designs uploaded"],
+                      labels: ["designs uploaded","products sold"],
                       datasets:
                         [{
                           label: 'number of designs',
-                          data: [this.designerCount],
-                          backgroundColor:['red'],
-                          // data: [12, 20, 30],
+                          data: [designsUploaded,productsSold],
+                          backgroundColor:["#D68910", "#D35400"],
                           fill: true,
                           lineTension: 1,
-                          borderColor: "black",
+                          borderColor: "#1C2833",
                           borderWidth: 2
                         }]
                     },
                     options:
-
                     {
                       title: {
                         text: "",
@@ -99,8 +98,8 @@ export class DashboardreportsComponent implements OnInit {
                       scales: {
                         yaxes: [{
                           ticks: {
-                            beginAtZero: true,
-                             min: 0
+                            beginAtZero: true
+
                           }
                         }]
                       }

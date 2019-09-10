@@ -26,4 +26,7 @@ public interface ConsumerOrderService {
 
     //method to get an order by id
     ConsumerOrder getOrderById(String id) throws ConsumerOrderNotFoundException;
+
+    //method to get product count
+    Integer getProductCount();
 }

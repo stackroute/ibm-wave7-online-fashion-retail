@@ -82,9 +82,9 @@ public class UserServiceImpl implements UserService{
                 manufacturerCount++;
             }
         }
-        System.out.println("designerCount is "+designerCount);
-        System.out.println("suppliercount is "+supplierCount);
-        System.out.println("manufactureCount is "+manufacturerCount);
+//        System.out.println("designerCount is "+designerCount);
+//        System.out.println("suppliercount is "+supplierCount);
+//        System.out.println("manufactureCount is "+manufacturerCount);
 
         list.add(designerCount);
         list.add(supplierCount);

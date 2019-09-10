@@ -16,8 +16,4 @@ export class ReportServiceService {
   public getDesignReport(){
     return this.http.get("http://localhost:8195/design/reports");
   }
-//
-//   public getAllUsers(): Observable<User[]> {
-//       return this.http.get<User[]>(this.userUrl);
-//     }
 }

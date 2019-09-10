@@ -6,12 +6,14 @@ import com.stackroute.onlinefashionretail.consumer.Domain.ConsumerOrder;
 import com.stackroute.onlinefashionretail.consumer.Domain.Product;
 import com.stackroute.onlinefashionretail.consumer.Exception.Consumer.ConsumerAlreadyExistsException;
 import com.stackroute.onlinefashionretail.consumer.Exception.Consumer.ConsumerNotFoundException;
+import com.stackroute.onlinefashionretail.consumer.Service.Interface.ConsumerOrderService;
 import com.stackroute.onlinefashionretail.consumer.Service.Interface.ConsumerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -22,10 +24,15 @@ import java.util.Map;
 public class ConsumerController {
     private final ConsumerService consumerService;
     private final Logger logger = LoggerFactory.getLogger(ConsumerController.class);
+    private final String TOPIC = "PRODUCTS_BOUGHT";
+    private final KafkaTemplate<String ,String> kafkaTemplate;
+    private final ConsumerOrderService consumerOrderService;
 
     @Autowired
-    public ConsumerController(ConsumerService consumerService) {
+    public ConsumerController(ConsumerService consumerService, KafkaTemplate<String, String> kafkaTemplate, ConsumerOrderService consumerOrderService) {
         this.consumerService = consumerService;
+        this.kafkaTemplate = kafkaTemplate;
+        this.consumerOrderService = consumerOrderService;
     }
 
     @PostMapping("consumer")
@@ -80,7 +87,9 @@ public class ConsumerController {
 
     @PostMapping("consumer/order")
     public ResponseEntity<?> placeOrder(@RequestBody ConsumerOrder consumerOrder) throws ConsumerNotFoundException {
-        return new ResponseEntity<>(consumerService.placeOrder(consumerOrder), HttpStatus.CREATED);
+        ConsumerOrder order = consumerService.placeOrder(consumerOrder);
+       this.kafkaTemplate.send(TOPIC,consumerOrderService.getProductCount().toString());
+        return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
 
     @PutMapping("consumer/{id}/order/{orderId}")

@@ -15,4 +15,6 @@ public interface ReportService {
 //    public List report();
 
     public boolean deleteUser() ;
+
+
 }
