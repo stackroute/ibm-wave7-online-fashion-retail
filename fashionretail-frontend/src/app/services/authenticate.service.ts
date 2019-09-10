@@ -5,6 +5,7 @@ import { HttpClient ,HttpHeaders} from "@angular/common/http";
 import {User1} from "../modals/User1";
 import {LoginUser} from "../modals/Login";
 import { Observable, BehaviorSubject } from 'rxjs';
+import { User } from '../modals/User';
 
 
 const httpOptions = {
@@ -33,9 +34,9 @@ export class AuthenticateService {
 //public loginuser:LoginUser;
 
 
-  login(data: User1): Observable<any>{
+  login(data: User1): Observable<User>{
     this.loggedIn.next(true);
-    return this.httpClient.post<any>(this.apiUrl2, data);
+    return this.httpClient.post<User>(this.apiUrl2, data);
    
   }
 

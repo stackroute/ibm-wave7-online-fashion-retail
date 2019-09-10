@@ -36,7 +36,6 @@ export class DashboardreportsComponent implements OnInit {
                     [{
                       label: 'number of users registered',
                       data: [this.designerCount, this.supplierCount, this.manufacturerCount],
-                      backgroundColor:['olive_teal'],
                       // data: [12, 20, 30],
                       fill: true,
                       lineTension: 1,

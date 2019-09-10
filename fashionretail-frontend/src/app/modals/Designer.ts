@@ -9,6 +9,6 @@ export interface Designer{
       city: string;
       email: string;
       rating: number;
-      orderList : List<DesignerOrder>
+      orderList : DesignerOrder[];
 }
 

@@ -36,15 +36,16 @@ export class LoginComponent implements OnInit {
     this.authenticateService.login(this.user)
       .subscribe(data => {
         
-        this.loginService.getByName(this.user.username).subscribe((data)=>{
-          this.user = data
-          console.log(this.user)
-        })
+        // this.loginService.getByName(this.user.username).subscribe((data)=>{
+        //   this.user = data
+        //   console.log(this.user)
+        // })
+        console.log("designer data",data)
         let id = data.id;
-        if(data.designation = 'Supplier') {
+        if(data.designation == 'Supplier') {
           this.router.navigate(['/supplier'], {queryParams : {id: id}});
         }
-        else if (data.designation='designer'){
+        else if (data.designation=='Designer'){
           this.router.navigate(['/designer'], {queryParams : {id: id}});
         }
        else{
@@ -52,6 +53,7 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
+        // alert("Invalid UserName and password");
         console.log(error);
       });
   }

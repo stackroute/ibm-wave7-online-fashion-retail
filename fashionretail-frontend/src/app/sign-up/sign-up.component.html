@@ -1,4 +1,5 @@
 <app-header></app-header>
+<div class="bg">
 <div class="medium-list">
         <div class="list-viewer-wrapper">
           <div class="list-header-title">Create A New Account</div>
@@ -26,7 +27,7 @@
                          matInput
                          formControlName="password"
                          [(ngModel)]="user.password"
-                         placeholder="Enter password should be 6 t0 15 char"
+                         placeholder="password should be 6 to 15 char"
                          [type]="hide ? 'password':'text'" />
                     <mat-icon matSuffix (click)="hide = !hide">
                       {{hide ? 'visibility' : 'visibility_off'}}
@@ -51,4 +52,5 @@
             </div>
           </form>
         </div>
+      </div>
       </div>

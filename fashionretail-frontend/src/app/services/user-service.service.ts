@@ -35,7 +35,7 @@ export class UserServiceService {
   constructor(private http: HttpClient) {
 
     this.materialUrl = 'http://172.23.238.218:8089/api/v2/materials';
-    this.manufactureUrl = 'http://localhost:8090/manufacture';
+    this.manufactureUrl = 'http://172.23.238.243:8189/manufacture';
     this.userUrl = 'http://localhost:8192/user';
     // this.designerUrl = 'http://localhost:8080/designs';
 

@@ -1,4 +1,5 @@
 package com.stackroute.login.controller;
+import com.stackroute.login.model.DAOUser;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,12 +36,14 @@ public class JwtAuthenticationController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody UserDTO userDTO) throws Exception {
         authenticate(userDTO.getUsername(), userDTO.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(userDTO.getUsername());
+        DAOUser daoUser = userDetailsService.getUserData(userDTO.getUsername());
         System.out.println("user details"+userDetails);
         final String token = jwtTokenUtil.generateToken(userDetails);
         Map<Object,Object> model=new HashMap<>();
-        model.put("role",userDTO.getDesignation());
+        model.put("designation",daoUser.getDesignation());
         model.put("token",token);
-        model.put("userId",userDTO.getUserId());
+        model.put("userId",daoUser.getUserId());
+        System.out.println("model"+model);
         return ok(model);
     }
 

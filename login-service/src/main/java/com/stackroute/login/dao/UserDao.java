@@ -8,6 +8,6 @@ import com.stackroute.login.model.DAOUser;
 public interface UserDao extends CrudRepository<DAOUser, Integer> {
 
     @Query("select u from DAOUser u where username=:username")
-    DAOUser findByusername(String username);
+    DAOUser findByUsername(String username);
 
 }

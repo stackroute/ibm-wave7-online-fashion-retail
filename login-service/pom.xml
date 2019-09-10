@@ -71,24 +71,17 @@
 
 	<build>
 
-		<pluginManagement>
 			<plugins>
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
 					<version>3.6.0.1398</version>
 				</plugin>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-				</plugin>
 					<plugin>
 						<groupId>org.springframework.boot</groupId>
 						<artifactId>spring-boot-maven-plugin</artifactId>
 					</plugin>
 			</plugins>
-		</pluginManagement>
 	</build>
 
 </project>

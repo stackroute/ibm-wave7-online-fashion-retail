@@ -23,7 +23,7 @@ export class ManufactureserviceService {
   constructor(private httpClient:HttpClient) { }
   updateManufacture(id:number,manufacture:Manufacturer):Observable<Manufacturer>
   {
-    const url="http://localhost:8090/manufacture";
+    const url="http://172.23.238.243:8189/manufacture";
     const updateUrl=`${url}/1`
    return this.httpClient.put<Manufacturer>(updateUrl,manufacture,httpOptions);
   }
@@ -43,7 +43,7 @@ export class ManufactureserviceService {
 
  getAllBasePrice():Observable<BasePrice>
  {
-   const url="http://localhost:8090/baseprice";
+   const url="http://172.23.238.243:8189/manufacture";
     // const getUrl=`${url}/5`
     return this.httpClient.get<BasePrice>(url);
  }
