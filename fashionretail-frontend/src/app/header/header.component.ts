@@ -13,8 +13,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class HeaderComponent implements OnInit {
   title = 'Angular Form Validation Tutorial';
   angForm: FormGroup;
-  public user : User;
-  constructor(private dialog: MatDialog, private userService : UserService, private fb : FormBuilder) { }
+  public user: User;
+  constructor(private dialog: MatDialog, private userService: UserService, private fb: FormBuilder) { }
 
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
       if (result != undefined) {
          this.saveUser(result);
          this.createForm();
-        console.log(result);
+         console.log(result);
       }
     });
   }
@@ -44,20 +44,20 @@ export class HeaderComponent implements OnInit {
 
 
 
-  saveUser(user : User){
+  saveUser(user: User) {
 //     let num=Math.floor(Math.random() * (999999 - 100000)) + 100000;
 //         console.log("random number is ",num);
 //         user.id=num;
-      this.userService.saveUser(user).subscribe((data) =>{
-        this.user=data;
-        console.log("result ",this.user)
-      })
+      this.userService.saveUser(user).subscribe((data) => {
+        this.user = data;
+        console.log('result ', this.user);
+      });
     }
   }
 
 
 
-  @Component({
+@Component({
     selector: 'signUp-dialogue',
     templateUrl: 'signUp-dialogue.html',
   })

@@ -62,6 +62,19 @@ public class UserServiceImpl implements UserService{
         return savedUser;
     }
 
+
+    @Override
+    public User findUserByEmail(String email) {
+        if(email == null){
+            return null;
+        }
+        else {
+            User user = userRepository.findUserByEmail(email);
+            return user;
+        }
+    }
+
+
     @Override
     public List report() {
 
@@ -82,9 +95,9 @@ public class UserServiceImpl implements UserService{
                 manufacturerCount++;
             }
         }
-        System.out.println("designerCount is "+designerCount);
-        System.out.println("suppliercount is "+supplierCount);
-        System.out.println("manufactureCount is "+manufacturerCount);
+//        System.out.println("designerCount is "+designerCount);
+//        System.out.println("suppliercount is "+supplierCount);
+//        System.out.println("manufactureCount is "+manufacturerCount);
 
         list.add(designerCount);
         list.add(supplierCount);

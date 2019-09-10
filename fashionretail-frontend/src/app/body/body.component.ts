@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class BodyComponent implements OnInit {
 
-  constructor(private _orderService:OrderService,private router: Router) { }
+  constructor(private _orderService: OrderService, private router: Router) { }
 
   ngOnInit() {
   }

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import {Product} from '../model/product';
+import {Product} from '../models/product';
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
 

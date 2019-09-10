@@ -1,7 +1,5 @@
 FROM openjdk:11
 
-ADD ./target/eureka-server-0.0.1-SNAPSHOT.jar /usr/src/eureka-server-0.0.1-SNAPSHOT.jar
+ADD ./target/eureka-server-1.0.0.jar app.jar
 
-WORKDIR usr/src
-
-ENTRYPOINT ["java","-jar", "eureka-server-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar", "app.jar"]

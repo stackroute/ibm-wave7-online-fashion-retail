@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Product} from '../model/product';
+import {Product} from '../models/product';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {ProductService} from '../services/product.service';
-import {MatBottomSheet, MatBottomSheetConfig} from "@angular/material/bottom-sheet";
-import {CartBottomSheetComponent} from "../cart-bottom-sheet/cart-bottom-sheet.component";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {ConsumerService} from "../services/consumer.service";
+import {MatBottomSheet, MatBottomSheetConfig} from '@angular/material/bottom-sheet';
+import {CartBottomSheetComponent} from '../cart-bottom-sheet/cart-bottom-sheet.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ConsumerService} from '../services/consumer.service';
 
 @Component({
   selector: 'app-consumer-dashboard',
@@ -50,14 +50,14 @@ export class ConsumerDashboardComponent implements OnInit {
   addToCart(product: Product): void {
     console.log(product);
     console.log(this.cart);
-    if (this.cartContains(this.cart,product)) {
-      console.log("in");
-      this.openSnackBar("product already in your cart");
+    if (this.cartContains(this.cart, product)) {
+      console.log('in');
+      this.openSnackBar('product already in your cart');
     } else {
-      console.log("elese");
+      console.log('elese');
       this.cart.push(product);
       this.addCart(product);
-      this.openSnackBar("added to cart");
+      this.openSnackBar('added to cart');
     }
   }
 
@@ -70,14 +70,14 @@ export class ConsumerDashboardComponent implements OnInit {
       });
   }
 
-  openSnackBar(message: string,) {
+  openSnackBar(message: string, ) {
     this._snackBar.open(message, 'okay', {
       duration: 1000,
     });
   }
 
-  cartContains(cart: Product[], p2:Product) {
-    var i = cart.length;
+  cartContains(cart: Product[], p2: Product) {
+    let i = cart.length;
     while (i--) {
       if (cart[i].id === p2.id && cart[i].name === p2.name && cart[i].designer.name === p2.designer.name) {
         return true;

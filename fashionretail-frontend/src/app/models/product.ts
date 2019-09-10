@@ -1,4 +1,4 @@
-import {Designer} from './designer';
+import {Designer} from './Designer';
 
 export class Product {
   id: string;

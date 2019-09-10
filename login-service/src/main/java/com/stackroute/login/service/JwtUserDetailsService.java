@@ -32,7 +32,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        DAOUser user = userDao.findByusername(username);
+        DAOUser user = userDao.findByUsername(username);
         System.out.println(user);
         if (user == null) {
             throw new UsernameNotFoundException("User not found with username: " + username);
@@ -53,9 +53,9 @@ public class JwtUserDetailsService implements UserDetailsService {
     public String forgotPassword(String username) throws org.springframework.messaging.MessagingException, javax.mail.MessagingException {
         String status = "Failed";
         System.out.println(username);
-        System.out.println(userDao.findByusername(username));
+        System.out.println(userDao.findByUsername(username));
         System.out.println("abcd");
-        if (userDao.findByusername(username) != null) {
+        if (userDao.findByUsername(username) != null) {
             System.out.println(username);
             System.out.println("efgh");
             MimeMessage message=javaMailSender.createMimeMessage();
@@ -75,11 +75,16 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     //    @Override
     public DAOUser update(UserDTO userDTO) throws Exception {
-        DAOUser user = userDao.findByusername(userDTO.getUsername());
+        DAOUser user = userDao.findByUsername(userDTO.getUsername());
         if (user != null) {
             user.setPassword(bcryptEncoder.encode(userDTO.getPassword()));
         }
         return userDao.save(user);
+    }
+
+    public DAOUser getUserData(String username) {
+        DAOUser daoUser = userDao.findByUsername(username);
+        return daoUser;
     }
 
 }

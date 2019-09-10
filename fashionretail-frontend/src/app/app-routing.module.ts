@@ -15,49 +15,57 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { DesignerHomePageComponent } from './designer-home-page/designer-home-page.component';
 import { AddmaterialPageComponent } from './addmaterial-page/addmaterial-page.component';
 import {ConsumerDashboardComponent} from './consumer-dashboard/consumer-dashboard.component';
-import {ManufacturerDashboardComponent} from './manufacturer-dashboard/manufacturer-dashboard.component'
+import {ManufacturerDashboardComponent} from './manufacturer-dashboard/manufacturer-dashboard.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { CardComponent } from './card/card.component';
+
 
 
 
 
 const routes: Routes = [
-  {path:'',component:HeroComponent},
-  {path:'contact',component:ContactComponent},
-  {path:'about', component:AboutComponent},
+  {path: '', component: HeroComponent},
+  {path: 'contact', component: ContactComponent},
+  {path: 'about', component: AboutComponent},
   {path: 'login', component : LoginComponent},
-  {path: 'sign-up',component : SignUpComponent},
-  {path:'reset-password',component:ResetPasswordComponent},
-  {path:'forgotpassword',component:ForgotpasswordComponent},
+  {path: 'sign-up', component : SignUpComponent},
+  {path: 'reset-password', component: ResetPasswordComponent},
+  {path: 'forgotpassword', component: ForgotpasswordComponent},
   {
     path: 'designer',
     component: DesignerHomePageComponent},
-  {path:'edit', component:ProfilebuttonComponent},
-  {path:'manufacturer/manufactureviewprofile', component:ManufactureviewprofileComponent},
+  {path: 'edit', component: ProfilebuttonComponent},
+  {path: 'manufacturer/manufactureviewprofile', component: ManufactureviewprofileComponent},
   // {path:'login',component:LoginComponent}
-   {path:'addMaterial',component:AddmaterialsbuttonComponent},
-  {path: 'designer',component: DesignerHomePageComponent
+   {path: 'addMaterial', component: AddmaterialsbuttonComponent},
+  {path: 'designer', component: DesignerHomePageComponent
   },
-  {path: 'edit', component:ProfilebuttonComponent},
-  {path: 'edit/supplierviewprofile', component:SupplierviewprofileComponent},
-  {path: 'supplier', component: BodyComponent},
+  {path: 'edit', component: ProfilebuttonComponent},
+  {path: 'edit/supplierviewprofile', component: SupplierviewprofileComponent},
+{
+path: 'suppliers', component: CardComponent
+},
+{
+path: 'vieworders', component: ViewOrdersComponent
+},
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {
-    path: 'supplier/materials' , component:AddmaterialPageComponent},{
+    path: '/materials' , component: AddmaterialPageComponent}, {
     path: 'consumer' , component: ConsumerDashboardComponent
   },
   {
       path: '', component: BodyComponent
   },
 
-  {path:'designerviewprofile',component:DesignerviewprofileComponent},
+  {path: 'designerviewprofile', component: DesignerviewprofileComponent},
   { path : 'manufacturer' , component : ManufacturerDashboardComponent},
   // {
   //     path: '', component: BodyComponent
   // },
-  { path : '**/LogOut' ,component: HeroComponent},
-  { path : '**' ,component: HeroComponent},
+  { path : '**/LogOut' , component: HeroComponent},
+  { path : '**' , component: HeroComponent},
 
 
 ];

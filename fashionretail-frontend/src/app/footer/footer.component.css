@@ -1,15 +1,21 @@
+
 footer {
     /* position: fixed; */
    height: fit-content;
     bottom: 0;
     width: 100%;
-    background-color: khaki;
+    background-color: black;
     color: black;
-    height: 80px;
+    height: auto;
     overflow: hidden;
 
 }
-
+footer div h6{
+    color: aliceblue
+}
+p{
+    color: gray
+}
 img {
     padding-left: 5px;
     float: right;

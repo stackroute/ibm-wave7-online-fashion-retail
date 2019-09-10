@@ -28,7 +28,7 @@ services:
   zuul-api:
     build: zuul-api/
     depends_on:
-      - config-service
+      - config-server
       - eureka-server
     restart: always
     network_mode: host
@@ -51,10 +51,10 @@ services:
       test: "exit 0"
 
   user-service:
-    build: user/
+    build: user-service/
     depends_on:
       - mongo
-      - config-service
+      - config-server
       - eureka-server
       - zuul-api
     restart: always
@@ -86,7 +86,7 @@ services:
   #     test: "exit 0"
 
   manufacturer-service:
-    build: manufacture/
+    build: manufacturer-service/
     depends_on:
       - mongo
       - user-service
@@ -101,7 +101,7 @@ services:
       test: "exit 0"
 
   supplier-service:
-    build: supplier/
+    build: supplier-service/
     depends_on:
       - mongo
       - user-service
@@ -116,7 +116,7 @@ services:
       test: "exit 0"
       
   designer-service:
-    build: designer/
+    build: designer-service/
     depends_on:
       - mongo
       - user-service
@@ -133,7 +133,7 @@ services:
       test: "exit 0"
       
   consumer-service:
-    build: consumer/
+    build: consumer-service/
     depends_on:
       - mongo
       - user-service
@@ -148,7 +148,7 @@ services:
       test: "exit 0"
 
   login-service:
-    build: login/
+    build: login-service/
     depends_on:
       - mongo
       - user-service
@@ -158,12 +158,12 @@ services:
     image: login
     hostname: login
     ports:
-      - 8190:8190
+      - 8193:8193
     healthcheck:
       test: "exit 0"
 
   reports-service:
-    build: reports/
+    build: reports-service/
     depends_on:
       - mongo
       - user-service
@@ -175,12 +175,12 @@ services:
     image: reports
     hostname: reports
     ports:
-      - 8190:8190
+      - 8195:8195
     healthcheck:
       test: "exit 0"
   
   zookeeper:
-    image: zookeeper
+    image: wurstmeister/zookeeper
     container_name: zookeeper
     network_mode: host
     hostname: localhost
@@ -191,7 +191,7 @@ services:
       test: "exit 0"
 
   kafka:
-    image: kafka
+    image: wurstmeister/kafka
     container_name: kafka
     network_mode: host
     hostname: localhost
@@ -210,7 +210,7 @@ services:
       test: "exit 0"
 
   workflow-service:
-    build: workflow/
+    build: workflow-service/
     depends_on:
       - mongo
       - user-service
@@ -224,15 +224,15 @@ services:
     healthcheck:
       test: "exit 0"
 
-  fashionretail-frontend:
-    build: fashionretail/
-    restart: always
-    network_mode: host
-    container_name: fashionretail
-    image: fashionretail
-    hostname: fashionretail
-    ports:
-      - 4201:4201
-    healthcheck:
-      test: "exit 0"
+  # fashionretail-frontend:
+  #   build: fashionretail/
+  #   restart: always
+  #   network_mode: host
+  #   container_name: fashionretail
+  #   image: fashionretail
+  #   hostname: fashionretail
+  #   ports:
+  #     - 4201:4201
+  #   healthcheck:
+  #     test: "exit 0"
 

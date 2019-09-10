@@ -3,8 +3,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Supplier } from '../models/Supplier';
 import { SupplierService } from '../services/supplier.service';
 
-export interface DialogData{
-  city:string;
+export interface DialogData {
+  city: string;
   contactNumber: number;
 }
 
@@ -15,38 +15,38 @@ export interface DialogData{
 })
 export class SupplierviewprofileComponent implements OnInit {
 
- supplier:Supplier;
- city:string;
- contactNumber:number;
-
   constructor(private dialog: MatDialog, private supplierService: SupplierService ) { }
+
+ supplier: Supplier;
+ city: string;
+ contactNumber: number;
+
+  data;
 
 
   ngOnInit() {
-  this.supplierService.getSupplier().subscribe((data)=>{
-  this.supplier=data;
+  this.supplierService.getSupplier().subscribe((data) => {
+  this.supplier = data;
   console.log(this.supplier);
-  })
+  });
   }
 
-   updateSupplier(supplier:Supplier){
-      console.log(supplier)
-      this.supplierService.updateSupplier( supplier,supplier.id).subscribe((data)=> {
-      console.log("result is",data);
-      this.supplierService.getSupplier().subscribe((data)=> {this.supplier=data})
+   updateSupplier(supplier: Supplier) {
+      console.log(supplier);
+      this.supplierService.updateSupplier( supplier, supplier.id).subscribe((data) => {
+      console.log('result is', data);
+      this.supplierService.getSupplier().subscribe((data) => {this.supplier = data; });
       });
       }
-
-  data;
-openDialog(supplier:Supplier) {
+openDialog(supplier: Supplier) {
     const dialogRef = this.dialog.open(SupplierEditDialogue,
       {
         width: '350px',
-        data:{}
+        data: {}
       });
 
     dialogRef.afterClosed().subscribe(result => {
-    this.data=result;
+    this.data = result;
     console.log(result);
     this.updateSupplier(result);
     });
@@ -62,13 +62,13 @@ openDialog(supplier:Supplier) {
   export class SupplierEditDialogue {
 
   supplier: Supplier;
-  city:string;
-  contactNumber:number;
+  city: string;
+  contactNumber: number;
 
     constructor(
 
       public dialogRef: MatDialogRef<SupplierEditDialogue>,
-       @Inject(MAT_DIALOG_DATA) public data: Supplier, private supplierService: SupplierService) { }
+      @Inject(MAT_DIALOG_DATA) public data: Supplier, private supplierService: SupplierService) { }
 
     onNoClick(): void {
       this.dialogRef.close();

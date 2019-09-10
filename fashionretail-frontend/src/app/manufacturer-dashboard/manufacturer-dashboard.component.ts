@@ -13,7 +13,7 @@ export class ManufacturerDashboardComponent implements OnInit {
   constructor(private _orderService: OrderService) { }
 
   ngOnInit() {
-    this._orderService.getOrders().subscribe(data=>{this.receivedOrders=data; console.log("orders: "); console.log(this.receivedOrders);});
+    this._orderService.getOrders().subscribe(data => {this.receivedOrders = data; console.log('orders: '); console.log(this.receivedOrders); });
   }
 
 }

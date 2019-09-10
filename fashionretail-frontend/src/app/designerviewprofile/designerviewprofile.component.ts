@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Designer } from '../models/Designer'
+import { Designer } from '../models/Designer';
 import { UserService } from '../services/user.service';
 export interface DialogData {
   location: string;
@@ -13,36 +13,36 @@ export interface DialogData {
   styleUrls: ['./designerviewprofile.component.css']
 })
 export class DesignerviewprofileComponent implements OnInit {
+  constructor(private dialog: MatDialog, private designerService: UserService) { }
   designer: Designer;
   location: string;
   contact: number;
-  constructor(private dialog: MatDialog, private designerService: UserService) { }
+
+
+   data;
 
   ngOnInit() {
     this.designerService.getDesigner().subscribe((data) => {
       this.designer = data;
       console.log(this.designer);
-    })
+    });
   }
 
 
-  updateDesigner(designer : Designer) {
+  updateDesigner(designer: Designer) {
     console.log(designer);
     this.designerService.updateDesigner(designer.id, designer).subscribe(
       (data) => {
-        console.log("updated Designer ", data);
+        console.log('updated Designer ', data);
         this.designerService.getDesigner().subscribe(
 
-          data => { this.designer = data }
+          data => { this.designer = data; }
 
-        )
+        );
 
       }
     );
   }
-
-
-   data;
   openDialog() {
     const dialogRef = this.dialog.open(designerEditDialogue,
       {
@@ -73,7 +73,7 @@ export class designerEditDialogue {
     @Inject(MAT_DIALOG_DATA) public data: Designer) { }
   onNoClick(): void {
     this.dialogRef.close();
-    console.log("end og dialog");
+    console.log('end og dialog');
   }
 
 }

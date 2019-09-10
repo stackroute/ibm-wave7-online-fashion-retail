@@ -10,16 +10,18 @@ import { ManufactureService } from '../services/manufacture.service';
   styleUrls: ['./addmaterialsbutton.component.css']
 })
 export class AddmaterialsbuttonComponent implements OnInit {
-  public updatedbase: BasePrice;
-  baseprice:BasePrice;
 
-  constructor(private dialog:MatDialog, private manufactureService: ManufactureService) { }
+  constructor(private dialog: MatDialog, private manufactureService: ManufactureService) { }
+  public updatedbase: BasePrice;
+  baseprice: BasePrice;
+
+  data;
 
   ngOnInit() {
-    this.manufactureService.getAllBasePrice().subscribe((data)=>{
-      this.baseprice=data;
-      console.log(this.baseprice)
-    })
+    this.manufactureService.getAllBasePrice().subscribe((data) => {
+      this.baseprice = data;
+      console.log(this.baseprice);
+    });
   }
 
   // updateBasePrice(baseprice:BasePrice) {
@@ -33,27 +35,25 @@ export class AddmaterialsbuttonComponent implements OnInit {
   //   });
   // }
 
-  saveBasePrice(baseprice : BasePrice){
-    let num=Math.floor(Math.random()* (999999 - 100000)) + 100000;
-    console.log("Random number is", "num");
-    baseprice.id= "num";
-    console.log(baseprice)
-    this.manufactureService.saveBasePrice(baseprice).subscribe((data)=>{
-      console.log("result is ", data);
-      this.manufactureService.getAllBasePrice().subscribe((data)=>{this.baseprice=data})
+  saveBasePrice(baseprice: BasePrice) {
+    const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    console.log('Random number is', 'num');
+    baseprice.id = 'num';
+    console.log(baseprice);
+    this.manufactureService.saveBasePrice(baseprice).subscribe((data) => {
+      console.log('result is ', data);
+      this.manufactureService.getAllBasePrice().subscribe((data) => {this.baseprice = data; });
     });
   }
-
-  data;
-openDialog(){
+openDialog() {
     const dialogRef = this.dialog.open(manufactureAddDialog,
       {
         width : '250px',
-        data:{}
+        data: {}
       });
 
-      dialogRef.afterClosed().subscribe(result => {
-        console.log("hi");
+    dialogRef.afterClosed().subscribe(result => {
+        console.log('hi');
         this.data = result;
         console.log(result);
         this.saveBasePrice(result);
@@ -73,13 +73,13 @@ openDialog(){
    price: number;
   constructor(
     public dialogRef: MatDialogRef<manufactureAddDialog>,
-      @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureService) {}
+    @Inject(MAT_DIALOG_DATA) public data: any, private manufactureService: ManufactureService) {}
 
 
   ngOnInit() {
   }
 
-  onNoClick():void {
+  onNoClick(): void {
     this.dialogRef.close();
   }
  }

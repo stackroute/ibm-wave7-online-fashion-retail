@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule} from '@angular/material';
+import {MatToolbarModule, MatButtonModule} from '@angular/material';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 import {MatListModule} from '@angular/material';
@@ -35,14 +35,21 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ConsumerService} from './services/consumer.service';
 import {ProductService} from './services/product.service';
 
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {MatSelectModule} from '@angular/material/select';
-import {MatTabsModule} from '@angular/material';
-import {SupplierviewprofileComponent} from './supplierviewprofile/supplierviewprofile.component';
-import {ProfilebuttonComponent} from './profilebutton/profilebutton.component';
-import {CardComponent} from './card/card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material';
+import { SupplierviewprofileComponent } from './supplierviewprofile/supplierviewprofile.component';
+import { ProfilebuttonComponent } from './profilebutton/profilebutton.component';
+import { CardComponent } from './card/card.component';
 // import { OrderService } from './order.service';
+// import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
+//  import { ReactiveFormsModule } from '@angular/forms';
+//  import { BrowserModule } from '@angular/platform-browser';
+import { DesignerviewordersComponent } from './designervieworders/designervieworders.component';
+import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import {BodyComponent} from './body/body.component';
 import {
   DesignerHomePageComponent,
@@ -51,21 +58,16 @@ import {
 } from './designer-home-page/designer-home-page.component';
 import {Header1Component} from './header1/header1.component';
 import {PieChartComponent} from 'angular-d3-charts'; // this is needed!
-
-
 // import { ManufactureeditComponent } from './manufactureedit/manufactureedit.component';
 import {ManufactureviewprofileComponent, ManufactureEditDialogComponent} from './manufactureviewprofile/manufactureviewprofile.component';
 import {DashboardreportsComponent} from './dashboardreports/dashboardreports.component';
-//  import { ReactiveFormsModule } from '@angular/forms';
-//  import { BrowserModule } from '@angular/platform-browser';
 import {DesignerviewprofileComponent, designerEditDialogue} from './designerviewprofile/designerviewprofile.component';
-
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {LoginComponent} from './login/login.component';
 import {ManufacturerDashboardComponent} from './manufacturer-dashboard/manufacturer-dashboard.component';
-import {DesignerviewordersComponent} from './designervieworders/designervieworders.component';
 import {LoginService} from './services/login.service';
 import {AuthenticateService} from './services/authenticate.service';
+import {OrderService} from './services/order.service';
 
 
 @NgModule({
@@ -79,7 +81,6 @@ import {AuthenticateService} from './services/authenticate.service';
     AboutComponent,
     ManufactureviewprofileComponent,
     ProfilebuttonComponent,
-    ManufactureEditDialogComponent,
     AddmaterialsbuttonComponent,
     DisplaymaterialsComponent,
     manufactureAddDialog,
@@ -93,7 +94,7 @@ import {AuthenticateService} from './services/authenticate.service';
     Header1Component,
     AboutComponent,
     DesignerviewprofileComponent,
-    ManufactureviewprofileComponent,
+        ManufactureviewprofileComponent,
     ProfilebuttonComponent,
     SignUpComponent,
     LoginComponent,
@@ -111,10 +112,11 @@ import {AuthenticateService} from './services/authenticate.service';
     AddmaterialPageComponent,
     // ManufactureCardComponent,
     ConsumerDashboardComponent,
-    AddPriceDialogueComponent,
     ManufacturerDashboardComponent,
     DesignerviewordersComponent,
-    AddPriceDialogueComponent, ForgotpasswordComponent, ResetPasswordComponent
+    AddPriceDialogueComponent, ForgotpasswordComponent, ResetPasswordComponent,
+    ViewOrdersComponent,
+    ManufactureEditDialogComponent,
 
   ],
   imports: [
@@ -136,11 +138,11 @@ import {AuthenticateService} from './services/authenticate.service';
     MatFormFieldModule,
     Ng2CarouselamosModule,
     MatSidenavModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatDialogModule,
-    HttpClientModule,
-    FormsModule,
+     BrowserAnimationsModule,
+     MatCardModule,
+     MatDialogModule,
+     HttpClientModule,
+     FormsModule,
     MatTabsModule,
     MatSelectModule,
     MatTableModule,
@@ -149,7 +151,7 @@ import {AuthenticateService} from './services/authenticate.service';
     MatSnackBarModule,
   ],
 
-  providers: [ProductService, ConsumerService, LoginService, AuthenticateService],
+  providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService],
   // entryComponents : [SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog,],
   entryComponents: [SignUpDialogue,
     SupplierEditDialogue,
@@ -158,9 +160,9 @@ import {AuthenticateService} from './services/authenticate.service';
     manufactureAddDialog,
     designerEditDialogue,
     AddPriceDialogueComponent,
-    CartBottomSheetComponent],
+    CartBottomSheetComponent,
+  ],
   bootstrap: [AppComponent]
 
 })
-export class AppModule {
-}
+export class AppModule { }

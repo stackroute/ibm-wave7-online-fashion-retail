@@ -17,7 +17,7 @@ public class OrderController {
     private OderService oderService;
 
     @Autowired
-    private KafkaTemplate<String, DesignerOrder> kafkaTemplate;
+    private KafkaTemplate<String, String> kafkaTemplate;
 
     private static final String TOPIC= "Kafka_Example1";
 
@@ -30,7 +30,9 @@ public class OrderController {
     public ResponseEntity<?> saveDesigns(@RequestBody DesignerOrder designer){
         try {
             DesignerOrder designer1= oderService.saveDesigns(designer);
-            kafkaTemplate.send(TOPIC,designer1);
+            System.out.println(designer1);
+            String id= designer1.getId();
+            kafkaTemplate.send(TOPIC,id);
             responseEntity = new ResponseEntity<DesignerOrder>(designer1, HttpStatus.CREATED);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);

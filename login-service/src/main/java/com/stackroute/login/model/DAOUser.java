@@ -12,7 +12,7 @@ public class DAOUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private String id;
 
     @Column
     @JsonProperty("userId")
@@ -27,27 +27,20 @@ public class DAOUser {
     @JsonProperty("designation")
     private String designation;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getDesignation() {
-        return designation;
-    }
-
-    public void setDesignation(String designation) {
-        this.designation = designation;
     }
 
     public String getUsername() {
@@ -66,14 +59,22 @@ public class DAOUser {
         this.password = password;
     }
 
+    public String getDesignation() {
+        return designation;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
     @Override
     public String toString() {
         return "DAOUser{" +
-                "id=" + id +
+                "id='" + id + '\'' +
+                ", userId='" + userId + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", designation'" +designation + '\'' +
-                ",userId'" +userId + '\'' +
+                ", designation='" + designation + '\'' +
                 '}';
     }
 }

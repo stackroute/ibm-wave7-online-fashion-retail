@@ -1,16 +1,17 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { User } from '../models/User';
-import { Designer } from '../models/Designer';
-import { UserService } from '../services/user.service';
-import { MatTabChangeEvent } from '@angular/material';
-import { Material } from '../models/Material';
-import { Manufacturer } from '../models/Manufacturer';
-import { Mapping } from '../models/Mapping';
-import { Design } from '../models/Design';
-import { DesignerOrder } from '../models/DesignerOrder';
-import { ManufacturerOrder } from '../models/ManufacturerOrder';
-import { BasePrice } from '../models/BasePrice';
+import {Component, OnInit, Inject} from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {User} from '../models/User';
+import {Designer} from '../models/Designer';
+import {UserService} from '../services/user.service';
+import {MatTabChangeEvent} from '@angular/material';
+import {Material} from '../models/Material';
+import {Manufacturer} from '../models/Manufacturer';
+import {Mapping} from '../models/Mapping';
+import {Design} from '../models/Design';
+import {DesignerOrder} from '../models/DesignerOrder';
+import {ManufacturerOrder} from '../models/ManufacturerOrder';
+import {BasePrice} from '../models/BasePrice';
+
 @Component({
   selector: 'app-designer-home-page',
   templateUrl: './designer-home-page.component.html',
@@ -18,7 +19,7 @@ import { BasePrice } from '../models/BasePrice';
 })
 export class DesignerHomePageComponent implements OnInit {
 
-  uploadDesigns: Design ;
+  uploadDesigns: Design;
   uploadDesigns1: Design[];
   manufacturer: Manufacturer[];
   Designer: Designer;
@@ -33,45 +34,46 @@ export class DesignerHomePageComponent implements OnInit {
   manufacturerOrder: Array<ManufacturerOrder> = [];
   basePricess: Array<BasePrice> = [];
   mapping: Mapping[];
-  supplierMaterialList: Array<Map<string, number>> ;
+  supplierMaterialList: Array<Map<string, number>>;
   updatedOrder: DesignerOrder = {
-    id : '',
-    tagId : '',
+    id: '',
+    tagId: '',
     designOrder: {
-      id : '',
-      name : '',
-      price : 0,
-      discountPercent : 0,
-      profitPercent : 0,
-      quantityOfDesign : 0,
-      orderStatus : '',
-      design_img : '',
+      id: '',
+      name: '',
+      price: 0,
+      discountPercent: 0,
+      profitPercent: 0,
+      quantityOfDesign: 0,
+      orderStatus: '',
+      design_img: '',
     },
-    manufacturer : {
-      id : '0',
-    name : '',
-    email : '',
-    contact_number: 0,
-    specifications: '',
-    city: '',
-    rating: 0,
-    basePrices : this.basePricess,
-    manufacturerOrders : this.manufacturerOrder
+    manufacturer: {
+      id: '0',
+      name: '',
+      email: '',
+      contact_number: 0,
+      specifications: '',
+      city: '',
+      rating: 0,
+      basePrices: this.basePricess,
+      manufacturerOrders: this.manufacturerOrder
     },
 
-    supplierList : this.supplierMaterialList = [],
-    };
+    supplierList: this.supplierMaterialList = [],
+  };
 
   material: Mapping[] = [];
   MaterialQuantity: number;
 
 
   private quantityMap: Map<string, number> = new Map([]);
-    // orderdetails :
+
+  // orderdetails :
 
   constructor(private dialogue: MatDialog, private userService: UserService) {
     this.items = [
-      { name: 'assets/designer.jpg' },
+      {name: 'assets/designer.jpg'},
     ];
   }
 
@@ -93,6 +95,7 @@ export class DesignerHomePageComponent implements OnInit {
       console.log(this.Designer);
     });
   }
+
   Mapping(arg0: string, mapping: any) {
     throw new Error('Method not implemented.');
   }
@@ -120,6 +123,7 @@ export class DesignerHomePageComponent implements OnInit {
       }
     });
   }
+
   saveDesigns(design: Design) {
   }
 
@@ -134,8 +138,8 @@ export class DesignerHomePageComponent implements OnInit {
 
 
   saveManufacture(manufacturer: Manufacturer) {
-      this.savaManufacture = manufacturer;
-      console.log(this.savaManufacture);
+    this.savaManufacture = manufacturer;
+    console.log(this.savaManufacture);
 
   }
 
@@ -150,20 +154,23 @@ export class DesignerHomePageComponent implements OnInit {
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
     this.userService.submitOrder(this.updatedOrder).subscribe(
-        (data) => {
-          this.orderDetails = data;
-          console.log( 'orderlist', this.orderDetails);
-        });
+      (data) => {
+        this.orderDetails = data;
+        console.log('orderlist', this.orderDetails);
+      });
     this.previousStep();
   }
+
   getAllUser() {
     alert('entered into get all users');
     this.userService.getAllUsers().subscribe((data) => {
     });
   }
+
   public tabChanged(tabChangeEvent: MatTabChangeEvent): void {
     this.selectedIndex = tabChangeEvent.index;
   }
+
   public nextStep() {
     this.selectedIndex += 1;
   }
@@ -181,17 +188,17 @@ export class DesignerHomePageComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-    //   if (result != undefined) {
-    //     this.userService.updateOrder(result,result.id).subscribe((data) => {
-    //       this.getAllorders();
-    //     })
-    //   }
-   });
+      //   if (result != undefined) {
+      //     this.userService.updateOrder(result,result.id).subscribe((data) => {
+      //       this.getAllorders();
+      //     })
+      //   }
+    });
   }
 }
 
 @Component({
-  selector: 'app-upload-designs-dialogue',
+  selector: 'upload-designs-dialogue',
   templateUrl: 'upload-designs-dialogue.html',
 })
 
@@ -199,7 +206,8 @@ export class UploadDesignsDialogueComponent {
 
   constructor(
     public dialogRef: MatDialogRef<UploadDesignsDialogueComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DesignerOrder) { }
+    @Inject(MAT_DIALOG_DATA) public data: DesignerOrder) {
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -209,19 +217,20 @@ export class UploadDesignsDialogueComponent {
 }
 
 @Component({
-  selector: 'app-add-price-dialogue',
+  selector: 'AddPrice-dialogue',
   templateUrl: 'AddPriceDialogue.html',
 })
 
-export class AddPriceDialogueComponent implements OnInit{
+export class AddPriceDialogueComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddPriceDialogueComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DesignerOrder[]) { }
+    @Inject(MAT_DIALOG_DATA) public data: DesignerOrder[]) {
+  }
 
-    ngOnInit() {
-      console.log(this.data);
-    }
+  ngOnInit() {
+    console.log(this.data);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

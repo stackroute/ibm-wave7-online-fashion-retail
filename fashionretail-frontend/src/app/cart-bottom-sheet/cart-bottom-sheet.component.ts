@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from "@angular/material/bottom-sheet";
-import {Product} from "../model/product";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {ConsumerService} from "../services/consumer.service";
+import {MAT_BOTTOM_SHEET_DATA, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import {Product} from '../models/product';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {ConsumerService} from '../services/consumer.service';
 
 @Component({
   selector: 'app-cart-bottom-sheet',
@@ -24,8 +24,8 @@ export class CartBottomSheetComponent implements OnInit {
     event.preventDefault();
   }
 
-  removeFromCart(product: Product){
-    for( let i = 0; i < this.data.length; i++){
+  removeFromCart(product: Product) {
+    for ( let i = 0; i < this.data.length; i++) {
       if ( this.data[i] === product) {
         this.data.splice(i, 1);
         i--;
@@ -33,7 +33,7 @@ export class CartBottomSheetComponent implements OnInit {
       }
     }
     this.removeCart(product);
-    this.openSnackBar("removed from your cart");
+    this.openSnackBar('removed from your cart');
   }
 
 
@@ -42,7 +42,7 @@ export class CartBottomSheetComponent implements OnInit {
     });
   }
 
-  openSnackBar(message: string,) {
+  openSnackBar(message: string, ) {
     this._snackBar.open(message, 'okay', {
       duration: 700,
     });
