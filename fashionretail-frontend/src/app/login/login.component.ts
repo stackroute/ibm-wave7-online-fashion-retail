@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           console.log(this.user)
         })
         let id = data.id;
-        if(data.designation == 'supplier') {
+        if(data.designation = 'Supplier') {
           this.router.navigate(['/supplier'], {queryParams : {id: id}});
         }
         else if (data.designation='designer'){

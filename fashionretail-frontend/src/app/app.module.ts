@@ -61,6 +61,7 @@ import { LoginComponent } from './login/login.component';
 import { ManufacturerDashboardComponent } from './manufacturer-dashboard/manufacturer-dashboard.component';
 import { DesignerviewordersComponent } from './designervieworders/designervieworders.component';
 import { LoginserviceService } from './services/loginservice.service';
+import { AuthenticateService } from './services/authenticate.service';
 
 
 @NgModule({
@@ -144,7 +145,7 @@ import { LoginserviceService } from './services/loginservice.service';
     MatSnackBarModule,
   ],
 
-  providers: [ProductService,ConsumerService,LoginserviceService],
+  providers: [ProductService,ConsumerService,LoginserviceService,AuthenticateService],
   // entryComponents : [SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog,],
   entryComponents: [SignUpDialogue, SupplierEditDialogue, UploadDesignsDialogue, manufactureEditDialog, manufactureAddDialog,designerEditDialogue,AddPriceDialogue,CartBottomSheetComponent],
   bootstrap: [AppComponent]

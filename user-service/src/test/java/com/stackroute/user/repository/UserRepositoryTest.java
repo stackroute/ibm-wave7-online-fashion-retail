@@ -25,7 +25,7 @@ public class UserRepositoryTest {
         @Before
         public void setUp() {
             user = new User( "1","Sindhu", "sindhura", "sindhura@gmail.com", "designer");
-            user.setId("1");
+            user.setUserId("1");
             user.setName("Sindhu");
             user.setName("Sindhu");
             user.setPassword("sindhura");
@@ -41,8 +41,8 @@ public class UserRepositoryTest {
     @Test
     public void testSaveTrack(){
         userRepository.save(user);
-        User fetchTrack = userRepository.findById(user.getId()).get();
-        Assert.assertEquals("1",fetchTrack.getId());
+        User fetchTrack = userRepository.findById(user.getUserId()).get();
+        Assert.assertEquals("1",fetchTrack.getUserId());
     }
     @Test
     public void getAllTracks()

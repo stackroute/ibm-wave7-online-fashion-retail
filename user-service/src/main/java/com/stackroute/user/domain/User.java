@@ -10,16 +10,16 @@ import javax.persistence.GenerationType;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String userId;
     private String name;
     private String password;
     private String email;
     private String designation;
 
 
-    public User(String id, String name, String password, String email, String designation) {
-        this.id = id;
+    public User(String userId, String name, String password, String email, String designation) {
+        this.userId = userId;
         this.name = name;
         this.password = password;
         this.email = email;
@@ -30,9 +30,13 @@ public class User {
     public User() {
     }
 
-    public String getId() { return id; }
+    public String getUserId() {
+        return userId;
+    }
 
-    public void setId(String id) { this.id = id; }
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getName() { return name; }
 
