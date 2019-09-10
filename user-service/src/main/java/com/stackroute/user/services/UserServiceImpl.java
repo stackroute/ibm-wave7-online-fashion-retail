@@ -62,6 +62,19 @@ public class UserServiceImpl implements UserService{
         return savedUser;
     }
 
+
+    @Override
+    public User findUserByEmail(String email) {
+        if(email == null){
+            return null;
+        }
+        else {
+            User user = userRepository.findUserByEmail(email);
+            return user;
+        }
+    }
+
+
     @Override
     public List report() {
 
