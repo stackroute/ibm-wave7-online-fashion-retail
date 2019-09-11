@@ -55,7 +55,7 @@ public class WorkflowApplication implements CommandLineRunner {
 		}
 		createProcessInstance("designer_workflow");
 		createProcessInstance("supplier_workflow");
-		createProcessInstance("user_service_workflow");
+		createProcessInstance("manufacturer_workflow");
 	}
 
 
@@ -64,7 +64,7 @@ public class WorkflowApplication implements CommandLineRunner {
 
 		securityUtil.logInAs("system");
 
-		logger.info("> Starting process to process design");//: " + content + " at " + formatter.format(new Date()));
+		logger.info("> Starting process ");//: " + content + " at " + formatter.format(new Date()));
 
 		ProcessInstance processInstance = processRuntime.start(ProcessPayloadBuilder
 				.start()

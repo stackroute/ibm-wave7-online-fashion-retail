@@ -17,7 +17,6 @@ import org.activiti.api.task.runtime.TaskRuntime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -30,11 +29,15 @@ import java.util.List;
 @RequestMapping("activiti")
 public class WorkflowController {
 
-    private String DESIGNER_IP = "172.23.238.222";
-    private String SUPPLIER_IP = "172.23.238.218";
-    private String USER_IP = "172.23.238.222";
-    private String MANUFACTURER_IP = "";
-    private String CONSUMER_IP = "";
+    private String DESIGNER_IP = "localhost:8187";
+    private String SUPPLIER_IP = "localhost:8188";
+    private String MANUFACTURER_IP = "localhost:8189";
+    private String CONSUMER_IP = "localhost:8190";
+    private String USER_IP = "localhost:8192";
+
+    private String DESIGNER_RESOURCE_URL = "http://" + DESIGNER_IP + "/designs";
+    private String SUPPLIER_RESOURCE_URL = "http://" + SUPPLIER_IP + "/api/v2/material";
+    private String MANUFACTURER_RESOURCE_URL = "http://" + MANUFACTURER_IP + "/baseprice";
 
     private Logger logger = LoggerFactory.getLogger(WorkflowController.class);
 
@@ -67,8 +70,7 @@ public class WorkflowController {
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + DESIGNER_IP + ":8080/designs";
-        logger.info("url: "+fooResourceUrl);
+        logger.info("url: "+DESIGNER_RESOURCE_URL);
 
         //store response in a ResponseEntity
         entity = new HttpEntity<>(designerOrder, headers);
@@ -76,7 +78,7 @@ public class WorkflowController {
 
         //ResponseEntity responseEntity = restTemplate.postForEntity( fooResourceUrl, designerOrder, Dorder.class);
         ResponseEntity responseEntity = restTemplate.exchange(
-                fooResourceUrl,
+                DESIGNER_RESOURCE_URL,
                 HttpMethod.POST,
                 entity,
                 DesignerOrder.class);
@@ -102,21 +104,18 @@ public class WorkflowController {
 
     @PostMapping("add-material")
     public ResponseEntity<?> addMaterial(@RequestBody Mapping mapping) {
-        String id = claimTask("Add a Material");
+        String id = claimTask("Add Material");
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + SUPPLIER_IP + ":8089/material";
 
         //store response in a ResponseEntity
         entity = new HttpEntity<>(mapping, headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(
-                fooResourceUrl,
+                SUPPLIER_RESOURCE_URL,
                 HttpMethod.POST,
                 entity,
                 String.class);
-
-        //ResponseEntity responseEntity = restTemplate.postForEntity( fooResourceUrl, dorder, Dorder.class);
 
         logger.info("> response: " + responseEntity);
         // Let's complete the task
@@ -125,18 +124,17 @@ public class WorkflowController {
         return responseEntity;
     }
 
-    @GetMapping("register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
-        String id = claimTask("Register User");
+    @PostMapping("manufacturer")
+    public ResponseEntity<?> registerUser(@RequestBody BasePrice basePrice) {
+        String id = claimTask("Add Baseprice");
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
-        String fooResourceUrl = "http://" + USER_IP + ":8088/user";
 
         //store response in a ResponseEntity
-        entity = new HttpEntity<>(user, headers);
+        entity = new HttpEntity<>(basePrice, headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(
-                fooResourceUrl,
+                MANUFACTURER_RESOURCE_URL,
                 HttpMethod.POST,
                 entity,
                 String.class);
@@ -144,7 +142,7 @@ public class WorkflowController {
         logger.info("> response: " + responseEntity);
         // Let's complete the task
         completeTask(id);
-        startProcess("user_service_workflow");
+        startProcess("manufacturer_workflow");
         return responseEntity;
     }
 

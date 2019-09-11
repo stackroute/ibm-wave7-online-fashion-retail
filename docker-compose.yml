@@ -224,15 +224,15 @@ services:
     healthcheck:
       test: "exit 0"
 
-  # fashionretail-frontend:
-  #   build: fashionretail/
-  #   restart: always
-  #   network_mode: host
-  #   container_name: fashionretail
-  #   image: fashionretail
-  #   hostname: fashionretail
-  #   ports:
-  #     - 4201:4201
-  #   healthcheck:
-  #     test: "exit 0"
+  fashionretail-frontend:
+    build: fashionretail-frontend/
+    restart: always
+    network_mode: host
+    container_name: angular-app
+    image: fashionretail
+    hostname: fashionretail
+    ports:
+      - 4201:4201
+    healthcheck:
+      test: "exit 0"
 

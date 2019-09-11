@@ -12,6 +12,11 @@
     <bpmn:userTask id="Task_13boper" name="Upload Design">
       <bpmn:incoming>SequenceFlow_0xyjtcp</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_155sn6f</bpmn:outgoing>
+      <bpmn:potentialOwner>
+        <bpmn:resourceAssignmentExpression>
+          <bpmn:formalExpression>activitiTeam</bpmn:formalExpression>
+        </bpmn:resourceAssignmentExpression>
+      </bpmn:potentialOwner>
     </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
