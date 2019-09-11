@@ -25,6 +25,15 @@ public class Consumer {
     public Consumer() {
     }
 
+    public Consumer(String id, String userName, String email, Map<String, Address> addresses, Map<String, ConsumerOrder> consumerOrders, List<Product> cart) {
+        this.id = id;
+        this.userName = userName;
+        this.email = email;
+        this.addresses = addresses;
+        this.consumerOrders = consumerOrders;
+        this.cart = cart;
+    }
+
     //getters and setters
     public String getId() {
         return id;

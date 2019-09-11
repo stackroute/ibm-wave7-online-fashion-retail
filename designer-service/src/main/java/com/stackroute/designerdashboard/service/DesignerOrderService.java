@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface OderService {
+public interface DesignerOrderService {
 
     public DesignerOrder saveDesigns(DesignerOrder designer);
     public List<DesignerOrder> getDesigns();

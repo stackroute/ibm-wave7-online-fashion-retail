@@ -16,6 +16,16 @@ public class Designer {
     public Designer() {
     }
 
+    public Designer(String id, String name, String city, float rating, String email, long contactNumber, List<DesignerOrder> orderList) {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+        this.rating = rating;
+        this.email = email;
+        this.contactNumber = contactNumber;
+        this.orderList = orderList;
+    }
+
     //getters and setters
     public String getId() {
         return id;

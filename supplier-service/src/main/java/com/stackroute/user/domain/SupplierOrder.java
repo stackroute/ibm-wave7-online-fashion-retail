@@ -14,7 +14,17 @@ public class SupplierOrder
     private String orderStatus;
     private String tagId;
 
+    public SupplierOrder() {
+    }
 
+    public SupplierOrder(String id, String designerName, Material material, double quantity, String orderStatus, String tagId) {
+        this.id = id;
+        this.designerName = designerName;
+        this.material = material;
+        this.quantity = quantity;
+        this.orderStatus = orderStatus;
+        this.tagId = tagId;
+    }
 
     public String getTagId() {
         return tagId;

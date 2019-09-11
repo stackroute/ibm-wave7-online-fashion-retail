@@ -11,11 +11,12 @@ public class Designer {
 
     @Id
     private String id;
-    private long contactNumber;
     private String name;
     private String city;
-    private String email;
     private float rating;
+    private String email;
+    private long contactNumber;
+
     private List<DesignerOrder> orderList;
 
 

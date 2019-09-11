@@ -11,7 +11,7 @@ export class ReportService {
   constructor(private http: HttpClient) { }
 
   public getReport() {
-     return this.http.get(environment.reportsUrl + '/user/report');
+     return this.http.get(environment.userUrl + '/user/report');
   }
 
   public getDesignReport() {

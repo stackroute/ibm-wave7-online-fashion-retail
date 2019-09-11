@@ -1,7 +1,7 @@
 package com.stackroute.designerdashboard.service;
 
 import com.stackroute.designerdashboard.model.DesignerOrder;
-import com.stackroute.designerdashboard.repository.OrderRepository;
+import com.stackroute.designerdashboard.repository.DesignerOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,47 +9,47 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class OrderServiceImpl implements OderService {
-    private OrderRepository orderRepository;
+public class DesignerOrderServiceImpl implements DesignerOrderService {
+    private DesignerOrderRepository designerOrderRepository;
 
     @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
+    public DesignerOrderServiceImpl(DesignerOrderRepository designerOrderRepository) {
+        this.designerOrderRepository = designerOrderRepository;
     }
 
     @Override
     public DesignerOrder saveDesigns(DesignerOrder designer) {
-        DesignerOrder designer1= orderRepository.save(designer);
+        DesignerOrder designer1= designerOrderRepository.save(designer);
         return designer1;
     }
 
     @Override
     public List<DesignerOrder> getDesigns() {
-        List<DesignerOrder> designerList= orderRepository.findAll();
+        List<DesignerOrder> designerList= designerOrderRepository.findAll();
         return designerList;
     }
 
     @Override
     public DesignerOrder updateDesigns(DesignerOrder designer, String id) throws Exception{
-        Optional<DesignerOrder> dorder=orderRepository.findById(id);
+        Optional<DesignerOrder> dorder= designerOrderRepository.findById(id);
         if(!dorder.isPresent())
         {
             throw new Exception("Order Not Found");
         }
         designer.setId(id);
-        return orderRepository.save(designer);
+        return designerOrderRepository.save(designer);
     }
 
     @Override
     public Optional<DesignerOrder> deleteDesigns(String id) {
-        Optional<DesignerOrder> order = orderRepository.findById(id);
-         orderRepository.deleteById(id);
+        Optional<DesignerOrder> order = designerOrderRepository.findById(id);
+         designerOrderRepository.deleteById(id);
 
          return  order;
     }
 
     @Override
     public Optional<DesignerOrder> getOrderById(String id) {
-      return orderRepository.findById(id);
+      return designerOrderRepository.findById(id);
     }
 }

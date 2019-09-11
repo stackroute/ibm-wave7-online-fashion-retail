@@ -22,14 +22,14 @@ public class Manufacturer {
     private String city;
     private String specifications;
     private float rating;
-    private int contact_number;
+    private long contact_number;
     private List<ManufacturerOrder> manufacturerOrders;
     private List<BasePrice> basePrices;
 
   public Manufacturer() {
   }
 
-  public Manufacturer(String id, String name, String email, String city, String specifications, float rating, int contact_number, List<ManufacturerOrder> manufacturerOrders) {
+  public Manufacturer(String id, String name, String email, String city, String specifications, float rating, long contact_number, List<ManufacturerOrder> manufacturerOrders) {
     this.id = id;
     this.name = name;
     this.email = email;
@@ -88,11 +88,11 @@ public class Manufacturer {
     this.rating = rating;
   }
 
-  public int getContact_number() {
+  public long getContact_number() {
     return contact_number;
   }
 
-  public void setContact_number(int contact_number) {
+  public void setContact_number(long contact_number) {
     this.contact_number = contact_number;
   }
 

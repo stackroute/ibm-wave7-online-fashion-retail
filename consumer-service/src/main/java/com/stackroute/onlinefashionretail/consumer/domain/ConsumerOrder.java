@@ -24,6 +24,16 @@ public class ConsumerOrder {
     public ConsumerOrder() {
     }
 
+    public ConsumerOrder(String id, String consumerId, List<Product> products, double totalAmount, Address shippingAddress, String status, Date date) {
+        this.id = id;
+        this.consumerId = consumerId;
+        this.products = products;
+        this.totalAmount = totalAmount;
+        this.shippingAddress = shippingAddress;
+        this.status = status;
+        this.date = date;
+    }
+
     //getters and setters
     public String getId() {
         return id;

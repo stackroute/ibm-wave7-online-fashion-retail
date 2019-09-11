@@ -52,7 +52,7 @@ path: 'vieworders', component: ViewOrdersComponent
 },
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {
-    path: '/materials' , component: AddmaterialPageComponent}, {
+    path: 'materials' , component: AddmaterialPageComponent}, {
     path: 'consumer' , component: ConsumerDashboardComponent
   },
   {
