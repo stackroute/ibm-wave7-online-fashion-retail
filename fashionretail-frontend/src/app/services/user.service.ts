@@ -27,7 +27,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
 
-    this.materialUrl = environment.supplierUrl + '/api/v2/materials';
+    this.materialUrl = environment.supplierUrl + '/api/v1/materials';
     this.manufactureUrl = environment.manufacturerUrl + '/manufacture';
     this.userUrl = environment.userUrl + '/user';
     this.designerUrl = environment.designerUrl + '/designs';
@@ -54,7 +54,7 @@ export class UserService {
   }
 
   public getAllMaterial(): Observable<Mapping[]> {
-    return this.http.get<Mapping[]>(environment.supplierUrl + '/materials');
+    return this.http.get<Mapping[]>(this.materialUrl);
   }
 
   public getAllManufacture(): Observable<Manufacturer[]> {

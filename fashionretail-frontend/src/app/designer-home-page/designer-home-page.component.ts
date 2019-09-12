@@ -79,7 +79,6 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.userService.getDesignerById
     this.userService.getAllMaterial().subscribe((data) => {
       this.mapping = data;
       console.log('materials data', this.mapping);
@@ -92,7 +91,7 @@ export class DesignerHomePageComponent implements OnInit {
 
     this.getAllorders();
 
-    this.userService.getDesignerById("id").subscribe((data) => {
+    this.userService.getDesignerById('id').subscribe((data) => {
       // this.Designer = data;
       console.log(data);
     });
@@ -186,16 +185,16 @@ export class DesignerHomePageComponent implements OnInit {
       {
         width: '350px',
         // data: dorderData
-        data : this.orderlist
+        data: this.orderlist
       });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-        if (result != undefined) {
-          // this.userService.updateOrder(result,result.id).subscribe((data) => {
-          //   this.getAllorders();
-          // })
-        }
+      if (result != undefined) {
+        // this.userService.updateOrder(result,result.id).subscribe((data) => {
+        //   this.getAllorders();
+        // })
+      }
     });
   }
 }
