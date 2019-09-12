@@ -27,7 +27,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
 
-    this.materialUrl = environment.supplierUrl + '/api/v2/materials';
+    this.materialUrl = environment.supplierUrl + '/api/v1/materials';
     this.manufactureUrl = environment.manufacturerUrl + '/manufacture';
     this.userUrl = environment.userUrl + '/user';
     this.designerUrl = environment.designerUrl + '/designs';
@@ -92,7 +92,7 @@ export class UserService {
   getDesignerById (userId: string): Observable<User> {
     console.log("getxhghjdghjhfdghjfdfhjfdgjdhj");
     // const url = `${environment.designerUrl+"designer"}/${userId}`;
-    const url = environment.userUrl + '/designer/'+userId;
+    const url = environment.userUrl + '/user/'+userId;
     return this.http.get<User>(url, httpOptions)
       // .pipe(
       //   catchError(this.handleError('deleteHero'))
