@@ -19,9 +19,9 @@ public class ConsumerListener {
   MappingRepository mappingRepository;
 
   @KafkaListener(topics = "Login", groupId = "group_id")
-  public void consumeDonor(String user) throws IOException {
-    Mapping obj = new ObjectMapper().readValue(user, Mapping.class);
+  public void consumeDonor(Mapping user) throws IOException {
+//    Mapping obj = new ObjectMapper().readValue(user, Mapping.class);
     System.out.println(user);
-    mappingRepository.save(obj);
+    mappingRepository.save(user);
   }
 }

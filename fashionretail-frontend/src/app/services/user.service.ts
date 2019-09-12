@@ -92,8 +92,8 @@ export class UserService {
   getDesignerById(userId: string): Observable<User> {
     console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
     // const url = `${environment.designerUrl+"designer"}/${userId}`;
-    const url = environment.userUrl + '/user/'+userId;
-    return this.http.get<User>(url, httpOptions)
+    const url = environment.userUrl + '/user/' + userId;
+    return this.http.get<User>(url, httpOptions);
       // .pipe(
       //   catchError(this.handleError('deleteHero'))
       // );

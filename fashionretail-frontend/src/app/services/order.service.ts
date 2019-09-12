@@ -20,7 +20,7 @@ export class OrderService {
   }
 
   submit(mapping) {
-    return this.http.post(environment.supplierUrl + '/materials', mapping);
+    return this.http.post(environment.workflowUrl + '/add-material', mapping);
   }
 
   updateOrder(order: SupplierOrder) {

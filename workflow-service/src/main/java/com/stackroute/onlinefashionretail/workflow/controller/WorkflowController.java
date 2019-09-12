@@ -1,5 +1,6 @@
 package com.stackroute.onlinefashionretail.workflow.controller;
 
+import com.stackroute.onlinefashionretail.workflow.exception.ApiCallException;
 import com.stackroute.onlinefashionretail.workflow.models.BasePrice;
 import com.stackroute.onlinefashionretail.workflow.models.DesignerOrder;
 import com.stackroute.onlinefashionretail.workflow.models.Mapping;
@@ -35,9 +36,15 @@ public class WorkflowController {
     private String CONSUMER_IP = "localhost:8190";
     private String USER_IP = "localhost:8192";
 
-    private String DESIGNER_RESOURCE_URL = "http://" + DESIGNER_IP + "/designs";
-    private String SUPPLIER_RESOURCE_URL = "http://" + SUPPLIER_IP + "/api/v2/material";
-    private String MANUFACTURER_RESOURCE_URL = "http://" + MANUFACTURER_IP + "/baseprice";
+   // private String DESIGNER_IP = "13.126.224.142:8187";
+   // private String SUPPLIER_IP = "13.126.224.142:8188";
+   // private String MANUFACTURER_IP = "13.126.224.142:8189";
+   // private String CONSUMER_IP = "13.126.224.142:8190";
+   // private String USER_IP = "13.126.224.142:8192";
+
+    private String DESIGNER_RESOURCE_URL = "http://" + DESIGNER_IP + "/api/v1/designs";
+    private String SUPPLIER_RESOURCE_URL = "http://" + SUPPLIER_IP + "/api/v1/material";
+    private String MANUFACTURER_RESOURCE_URL = "http://" + MANUFACTURER_IP + "/api/v1/baseprice";
 
     private Logger logger = LoggerFactory.getLogger(WorkflowController.class);
 
@@ -63,7 +70,7 @@ public class WorkflowController {
     }
 
     @PostMapping("upload")
-    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder) {
+    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder) throws ApiCallException {
         logger.info("< upload design handler");
         String id = claimTask("Upload Design");
 
@@ -73,25 +80,32 @@ public class WorkflowController {
 
         //store response in a ResponseEntity
         entity = new HttpEntity<>(designerOrder, headers);
+        ResponseEntity responseEntity = new ResponseEntity(HttpStatus.OK);
 
+        try {
+           responseEntity  = restTemplate.exchange(
+                    DESIGNER_RESOURCE_URL,
+                    HttpMethod.POST,
+                    entity,
+                    DesignerOrder.class);
+        }
+        catch (Exception e){
+            logger.error("In exception block");
+            throw new ApiCallException(e.getMessage(),e.getCause());
+        }
 
-        //ResponseEntity responseEntity = restTemplate.postForEntity( fooResourceUrl, designerOrder, Dorder.class);
-        ResponseEntity responseEntity = restTemplate.exchange(
-                DESIGNER_RESOURCE_URL,
-                HttpMethod.POST,
-                entity,
-                DesignerOrder.class);
+        finally {
+            logger.info("> response: " + responseEntity.getBody() );
+            // Let's complete the task
+            completeTask(id);
+            startProcess("designer_workflow");
 
-        logger.info("> response: " + responseEntity.getBody() );
-        // Let's complete the task
-        completeTask(id);
-        startProcess("designer_workflow");
+        }
         return responseEntity;
-
     }
 
     @PostMapping("add-material")
-    public ResponseEntity<?> addMaterial(@RequestBody Mapping mapping) {
+    public ResponseEntity<?> addMaterial(@RequestBody Mapping mapping) throws ApiCallException {
         String id = claimTask("Add Material");
 
         //RestTemplate gets response from an api
@@ -99,21 +113,32 @@ public class WorkflowController {
 
         //store response in a ResponseEntity
         entity = new HttpEntity<>(mapping, headers);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(
-                SUPPLIER_RESOURCE_URL,
-                HttpMethod.POST,
-                entity,
-                String.class);
+        ResponseEntity responseEntity = new ResponseEntity(HttpStatus.OK);
 
-        logger.info("> response: " + responseEntity);
-        // Let's complete the task
-        completeTask(id);
-        startProcess("supplier_workflow");
+        try {
+            responseEntity  = restTemplate.exchange(
+                    SUPPLIER_RESOURCE_URL,
+                    HttpMethod.POST,
+                    entity,
+                    String.class);
+        }
+        catch (Exception e){
+            logger.error("In exception block");
+            throw new ApiCallException(e.getMessage(),e.getCause());
+        }
+
+        finally {
+            logger.info("> response: " + responseEntity.getBody() );
+            // Let's complete the task
+            completeTask(id);
+            startProcess("supplier_workflow");
+
+        }
         return responseEntity;
     }
 
     @PostMapping("manufacturer")
-    public ResponseEntity<?> registerUser(@RequestBody BasePrice basePrice) {
+    public ResponseEntity<?> registerUser(@RequestBody BasePrice basePrice) throws ApiCallException {
         String id = claimTask("Add Baseprice");
 
         //RestTemplate gets response from an api
@@ -121,16 +146,27 @@ public class WorkflowController {
 
         //store response in a ResponseEntity
         entity = new HttpEntity<>(basePrice, headers);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(
-                MANUFACTURER_RESOURCE_URL,
-                HttpMethod.POST,
-                entity,
-                String.class);
-        
-        logger.info("> response: " + responseEntity);
-        // Let's complete the task
-        completeTask(id);
-        startProcess("manufacturer_workflow");
+        ResponseEntity responseEntity = new ResponseEntity(HttpStatus.OK);
+
+        try {
+            responseEntity  = restTemplate.exchange(
+                    MANUFACTURER_RESOURCE_URL,
+                    HttpMethod.POST,
+                    entity,
+                    String.class);
+        }
+        catch (Exception e){
+            logger.error("In exception block");
+            throw new ApiCallException(e.getMessage(),e.getCause());
+        }
+
+        finally {
+            logger.info("> response: " + responseEntity.getBody() );
+            // Let's complete the task
+            completeTask(id);
+            startProcess("manufacturer_workflow");
+
+        }
         return responseEntity;
     }
 

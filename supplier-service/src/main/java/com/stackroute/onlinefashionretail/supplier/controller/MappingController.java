@@ -44,7 +44,7 @@ public class MappingController {
       kafkaTemplate.send(TOPIC,savedMapping);
       responseEntity = new ResponseEntity<Mapping>(savedMapping, HttpStatus.CREATED);
     } catch (Exception ex) {
-      logger.info("Entered intosaveMaterial method In exception block(MappingController)");
+      logger.info("Entered intos aveMaterial method In exception block(MappingController)");
       logger.info(ex.toString());
       responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
     }

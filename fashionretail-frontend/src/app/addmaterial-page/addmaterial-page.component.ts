@@ -20,7 +20,7 @@ export class AddmaterialPageComponent implements OnInit {
 
 
   submit(name, price, quantity, category) {
-    const supplier = new Supplier('1', 'nilakshi', 'nilakshi@gmail.com', 'bangalore', '5');
+    const supplier = new Supplier('1', 'nilakshi', 'bangalore', '5', 'nilakshi@gmail.com');
     const material = new Material('2', category, name, '');
     const mapping = new Mapping('1', quantity, price, material, supplier, '');
 
