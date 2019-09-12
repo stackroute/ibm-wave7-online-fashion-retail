@@ -79,7 +79,7 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-   this.userService.getDesignerById
+  
     this.userService.getAllMaterial().subscribe((data) => {
       this.mapping = data;
       console.log('materials data', this.mapping);
