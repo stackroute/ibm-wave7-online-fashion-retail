@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Designer } from '../models/Designer';
 import { UserService } from '../services/user.service';
+import { AuthenticateService } from '../services/authenticate.service';
+import { User } from '../models/User';
 export interface DialogData {
   location: string;
   contact: number;
@@ -13,19 +15,25 @@ export interface DialogData {
   styleUrls: ['./designerviewprofile.component.css']
 })
 export class DesignerviewprofileComponent implements OnInit {
-  constructor(private dialog: MatDialog, private designerService: UserService) { }
+  constructor(private dialog: MatDialog, 
+    private designerService: UserService,private authentication : AuthenticateService) { }
   designer: Designer;
   location: string;
   contact: number;
+  user : User
 
 
    data;
 
   ngOnInit() {
-    this.designerService.getDesigner().subscribe((data) => {
-      this.designer = data;
-      console.log(this.designer);
-    });
+    console.log(this.designerService.loginCredentials);
+    this.user = this.designerService.loginCredentials;
+    // this.designerService.getDesignerById(loginUserId).subscribe((data) => {
+    //   console.log(data)
+    //   this.user = data;
+    //   console.log(this.designer);
+      
+    // });
   }
 
 
@@ -34,11 +42,11 @@ export class DesignerviewprofileComponent implements OnInit {
     this.designerService.updateDesigner(designer.id, designer).subscribe(
       (data) => {
         console.log('updated Designer ', data);
-        this.designerService.getDesigner().subscribe(
+        // this.designerService.getDesignerById("id").subscribe(
 
-          data => { this.designer = data; }
+          // data => { this.designer = data; }
 
-        );
+        // );
 
       }
     );

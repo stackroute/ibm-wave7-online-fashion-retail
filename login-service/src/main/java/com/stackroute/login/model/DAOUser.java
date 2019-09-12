@@ -21,11 +21,26 @@ public class DAOUser {
     @JsonProperty("email")
     private String username;
     @Column
+    @JsonProperty("name")
+    private String name;
+    @Column
     @JsonProperty("password")
     private String password;
     @Column
     @JsonProperty("designation")
     private String designation;
+
+    public DAOUser() {
+    }
+
+    public DAOUser(String id, String userId, String username, String name, String password, String designation) {
+        this.id = id;
+        this.userId = userId;
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.designation = designation;
+    }
 
     public String getId() {
         return id;
@@ -51,6 +66,14 @@ public class DAOUser {
         this.username = username;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -73,6 +96,7 @@ public class DAOUser {
                 "id='" + id + '\'' +
                 ", userId='" + userId + '\'' +
                 ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", designation='" + designation + '\'' +
                 '}';

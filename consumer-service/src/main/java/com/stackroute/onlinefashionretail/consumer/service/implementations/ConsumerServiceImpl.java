@@ -40,6 +40,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to add a consumer
     @Override
     public Consumer addConsumer(Consumer consumer) throws ConsumerAlreadyExistsException {
+        logger.info("Entered into addconsumer method in ConsumerSericeImpl");
         try {
             if (consumerRepository.findConsumerByEmail(consumer.getEmail()) != null)
                 throw new ConsumerAlreadyExistsException("Consumer already exists!");
@@ -54,6 +55,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to remove a consumer
     @Override
     public Consumer removeConsumer(Consumer consumer) throws ConsumerNotFoundException {
+        logger.info("Entered into removeConsumer method in ConsumerSericeImpl");
         try {
             if (consumerRepository.findConsumerByEmail(consumer.getEmail()) == null)
                 throw new ConsumerNotFoundException("Consumer not found!");
@@ -69,6 +71,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to get all consumers
     @Override
     public List<Consumer> getAllConsumers() {
+        logger.info("Entered into getAllConsumer method in ConsumerSericeImpl");
         try {
             return consumerRepository.findAll();
         }
@@ -81,6 +84,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to get a consumer by id
     @Override
     public Consumer getConsumerById(String id) throws ConsumerNotFoundException {
+        logger.info("Entered into getConsumerById method in ConsumerSericeImpl");
         try {
             return consumerRepository.findById(id).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
         }
@@ -93,6 +97,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to get a consumer by email
     @Override
     public Consumer getConsumerByEmail(String email) throws ConsumerNotFoundException {
+        logger.info("Entered into getConsumerByEmail method in ConsumerSericeImpl");
         try {
             Consumer consumer = consumerRepository.findConsumerByEmail(email);
             if (consumer == null) {
@@ -109,6 +114,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to add or edit a consumer
     @Override
     public Consumer editConsumer(Consumer consumer) throws ConsumerNotFoundException {
+        logger.info("Entered into editConsumer method in ConsumerSericeImpl");
         try {
             if (consumerRepository.findConsumerByEmail(consumer.getEmail()) == null)
                 throw new ConsumerNotFoundException("Consumer with given email not found!");
@@ -123,6 +129,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to add or edit an address
     @Override
     public Address addOrEditAddress(String consumerId, Address address) throws ConsumerNotFoundException {
+        logger.info("Entered into addOrEditAddress method in ConsumerSericeImpl");
         try {
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             consumer.getAddresses().put(address.getId(),address);
@@ -138,6 +145,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to remove an address
     @Override
     public Address removeAddress(String consumerId, Address address) throws ConsumerNotFoundException {
+        logger.info("Entered into removeAddress method in ConsumerSericeImpl");
         try {
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             consumer.getAddresses().remove(address.getId());
@@ -153,6 +161,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to get all addresses
     @Override
     public Map<String,Address> getAllAddresses(String consumerId) throws ConsumerNotFoundException {
+        logger.info("Entered into getAllAddresses method in ConsumerSericeImpl");
         try {
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             return consumer.getAddresses();
@@ -166,6 +175,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to get an address by id
     @Override
     public Address getAddressById(String consumerId, String id) throws ConsumerNotFoundException {
+        logger.info("Entered into getAddressById method in ConsumerSericeImpl");
         try {
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             return consumer.getAddresses().get(id);
@@ -179,6 +189,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     //method to place an order
     @Override
     public ConsumerOrder placeOrder(ConsumerOrder consumerOrder) throws ConsumerNotFoundException {
+        logger.info("Entered into placeOrder method in ConsumerSericeImpl");
         try {
             Consumer consumer = consumerRepository.findById(consumerOrder.getConsumerId()).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
 
@@ -277,6 +288,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     @Override
     public Product removeFromCart(String consumerId, Product product) throws ConsumerNotFoundException {
         try {
+            logger.info("Entered into removefromCart method in ConsumerSericeImpl");
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             //add product to cart
             logger.info(product.toString());
@@ -296,6 +308,7 @@ public class ConsumerServiceImpl implements ConsumerService {
     @Override
     public List<Product> viewCart(String consumerId) throws ConsumerNotFoundException {
         try {
+            logger.info("Entered into viewCart method in ConsumerSericeImpl");
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             return consumer.getCart();
         }

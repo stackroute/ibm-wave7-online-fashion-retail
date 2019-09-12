@@ -33,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product addProduct(Product product) throws ProductAlreadyExistsException {
         try{
+            logger.info("Entered into addProduct method in ProductServiceImpl");
             if (!productRepository.existsById(product.getId())){
                 return productRepository.save(product);
             }
@@ -50,6 +51,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product removeProduct(Product product) throws ProductNotFoundException {
         try{
+            logger.info("Entered into removeProduct method in ProductServiceImpl");
             if (productRepository.existsById(product.getId())){
                 productRepository.delete(product);
                 return product;
@@ -68,6 +70,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product editImage(String id, String image) throws ProductNotFoundException {
         try{
+            logger.info("Entered into editImages method in ProductServiceImpl");
             Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Product with the specified id not found!"));
             product.setImage(image);
             return productRepository.save(product);
@@ -82,6 +85,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product editPrice(String id, double price) throws ProductNotFoundException {
         try{
+            logger.info("Entered into editPrice method in ProductServiceImpl");
             Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Product with the specified id not found!"));
             product.setPrice(price);
             return productRepository.save(product);
@@ -96,6 +100,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product editRating(String id, float rating) throws ProductNotFoundException {
         try{
+            logger.info("Entered into editRating method in ProductServiceImpl");
             Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Product with the specified id not found!"));
             product.setRating(rating);
             return productRepository.save(product);
@@ -110,6 +115,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product editDiscount(String id, double discount) throws ProductNotFoundException {
         try{
+            logger.info("Entered into editDiscount method in ProductServiceImpl");
             Product product = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Product with the specified id not found!"));
             product.setDiscount(discount);
             return productRepository.save(product);
@@ -124,6 +130,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllProducts() {
         try{
+            logger.info("Entered into getAllProducts method in ProductServiceImpl");
             return productRepository.findAll();
         }
         catch (MongoSocketOpenException exception){
@@ -136,6 +143,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(String id) throws ProductNotFoundException {
         try{
+            logger.info("Entered into getProductById method in ProductServiceImpl");
             return productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException("Product with the specified id not found!"));
         }
         catch (MongoSocketOpenException exception){

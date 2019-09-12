@@ -8,6 +8,7 @@ import { Designer } from '../models/Designer';
 import { DesignerOrder } from '../models/DesignerOrder';
 import { Design } from '../models/Design';
 import { environment } from '../../environments/environment';
+import { LoginUser } from '../models/LoginUser';
 
 
 const httpOptions = {
@@ -37,6 +38,8 @@ export class UserService {
   private designerUrl: string;
   private materialUrl: string;
   private manufactureUrl: string;
+  public loginCredentials : User;
+
   updateOrder(result: any, id: any) {
     throw new Error('Method not implemented.');
   }
@@ -80,11 +83,20 @@ export class UserService {
    public getAllOrders(): Observable<DesignerOrder[]> {
     return this.http.get<DesignerOrder[]>(environment.designerUrl + '/designs');
   }
-  getDesigner(): Observable<Designer> {
-    const url = environment.designerUrl + '/designer';
-    const getUrl = `${url}/3`;
-    return this.http.get<Designer>(getUrl);
+  // getDesignerById(id : string): Observable<Designer> {
+  //   const url = environment.designerUrl + '/designer';
+  //   const getUrl = `${url}/{{id}}`;
+  //   return this.http.get<Designer>(getUrl);
 
+  // }
+  getDesignerById (userId: string): Observable<User> {
+    console.log("getxhghjdghjhfdghjfdfhjfdgjdhj");
+    // const url = `${environment.designerUrl+"designer"}/${userId}`;
+    const url = environment.userUrl + '/designer/'+userId;
+    return this.http.get<User>(url, httpOptions)
+      // .pipe(
+      //   catchError(this.handleError('deleteHero'))
+      // );
   }
   updateDesigner(id: string, designer: Designer): Observable<Designer> {
     const url = environment.designerUrl + '/designer';

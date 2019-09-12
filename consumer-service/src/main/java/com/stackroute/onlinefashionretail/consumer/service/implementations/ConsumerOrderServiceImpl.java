@@ -31,6 +31,7 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
     //method to save an order
     @Override
     public ConsumerOrder placeOrder(ConsumerOrder consumerOrder) throws ConsumerOrderAlreadyExistsException {
+        logger.info("Entered into placeOrder method in ConsumerOrderServiceImpl");
         try {
             if (consumerOrderRepository.existsById(consumerOrder.getId()))
                 throw new ConsumerOrderAlreadyExistsException("An order with this id already exists!");
@@ -45,6 +46,7 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
     //method to cancel an order
     @Override
     public ConsumerOrder cancelOrder(ConsumerOrder consumerOrder) throws ConsumerOrderNotFoundException {
+        logger.info("Entered into cancelOrder method in ConsumerOrderServiceImpl");
         try {
             if (!consumerOrderRepository.existsById(consumerOrder.getId()))
                 throw new ConsumerOrderNotFoundException("Consumer order with given id not found!");
@@ -60,6 +62,7 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
     //method to edit the shipping address of an order
     @Override
     public ConsumerOrder editShippingAddress(String consumerOrderId, Address address) throws ConsumerOrderNotFoundException {
+        logger.info("Entered into editShippingAddress method in ConsumerOrderServiceImpl");
         try {
             ConsumerOrder consumerOrder = consumerOrderRepository.findById(consumerOrderId).orElseThrow(() -> new ConsumerOrderNotFoundException("Consumer order with given id not found!"));
             consumerOrder.setShippingAddress(address);
@@ -74,6 +77,7 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
     //method to edit the status of an order
     @Override
     public ConsumerOrder editStatus(String consumerOrderId, String status) throws ConsumerOrderNotFoundException {
+        logger.info("Entered into editStatus method in ConsumerOrderServiceImpl");
         try {
             ConsumerOrder consumerOrder = consumerOrderRepository.findById(consumerOrderId).orElseThrow(() -> new ConsumerOrderNotFoundException("Consumer order with given id not found!"));
             consumerOrder.setStatus(status);
@@ -88,6 +92,7 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
     //method to get all orders
     @Override
     public List<ConsumerOrder> getAllOrders() {
+        logger.info("Entered into getAllOrders method in ConsumerOrderServiceImpl");
         try {
             return consumerOrderRepository.findAll();
         }
@@ -100,6 +105,7 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
     //method to get an order by id
     @Override
     public ConsumerOrder getOrderById(String id) throws ConsumerOrderNotFoundException {
+        logger.info("Entered into getOrderById method in ConsumerOrderServiceImpl");
         try {
             return consumerOrderRepository.findById(id).orElseThrow(() -> new ConsumerOrderNotFoundException("Consumer order with given id not found!"));
         }
@@ -111,6 +117,7 @@ public class ConsumerOrderServiceImpl implements ConsumerOrderService {
 
     @Override
     public Integer getProductCount() {
+        logger.info("Entered into getProductCount method in ConsumerOrderServiceImpl");
         try {
             int count = 0;
             List<ConsumerOrder> orders = consumerOrderRepository.findAll();

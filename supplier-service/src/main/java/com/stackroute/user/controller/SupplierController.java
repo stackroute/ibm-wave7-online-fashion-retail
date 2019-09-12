@@ -26,9 +26,9 @@ public class SupplierController {
     }
 
     @Autowired
-    private KafkaTemplate<String, Supplier> kafkaTemplate1;
+    private KafkaTemplate<String, Supplier> kafkaTemplate;
 
-    private static final String TOPIC = "Kafka_Example";
+    private static final String TOPIC = "Login";
 
 //    @PostMapping("publish")
 //    public String post() {
@@ -42,7 +42,7 @@ public class SupplierController {
         ResponseEntity responseEntity;
         try {
             savedSupplier=supplierService.saveSupplier(supplier);
-          kafkaTemplate1.send(TOPIC,savedSupplier);
+          kafkaTemplate.send(TOPIC,savedSupplier);
             responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);

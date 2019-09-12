@@ -1,20 +1,29 @@
 package com.stackroute.user.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 
 @Document
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Supplier
 {
     @Id
+    @JsonProperty("userId")
     private String id;
+    @JsonProperty("name")
     private String name;
+
     private String city;
+
     private float rating;
+    @JsonProperty("email")
     private String email;
     private List<SupplierOrder> supplierOrders;
 

@@ -2,6 +2,8 @@ package com.stackroute.designerdashboard.controller;
 
 import com.stackroute.designerdashboard.model.Designer;
 import com.stackroute.designerdashboard.service.DesignerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +16,7 @@ import java.util.List;
 @RestController
 //@RequestMapping(value="api/v1")
 public class DesignerController {
-
+    private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
     DesignerService designerService;
     Designer designer = new Designer();
 
@@ -30,6 +32,7 @@ public class DesignerController {
         ResponseEntity responseEntity;
         try {
             designerService.saveDesigner(designer);
+            logger.info("Entered into saveDesiner in DesignerController");
             responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
         } catch (Exception ex) {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
@@ -40,8 +43,10 @@ public class DesignerController {
     @GetMapping("designer/{id}")
     public ResponseEntity<?> getDesigner(@PathVariable String id) {
         ResponseEntity responseEntity;
+        logger.info("Entered into getDesignersById method in DesignerController");
 
         try {
+
             responseEntity = new ResponseEntity<>(designerService.getDesigner(id), HttpStatus.OK);
         } catch (Exception exception) {
 
@@ -52,7 +57,7 @@ public class DesignerController {
     @GetMapping("designer")
     public ResponseEntity<?> getAllDesigners() {
         ResponseEntity responseEntity;
-
+        logger.info("Entered into getAllDesigners method in DesignerController");
         try {
             responseEntity = new ResponseEntity<List<Designer>>(designerService.getAllDesigners(), HttpStatus.OK);
         } catch (Exception exception) {
@@ -65,6 +70,7 @@ public class DesignerController {
     @DeleteMapping("designer/{id}")
     public ResponseEntity<?> deleteDesigner(@PathVariable String id) {
         ResponseEntity responseEntity;
+        logger.info("Entered into deleteDesigner method in DesignerController");
         try {
             designerService.deleteDesigner(id);
             responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
@@ -77,6 +83,7 @@ public class DesignerController {
     @PutMapping("designer/{id}")
     public ResponseEntity<?> updateDesigner(@RequestBody Designer designer, @PathVariable String id) {
         ResponseEntity responseEntity;
+        logger.info("Entered into updateDesigner method in DesignerController");
         try {
             designerService.updateDesigner(designer,id);
             responseEntity = new ResponseEntity<>(designerService.getDesigner(id), HttpStatus.CREATED);

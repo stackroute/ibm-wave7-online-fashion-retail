@@ -1,5 +1,7 @@
 package com.stackroute.designerdashboard.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,12 +9,13 @@ import java.util.List;
 
 
 @Document
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Designer {
 
     @Id
     private String id;
-    private long contactNumber;
     private String name;
+    private long contactNumber;
     private String city;
     private String email;
     private float rating;

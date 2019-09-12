@@ -5,6 +5,7 @@ import com.stackroute.user.domain.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,14 +19,14 @@ public class MappingController {
   Mapping savedMapping;
 
   @Autowired
-  private KafkaTemplate<String, Mapping> kafkaTemplate2;
+  private KafkaTemplate<String, Mapping> kafkaTemplate;
 
-  private static final String TOPIC = "Kafka_Example";
+  private static final String TOPIC = "Login";
 
   @Autowired
   public MappingController(MappingService mappingService, KafkaTemplate<String, Mapping> kafkaTemplate2) {
     this.mappingService = mappingService;
-    this.kafkaTemplate2 = kafkaTemplate2;
+    this.kafkaTemplate = kafkaTemplate2;
   }
 
   //@PostMapping("publish")
@@ -44,7 +45,7 @@ public class MappingController {
       System.out.println("In try block");
       savedMapping = mappingService.saveMapping(mapping);
       System.out.println(savedMapping);
-      kafkaTemplate2.send(TOPIC,savedMapping);
+      kafkaTemplate.send(TOPIC,savedMapping);
       responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
     } catch (Exception ex) {
       System.out.println("In exception block");
