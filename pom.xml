@@ -37,6 +37,7 @@
 		<module>supplier-service</module>
 		<module>workflow-service</module>
 		<module>reports-service</module>
+		<module>designer-service</module>
 	</modules>
 
 	<dependencies>
