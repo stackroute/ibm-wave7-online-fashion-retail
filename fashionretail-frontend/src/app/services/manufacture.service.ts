@@ -37,7 +37,7 @@ export class ManufactureService {
 
   saveBasePrice(baseprice: BasePrice): Observable<BasePrice> {
     // const url="http://localhost:8090/baseprice";
-    const url = environment.workflowUrl + '/activiti/manufacturer';
+    const url = environment.workflowUrl + '/manufacturer';
     // const updateUrl=`${url}/5`
     return this.httpClient.post<BasePrice>(url, baseprice, httpOptions);
   }

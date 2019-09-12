@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import {Product} from '../models/product';
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,6 +15,6 @@ export class ProductService {
   }
 
   public getAllProducts(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>( environment.consumerUrl + '/api/v1/product', {headers: this.headers});
+    return this.httpClient.get<Product[]>( environment.consumerUrl + '/product', {headers: this.headers});
   }
 }

@@ -10,7 +10,7 @@ import {environment} from '../../environments/environment';
 export class OrderService {
   headers = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
   public data: string;
-  private _url: string = environment.supplierUrl + '/api/v1/order/8';
+  private _url: string = environment.supplierUrl + '/order/1';
 
   constructor(private http: HttpClient) {
   }
