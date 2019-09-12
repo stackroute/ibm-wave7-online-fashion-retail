@@ -30,7 +30,7 @@ public class ReportServiceImpl implements ReportService {
     @Override
     public List designCount()
     {
-        String c=null;
+        String c="0";
         int designs=0;
         List list = new ArrayList();
         List<Reports> reports =reportRepository.findAll();
