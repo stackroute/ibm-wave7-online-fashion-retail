@@ -14,7 +14,17 @@ public class Material
     private String name;
     private String image;
 
-  public String getId() {
+    public Material() {
+    }
+
+    public Material(String id, String category, String name, String image) {
+        this.id = id;
+        this.category = category;
+        this.name = name;
+        this.image = image;
+    }
+
+    public String getId() {
         return id;
     }
 

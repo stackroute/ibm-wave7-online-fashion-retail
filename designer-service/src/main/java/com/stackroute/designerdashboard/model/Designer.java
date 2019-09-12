@@ -17,8 +17,10 @@ public class Designer {
     private String name;
     private long contactNumber;
     private String city;
-    private String email;
     private float rating;
+    private String email;
+    private long contactNumber;
+
     private List<DesignerOrder> orderList;
 
 

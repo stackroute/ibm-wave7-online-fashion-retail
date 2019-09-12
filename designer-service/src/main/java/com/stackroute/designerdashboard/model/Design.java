@@ -3,8 +3,6 @@ package com.stackroute.designerdashboard.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.List;
-
 @Document
 public class Design {
 
@@ -13,25 +11,25 @@ public class Design {
     private String name;
     private String design_img;
     private float price;
-    private float profitPercentage;
-    private float discountPercentage;
-    private int QuantityOfDesign;
-    private  String OrderStatus;
+    private float profitPercent;
+    private float discountPercent;
+    private int quantityOfDesign;
+    private  String orderStatus;
 
 
 
     public Design() {
     }
 
-    public Design(String id, String name, String design_img, float price, float profitPercentage, float discountPercentage, int quantityOfDesign, String orderStatus) {
+    public Design(String id, String name, String design_img, float price, float profitPercent, float discountPercent, int quantityOfDesign, String orderStatus) {
         this.id = id;
         this.name = name;
         this.design_img = design_img;
         this.price = price;
-        this.profitPercentage = profitPercentage;
-        this.discountPercentage = discountPercentage;
-        this.QuantityOfDesign = quantityOfDesign;
-        this.OrderStatus = orderStatus;
+        this.profitPercent = profitPercent;
+        this.discountPercent = discountPercent;
+        this.quantityOfDesign = quantityOfDesign;
+        this.orderStatus = orderStatus;
     }
 
     public String getId() {
@@ -66,36 +64,36 @@ public class Design {
         this.price = price;
     }
 
-    public float getProfitPercentage() {
-        return profitPercentage;
+    public float getProfitPercent() {
+        return profitPercent;
     }
 
-    public void setProfitPercentage(float profitPercentage) {
-        this.profitPercentage = profitPercentage;
+    public void setProfitPercent(float profitPercent) {
+        this.profitPercent = profitPercent;
     }
 
-    public float getDiscountPercentage() {
-        return discountPercentage;
+    public float getDiscountPercent() {
+        return discountPercent;
     }
 
-    public void setDiscountPercentage(float discountPercentage) {
-        this.discountPercentage = discountPercentage;
+    public void setDiscountPercent(float discountPercent) {
+        this.discountPercent = discountPercent;
     }
 
     public int getQuantityOfDesign() {
-        return QuantityOfDesign;
+        return quantityOfDesign;
     }
 
     public void setQuantityOfDesign(int quantityOfDesign) {
-        this.QuantityOfDesign = quantityOfDesign;
+        this.quantityOfDesign = quantityOfDesign;
     }
 
     public String getOrderStatus() {
-        return OrderStatus;
+        return orderStatus;
     }
 
     public void setOrderStatus(String orderStatus) {
-        this.OrderStatus = orderStatus;
+        this.orderStatus = orderStatus;
     }
 
     @Override
@@ -105,10 +103,10 @@ public class Design {
                 ", name='" + name + '\'' +
                 ", design_img='" + design_img + '\'' +
                 ", price=" + price +
-                ", profitPercentage=" + profitPercentage +
-                ", discountPercentage=" + discountPercentage +
-                ", QuantityOfDesign=" + QuantityOfDesign +
-                ", OrderStatus='" + OrderStatus + '\'' +
+                ", profitPercentage=" + profitPercent +
+                ", discountPercentage=" + discountPercent +
+                ", QuantityOfDesign=" + quantityOfDesign +
+                ", OrderStatus='" + orderStatus + '\'' +
                 '}';
     }
 }

@@ -21,6 +21,24 @@ public class Product {
     public Product() {
     }
 
+    public Product(String id,
+                   String name,
+                   String category,
+                   Designer designer,
+                   double price,
+                   double discount,
+                   float rating,
+                   String image) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.designer = designer;
+        this.price = price;
+        this.discount = discount;
+        this.rating = rating;
+        this.image = image;
+    }
+
     //getters and setters
     public String getId() {
         return id;
