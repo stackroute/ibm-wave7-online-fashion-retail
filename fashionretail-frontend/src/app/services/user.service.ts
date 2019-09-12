@@ -54,7 +54,7 @@ export class UserService {
   }
 
   public getAllMaterial(): Observable<Mapping[]> {
-    return this.http.get<Mapping[]>(this.materialUrl);
+    return this.http.get<Mapping[]>(environment.supplierUrl + '/materials');
   }
 
   public getAllManufacture(): Observable<Manufacturer[]> {
@@ -92,8 +92,13 @@ export class UserService {
   getDesignerById(userId: string): Observable<User> {
     console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
     // const url = `${environment.designerUrl+"designer"}/${userId}`;
+<<<<<<< HEAD
     const url = environment.userUrl + '/designer/' + userId;
     return this.http.get<User>(url, httpOptions);
+=======
+    const url = environment.userUrl + '/user/'+userId;
+    return this.http.get<User>(url, httpOptions)
+>>>>>>> a9fd2be6f64e5dce27587353001def02d6e440c9
       // .pipe(
       //   catchError(this.handleError('deleteHero'))
       // );

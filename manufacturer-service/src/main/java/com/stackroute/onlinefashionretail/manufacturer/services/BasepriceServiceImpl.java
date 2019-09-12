@@ -14,7 +14,7 @@ import java.util.Optional;
 public class BasepriceServiceImpl implements BasepriceService
 {
     private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
-    
+
     BasepriceRepository basepriceRepository;
 
         @Autowired
@@ -25,39 +25,37 @@ public class BasepriceServiceImpl implements BasepriceService
 
         @Override
         public BasePrice saveBaseprice(BasePrice baseprice) {
+            logger.info("Inside saveBase in BasePriceImpl");
             BasePrice savedBaseprice = basepriceRepository.save(baseprice);
             return savedBaseprice;
         }
 
     @Override
     public List<BasePrice> getAllBaseprice() {
-        return basepriceRepository.findAll();
+        logger.info("Inside getAllBasePrice in BasePriceImpl");
+            return basepriceRepository.findAll();
     }
 
-
-        @Override
-        public boolean deleteBaseprice(String id ){
-            // Optional<User> user1 = userRepository.findById(id);
-
-            try {
-                basepriceRepository.deleteById(id);
-                return true;
-            }
-            catch (Exception exception)
-            {
+    @Override
+    public boolean deleteBaseprice(String id ){
+      try {
+          logger.info("Inside deleteBaseprice in BasePriceImpl");
+          basepriceRepository.deleteById(id);
+          return true;
+      }
+      catch (Exception exception) {
+          logger.info("Inside deleteBaseprice  catch block in BasePriceImpl");
                 return false;
-            }
+      }
         }
         @Override
         public BasePrice updateBaseprice(BasePrice baseprice, String id)
         {
+            logger.info("Inside updateBaseprice  catch block in BasePriceImpl");
             Optional<BasePrice> user1 = basepriceRepository.findById(id);
-
             baseprice.setId(id);
             baseprice.setName(baseprice.getName());
             baseprice.setPrice(baseprice.getPrice());
-
-
             BasePrice savedBaseprice = basepriceRepository.save(baseprice);
             return savedBaseprice;
         }
