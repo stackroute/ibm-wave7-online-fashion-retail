@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.stackroute</groupId>
 	<artifactId>config-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	
 	<name>config-server</name>
 	<description>Config Server for services</description>
 
