@@ -1,6 +1,7 @@
 package com.stackroute.onlinefashionretail.manufacturer.controller;
 
 import com.stackroute.onlinefashionretail.manufacturer.domain.Manufacturer;
+import com.stackroute.onlinefashionretail.manufacturer.domain.ManufacturerOrder;
 import com.stackroute.onlinefashionretail.manufacturer.services.ManufactureService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
