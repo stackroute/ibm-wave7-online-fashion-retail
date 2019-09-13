@@ -21,6 +21,26 @@ public class Address {
     public Address() {
     }
 
+    public Address(String id,
+                   String firstName,
+                   String lastName,
+                   String firstLine,
+                   String secondLine,
+                   String thirdLine,
+                   String state,
+                   String city,
+                   String pinCode) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.firstLine = firstLine;
+        this.secondLine = secondLine;
+        this.thirdLine = thirdLine;
+        this.state = state;
+        this.city = city;
+        this.pinCode = pinCode;
+    }
+
     //getters and setters
     public String getId() {
         return id;

@@ -8,6 +8,7 @@ import { Designer } from '../models/Designer';
 import { DesignerOrder } from '../models/DesignerOrder';
 import { Design } from '../models/Design';
 import { environment } from '../../environments/environment';
+import { LoginUser } from '../models/LoginUser';
 
 
 const httpOptions = {
@@ -26,7 +27,7 @@ export class UserService {
 
   constructor(private http: HttpClient) {
 
-    this.materialUrl = environment.supplierUrl + '/api/v2/materials';
+    this.materialUrl = environment.supplierUrl + '/materials';
     this.manufactureUrl = environment.manufacturerUrl + '/manufacture';
     this.userUrl = environment.userUrl + '/user';
     this.designerUrl = environment.designerUrl + '/designs';
@@ -37,6 +38,8 @@ export class UserService {
   private designerUrl: string;
   private materialUrl: string;
   private manufactureUrl: string;
+  public loginCredentials: User;
+
   updateOrder(result: any, id: any) {
     throw new Error('Method not implemented.');
   }
@@ -71,7 +74,7 @@ export class UserService {
    submitOrder(dOrder: DesignerOrder): Observable<DesignerOrder> {
      console.log(dOrder);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
-     return this.http.post<DesignerOrder>(environment.workflowUrl + '/activiti/upload', dOrder, httpOptions);
+     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, httpOptions);
     // return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
     //   'Access-Control-Allow-Origin':'*',
     // })});
@@ -80,11 +83,20 @@ export class UserService {
    public getAllOrders(): Observable<DesignerOrder[]> {
     return this.http.get<DesignerOrder[]>(environment.designerUrl + '/designs');
   }
-  getDesigner(): Observable<Designer> {
-    const url = environment.designerUrl + '/designer';
-    const getUrl = `${url}/3`;
-    return this.http.get<Designer>(getUrl);
+  // getDesignerById(id : string): Observable<Designer> {
+  //   const url = environment.designerUrl + '/designer';
+  //   const getUrl = `${url}/{{id}}`;
+  //   return this.http.get<Designer>(getUrl);
 
+  // }
+  getDesignerById(userId: string): Observable<User> {
+    console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
+    // const url = `${environment.designerUrl+"designer"}/${userId}`;
+    const url = environment.userUrl + '/user/' + userId;
+    return this.http.get<User>(url, httpOptions);
+      // .pipe(
+      //   catchError(this.handleError('deleteHero'))
+      // );
   }
   updateDesigner(id: string, designer: Designer): Observable<Designer> {
     const url = environment.designerUrl + '/designer';

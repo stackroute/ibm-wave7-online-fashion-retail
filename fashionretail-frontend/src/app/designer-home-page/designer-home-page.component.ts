@@ -12,6 +12,7 @@ import {DesignerOrder} from '../models/DesignerOrder';
 import {ManufacturerOrder} from '../models/ManufacturerOrder';
 import {BasePrice} from '../models/BasePrice';
 
+
 @Component({
   selector: 'app-designer-home-page',
   templateUrl: './designer-home-page.component.html',
@@ -78,6 +79,7 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.userService.getAllMaterial().subscribe((data) => {
       this.mapping = data;
       console.log('materials data', this.mapping);
@@ -90,9 +92,9 @@ export class DesignerHomePageComponent implements OnInit {
 
     this.getAllorders();
 
-    this.userService.getDesigner().subscribe((data) => {
-      this.Designer = data;
-      console.log(this.Designer);
+    this.userService.getDesignerById('1').subscribe((data) => {
+      // this.Designer = data;
+      console.log(data);
     });
   }
 
@@ -183,16 +185,17 @@ export class DesignerHomePageComponent implements OnInit {
     const dialogRef = this.dialogue.open(AddPriceDialogueComponent,
       {
         width: '350px',
-        data: dorderData
+        // data: dorderData
+        data: this.orderlist
       });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      //   if (result != undefined) {
-      //     this.userService.updateOrder(result,result.id).subscribe((data) => {
-      //       this.getAllorders();
-      //     })
-      //   }
+      if (result != undefined) {
+        // this.userService.updateOrder(result,result.id).subscribe((data) => {
+        //   this.getAllorders();
+        // })
+      }
     });
   }
 }

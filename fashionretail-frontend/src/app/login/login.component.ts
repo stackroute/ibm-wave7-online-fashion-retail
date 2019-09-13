@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginUser } from '../models/LoginUser';
 import { AuthenticateService } from '../services/authenticate.service';
 import { LoginService } from '../services/login.service';
+import { UserService } from '../services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(private authenticateService: AuthenticateService,
               private formBuilder: FormBuilder,
               private router: Router,
-              private loginService: LoginService) { }
+              private loginService: LoginService,
+              private userService: UserService) { }
   ngOnInit() {
         // this.authenticateService.login(this.user)
     // .subscribe(data=>this.result=data);
@@ -44,9 +46,10 @@ export class LoginComponent implements OnInit {
         //   console.log(this.user)
         // })
         console.log('designer data', data);
+        this.userService.loginCredentials = data
         const id = data.id;
         if (data.designation === 'Supplier') {
-          this.router.navigate(['/supplier'], {queryParams : {id}});
+          this.router.navigate(['/suppliers'], {queryParams : {id}});
         } else if (data.designation === 'Designer') {
           this.router.navigate(['/designer'], {queryParams : {id}});
         } else {

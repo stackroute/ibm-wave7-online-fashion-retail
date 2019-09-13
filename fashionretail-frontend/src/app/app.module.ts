@@ -68,6 +68,7 @@ import {ManufacturerDashboardComponent} from './manufacturer-dashboard/manufactu
 import {LoginService} from './services/login.service';
 import {AuthenticateService} from './services/authenticate.service';
 import {OrderService} from './services/order.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -102,21 +103,21 @@ import {OrderService} from './services/order.service';
     SupplierviewprofileComponent,
     designerEditDialogue,
     CartBottomSheetComponent,
-    // DesignerprofileComponent,
-    // DesignereditdialogueComponent,
     ManufactureviewprofileComponent,
     ProfilebuttonComponent,
     DashboardreportsComponent,
     PieChartComponent,
     SupplierviewprofileComponent,
     AddmaterialPageComponent,
-    // ManufactureCardComponent,
     ConsumerDashboardComponent,
     ManufacturerDashboardComponent,
     DesignerviewordersComponent,
-    AddPriceDialogueComponent, ForgotpasswordComponent, ResetPasswordComponent,
+    AddPriceDialogueComponent,
+     ForgotpasswordComponent, 
+     ResetPasswordComponent,
     ViewOrdersComponent,
     ManufactureEditDialogComponent,
+    
 
   ],
   imports: [
@@ -151,7 +152,9 @@ import {OrderService} from './services/order.service';
     MatSnackBarModule,
   ],
 
-  providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService],
+  providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MatDialogRef, useValue: {} }],
   // entryComponents : [SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog,],
   entryComponents: [SignUpDialogue,
     SupplierEditDialogue,

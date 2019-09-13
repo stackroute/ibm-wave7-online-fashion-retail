@@ -19,7 +19,7 @@ const httpOptions = {
 })
 export class AuthenticateService {
   private apiUrl = environment.userUrl + '/register';
-  private apiUrl2 = environment.userUrl + '/authenticate';
+  private apiUrl2 = environment.loginUrl + '/authenticate';
   private apiUrl3 = environment.userUrl + '/forgot-password';
   private apiUrl4 = environment.userUrl + '/reset-password';
   private loginUser: LoginUser;
