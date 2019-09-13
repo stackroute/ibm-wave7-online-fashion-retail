@@ -21,7 +21,7 @@ export class SupplierService {
   }
 
   updateSupplier(supplier: Supplier, id: string): Observable<Supplier> {
-    const url = environment.supplierUrl + '/supplier/2';
+    const url = environment.supplierUrl + '/supplier';
     const updatedUrl = '${url}/2';
     return this.http.put<Supplier>(url, supplier, httpOptions);
   }

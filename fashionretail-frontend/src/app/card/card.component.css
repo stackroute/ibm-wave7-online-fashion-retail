@@ -10,12 +10,25 @@
   }
   .flex
   {
-    margin-top: 3cm;
+    margin-top: 2cm;
     display: flex;
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-around;
-      margin-bottom: 5.6cm;
+  /*    margin-bottom: 5.6cm;*/
+
+  }
+
+  .addmaterial
+  {
+  margin-top: 3.5cm;
+   display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        padding-left: 650px;
+        margin-bottom:0px;
+        font-size:20px;
+
   }
   footer {
     position: fixed;
@@ -73,4 +86,7 @@ mat-toolbar{
   }
   button{
       color: white;
+  }
+  mat-card-actions{
+      padding-left: 65px;
   }
