@@ -42,7 +42,7 @@ services:
   mongo:
     image: mongo:latest
     ports:
-      - 27018:27018
+      - 27017:27017
     container_name: mongo
     network_mode: host
     hostname: localhost
@@ -204,7 +204,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_CREATE_TOPICS: "test-1, test-2"
+      KAFKA_CREATE_TOPICS: "Kafka_Example, Kafka_Example1, Kafka_Example2, Login"
     restart: always
     healthcheck:
       test: "exit 0"

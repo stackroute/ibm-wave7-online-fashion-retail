@@ -14,7 +14,7 @@ import java.io.IOException;
     @Autowired
     ManufactureRepository manufactureRepository;
 
-    @KafkaListener(topics="Kafka_Example",groupId = "group_id")
+    @KafkaListener(topics="Kafka_Example2",groupId = "group_id")
     public void consumeDonor(String user) throws IOException {
       Manufacturer obj=new ObjectMapper().readValue(user, Manufacturer.class);
       System.out.println(user);

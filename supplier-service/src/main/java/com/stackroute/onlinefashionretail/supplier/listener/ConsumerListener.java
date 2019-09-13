@@ -1,6 +1,5 @@
 package com.stackroute.onlinefashionretail.supplier.listener;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.onlinefashionretail.supplier.repository.MappingRepository;
 import com.stackroute.onlinefashionretail.supplier.domain.Mapping;
 import com.stackroute.onlinefashionretail.supplier.domain.Supplier;
