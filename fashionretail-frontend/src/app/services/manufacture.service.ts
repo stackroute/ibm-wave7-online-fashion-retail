@@ -52,4 +52,13 @@ export class ManufactureService {
     const url = environment.manufacturerUrl + '/manufacture';
     return this.httpClient.get<ManufacturerOrder>(url);
   }
+
+  updateOrder(order: ManufacturerOrder) {
+    const url=environment.manufacturerUrl+'/order/{id}';
+    return this.httpClient.put(url,order);
+  }
+  getOrders(): Observable<ManufacturerOrder[]> {
+    const url=environment.manufacturerUrl+'/order';
+    return this.httpClient.get<ManufacturerOrder[]>(url);
+  }
 }

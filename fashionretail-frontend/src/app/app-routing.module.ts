@@ -20,6 +20,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { CardComponent } from './card/card.component';
+import { ManufacturerViewOrdersComponent } from './manufacturer-view-orders/manufacturer-view-orders.component';
 
 
 
@@ -50,6 +51,10 @@ path: 'suppliers', component: CardComponent
 {
 path: 'vieworders', component: ViewOrdersComponent
 },
+{
+  path: 'vieworders', component: ManufacturerViewOrdersComponent
+},
+  
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {
     path: 'materials' , component: AddmaterialPageComponent}, {

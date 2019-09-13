@@ -2,7 +2,7 @@
    <mat-menu #dd="matMenu" [overlapTrigger]="false">
       <div class="dropdown">
         <button mat-button color="primary"><a routerLink="manufactureviewprofile">View Profile</a></button><br>
-        <button mat-button color="primary">View Previous orders</button>
+        <button mat-button color="primary" (click)="vieworders()">View Previous orders</button>
         <mat-divider></mat-divider>
         <!-- <div class="buttons">
             <button mat-stroked-button>
@@ -52,20 +52,4 @@
            </mat-card-actions>
      </mat-card>
 
-     <!-- <mat-card class="tp-card">
-      <mat-card-header>
-         <div mat-card-avatar class="tp-header-image"></div>
-         <mat-card-title><h4>Order ID: 123</h4></mat-card-title>
-         <mat-card-subtitle><h3>Designer Name: Designer</h3></mat-card-subtitle>
-       </mat-card-header>
-         <mat-card-content>
-            <h3>The material required is: Cotton </h3>
-             <h3>Quantity: 4 </h3>
-         </mat-card-content>
-         <mat-card-actions>
-            <button mat-button>Accept</button>
-            <button mat-button>Reject</button>
-         </mat-card-actions>
-   </mat-card>
-   -->
      </div>

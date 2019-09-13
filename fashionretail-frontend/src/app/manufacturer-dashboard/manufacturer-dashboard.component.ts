@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SupplierOrder } from '../models/SupplierOrder';
 import { OrderService } from '../services/order.service';
+import { ManufacturerOrder } from '../models/ManufacturerOrder';
+import { ManufactureService } from '../services/manufacture.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-manufacturer-dashboard',
@@ -9,11 +12,29 @@ import { OrderService } from '../services/order.service';
 })
 export class ManufacturerDashboardComponent implements OnInit {
 
-  public receivedOrders: SupplierOrder[];
-  constructor(private _orderService: OrderService) { }
+  public receivedOrders: ManufacturerOrder[];
+  constructor(private manufacturerService: ManufactureService,private router: Router) { }
 
   ngOnInit() {
-    this._orderService.getOrders().subscribe(data => {this.receivedOrders = data; console.log('orders: '); console.log(this.receivedOrders); });
+    this.manufacturerService.getOrders().subscribe(data => {this.receivedOrders = data; console.log('orders: '); console.log(this.receivedOrders); });
   }
 
+  vieworders() {
+    this.router.navigate(['/vieworders']);
+  }
+  
+  accept(order: ManufacturerOrder) {
+    console.log('order', order);
+    order.orderStatus = 'accepted';
+    this.manufacturerService.updateOrder(order).subscribe();
+  }
+  reject(order: ManufacturerOrder) {
+    console.log('order', order);
+    order.orderStatus = 'rejected';
+    this.manufacturerService.updateOrder(order).subscribe();
+  }
+  viewProfile(){
+    console.log("view profile clicked");
+    this.router.navigate(['/manufactureviewprofile'])
+  }
 }

@@ -1,12 +1,14 @@
 package com.stackroute.onlinefashionretail.manufacturer.services;
 
 import com.stackroute.onlinefashionretail.manufacturer.domain.Manufacturer;
+import com.stackroute.onlinefashionretail.manufacturer.domain.ManufacturerOrder;
 import com.stackroute.onlinefashionretail.manufacturer.repository.ManufactureRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,5 +73,70 @@ public class ManufactureServiceImpl implements ManufactureService {
         Manufacturer savedManufacturer = manufactureRepository.save(manufacturer);
         return savedManufacturer;
     }
+
+    @Override
+    public List<ManufacturerOrder> getAllOrders(String id) {
+        Manufacturer save = manufactureRepository.findById(id).orElse(null);
+        System.out.println(save);
+        System.out.println(save.getManufacturerOrders());
+        return save.getManufacturerOrders();
+      }
+    
+      @Override
+      public boolean deleteOrder(String id) {
+        try {
+    
+          manufactureRepository.deleteById(id);
+    
+          return true;
+    
+        }
+        catch (Exception exception)
+        {
+          return false;
+        }
+      }
+    
+    
+    @Override
+      public ManufacturerOrder updateOrder(ManufacturerOrder manufacturerOrder, String id) {
+          Manufacturer manufacturer=manufactureRepository.findById(id).orElse(null);
+        for (ManufacturerOrder man:
+          manufacturer.getManufacturerOrders()) {
+          if (man.getId().equals(manufacturerOrder.getId()))
+          {
+            System.out.println("inside");
+            man.setOrderStatus(manufacturerOrder.getOrderStatus());
+            man.setQunatityOfDesign(manufacturerOrder.getQunatityOfDesign());
+            man.setTagId(manufacturerOrder.getTagId());
+          
+             manufactureRepository.save(manufacturer);
+            return man;
+          }
+        }
+        return null;
+      }
+    
+      @Override
+      public ManufacturerOrder getOrderById(String id) {
+        for (ManufacturerOrder man:
+          manufactureRepository.findById(id).orElse(null).getManufacturerOrders()) {
+          if (man.getId().equals(id))
+            return man;
+        }
+        return null;
+      }
+      @Override
+      public ManufacturerOrder saveOrder(String id, ManufacturerOrder manufacturerOrder) throws Exception {
+        System.out.println("in order repo save");
+         Manufacturer save = manufactureRepository.findById(id).orElseThrow(() -> new Exception("null value no id"));
+         if (save.getManufacturerOrders() == null)
+           save.setManufacturerOrders(new ArrayList<>());
+         save.getManufacturerOrders().add(manufacturerOrder);
+         manufactureRepository.save(save);
+        System.out.println("suuplier order:"+manufacturerOrder);
+         return manufacturerOrder;
+        }
+
 
 }

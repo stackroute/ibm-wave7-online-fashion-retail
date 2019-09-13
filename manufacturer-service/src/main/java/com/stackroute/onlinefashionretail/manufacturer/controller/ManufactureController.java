@@ -105,4 +105,60 @@ public class ManufactureController {
         }
         return responseEntity;
     }
+
+    @PostMapping("order")
+    public ResponseEntity<?> saveOrder(@RequestBody ManufacturerOrder manufacturerOrder, @RequestParam String id) {
+      ResponseEntity responseEntity;
+      try {
+        System.out.println("In try order");
+        manufactureService.saveOrder(id,manufacturerOrder);
+        responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
+      } catch (Exception ex) {
+        System.out.println("in exception order");
+        System.out.println(ex);
+        responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
+      }
+      return responseEntity;
+    }
+  
+    @GetMapping("order/{id}")
+    public ResponseEntity<?> getAllOrders(@PathVariable String id) {
+      ResponseEntity responseEntity;
+      try {
+        responseEntity = new ResponseEntity<List<ManufacturerOrder>>(manufactureService.getAllOrders(id), HttpStatus.OK);
+      } catch (Exception exception) {
+  
+        responseEntity = new ResponseEntity<String>(exception.toString(), HttpStatus.CONFLICT);
+      }
+      return responseEntity;
+    }
+  
+  
+  
+    @DeleteMapping("order/{id}")
+    public ResponseEntity<?> deleteOrder(@PathVariable String id) {
+      ResponseEntity responseEntity;
+      try {
+        manufactureService.deleteOrder(id);
+        responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
+      } catch (Exception exception) {
+        responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+      }
+      return responseEntity;
+    }
+  
+    @PutMapping("order/{id}")
+    public ResponseEntity<?> updateOrder(@RequestBody ManufacturerOrder manufacturerOrder, @PathVariable String id) {
+      ResponseEntity responseEntity;
+      System.out.println(manufacturerOrder);
+      try {
+  
+        responseEntity = new ResponseEntity<ManufacturerOrder>(manufactureService.updateOrder(manufacturerOrder,id), HttpStatus.OK);
+        System.out.println(responseEntity);
+      } catch (Exception exception1) {
+        responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
+      }
+      return responseEntity;
+    }
+
 }
