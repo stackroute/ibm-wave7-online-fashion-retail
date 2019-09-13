@@ -44,7 +44,7 @@ const routes: Routes = [
   {path: 'designer', component: DesignerHomePageComponent
   },
   {path: 'edit', component: ProfilebuttonComponent},
-  {path: 'edit/supplierviewprofile', component: SupplierviewprofileComponent},
+  {path: 'suppliers/supplierviewprofile', component: SupplierviewprofileComponent},
 {
 path: 'suppliers', component: CardComponent
 },

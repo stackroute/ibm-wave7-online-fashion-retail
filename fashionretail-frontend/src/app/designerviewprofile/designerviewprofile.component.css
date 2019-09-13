@@ -1,4 +1,11 @@
 .example-card {
     padding-top: 100px;
     padding-left: 60px;
+    padding-bottom: 165px;
+}
+.example-container{
+font-family: arial;
+}
+h6{
+padding-top:20px;
 }
