@@ -43,7 +43,7 @@ const routes: Routes = [
   {path: 'designer', component: DesignerHomePageComponent
   },
   {path: 'edit', component: ProfilebuttonComponent},
-  {path: 'edit/supplierviewprofile', component: SupplierviewprofileComponent},
+  {path: 'suppliers/supplierviewprofile', component: SupplierviewprofileComponent},
 {
 path: 'suppliers', component: CardComponent
 },
@@ -52,7 +52,7 @@ path: 'vieworders', component: ViewOrdersComponent
 },
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {
-    path: '/materials' , component: AddmaterialPageComponent}, {
+    path: 'materials' , component: AddmaterialPageComponent}, {
     path: 'consumer' , component: ConsumerDashboardComponent
   },
   {
