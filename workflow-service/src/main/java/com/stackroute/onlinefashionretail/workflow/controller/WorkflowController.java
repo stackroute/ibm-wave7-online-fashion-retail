@@ -30,17 +30,17 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 public class WorkflowController {
 
-    private String DESIGNER_IP = "localhost:8187";
-    private String SUPPLIER_IP = "localhost:8188";
-    private String MANUFACTURER_IP = "localhost:8189";
-    private String CONSUMER_IP = "localhost:8190";
-    private String USER_IP = "localhost:8192";
+    // private String DESIGNER_IP = "localhost:8187";
+    // private String SUPPLIER_IP = "localhost:8188";
+    // private String MANUFACTURER_IP = "localhost:8189";
+    // private String CONSUMER_IP = "localhost:8190";
+    // private String USER_IP = "localhost:8192";
 
-   // private String DESIGNER_IP = "13.126.224.142:8187";
-   // private String SUPPLIER_IP = "13.126.224.142:8188";
-   // private String MANUFACTURER_IP = "13.126.224.142:8189";
-   // private String CONSUMER_IP = "13.126.224.142:8190";
-   // private String USER_IP = "13.126.224.142:8192";
+   private String DESIGNER_IP = "13.126.224.142:8187";
+   private String SUPPLIER_IP = "13.126.224.142:8188";
+   private String MANUFACTURER_IP = "13.126.224.142:8189";
+   private String CONSUMER_IP = "13.126.224.142:8190";
+   private String USER_IP = "13.126.224.142:8192";
 
     private String DESIGNER_RESOURCE_URL = "http://" + DESIGNER_IP + "/api/v1/designs";
     private String SUPPLIER_RESOURCE_URL = "http://" + SUPPLIER_IP + "/api/v1/material";

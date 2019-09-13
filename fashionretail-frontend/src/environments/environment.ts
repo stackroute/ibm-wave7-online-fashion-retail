@@ -4,15 +4,15 @@
 
 export const environment = {
   production: false,
-  designerUrl : 'http://localhost:8080/designer-service/api/v1',
-  supplierUrl : 'http://localhost:8080/supplier-servivce/api/v1',
-  manufacturerUrl : 'http://localhost:8080/manufacturer-service/api/v1',
-  consumerUrl : 'http://localhost:8080/consumer-service/api/v1',
-  recommendationUrl : 'http://localhost:8080/recommendation-service/api/v1',
-  userUrl : 'http://localhost:8080/user-service/api/v1',
-  loginUrl : 'http://localhost:8080/login-service/api/v1',
-  workflowUrl : 'http://localhost:8080/workflow-service/api/v1',
-  reportsUrl : 'http://localhost:8080/reports-service/api/v1'
+  designerUrl : 'http://13.126.224.142:8080/designer-service/api/v1',
+  supplierUrl : 'http://13.126.224.142:8080/supplier-servivce/api/v1',
+  manufacturerUrl : 'http://13.126.224.142:8080/manufacturer-service/api/v1',
+  consumerUrl : 'http://13.126.224.142:8080/consumer-service/api/v1',
+  recommendationUrl : 'http://13.126.224.142:8080/recommendation-service/api/v1',
+  userUrl : 'http://13.126.224.142:8080/user-service/api/v1',
+  loginUrl : 'http://13.126.224.142:8080/login-service/api/v1',
+  workflowUrl : 'http://13.126.224.142:8080/workflow-service/api/v1',
+  reportsUrl : 'http://13.126.224.142:8080/reports-service/api/v1'
 
   // designerUrl: 'http://13.126.224.142:8187/api/v1',
   // supplierUrl: 'http://13.126.224.142:8188/api/v1',
