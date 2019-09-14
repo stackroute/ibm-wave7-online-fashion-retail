@@ -69,6 +69,7 @@ import {LoginService} from './services/login.service';
 import {AuthenticateService} from './services/authenticate.service';
 import {OrderService} from './services/order.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ManufacturerViewOrderComponent } from './manufacturer-view-order/manufacturer-view-order.component';
 
 
 @NgModule({
@@ -117,6 +118,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
      ResetPasswordComponent,
     ViewOrdersComponent,
     ManufactureEditDialogComponent,
+    ManufacturerViewOrderComponent,
     
 
   ],

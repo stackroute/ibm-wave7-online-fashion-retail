@@ -15,39 +15,46 @@
       justify-content: space-around;
       margin-bottom: 100px;
   }
-  mat-toolbar{
-    width:100%;
-    height: 100px;
-    position: fixed;
-    top:0;
-    z-index: 1000;
-    left: 0;
-    right: 0;
-    background-color: black;
+  mat-toolbar
+  {
+      width:100%;
+      height: 90px;
+      position: fixed;
+      top:0;
+      z-index: 1030;
+      left: 0;
+      right: 0;
+      background-color: black;
+      padding: 10px;
+      padding-left: 5px;
 
   }
 
-  .header{
-    font-family: 'Courier New', Courier, monospace;
-    text-align: center;
-    color:white;
+  .header
+  {
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      background-color: black;
+       color:white;
   }
-  .d-inline-block {
-   width: 70px;
-   height: 70px;
-}
-.title{
-   color: black;
-        font-size: 6vh;
-        padding-left: 5px;
-}
-
-  .spacer {
-    flex: 1 1 auto;
+     .d-inline-block
+      {
+     width: 60px;
+     height: 60px;
   }
-  #menu{
-      color: white;
+  .title{
+          font-size: 4vh;
+          padding-left: 4px;
+          /*color: #F4F6F7;*//*color: #F4F6F7;*/
+                  padding-top: 8px;
+                  font-family: 'Open Sans', sans-serif;
   }
-  button{
-      color: white;
-  }
+    .spacer {
+      flex: 1 1 auto;
+    }
+    #menu{
+        color: white;
+    }
+    button{
+        color: white;
+    }

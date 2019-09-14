@@ -1,55 +1,55 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div (click)="cancelClick($event)" class="dropdown"><br>
-      <button mat-button color="primary">View Profile</button><br>
-      <button mat-button color="primary" (click)="vieworders()">View Previous orders</button>
-       <mat-divider></mat-divider>
-      <button mat-button color="primary"><a routerLink = "logout">LogOut</a></button>
+    <button mat-button color="primary"><a routerLink="/supplierviewprofile" routerLinkActive="active" >View Profile</a></button><br>
+    <button mat-button color="primary"><a routerLink="/vieworders" routerLinkActive="active" >View Previous orders</a></button><br>
+    <mat-divider></mat-divider>
+    <button mat-button color="primary"><a routerLink="/logout" routerLinkActive="active" >LogOut</a></button>
   </div>
 </mat-menu>
 
 <div>
-       <mat-toolbar class="header">
-         <mat-toolbar-row>
-           <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-             <mat-icon>menu</mat-icon>
-           </button>
-           <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
-           <span class="title">TrendMode</span>
-           <span class="example-spacer"></span>
-             <span class="spacer"></span>
-           <div fxShow="true" fxHide.lt-md="true">
-               <span>
-                   <mat-form-field>
-                     <input #searchText matInput placeholder="Search for products">
-                   </mat-form-field>
-                   <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
-                     <mat-icon>search</mat-icon>
-                   </button></span>
-             <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-             <button mat-stroked-button >Home</button>
-           <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd" >
-           Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
+  <mat-toolbar class="header">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+      <span class="title">TrendMode</span>
+      <span class="example-spacer"></span>
+      <span class="spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+        <span>
+          <mat-form-field>
+            <input #searchText matInput placeholder="Search for products">
+          </mat-form-field>
+          <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
+            <mat-icon>search</mat-icon>
+          </button>
+        </span>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/suppliers" routerLinkActive="active" ><button mat-stroked-button>Home</button></a>
+        <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
+          Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 
-         </div>
-         </mat-toolbar-row>
-       </mat-toolbar>
-       </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
 
-<!--<app-header1></app-header1>-->
 <div class="content">
-<mat-card>
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter the name of the material" #name>
-    </mat-form-field>
+  <mat-card>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter the name of the material" #name>
+      </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Enter the price per unit" #price>
-    </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter the price per unit" #price>
+      </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+      <mat-form-field class="example-full-width">
         <input matInput placeholder="Enter the quantity" #quantity>
-    </mat-form-field>
+      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Select the Category</mat-label>
@@ -62,11 +62,9 @@
       </mat-form-field>
 
       <div class="example-button-row">
-        <button mat-raised-button color="primary" (click)="submit(name.value,price.value,quantity.value,category.value)">Submit</button>
-     </div>
-  </form>
-</mat-card>
+        <button mat-raised-button color="primary"
+          (click)="submit(name.value,price.value,quantity.value,category.value)">Submit</button>
+      </div>
+    </form>
+  </mat-card>
 </div>
-
-
-

@@ -1,12 +1,19 @@
-button{
-    padding-top: 100px;
-}
+/*button{
+    padding-top: 150px;
+    float: right;
+}*/
 /*.cardList{
     padding-top: 150px;
 }*/
-table{
-    padding-top: 100px;
-    margin-left: 1%;
+.basePriceButton{
+  padding-top: 120px;
+  float: right;
+  margin-right:2%
+}
+
+.baseTable{
+    padding-top: 200px;
+    margin-left: 25%;
 }
 
 table th{
