@@ -52,8 +52,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/suppliers'], {queryParams : {id}});
         } else if (data.designation === 'Designer') {
           this.router.navigate(['/designer'], {queryParams : {id}});
-        } else {
+        } else if(data.designation == 'Manufacturer'){
           this.router.navigate(['/manufacturer'], {queryParams : {id}});
+        }
+        else{
+          this.router.navigate(['/consumer']), {queryParams : {id}}
         }
       },
       error => {

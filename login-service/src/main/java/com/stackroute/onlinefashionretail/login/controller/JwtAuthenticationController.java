@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
@@ -35,9 +36,15 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
+//    @Autowired
+//    private KafkaTemplate<String, UserDetails> kafkaTemplate;
+//
+//    private static final String TOPIC = "Login-data";
+
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody UserDTO userDTO) throws Exception {
-        logger.info("Entered into createAuthenticatiobToken in JwtAuthenticationController");
+        System.out.println("hello");
+        logger.info("Entered into createAuthenticationToken in JwtAuthenticationController");
         authenticate(userDTO.getUsername(), userDTO.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(userDTO.getUsername());
         DAOUser daoUser = userDetailsService.getUserData(userDTO.getUsername());
@@ -51,7 +58,9 @@ public class JwtAuthenticationController {
         model.put("email",daoUser.getUsername());
         model.put("name",daoUser.getName());
         System.out.println("model"+model);
+     //   kafkaTemplate.send(TOPIC,userDetails);
         return ok(model);
+        //new ResponseEntity<UserDetails>(userDetails,HttpStatus.OK);
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
