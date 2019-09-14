@@ -9,7 +9,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>login-service</artifactId>
-	
 	<name>login-service</name>
 	<description>Demo project for Spring Boot</description>
 
