@@ -42,7 +42,7 @@ services:
   mongo:
     image: mongo:latest
     ports:
-      - 27018:27018
+      - 27017:27017
     container_name: mongo
     network_mode: host
     hostname: localhost
@@ -92,8 +92,8 @@ services:
       - user-service
     restart: always
     network_mode: host
-    container_name: manufacture
-    image: manufacture
+    container_name: manufacturer
+    image: manufacturer_image
     hostname: localhost
     ports:
       - 8189:8189
@@ -108,7 +108,7 @@ services:
     restart: always
     network_mode: host
     container_name: supplier
-    image: supplier
+    image: supplier_image
     hostname: supplier
     ports:
       - 8188:8188
@@ -125,7 +125,7 @@ services:
     restart: always
     network_mode: host
     container_name: designer
-    image: designer
+    image: designer_image
     hostname: designer
     ports:
       - 8187:8187
@@ -204,7 +204,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: 'localhost:2181'
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_LISTENERS: PLAINTEXT://localhost:9092
-      KAFKA_CREATE_TOPICS: "test-1, test-2"
+      KAFKA_CREATE_TOPICS:"Kafka_Example, Kafka_Example1, Kafka_Example2, Login"
     restart: always
     healthcheck:
       test: "exit 0"
