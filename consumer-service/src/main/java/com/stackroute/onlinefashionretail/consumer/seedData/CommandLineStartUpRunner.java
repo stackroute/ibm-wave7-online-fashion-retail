@@ -54,19 +54,19 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
 
         Product product1 = new Product("1",
                 "Embroidered Lehenga",
-                "Clothing",designer1,4565,23,3.5f,"imageLehenga");
+                "Clothing",designer1,4565,23,3.5f,"imageLehenga.jpg");
 
         Product product2 = new Product("2",
                 "Pin-Striped Shirt",
-                "Clothing",designer2,4565,23,3.5f,"imageShirt");
+                "Clothing",designer2,4565,23,3.5f,"imageShirt.jpeg");
 
         Product product3 = new Product("3",
                 "Blue Velvet Dress",
-                "Clothing",designer2,4565,23,3.5f,"imageDress");
+                "Clothing",designer2,4565,23,3.5f,"imageDress.jpeg");
 
         Product product4 = new Product("4",
                 "Metallic Detail Earrings",
-                "Jewellery",designer1,4565,23,3.5f,"imageEarrings");
+                "Jewellery",designer1,4565,23,3.5f,"imageEarrings.jpg");
 
         Address address = new Address("1",
                 "Shruti",
