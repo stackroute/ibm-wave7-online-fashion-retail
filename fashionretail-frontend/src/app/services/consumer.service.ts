@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Product} from '../models/product';
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
+import {ConsumerOrder} from '../models/consumer-order';
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,7 @@ export class ConsumerService {
       environment.consumerUrl + '/consumer/1/cart',
       {body: product, headers: this.headers});
   }
+  public placeOrder(consumerOrder: ConsumerOrder) {
+  return this.httpClient.post<ConsumerOrder>(environment.consumerUrl + '/consumer/order', consumerOrder, {headers: this.headers});
+}
 }

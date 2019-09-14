@@ -49,6 +49,10 @@ export class UserService {
      return this.http.post<User>(this.userUrl, user, httpOptions);
    }
 
+  isEmailTaken(email: string): Observable<boolean> {
+    return this.http.get<boolean>(this.userUrl + '/exists', {params: {email}});
+  }
+
    public getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userUrl);
   }

@@ -21,6 +21,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { ManufacturerViewOrderComponent } from './manufacturer-view-order/manufacturer-view-order.component';
 import { CardComponent } from './card/card.component';
+import {ConsumerShippingComponent} from './consumer-shipping/consumer-shipping.component';
 
 
 
@@ -52,6 +53,9 @@ const routes: Routes = [
   {
     path: 'materials' , component: AddmaterialPageComponent},
     { path: 'consumer' , component: ConsumerDashboardComponent
+  },
+  {
+    path: 'consumer/shipping' , component: ConsumerShippingComponent
   },
   {
       path: '', component: BodyComponent

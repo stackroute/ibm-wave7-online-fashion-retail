@@ -10,7 +10,7 @@ public class DesignerOrder {
     @Id
     private String id;
     private Design designOrder;
-    private List<Map<Mapping,Double>> supplierList;
+    private List<Map<String,Double>> supplierList;
     private Manufacturer manufacturer;
     private Designer designer;
     private String tagId;
@@ -40,15 +40,15 @@ public class DesignerOrder {
         this.designOrder = designOrder;
     }
 
-    public List<Map<Mapping, Double>> getSupplierList() {
-        return supplierList;
-    }
+  public List<Map<String, Double>> getSupplierList() {
+    return supplierList;
+  }
 
-    public void setSupplierList(List<Map<Mapping, Double>> supplierList) {
-        this.supplierList = supplierList;
-    }
+  public void setSupplierList(List<Map<String, Double>> supplierList) {
+    this.supplierList = supplierList;
+  }
 
-    public Manufacturer getManufacturer() {
+  public Manufacturer getManufacturer() {
         return manufacturer;
     }
 

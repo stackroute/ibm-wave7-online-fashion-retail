@@ -14,7 +14,7 @@ public class Product {
     private String id;
     private String name;
     private String category;
-    private Designer designer;
+    private String designerName;
     private double price;
     private double discount;
     private float rating;
@@ -44,15 +44,15 @@ public class Product {
         this.category = category;
     }
 
-    public Designer getDesignerName() {
-        return designer;
-    }
+  public String getDesignerName() {
+    return designerName;
+  }
 
-    public void setDesignerName(Designer designer) {
-        this.designer = designer;
-    }
+  public void setDesignerName(String designerName) {
+    this.designerName = designerName;
+  }
 
-    public double getPrice() {
+  public double getPrice() {
         return price;
     }
 
@@ -90,7 +90,7 @@ public class Product {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
-                ", designer=" + designer +
+                ", designer=" + designerName +
                 ", price=" + price +
                 ", discount=" + discount +
                 ", rating=" + rating +
