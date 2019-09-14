@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Properties;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,9 +19,8 @@ public class Consumer {
     private String id;
     private String userName;
     private String email;
-    private Map<String,Address> addresses;
-    @Relationship(type = "has_ordered")
-    private Map<String,ConsumerOrder> consumerOrders;
+    private Map<String,Address> addresses = new HashMap<>();
+    private Map<String,ConsumerOrder> consumerOrders=new HashMap<>();
     private List<Product> cart;
 
     public void setAddresses(Map<String, Address> addresses) {
