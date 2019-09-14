@@ -70,6 +70,7 @@ import {AuthenticateService} from './services/authenticate.service';
 import {OrderService} from './services/order.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
+import {UniqueEmailValidator} from './sign-up/unique-email-validator';
 
 
 @NgModule({
@@ -155,7 +156,7 @@ import { PaymentComponent } from './payment/payment.component';
     MatSnackBarModule,
   ],
 
-  providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService,
+  providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService, UniqueEmailValidator,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }],
   // entryComponents : [SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog,],

@@ -1,6 +1,7 @@
 package com.stackroute.onlinefashionretail.user.services;
 
 import com.stackroute.onlinefashionretail.user.domain.User;
+import com.stackroute.onlinefashionretail.user.exception.UserAlreadyExistsException;
 import com.stackroute.onlinefashionretail.user.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,10 +26,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User saveUser(User user) {
+    public User saveUser(User user) throws UserAlreadyExistsException {
         logger.info("inside saveUser in userServiceImpl");
-        User savedUser = userRepository.save(user);
-        return savedUser;
+        if (userRepository.findUserByEmail(user.getEmail()) != null)
+            throw new UserAlreadyExistsException("User with given email id already exists!");
+        return userRepository.save(user);
     }
 
     @Override
@@ -71,8 +73,7 @@ public class UserServiceImpl implements UserService{
         }
         else {
             logger.info("inside findUserByEmail in userServiceImpl");
-            User user = userRepository.findUserByEmail(email);
-            return user;
+            return userRepository.findUserByEmail(email);
         }
     }
 
