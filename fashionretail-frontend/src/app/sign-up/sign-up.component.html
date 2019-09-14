@@ -3,7 +3,7 @@
 <div class="medium-list">
         <div class="list-viewer-wrapper">
           <div class="list-header-title">Create A New Account</div>
-      
+
           <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onRegisterSubmit()" novalidate>
             <div class="form-container">
               <mat-form-field>
@@ -13,15 +13,21 @@
                        [(ngModel)]="user.name"
                        placeholder="Enter your name" />
               </mat-form-field>
-      
+
               <mat-form-field>
                   <input id="email"
                          matInput
                          formControlName="email"
                          [(ngModel)]="user.email"
-                         placeholder="Enter your email" />
+                         [placeholder]=emailPlaceholderValue />
                 </mat-form-field>
-      
+              <div *ngIf="email.pending">Validating...</div>
+              <div *ngIf="email.invalid" class="alert alert-danger">
+                <div *ngIf="email.errors?.uniqueEmailId">
+                  User with email already exists!
+                </div>
+              </div>
+
               <mat-form-field>
                   <input id="password"
                          matInput
@@ -46,9 +52,9 @@
                         </mat-select>
                       </mat-form-field>
                       <!-- <mat-card-actions> -->
-                <button mat-button type="submit" 
-                        class="mat-raised-button mat-primary" 
-                        [disabled]="!registerForm.valid" routerLink="/login" (click)="onRegisterSubmit(user)">Register</button>
+                <button mat-button type="submit"
+                        class="mat-raised-button mat-primary"
+                        [disabled]="!registerForm.valid" (click)="onRegisterSubmit(user)">Register</button>
                 <button mat-button routerLink="/login" class="divider" >Login</button>
             </div>
           </form>

@@ -20,6 +20,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { CardComponent } from './card/card.component';
+import {ConsumerShippingComponent} from './consumer-shipping/consumer-shipping.component';
 
 
 
@@ -54,6 +55,9 @@ path: 'vieworders', component: ViewOrdersComponent
   {
     path: 'materials' , component: AddmaterialPageComponent}, {
     path: 'consumer' , component: ConsumerDashboardComponent
+  },
+  {
+    path: 'consumer/shipping' , component: ConsumerShippingComponent
   },
   {
       path: '', component: BodyComponent

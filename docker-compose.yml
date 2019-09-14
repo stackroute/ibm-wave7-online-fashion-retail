@@ -50,6 +50,20 @@ services:
     healthcheck:
       test: "exit 0"
 
+  mysql:
+      image: mysql:latest
+      ports:
+        - 3306:3306
+      command: --default-authentication-plugin=mysql_native_password
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+      container_name: mysql
+      network_mode: host
+      hostname: localhost
+      restart: always
+      healthcheck:
+        test: "exit 0"
+
   user-service:
     build: user-service/
     depends_on:
@@ -150,7 +164,7 @@ services:
   login-service:
     build: login-service/
     depends_on:
-      - mongo
+      - mysql
       - user-service
     restart: always
     network_mode: host
