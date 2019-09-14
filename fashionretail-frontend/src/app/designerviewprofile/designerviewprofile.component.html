@@ -1,49 +1,27 @@
 <app-header1></app-header1>
 <div class="example-card">
 
-    <mat-card>
-    <mat-card-header>
-        <mat-card-title>
-            <h3>My Profile</h3>
-        </mat-card-title>
-        <br>
-        <br>
-    </mat-card-header>
- 
+      <mat-card-header>
+        <mat-card-title>Designer Profile</mat-card-title>
+      </mat-card-header>
 
-    <div class="example-container" >
+
+
             <mat-card-content>
-        <!-- <div *ngFor="let designer of designer"> -->
-       
+              <br>
+              <div class="example-container">
+                <h6>User Name: {{user.name}} <br> </h6>
 
-            <!-- <h5>User Name:</h5> {{user.name}} -->
-            <!-- </mat-form-field><br> -->
-            <!-- <mat-form-field> -->
-            <br>
+                <h6>Email Id: {{user.email}} <br></h6>
 
-            <!-- <h5>Email Id:</h5> {{user.email}} -->
-            <!-- </mat-form-field><br> -->
-            <!-- <mat-form-field> -->
-            <br>
+                <h6>City: {{user.location}} <br></h6>
 
-            <!-- <h5>City:</h5>{{user.location}} -->
+                <h6>Contact Number: {{user.designation}} <br></h6>
+              </div>
+     </mat-card-content>
 
-            <!-- </mat-form-field>-->
-            <br>
-            <!-- <mat-form-field> -->
-
-            <h5>Contact Number:</h5> {{user.designation}}
-
-            <!-- </mat-form-field> -->
-            <!-- </form> -->
-        <!-- </mat-card-content> -->
-        <!-- </div> -->
-</mat-card-content>
-
-    </div>
 
     <mat-card-actions>
         <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>
     </mat-card-actions>
-    </mat-card>
 </div>

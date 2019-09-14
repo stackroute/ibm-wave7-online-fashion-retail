@@ -1,13 +1,12 @@
 button{
     padding-top: 100px;
-    float: right;
 }
-.cardList{
+/*.cardList{
     padding-top: 150px;
-}
+}*/
 table{
     padding-top: 100px;
-    margin-left: 30%;
+    margin-left: 1%;
 }
 
 table th{
@@ -19,3 +18,4 @@ table th{
 table tr{
     height: 50px;
 }
+

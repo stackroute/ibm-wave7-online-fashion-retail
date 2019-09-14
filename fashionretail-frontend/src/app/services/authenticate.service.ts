@@ -20,8 +20,8 @@ const httpOptions = {
 export class AuthenticateService {
   private apiUrl = environment.userUrl + '/register';
   private apiUrl2 = environment.loginUrl + '/authenticate';
-  private apiUrl3 = environment.userUrl + '/forgot-password';
-  private apiUrl4 = environment.userUrl + '/reset-password';
+  private apiUrl3 = environment.loginUrl + '/forgot-password';
+  private apiUrl4 = environment.loginUrl + '/reset-password';
   private loginUser: LoginUser;
 
   private loggedIn = new BehaviorSubject<boolean>(false);
@@ -41,12 +41,12 @@ export class AuthenticateService {
     return this.httpClient.post<User>(this.apiUrl2, data);
 
   }
-  forgotpassword(data: LoginUser): Observable<any> {
-    return this.httpClient.post<any>(this.apiUrl3, data);
+  forgotpassword(data: LoginUser): Observable<User> {
+    return this.httpClient.post<User>(this.apiUrl3, data);
   }
 
-  resetpassword(data: LoginUser): Observable<any> {
-    return this.httpClient.put<any>(this.apiUrl4, data);
+  resetpassword(data: LoginUser): Observable<User> {
+    return this.httpClient.put<User>(this.apiUrl4, data);
   }
 }
 

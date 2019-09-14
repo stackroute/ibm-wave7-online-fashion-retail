@@ -1,39 +1,41 @@
+.navbar{
+  color:#7e57c2;
+}
+
     .nav-item {
         font-size: 4vh;
         padding: 0;
     }
-    
+
     #title {
         /* font-family: 'Zhi Mang Xing', cursive; */
-        color: black;
-        font-size: 5vh;
-        padding-left: 5px;
-        color: ghostwhite; 
+        font-size: 4vh;
+        padding-top: 15px;
+        padding-left: 4px;
+        color: #F4F6F7;
+        font-family: 'Open Sans', sans-serif;
+
     }
-    
+
     .d-inline-block {
-        width: 70px;
-        height: 70px;
+       padding-right: 5px;
     }
-    
-    .buttons {
-        float: left;
-        color: ghostwhite;
-        /* width: 1%; */
-        /* padding-left: 40px; */
-        /* padding-right: 40px; */
+.about{
+    padding-right:70px;
+}
+
+    .abc
+    {
+      float:left;
     }
-    
-    .button3 {
-        float: left;
-        color: ghostwhite;
-    }
-    
+
     a {
         text-decoration: none;
         color: black;
         color: ghostwhite;
     }
-    #bodu{
-        background-image: url('/assets/background.jpg'); 
+
+   #bodu{
+        background: black;
+        height: 91px;
     }

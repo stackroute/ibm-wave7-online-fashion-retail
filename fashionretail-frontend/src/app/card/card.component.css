@@ -3,19 +3,32 @@
     margin: 20px 20px 20px 20px;
     min-width: 100px;
   }
-  
+
   .tp-header-image {
     background-image: url('https://cdn.shopify.com/s/files/1/0916/0836/products/44915_Gibson_SG_112790111_1_220x.jpg?v=1565301688');
     background-size: cover;
   }
   .flex
   {
-    margin-top: 3cm;  
+    margin-top: 2cm;
     display: flex;
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-around;
-      margin-bottom: 5.6cm;
+  /*    margin-bottom: 5.6cm;*/
+
+  }
+
+  .addmaterial
+  {
+  margin-top: 3.5cm;
+   display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        padding-left: 650px;
+        margin-bottom:0px;
+        font-size:20px;
+
   }
   footer {
     position: fixed;
@@ -25,7 +38,7 @@
     background-color: khaki;
     color: black;
     overflow: hidden;
-    
+
 }
 
 img {
@@ -34,42 +47,46 @@ img {
     height: 40px;
     width: 40px;
 }
-
 mat-toolbar{
-  width:100%;
-  height: 100px;
-  position: fixed;
-  top:0;
-  z-index: 1000;
-  left: 0;
-  right: 0;
-  background-color: black;
-  
-  
-}
+    width:100%;
+    height: 90px;
+    position: fixed;
+    top:0;
+    z-index: 1030;
+    left: 0;
+    right: 0;
+    background-color: black;
+    padding: 10px;
+    padding-left: 5px;
 
-.header{
-  font-family: 'Courier New', Courier, monospace;
-  text-align: center;
-  color:white;
-}
-.d-inline-block {
- width: 70px;
- height: 70px;
+  }
+
+  .header{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    background-color: black;
+   /*  color:white;*/
+  }
+   .d-inline-block {
+   width: 60px;
+   height: 60px;
 }
 .title{
- color: black;
-      font-size: 6vh;
-      padding-left: 5px;
+        font-size: 4vh;
+        padding-left: 4px;
+        /*color: #F4F6F7;*//*color: #F4F6F7;*/
+                padding-top: 8px;
+                font-family: 'Open Sans', sans-serif;
 }
-
-.spacer {
-  flex: 1 1 auto;
-}
-#menu{
-    color: white;
-}
-.button{
-    color: white;
-}
- 
+  .spacer {
+    flex: 1 1 auto;
+  }
+  #menu{
+      color: white;
+  }
+  button{
+      color: white;
+  }
+  mat-card-actions{
+      padding-left: 65px;
+  }

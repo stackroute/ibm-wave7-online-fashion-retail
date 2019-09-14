@@ -17,13 +17,13 @@ import javax.mail.internet.MimeMessage;
 @CrossOrigin(origins = "*")
 @RequestMapping(value="api/v1")
 public class SimpleEmailController {
-    private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
+  //  private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
     @Autowired
     private JavaMailSender javaMailSender;
 
     @GetMapping(value="/email")
     public String sendEmail() throws MessagingException {
-        logger.info("Entered into sendEmail in SimpleEmailController");
+      //  logger.info("Entered into sendEmail in SimpleEmailController");
         MimeMessage message=javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
         helper.setTo("srijak890@gmail.com");
