@@ -62,8 +62,6 @@ services:
     hostname: localhost
     ports:
       - 8595:3306
-    volumes:
-      - /DB/mysql:/var/lib/mysql
     healthcheck:
       test: "exit 0"
 
