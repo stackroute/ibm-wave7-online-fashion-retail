@@ -61,7 +61,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 8595:3306
+      - 3306:3306
     healthcheck:
       test: "exit 0"
 
