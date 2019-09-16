@@ -35,7 +35,7 @@ services:
     image: zuul-api
     hostname: localhost
     ports:
-      - 8080:8080
+      - 8280:8280
     healthcheck:
       test: "exit 0"
 
@@ -69,6 +69,7 @@ services:
     depends_on:
       - mongo
       - eureka-server
+      - config-server
       - zuul-api
     restart: always
     network_mode: host
@@ -103,6 +104,9 @@ services:
     depends_on:
       - mongo
       - user-service
+      - eureka-server
+      - config-server
+      - zuul-api
     restart: always
     network_mode: host
     container_name: manufacturer
@@ -118,11 +122,14 @@ services:
     depends_on:
       - mongo
       - user-service
+      - eureka-server
+      - config-server
+      - zuul-api
     restart: always
     network_mode: host
     container_name: supplier
     image: supplier_image
-    hostname: supplier
+    hostname: localhost
     ports:
       - 8188:8188
     healthcheck:
@@ -135,11 +142,14 @@ services:
       - user-service
       - manufacturer-service
       - supplier-service
+      - eureka-server
+      - config-server
+      - zuul-api
     restart: always
     network_mode: host
     container_name: designer
     image: designer_image
-    hostname: designer
+    hostname: localhost
     ports:
       - 8187:8187
     healthcheck:
@@ -150,11 +160,14 @@ services:
     depends_on:
       - mongo
       - user-service
+      - eureka-server
+      - config-server
+      - zuul-api
     restart: always
     network_mode: host
     container_name: consumer
     image: consumer
-    hostname: consumer
+    hostname: localhost
     ports:
       - 8190:8190
     healthcheck:
@@ -172,7 +185,7 @@ services:
     network_mode: host
     container_name: login
     image: login
-    hostname: login
+    hostname: localhost
     ports:
       - 8193:8193
     healthcheck:
@@ -189,7 +202,7 @@ services:
     network_mode: host
     container_name: reports
     image: reports
-    hostname: reports
+    hostname: localhost
     ports:
       - 8195:8195
     healthcheck:
