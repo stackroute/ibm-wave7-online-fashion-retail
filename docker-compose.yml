@@ -164,7 +164,7 @@ services:
   login-service:
     build: login-service/
     depends_on:
-      -config-server
+      - config-server
       - eureka-server
       - zuul-api
       - mysql
