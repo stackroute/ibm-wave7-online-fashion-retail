@@ -31,7 +31,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     private UserDTO userDTO;
 
-    public JwtUserDetailsService(UserDao userDao) {this.userDao=userDao;}
+    //public JwtUserDetailsService(UserDao userDao) {this.userDao=userDao;}
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
