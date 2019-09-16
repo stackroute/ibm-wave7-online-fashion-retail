@@ -19,7 +19,10 @@ import {ManufacturerDashboardComponent} from './manufacturer-dashboard/manufactu
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
+import { ManufacturerViewOrderComponent } from './manufacturer-view-order/manufacturer-view-order.component';
 import { CardComponent } from './card/card.component';
+import {ConsumerShippingComponent} from './consumer-shipping/consumer-shipping.component';
+import {PaymentComponent} from './payment/payment.component';
 
 
 
@@ -37,23 +40,26 @@ const routes: Routes = [
     path: 'designer',
     component: DesignerHomePageComponent},
   {path: 'edit', component: ProfilebuttonComponent},
-  {path: 'manufacturer/manufactureviewprofile', component: ManufactureviewprofileComponent},
+  {path: 'manufactureviewprofile', component: ManufactureviewprofileComponent},
   // {path:'login',component:LoginComponent}
    {path: 'addMaterial', component: AddmaterialsbuttonComponent},
   {path: 'designer', component: DesignerHomePageComponent
   },
   {path: 'edit', component: ProfilebuttonComponent},
-  {path: 'suppliers/supplierviewprofile', component: SupplierviewprofileComponent},
-{
-path: 'suppliers', component: CardComponent
-},
-{
-path: 'vieworders', component: ViewOrdersComponent
-},
+  {path: 'supplierviewprofile', component: SupplierviewprofileComponent},
+{ path: 'suppliers', component: CardComponent },
+{ path: 'vieworders', component: ViewOrdersComponent },
+{ path: 'manufacturervieworders', component: ManufacturerViewOrderComponent },
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {
-    path: 'materials' , component: AddmaterialPageComponent}, {
-    path: 'consumer' , component: ConsumerDashboardComponent
+    path: 'materials' , component: AddmaterialPageComponent},
+    { path: 'consumer' , component: ConsumerDashboardComponent
+  },
+  {
+    path: 'consumer/shipping' , component: ConsumerShippingComponent
+  },
+  {
+    path: 'consumer/payment' , component: PaymentComponent
   },
   {
       path: '', component: BodyComponent

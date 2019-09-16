@@ -34,7 +34,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ConsumerService} from './services/consumer.service';
 import {ProductService} from './services/product.service';
-
+import {ConsumerShippingComponent} from './consumer-shipping/consumer-shipping.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
@@ -69,6 +69,9 @@ import {LoginService} from './services/login.service';
 import {AuthenticateService} from './services/authenticate.service';
 import {OrderService} from './services/order.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ManufacturerViewOrderComponent } from './manufacturer-view-order/manufacturer-view-order.component';
+import { PaymentComponent } from './payment/payment.component';
+import {UniqueEmailValidator} from './sign-up/unique-email-validator';
 
 
 @NgModule({
@@ -113,11 +116,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     ManufacturerDashboardComponent,
     DesignerviewordersComponent,
     AddPriceDialogueComponent,
-     ForgotpasswordComponent, 
+     ForgotpasswordComponent,
      ResetPasswordComponent,
     ViewOrdersComponent,
     ManufactureEditDialogComponent,
-    
+    ConsumerShippingComponent,
+    PaymentComponent,
+
+    ManufacturerViewOrderComponent,
+
 
   ],
   imports: [
@@ -152,7 +159,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
     MatSnackBarModule,
   ],
 
-  providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService,
+  providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService, UniqueEmailValidator,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }],
   // entryComponents : [SupplierEditDialogue,UploadDesignsDialogue,manufactureEditDialog,manufactureAddDialog,],

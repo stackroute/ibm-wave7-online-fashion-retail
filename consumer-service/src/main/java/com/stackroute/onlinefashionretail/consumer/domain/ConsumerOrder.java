@@ -17,7 +17,7 @@ public class ConsumerOrder {
     private double totalAmount;
     private Address shippingAddress;
     private String status;
-    @JsonFormat(pattern="dd/MM/yyyy-HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
     private Date date;
 
     //no args constructor

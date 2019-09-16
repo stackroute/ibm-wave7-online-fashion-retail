@@ -40,6 +40,9 @@ public class UserController {
         try {
             logger.info("inside saveUser try block in UserController ");
             savedUser=userService.saveUser(user);
+            if(savedUser!=null)
+                kafkaTemplate.send(TOPIC,savedUser);
+            responseEntity = new ResponseEntity<>(savedUser, HttpStatus.CREATED);
             if(savedUser!=null) {
                 logger.info("sending data on kafka: "+savedUser.toString());
                 kafkaTemplate.send(TOPIC, savedUser);
@@ -50,6 +53,13 @@ public class UserController {
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
+    }
+
+    @GetMapping("user/exists")
+    public ResponseEntity<?> checkUser(@RequestParam String email){
+        if (userService.findUserByEmail(email) != null)
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        return new ResponseEntity<>(false, HttpStatus.OK);
     }
 
     @GetMapping("user")

@@ -168,7 +168,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
-    this.userService.submitOrder(this.updatedOrder).subscribe(
+    this.userService.submitOrder(this.updatedOrder,this.Designer.name).subscribe(
       (data) => {
         this.orderDetails = data;
         console.log('orderlist', this.orderDetails);

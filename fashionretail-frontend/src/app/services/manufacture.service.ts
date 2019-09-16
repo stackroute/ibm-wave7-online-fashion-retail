@@ -19,7 +19,9 @@ const httpOptions = {
 })
 export class ManufactureService {
 
-
+ headers = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
+  public data: string;
+  private _url: string = environment.manufacturerUrl + '/manufacturerOrder/1';
   constructor(private httpClient: HttpClient) {
   }
 
@@ -52,4 +54,13 @@ export class ManufactureService {
     const url = environment.manufacturerUrl + '/manufacture';
     return this.httpClient.get<ManufacturerOrder>(url);
   }
+
+   getOrders(): Observable<ManufacturerOrder[]> {
+      return this.httpClient.get<ManufacturerOrder[]>(this._url);
+    }
+
+    updateOrder(order: ManufacturerOrder) {
+      return this.httpClient.put(this._url, order, {headers: this.headers});
+    }
+
 }
