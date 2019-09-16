@@ -164,8 +164,11 @@ services:
   login-service:
     build: login-service/
     depends_on:
+      -config-server
+      - eureka-server
+      - zuul-api
       - mysql
-      - user-service
+      - user-service      
     restart: always
     network_mode: host
     container_name: login
