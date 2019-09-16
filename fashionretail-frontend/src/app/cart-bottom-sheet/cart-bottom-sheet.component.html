@@ -20,7 +20,8 @@
         </button>
       </mat-card-content>
     </mat-card>
-    <button mat-raised-button color="accent">
+    <div><b>Total: {{total}}</b></div><br>
+    <button mat-raised-button color="accent" (click) = openLink($event)>
       Checkout
     </button>
   </ng-template>

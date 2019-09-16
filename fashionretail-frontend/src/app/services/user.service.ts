@@ -75,10 +75,17 @@ export class UserService {
      return this.http.get<Design[]>(url);
    }
 
-   submitOrder(dOrder: DesignerOrder): Observable<DesignerOrder> {
+   submitOrder(dOrder: DesignerOrder, designerName: string): Observable<DesignerOrder> {
      console.log(dOrder);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
-     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, httpOptions);
+     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, {
+       headers: new HttpHeaders({
+         param: designerName,
+         'Access-Control-Allow-Origin': '*',
+         'Content-Type': 'application/json',
+         Authorization: 'my-auth-token'
+       })
+     });
     // return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
     //   'Access-Control-Allow-Origin':'*',
     // })});

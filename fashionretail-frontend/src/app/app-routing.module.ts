@@ -21,6 +21,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
 import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { CardComponent } from './card/card.component';
 import {ConsumerShippingComponent} from './consumer-shipping/consumer-shipping.component';
+import {PaymentComponent} from './payment/payment.component';
 
 
 
@@ -58,6 +59,9 @@ path: 'vieworders', component: ViewOrdersComponent
   },
   {
     path: 'consumer/shipping' , component: ConsumerShippingComponent
+  },
+  {
+    path: 'consumer/payment' , component: PaymentComponent
   },
   {
       path: '', component: BodyComponent

@@ -54,7 +54,7 @@ export class SignUpComponent implements OnInit {
     this.userService.saveUser(user).subscribe((data) => {
       this.user = data;
       console.log(this.user);
-      // this.router.navigateByUrl('login');
+      this.router.navigateByUrl('login');
       },
     );
   }
