@@ -59,9 +59,9 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_USER: root
     network_mode: "host"
-    hostname: localhost
+    hostname: 13.126.224.142
     ports:
-      - 8595:8595
+      - 3306:8595
     volumes:
       - /DB/mysql:/var/lib/mysql
     healthcheck:
@@ -71,7 +71,7 @@ services:
     build: user-service/
     depends_on:
       - mongo
-      - eureka-server
+            - eureka-server
       - zuul-api
     restart: always
     network_mode: host
