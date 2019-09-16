@@ -38,15 +38,15 @@
 
 
 <!-- <button mat-raised-button color="accent"> -->
-
   <div class="addmaterial">
  <a  routerLink="/materials" routerLinkActive="active" >Add More Materials</a>
   </div>
 <!-- </button> -->
 
 <div class="flex">
-    <mat-card class="tp-card" *ngFor="let order of receivedOrders">
-        <div *ngIf ="order.orderStatus === 'in-progress'">
+  <div *ngFor="let order of receivedOrders">
+    <mat-card class="tp-card" *ngIf = "order.orderStatus === 'in-progress'" >
+        <div >
          <mat-card-header>
             <div mat-card-avatar class="tp-header-image"></div>
             <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
@@ -65,6 +65,7 @@
             </mat-card-actions>
         </div>
      </mat-card>
+  </div>
 </div>
 
     <!-- &lt;!&ndash; Footer of the page &ndash;&gt;

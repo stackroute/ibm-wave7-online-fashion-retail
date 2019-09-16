@@ -1,10 +1,9 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div (click)="cancelClick($event)" class="dropdown"><br>
-    <button mat-button color="primary"><a routerLink="/supplierviewprofile" routerLinkActive="active" >View Profile</a></button><br>
-
-    <button mat-button color="primary"><a routerLink="/vieworders" routerLinkActive="active" >View Previous orders</a></button><br>
+    <a routerLink="/supplierviewprofile" routerLinkActive="active" ><button mat-button color="primary">View Profile</button></a><br>
+    <a routerLink="/vieworders" routerLinkActive="active" ><button mat-button color="primary">View Previous orders</button></a><br>
     <mat-divider></mat-divider>
-    <button mat-button color="primary"><a routerLink = "/logout"  routerLinkActive="active" >LogOut</a></button>
+    <a routerLink = "/logout"  routerLinkActive="active" ><button mat-button color="primary">LogOut</button></a>
   </div>
 </mat-menu>
 
@@ -37,25 +36,25 @@
 </div>
 
 
-<!--<div class="example-card">-->
-<!--  <mat-card-header>-->
-<!--    <mat-card-title>Supplier Profile</mat-card-title>-->
-<!--  </mat-card-header>-->
-<!--  <mat-card-content>-->
-<!--    <br>-->
-<!--    <div class="example-container">-->
+<div class="example-card">
+  <mat-card-header>
+    <mat-card-title>Supplier Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <br>
+    <div class="example-container">
 
-<!--      <h6>  Name: {{supplier.name}} <br> </h6>-->
+      <h6>  Name: {{supplier.name}} <br> </h6>
 
-<!--      <h6>  Email Id: {{supplier.email}} <br> </h6>-->
+      <h6>  Email Id: {{supplier.email}} <br> </h6>
 
-<!--       <h6> City: {{supplier.city}}<br> </h6>-->
+       <h6> City: {{supplier.city}}<br> </h6>
 
-<!--      <h6>  Contact Number: {{supplier.contactNumber}}<br> </h6>-->
+      <h6>  Contact Number: {{supplier.contactNumber}}<br> </h6>
 
-<!--    </div>-->
-<!--  </mat-card-content>-->
-<!--  <mat-card-actions>-->
-<!--    <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>-->
-<!--  </mat-card-actions>-->
-<!--</div>-->
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>
+  </mat-card-actions>
+</div>

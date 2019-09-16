@@ -21,7 +21,7 @@ export class ManufactureService {
 
  headers = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
   public data: string;
-  private _url: string = environment.manufacturerUrl + '/manufacturerOrder/1';
+  private _url: string = environment.manufacturerUrl + '/manufactureOrder/1';
   constructor(private httpClient: HttpClient) {
   }
 

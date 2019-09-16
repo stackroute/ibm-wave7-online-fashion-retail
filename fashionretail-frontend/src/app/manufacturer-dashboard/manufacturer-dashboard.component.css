@@ -5,7 +5,7 @@
   }
 
   .tp-header-image {
-    background-image: url('https://cdn.shopify.com/s/files/1/0916/0836/products/44915_Gibson_SG_112790111_1_220x.jpg?v=1565301688');
+    background-image: url('https://startupfashion-startupfashion.netdna-ssl.com/wp-content/uploads/2016/01/fabric-sourcing-fashion-designers.jpg');
     background-size: cover;
   }
   .flex
@@ -13,8 +13,10 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+       flex-direction: row;
       margin-bottom: 100px;
   }
+
   mat-toolbar
   {
       width:100%;

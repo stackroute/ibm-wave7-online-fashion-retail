@@ -27,7 +27,7 @@ export class SupplierService {
   }
 
   getSupplier(): Observable<Supplier> {
-    const url = environment.supplierUrl + '/supplier/2';
+    const url = environment.supplierUrl + '/supplier/1';
     const updatedUrl = '${url}/2';
     return this.http.get<Supplier>(url);
   }
