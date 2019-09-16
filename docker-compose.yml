@@ -71,7 +71,7 @@ services:
     build: user-service/
     depends_on:
       - mongo
-            - eureka-server
+      - eureka-server
       - zuul-api
     restart: always
     network_mode: host
