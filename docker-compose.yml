@@ -61,7 +61,7 @@ services:
     network_mode: "host"
     hostname: localhost
     ports:
-      - 3306:3306
+      - 8595:8595
     volumes:
       - /DB/mysql:/var/lib/mysql
     healthcheck:
