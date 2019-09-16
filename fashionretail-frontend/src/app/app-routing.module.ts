@@ -64,7 +64,7 @@ path: 'vieworders', component: ViewOrdersComponent
   // {
   //     path: '', component: BodyComponent
   // },
-  { path : '**/LogOut' , component: HeroComponent},
+  { path : 'LogOut' , component: HeroComponent},
   { path : '**' , component: HeroComponent},
 
 

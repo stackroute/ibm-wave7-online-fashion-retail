@@ -2,6 +2,8 @@ import { Component, OnInit, Inject} from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Supplier } from '../models/Supplier';
 import { SupplierService } from '../services/supplier.service';
+import { UserService } from '../services/user.service';
+import { User } from '../models/User';
 
 export interface DialogData {
   city: string;
@@ -15,16 +17,17 @@ export interface DialogData {
 })
 export class SupplierviewprofileComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private supplierService: SupplierService ) { }
+  constructor(private dialog: MatDialog, private supplierService: SupplierService,private userService: UserService ) { }
 
  supplier: Supplier;
  city: string;
  contactNumber: number;
-
+  user: User;
   data;
 
 
   ngOnInit() {
+    this.user = this.userService.loginCredentials;
   this.supplierService.getSupplier().subscribe((data) => {
   this.supplier = data;
   console.log(this.supplier);

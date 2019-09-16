@@ -1,6 +1,7 @@
 package com.stackroute.onlinefashionretail.supplier.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stackroute.onlinefashionretail.supplier.domain.User;
 import com.stackroute.onlinefashionretail.supplier.repository.MappingRepository;
 import com.stackroute.onlinefashionretail.supplier.domain.Mapping;
 import com.stackroute.onlinefashionretail.supplier.domain.Supplier;
@@ -18,10 +19,17 @@ public class ConsumerListener {
   @Autowired
   MappingRepository mappingRepository;
 
-  @KafkaListener(topics = "Login", groupId = "group_id")
-  public void consumeDonor(Mapping user) throws IOException {
-//    Mapping obj = new ObjectMapper().readValue(user, Mapping.class);
+  @KafkaListener(topics = "Kafka_Example", groupId = "supplier")
+  public void consumeSupplier(String user) throws IOException {
     System.out.println(user);
-    mappingRepository.save(user);
+    System.out.println("inside consumer");
+    User user1 = new ObjectMapper().readValue(user, User.class);
+    if(user1.getDesignation().equalsIgnoreCase("Supplier")) {
+      System.out.println("consumed data is " + user);
+      Mapping designerobject = new ObjectMapper().readValue(user, Mapping.class);
+
+      mappingRepository.save(designerobject);
+    }
   }
+
 }

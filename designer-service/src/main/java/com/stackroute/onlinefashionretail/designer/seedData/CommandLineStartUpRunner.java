@@ -63,8 +63,8 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
 
         Manufacturer manufacturer1 = new Manufacturer("1","RJ Enterprise","rj@gmail.com","bangalore","tailor",4.5f,9836199304L,new ArrayList<ManufacturerOrder>(),new ArrayList<BasePrice>());
 
-        DesignerOrder designerOrder1 = new DesignerOrder("1",design1,List.of(Map.of("1",3.0),Map.of("2",5.0)),manufacturer1,"");
-        DesignerOrder designerOrder2 = new DesignerOrder("2",design2,List.of(Map.of("1",35.0),Map.of("2",5.0)),manufacturer1,"");
+        DesignerOrder designerOrder1 = new DesignerOrder("1","1234",design1,List.of(Map.of("1",3.0),Map.of("2",5.0)),manufacturer1,"");
+        DesignerOrder designerOrder2 = new DesignerOrder("2","4567",design2,List.of(Map.of("1",35.0),Map.of("2",5.0)),manufacturer1,"");
         try {
             designerService.saveDesigner(designer1);
             designerService.saveDesigner(designer2);

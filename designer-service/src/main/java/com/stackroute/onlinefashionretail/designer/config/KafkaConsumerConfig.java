@@ -1,6 +1,8 @@
-package com.stackroute.onlinefashionretail.login.config;
+package com.stackroute.onlinefashionretail.designer.config;
 
-import com.stackroute.onlinefashionretail.login.model.User;
+import com.stackroute.onlinefashionretail.designer.model.Design;
+import com.stackroute.onlinefashionretail.designer.model.Designer;
+import com.stackroute.onlinefashionretail.designer.model.User;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
@@ -14,12 +16,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @EnableKafka
-public class KafkaConfig {
+public class KafkaConsumerConfig {
     @Bean
     public ConsumerFactory<String, User> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
         config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "login");
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, "designer");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config);
