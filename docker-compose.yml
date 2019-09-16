@@ -54,12 +54,11 @@ services:
     image: mysql:latest
     restart: always
     environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'root'
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: userLogin
-      MYSQL_PASSWORD: root
-      MYSQL_USER: root
-    network_mode: "host"
-    hostname: localhost
     ports:
       - 3306:3306
     healthcheck:
