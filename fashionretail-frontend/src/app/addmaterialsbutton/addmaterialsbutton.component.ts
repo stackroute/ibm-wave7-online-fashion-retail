@@ -53,7 +53,6 @@ openDialog() {
       });
 
     dialogRef.afterClosed().subscribe(result => {
-        console.log('hi');
         this.data = result;
         console.log(result);
         this.saveBasePrice(result);

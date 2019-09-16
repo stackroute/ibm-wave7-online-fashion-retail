@@ -1,9 +1,10 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
       <div (click)="cancelClick($event)" class="dropdown"><br>
-        <button mat-button color="primary"><a routerLink="supplierviewprofile">View Profile</a></button><br>
-          <button mat-button color="primary" (click)="vieworders()">View Previous orders</button><br>
+        <button mat-button color="primary"><a routerLink="/supplierviewprofile" routerLinkActive="active" >View Profile</a></button><br>
+
+        <button mat-button color="primary"><a routerLink="/vieworders" routerLinkActive="active" >View Previous orders</a></button><br>
            <mat-divider></mat-divider>
-          <button mat-button color="primary"><a routerLink = "logout">LogOut</a></button>
+          <button mat-button color="primary"><a routerLink = "/logout" routerLinkActive="active" >LogOut</a></button>
       </div>
    </mat-menu>
 
@@ -26,7 +27,7 @@
                          <mat-icon>search</mat-icon>
                        </button></span>
                  <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-                 <button mat-stroked-button>Home</button>
+                 <a routerLink="/suppliers" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
                <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
                Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 

@@ -45,7 +45,7 @@ mat-toolbar{
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     background-color: black;
-  /* //  color:white;*/
+    color:white;
   }
    .d-inline-block {
    width: 60px;

@@ -1,26 +1,16 @@
-<app-header1></app-header1>
-<div>
-<button mat-raised-button color="primary" (click)=openDialog()>Base Prices</button>
+<!-- <app-header1></app-header1> -->
+<div class="basePriceButton">
+  <button mat-raised-button color="primary" (click)=openDialog()>Base Prices</button>
 </div>
-<div class="baseTable" style="padding-top: 50px">
-      <table border="2" >
-        <tr class="table-align">
-
-          <th>Product Name</th>
-          <th>BasePrice</th>
-        </tr>
-         <tr *ngFor="let base of baseprice">
-
-            <td>Product Name: {{base.name}}</td>
-
-               <td>BasePrice: {{base.price}}</td>
-
-
-        </tr>
-        </table>
-        </div>
-
-
-
-
-
+<div class="baseTable" style="padding-top: 200px">
+  <table border="2">
+    <tr class="table-align">
+      <th>Product Name</th>
+      <th>BasePrice</th>
+    </tr>
+    <tr *ngFor="let base of baseprice">
+      <td>Product Name: {{base.name}}</td>
+      <td>BasePrice: {{base.price}}</td>
+    </tr>
+  </table>
+</div>
