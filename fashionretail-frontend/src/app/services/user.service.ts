@@ -78,10 +78,24 @@ export class UserService {
    submitOrder(dOrder: DesignerOrder, designerName: string): Observable<DesignerOrder> {
      console.log(JSON.stringify(dOrder));
      console.log(dOrder);
+     let jsonstring = JSON.stringify(dOrder);
+     let supplierlist = '[{';
+     dOrder.supplierList.pop().forEach((value: number, key: string) => {
+       supplierlist += '"' + key + '":' + value + ',';
+     });
+     supplierlist = supplierlist.substr(0, supplierlist.length - 1) + '}]';
+     console.log('supplier list: ', supplierlist);
+     console.log('json before changing: ', jsonstring);
+     const ind = jsonstring.indexOf('"supplierList":');
+     console.log('index of supplierList found: ', jsonstring[ind]);
+     const ind1 = jsonstring.indexOf(']', ind);
+     console.log('index of ] found: ', jsonstring[ind1]);
+     jsonstring = jsonstring.slice(0, ind + 15) + supplierlist + jsonstring.slice(ind1 + 1);
+     console.log('json after changing: ', jsonstring);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
-     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, {
+     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', jsonstring, {
+       params: {designerName},
        headers: new HttpHeaders({
-         param: designerName,
          'Access-Control-Allow-Origin': '*',
          'Content-Type': 'application/json',
          Authorization: 'my-auth-token'
@@ -106,8 +120,8 @@ export class UserService {
       // );
   }
   updateDesigner(id: string, designer: Designer): Observable<Designer> {
-    console.log("designer data from user service",designer)
-    const url = environment.designerUrl + '/designer'+"/"+id;
+    console.log('designer data from user service', designer);
+    const url = environment.designerUrl + '/designer' + '/' + id;
     // const updateUrl = `${url}/id`;
     return this.http.put<Designer>(url, designer, httpOptions);
   }

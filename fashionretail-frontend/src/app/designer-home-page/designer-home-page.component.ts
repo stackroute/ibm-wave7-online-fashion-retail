@@ -79,14 +79,14 @@ export class DesignerHomePageComponent implements OnInit {
     caption: new FormControl('', Validators.required),
     category: new FormControl(''),
     imageUrl: new FormControl('', Validators.required)
-  })
+  });
   private quantityMap: Map<string, number> = new Map([]);
   storage: any;
   service: any;
 
   // orderdetails :
 
-  constructor(private dialogue: MatDialog, 
+  constructor(private dialogue: MatDialog,
     private userService: UserService,
      private interComponent: InterComponentDataService,
      private router : Router) {
@@ -173,7 +173,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
-    this.userService.submitOrder(this.updatedOrder,'avcstgfhy').subscribe(
+    this.userService.submitOrder(this.updatedOrder, 'abc').subscribe(
       (data) => {
         this.orderDetails = data;
         console.log('orderlist', this.orderDetails);
@@ -216,7 +216,7 @@ export class DesignerHomePageComponent implements OnInit {
       }
     });
   }
-  
+
   viewProfile(){
     let loginId =this.userService.loginCredentials.userId ;
     this.router.navigate(['/designerviewprofile'],{queryParams : {loginId}});

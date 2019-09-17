@@ -14,6 +14,6 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button color="Primary" [mat-dialog-close]="data">Save</button>
-
+        <button mat-raised-button color="Primary" (click)="onNoClick()" >Cancel</button>
     </mat-card-actions>
 </mat-card>

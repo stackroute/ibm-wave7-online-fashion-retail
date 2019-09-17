@@ -19,7 +19,7 @@ import java.util.Map;
 @EnableKafka
 public class ConsumerConfig {
   @Bean
-  public ConsumerFactory<String, User> consumerFactory() {
+    public ConsumerFactory<String, User> consumerFactory() {
     Map<String, Object> config = new HashMap<>();
     config.put(org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
     config.put(org.apache.kafka.clients.consumer.ConsumerConfig.GROUP_ID_CONFIG, "supplier");

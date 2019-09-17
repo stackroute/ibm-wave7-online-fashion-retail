@@ -103,7 +103,7 @@ export class designerEditDialogue {
     @Inject(MAT_DIALOG_DATA) public data: Designer) { }
   onNoClick(): void {
     this.dialogRef.close();
-    console.log('end og dialog');
+    console.log('end of dialog');
   }
 
 }

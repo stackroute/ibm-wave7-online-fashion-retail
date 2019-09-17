@@ -2,80 +2,84 @@
       <div (click)="cancelClick($event)" class="dropdown"><br>
         <button mat-button color="primary"><a  routerLinkActive="active" (click)="viewProfile()">View Profile</a></button><br>
 
-        <button mat-button color="primary"><a routerLink="/vieworders" routerLinkActive="active" >View Previous orders</a></button><br>
-           <mat-divider></mat-divider>
-          <button mat-button color="primary"><a routerLink = "/logout" routerLinkActive="active" >LogOut</a></button>
-      </div>
-   </mat-menu>
+    <button mat-button color="primary"><a routerLink="/vieworders" routerLinkActive="active">View Previous orders</a>
+    </button>
+    <br>
+    <mat-divider></mat-divider>
+    <button mat-button color="primary"><a routerLink="/logout" routerLinkActive="active">LogOut</a></button>
+  </div>
+</mat-menu>
 
-   <div>
-           <mat-toolbar class="header">
-             <mat-toolbar-row>
-               <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-                 <mat-icon>menu</mat-icon>
-               </button>
-               <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
-               <span class="title">TrendMode</span>
-               <span class="example-spacer"></span>
-                 <span class="spacer"></span>
-               <div fxShow="true" fxHide.lt-md="true">
-                   <span>
-                       <mat-form-field>
-                         <input #searchText matInput placeholder="Search for products">
-                       </mat-form-field>
-                       <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
-                         <mat-icon>search</mat-icon>
-                       </button></span>
-                 <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-                 <a routerLink="/suppliers" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
-               <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
-               Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
-
-             </div>
-             </mat-toolbar-row>
-           </mat-toolbar>
-   </div>
+<div>
+  <mat-toolbar class="header">
+    <mat-toolbar-row>
+      <!--               <button mat-icon-button [matMenuTriggerFor]="menu" fxShow="true" fxHide.gt-sm>-->
+      <!--                 <mat-icon>menu</mat-icon>-->
+      <!--               </button>-->
+      <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
+      <span class="title">TrendMode</span>
+      <span class="spacer"></span>
+         <span>
+             <mat-form-field>
+               <input #searchText matInput placeholder="Search for products">
+             </mat-form-field>
+             <button mat-icon-button aria-label="icon-button with a search icon"
+                     (click)="search(searchText.value)">
+               <mat-icon>search</mat-icon>
+             </button>
+         </span>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/suppliers" routerLinkActive="active">
+          <button mat-stroked-button>Home</button>
+        </a>
+        <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
+          Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i>
+        </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
 
 
 <!-- <button mat-raised-button color="accent"> -->
-
-  <div class="addmaterial">
- <a  routerLink="/materials" routerLinkActive="active" >Add More Materials</a>
-  </div>
+<div class="addmaterial">
+  <a routerLink="/materials" routerLinkActive="active">Add More Materials</a>
+</div>
 <!-- </button> -->
 
 <div class="flex">
-    <mat-card class="tp-card" *ngFor="let order of receivedOrders">
-        <div *ngIf ="order.orderStatus === 'in-progress'">
-         <mat-card-header>
-            <div mat-card-avatar class="tp-header-image"></div>
-            <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
-            <mat-card-title><h5>Designer Name:</h5>{{order.designerName}}</mat-card-title>
-         <!--  <mat-card-title><h5>Designer Name:</h5>{{order.designer}}</mat-card-title>-->
+  <div *ngFor="let order of receivedOrders">
+    <mat-card class="tp-card" *ngIf="order.orderStatus === 'in-progress'">
+      <div>
+        <mat-card-header>
+          <div mat-card-avatar class="tp-header-image"></div>
+          <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
+          <mat-card-title><h5>Designer Name:</h5>{{order.designerName}}</mat-card-title>
+          <!--  <mat-card-title><h5>Designer Name:</h5>{{order.designer}}</mat-card-title>-->
 
-          </mat-card-header>
-            <mat-card-content>
-               <h5>The material required is: </h5>{{order.material.name}}
-                <h5>Quantity: </h5>{{order.quantity}}
-            </mat-card-content>
+        </mat-card-header>
+        <mat-card-content>
+          <h5>The material required is: </h5>{{order.material.name}}
+          <h5>Quantity: </h5>{{order.quantity}}
+        </mat-card-content>
 
-            <mat-card-actions >
-               <button mat-raised-button color="primary" (click)="accept(order)" >Accept </button>
-               <button mat-raised-button color="primary" (click)="reject(order)" >Reject </button>
-            </mat-card-actions>
-        </div>
-     </mat-card>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="accept(order)">Accept</button>
+          <button mat-raised-button color="primary" (click)="reject(order)">Reject</button>
+        </mat-card-actions>
+      </div>
+    </mat-card>
+  </div>
 </div>
 
-    <!-- &lt;!&ndash; Footer of the page &ndash;&gt;
-     <div>
-      <footer>
-          <p>
-              For any queries please <a routerLink="contact">contact us</a>
-          </p>
-          <img src="assets/assets/facebook.png" />
-          <img src="assets/assets/instagram.png" />
-      </footer>
-      </div>
-    -->
+<!-- &lt;!&ndash; Footer of the page &ndash;&gt;
+ <div>
+  <footer>
+      <p>
+          For any queries please <a routerLink="contact">contact us</a>
+      </p>
+      <img src="assets/assets/facebook.png" />
+      <img src="assets/assets/instagram.png" />
+  </footer>
+  </div>
+-->
 
