@@ -36,26 +36,26 @@
   </mat-toolbar>
 </div>
 
+<div class="example-card">
+  <mat-card-header>
+    <mat-card-title>Supplier Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <br>
+    <div class="example-container">
 
-<!--<div class="example-card">-->
-<!--  <mat-card-header>-->
-<!--    <mat-card-title>Supplier Profile</mat-card-title>-->
-<!--  </mat-card-header>-->
-<!--  <mat-card-content>-->
-<!--    <br>-->
-<!--    <div class="example-container">-->
+      <h6>  User Name: {{user.name}} <br> </h6>
 
-<!--      <h6>  Name: {{supplier.name}} <br> </h6>-->
+      <h6>  Email Id: {{user.email}} <br> </h6>
 
-<!--      <h6>  Email Id: {{supplier.email}} <br> </h6>-->
+       <h6> City: {{user.city}}<br> </h6>
 
-<!--       <h6> City: {{supplier.city}}<br> </h6>-->
+      <h6>  Contact Number: {{user.contactNumber}}<br> </h6>
 
-<!--      <h6>  Contact Number: {{supplier.contactNumber}}<br> </h6>-->
-
+    </div>
 <!--    </div>-->
-<!--  </mat-card-content>-->
-<!--  <mat-card-actions>-->
-<!--    <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>-->
-<!--  </mat-card-actions>-->
-<!--</div>-->
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>
+  </mat-card-actions>
+</div>

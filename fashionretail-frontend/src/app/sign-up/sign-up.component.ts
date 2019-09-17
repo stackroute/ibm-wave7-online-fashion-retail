@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
   validEmail = true;
   emailPlaceholderValue = 'Enter your email';
   user: User = {
-    id: '0',
+  userId: '0',
     name: '',
     password: '',
     email: '',

@@ -13,7 +13,6 @@ import {ManufacturerOrder} from '../models/ManufacturerOrder';
 import {BasePrice} from '../models/BasePrice';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
-import { InterComponentDataService } from '../services/inter-component-data.service';
 
 
 @Component({

@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         // })
         console.log('designer data', data);
         this.userService.loginCredentials = data
-        const id = data.id;
+        const id = data.userId;
         if (data.designation === 'Supplier') {
           this.router.navigate(['/suppliers'], {queryParams : {id}});
         } else if (data.designation === 'Designer') {
@@ -60,8 +60,9 @@ export class LoginComponent implements OnInit {
         }
       },
       error => {
-        // alert("Invalid UserName and password");
+        
         console.log(error);
+        alert("Invalid UserName and password");
       });
   }
   logout() {

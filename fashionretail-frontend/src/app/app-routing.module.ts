@@ -70,7 +70,7 @@ const routes: Routes = [
   // {
   //     path: '', component: BodyComponent
   // },
-  { path : '**/LogOut' , component: HeroComponent},
+  { path : 'LogOut' , component: HeroComponent},
   { path : '**' , component: HeroComponent},
 
 

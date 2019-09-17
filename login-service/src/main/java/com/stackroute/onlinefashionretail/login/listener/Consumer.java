@@ -16,8 +16,8 @@ public class Consumer {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @KafkaListener(topics = "Kafka_Example", groupId = "group_id")
-    public void consumeDonor(String daoUser) throws IOException {
+    @KafkaListener(topics = "Kafka_Example", groupId = "login")
+    public void consumeDesigner(String daoUser) throws IOException {
         System.out.println("consumed data is "+daoUser);
         DAOUser obj=new ObjectMapper().readValue(daoUser, DAOUser.class);
         System.out.println(passwordEncoder.encode(obj.getPassword()));
