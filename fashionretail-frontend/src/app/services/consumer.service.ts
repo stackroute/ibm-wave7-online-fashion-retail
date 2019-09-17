@@ -29,4 +29,5 @@ export class ConsumerService {
   public placeOrder(consumerOrder: ConsumerOrder) {
   return this.httpClient.post<ConsumerOrder>(environment.consumerUrl + '/consumer/order', consumerOrder, {headers: this.headers});
 }
+
 }

@@ -6,7 +6,6 @@ import java.util.Map;
 public class DesignerOrder {
     @Id
     private String id;
-    private Design designOrder;
     private List<Map<String,Double>> supplierList;
     private Manufacturer manufacturer;
     private Designer designer;
@@ -17,7 +16,6 @@ public class DesignerOrder {
 
   public DesignerOrder(String id, Design designOrder, List<Map<String, Double>> supplierList, Manufacturer manufacturer, Designer designer, String tagId) {
     this.id = id;
-    this.designOrder = designOrder;
     this.supplierList = supplierList;
     this.manufacturer = manufacturer;
     this.designer = designer;
@@ -38,14 +36,6 @@ public class DesignerOrder {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Design getDesignOrder() {
-        return designOrder;
-    }
-
-    public void setDesignOrder(Design designOrder) {
-        this.designOrder = designOrder;
     }
 
   public List<Map<String, Double>> getSupplierList() {
@@ -76,7 +66,6 @@ public class DesignerOrder {
     public String toString() {
         return "Dorder{" +
                 "id='" + id + '\'' +
-                ", designOrder=" + designOrder +
                 ", supplierList=" + supplierList +
                 ", manufacturer=" + manufacturer +
                 ", designer=" + designer +

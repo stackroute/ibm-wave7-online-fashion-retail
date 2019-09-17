@@ -17,4 +17,7 @@ export class ProductService {
   public getAllProducts(): Observable<Product[]> {
     return this.httpClient.get<Product[]>( environment.consumerUrl + '/product', {headers: this.headers});
   }
+  public search(search :String):Observable<Product[]>{
+    return this.httpClient.get<Product[]>(environment.consumerUrl+'/product/search?searchText='+search,{headers:this.headers});
+  }
 }

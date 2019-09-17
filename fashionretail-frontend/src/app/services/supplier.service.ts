@@ -20,15 +20,25 @@ export class SupplierService {
 //    this.userUrl = 'http://localhost:8089/api/v1/supplier';
   }
 
-  updateSupplier(supplier: Supplier, id: string): Observable<Supplier> {
-    const url = environment.supplierUrl + '/supplier';
-    const updatedUrl = '${url}/2';
+  updateSupplier(supplier: Supplier, userId: string): Observable<Supplier> {
+    const url = environment.supplierUrl + '/supplier/'+userId;
+    console.log(userId);
+   // const updatedUrl = '${url}/2';
     return this.http.put<Supplier>(url, supplier, httpOptions);
   }
 
   getSupplier(): Observable<Supplier> {
     const url = environment.supplierUrl + '/supplier/2';
-    const updatedUrl = '${url}/2';
+   // const updatedUrl = '${url}/2';
     return this.http.get<Supplier>(url);
+  }
+  getSupplierById(userId: string): Observable<Supplier> {
+    console.log('in get supplier by id ');
+    console.log(userId);
+    const url = environment.supplierUrl + '/supplier/' + userId;
+    return this.http.get<Supplier>(url, httpOptions);
+      // .pipe(
+      //   catchError(this.handleError('deleteHero'))sy
+      // );
   }
 }

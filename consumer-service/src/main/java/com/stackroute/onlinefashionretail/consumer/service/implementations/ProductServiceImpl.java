@@ -151,4 +151,10 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
     }
+
+    //method to search a product by name or category
+    @Override
+    public List<Product> searchProduct(String searchText) {
+        return productRepository.findByNameContainingIgnoreCaseOrCategoryContainingIgnoreCase(searchText,searchText);
+    }
 }

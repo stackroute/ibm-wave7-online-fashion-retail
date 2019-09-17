@@ -1,7 +1,8 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div class="dropdown"><br>
-    <a routerLink="/designerviewprofile" routerLinkActive="active"> <button mat-button color="primary">View Profile</button><br></a>
+    <!-- <a routerLink="/designerviewprofile" routerLinkActive="active"></a> -->
+    <a routerLinkActive="active"> <button mat-button color="primary" (click) = "viewProfile()">View Profile</button><br></a>
     <button mat-button color="primary">View Previous orders</button>
     <mat-divider></mat-divider>
     <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">LogOut</button></a>

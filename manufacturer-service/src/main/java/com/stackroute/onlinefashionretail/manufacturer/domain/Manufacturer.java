@@ -12,7 +12,7 @@ public class Manufacturer {
 
     @Id
     @Column
-    @JsonProperty("id")
+    @JsonProperty("userId")
     private String id;
     @Column
     @JsonProperty("name")

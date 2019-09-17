@@ -80,14 +80,14 @@ public class WorkflowController {
         RestTemplate restTemplate = new RestTemplate();
         logger.info("url: "+DESIGNER_RESOURCE_URL);
         List<SupplierOrder> supplierOrders = new ArrayList<SupplierOrder>();
-        for (Map<String, Double> mappings:
+       /* for (Map<String, Double> mappings:
              designerOrder.getSupplierList()) {
             supplierOrders.add(new SupplierOrder(RandomIdGenerator.getRandomId(),
                     designerName,
                     new Material(),
-                    mappings.get(""),"in-progress",""))
-        }
-        SupplierOrder supplierOrder =
+                    mappings.get(""),"in-progress",""));
+        }*/
+//        SupplierOrder supplierOrder =
         //store response in a ResponseEntity
         entity = new HttpEntity<>(designerOrder, headers);
         ResponseEntity responseEntity = new ResponseEntity(HttpStatus.OK);

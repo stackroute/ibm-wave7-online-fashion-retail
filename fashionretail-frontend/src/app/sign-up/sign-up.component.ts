@@ -47,9 +47,9 @@ export class SignUpComponent implements OnInit {
 
   onRegisterSubmit(user: User) {
     console.log('inside register');
-    // const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', 'num');
-    // user.id = '' + num;
+    user.userId = '' + num;
     // alert(this.user.name + ' ' + this.user.email + ' ' + this.user.password);
     this.userService.saveUser(user).subscribe((data) => {
       this.user = data;

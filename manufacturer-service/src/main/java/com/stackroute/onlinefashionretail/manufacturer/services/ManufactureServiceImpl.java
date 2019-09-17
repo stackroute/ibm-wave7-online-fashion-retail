@@ -33,6 +33,7 @@ public class ManufactureServiceImpl implements ManufactureService {
     @Override
     public Optional<Manufacturer> getManufacture(String id) {
         logger.info("inside getManufacturer in ManufactureServiceimpl");
+        logger.info("find by id: "+manufactureRepository.findById(id).orElse(null));
         return manufactureRepository.findById(id);
     }
 

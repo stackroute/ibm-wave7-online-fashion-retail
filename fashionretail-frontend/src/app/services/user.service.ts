@@ -76,6 +76,7 @@ export class UserService {
    }
 
    submitOrder(dOrder: DesignerOrder, designerName: string): Observable<DesignerOrder> {
+     console.log(JSON.stringify(dOrder));
      console.log(dOrder);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
      return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, {
@@ -94,12 +95,7 @@ export class UserService {
    public getAllOrders(): Observable<DesignerOrder[]> {
     return this.http.get<DesignerOrder[]>(environment.designerUrl + '/designs');
   }
-  // getDesignerById(id : string): Observable<Designer> {
-  //   const url = environment.designerUrl + '/designer';
-  //   const getUrl = `${url}/{{id}}`;
-  //   return this.http.get<Designer>(getUrl);
-
-  // }
+ 
   getDesignerById(userId: string): Observable<Designer> {
     console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
     // const url = `${environment.designerUrl+"designer"}/${userId}`;
@@ -115,11 +111,5 @@ export class UserService {
     // const updateUrl = `${url}/id`;
     return this.http.put<Designer>(url, designer, httpOptions);
   }
-  // constructor(private http: HttpClient) {
-  //   this.userUrl = 'http://localhost:8088/user';
-  // }
-  // saveUser(user : User) : Observable<User>{
-  //   return this.http.post<User>(this.userUrl,user,httpOptions)
-
-  // }
+ 
 }

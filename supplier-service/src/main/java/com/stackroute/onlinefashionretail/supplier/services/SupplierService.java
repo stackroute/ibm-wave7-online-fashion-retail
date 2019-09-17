@@ -27,4 +27,5 @@ public interface SupplierService {
 
     public SupplierOrder getOrderById(String id);
 
+    Supplier getSupplierById(String id);
 }
