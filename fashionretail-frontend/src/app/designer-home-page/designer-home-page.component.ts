@@ -41,7 +41,6 @@ export class DesignerHomePageComponent implements OnInit {
   updatedOrder: DesignerOrder = {
     id: '',
     tagId: '',
-    designer_id : '',
     designOrder: {
       id: '',
       name: '',
@@ -78,21 +77,22 @@ export class DesignerHomePageComponent implements OnInit {
     caption: new FormControl('', Validators.required),
     category: new FormControl(''),
     imageUrl: new FormControl('', Validators.required)
-  })
+  });
   private quantityMap: Map<string, number> = new Map([]);
   storage: any;
   service: any;
 
   // orderdetails :
 
-  constructor(private dialogue: MatDialog, private userService: UserService) {
+  constructor(private dialogue: MatDialog, private userService: UserService, private interComponent: InterComponentDataService) {
     this.items = [
       {name: 'assets/designer.jpg'},
     ];
   }
 
   ngOnInit() {
-     let designer_id =this.userService.loginCredentials.userId;
+     // let designer_id = '';
+     // this.interComponent.currentId.subscribe(data => designer_id=data);
     this.userService.getAllMaterial().subscribe((data) => {
       this.mapping = data;
       console.log('materials data', this.mapping);
@@ -168,7 +168,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
-    this.userService.submitOrder(this.updatedOrder,this.Designer.name).subscribe(
+    this.userService.submitOrder(this.updatedOrder, 'abc').subscribe(
       (data) => {
         this.orderDetails = data;
         console.log('orderlist', this.orderDetails);
@@ -218,8 +218,7 @@ export class DesignerHomePageComponent implements OnInit {
       reader.onload = (e: any) => this.imgSrc = e.target.result;
       reader.readAsDataURL(event.target.files[0]);
       this.selectedImage = event.target.files[0];
-    }
-    else {
+    } else {
       this.imgSrc = '/assets/facebook.png';
       this.selectedImage = null;
     }
@@ -228,22 +227,22 @@ export class DesignerHomePageComponent implements OnInit {
   onSubmit(formValue) {
     this.isSubmitted = true;
     if (this.formTemplate.valid) {
-      var filePath = `${formValue.category}/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+      let filePath = `${formValue.category}/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
       const fileRef = this.storage.ref(filePath);
       this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
         finalize(() => {
           fileRef.getDownloadURL().subscribe((url) => {
-            formValue['imageUrl'] = url;
+            formValue.imageUrl = url;
             this.service.insertImageDetails(formValue);
             this.resetForm();
-          })
+          });
         })
       ).subscribe();
     }
   }
 
   get formControls() {
-    return this.formTemplate['controls'];
+    return this.formTemplate.controls;
   }
 
   resetForm() {

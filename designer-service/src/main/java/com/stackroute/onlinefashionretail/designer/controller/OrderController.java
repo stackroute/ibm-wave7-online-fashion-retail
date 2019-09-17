@@ -34,8 +34,9 @@ public class OrderController {
     @PostMapping("/designs")
     public ResponseEntity<?> saveDesigns(@RequestBody DesignerOrder designer){
         try {
+            logger.info("designerOrder: "+designer);
             DesignerOrder designer1= designerOrderService.saveDesigns(designer);
-            System.out.println(designer1);
+            logger.info("saved designerOrder: "+designer1);
             String id= designer1.getId();
             kafkaTemplate.send(TOPIC,id);
             logger.info("Entered into saveDesigns in orderController");

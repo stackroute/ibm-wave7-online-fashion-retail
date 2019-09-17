@@ -43,13 +43,8 @@ public class UserController {
             if(savedUser!=null)
                 kafkaTemplate.send(TOPIC,savedUser);
             responseEntity = new ResponseEntity<>(savedUser, HttpStatus.CREATED);
-            if(savedUser!=null) {
-                logger.info("sending data on kafka: "+savedUser.toString());
-                kafkaTemplate.send(TOPIC, savedUser);
-            }
-            responseEntity = new ResponseEntity<String>("successfully Created", HttpStatus.CREATED);
         } catch (Exception ex) {
-            logger.info("inside saveUser catch block in UserController, error: "+ ex.toString());
+            logger.info("inside saveUser catch block in UserController "+ex.toString());
             responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
