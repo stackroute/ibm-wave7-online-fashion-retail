@@ -247,7 +247,7 @@ services:
     network_mode: host
     container_name: workflow
     image: workflow
-    hostname: workflow
+    hostname: localhost
     ports:
       - 8194:8194
     healthcheck:
@@ -259,7 +259,7 @@ services:
     network_mode: host
     container_name: angular-app
     image: fashionretail
-    hostname: fashionretail
+    hostname: localhost
     ports:
       - 4201:4201
     healthcheck:
