@@ -16,17 +16,9 @@ public class User {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     private String userId;
-    @NotNull(message = "User name is mandatory")
-    @Pattern(regexp = "[a-zA-Z]")
     private String name;
-    @NotNull(message = "password number is mandatory")
-    @Pattern(regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,16})" )
     private String password;
-    @NotNull(message = "email is mandatory")
-    @Email
-    @Indexed(unique = true)
     private String email;
-    @NotNull(message = "select role")
     private String designation;
 
 

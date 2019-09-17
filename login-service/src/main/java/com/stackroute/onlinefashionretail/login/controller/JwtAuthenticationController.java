@@ -43,7 +43,6 @@ public class JwtAuthenticationController {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody UserDTO userDTO) throws Exception {
-        System.out.println("hello");
         logger.info("Entered into createAuthenticationToken in JwtAuthenticationController");
         authenticate(userDTO.getUsername(), userDTO.getPassword());
         final UserDetails userDetails = userDetailsService.loadUserByUsername(userDTO.getUsername());
@@ -74,8 +73,10 @@ public class JwtAuthenticationController {
             logger.info("Entered into authentication method in jwtAuthenticationToken");
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
+            logger.info("Exception catched: "+e.toString());
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
+            logger.info("Exception catched: "+e.toString());
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }

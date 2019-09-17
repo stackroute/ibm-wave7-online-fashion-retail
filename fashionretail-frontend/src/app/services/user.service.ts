@@ -75,10 +75,32 @@ export class UserService {
      return this.http.get<Design[]>(url);
    }
 
-   submitOrder(dOrder: DesignerOrder): Observable<DesignerOrder> {
+   submitOrder(dOrder: DesignerOrder, designerName: string): Observable<DesignerOrder> {
+     console.log(JSON.stringify(dOrder));
      console.log(dOrder);
+     let jsonstring = JSON.stringify(dOrder);
+     let supplierlist = '[{';
+     dOrder.supplierList.pop().forEach((value: number, key: string) => {
+       supplierlist += '"' + key + '":' + value + ',';
+     });
+     supplierlist = supplierlist.substr(0, supplierlist.length - 1) + '}]';
+     console.log('supplier list: ', supplierlist);
+     console.log('json before changing: ', jsonstring);
+     const ind = jsonstring.indexOf('"supplierList":');
+     console.log('index of supplierList found: ', jsonstring[ind]);
+     const ind1 = jsonstring.indexOf(']', ind);
+     console.log('index of ] found: ', jsonstring[ind1]);
+     jsonstring = jsonstring.slice(0, ind + 15) + supplierlist + jsonstring.slice(ind1 + 1);
+     console.log('json after changing: ', jsonstring);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
-     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, httpOptions);
+     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', jsonstring, {
+       params: {designerName},
+       headers: new HttpHeaders({
+         'Access-Control-Allow-Origin': '*',
+         'Content-Type': 'application/json',
+         Authorization: 'my-auth-token'
+       })
+     });
     // return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
     //   'Access-Control-Allow-Origin':'*',
     // })});
@@ -87,31 +109,21 @@ export class UserService {
    public getAllOrders(): Observable<DesignerOrder[]> {
     return this.http.get<DesignerOrder[]>(environment.designerUrl + '/designs');
   }
-  // getDesignerById(id : string): Observable<Designer> {
-  //   const url = environment.designerUrl + '/designer';
-  //   const getUrl = `${url}/{{id}}`;
-  //   return this.http.get<Designer>(getUrl);
-
-  // }
-  getDesignerById(userId: string): Observable<User> {
+ 
+  getDesignerById(userId: string): Observable<Designer> {
     console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
     // const url = `${environment.designerUrl+"designer"}/${userId}`;
-    const url = environment.userUrl + '/user/' + userId;
-    return this.http.get<User>(url, httpOptions);
+    const url = environment.designerUrl + '/designer/' + userId;
+    return this.http.get<Designer>(url, httpOptions);
       // .pipe(
       //   catchError(this.handleError('deleteHero'))
       // );
   }
   updateDesigner(id: string, designer: Designer): Observable<Designer> {
-    const url = environment.designerUrl + '/designer';
-    const updateUrl = `${url}/3`;
-    return this.http.put<Designer>(updateUrl, designer, httpOptions);
+    console.log('designer data from user service', designer);
+    const url = environment.designerUrl + '/designer' + '/' + id;
+    // const updateUrl = `${url}/id`;
+    return this.http.put<Designer>(url, designer, httpOptions);
   }
-  // constructor(private http: HttpClient) {
-  //   this.userUrl = 'http://localhost:8088/user';
-  // }
-  // saveUser(user : User) : Observable<User>{
-  //   return this.http.post<User>(this.userUrl,user,httpOptions)
-
-  // }
+ 
 }

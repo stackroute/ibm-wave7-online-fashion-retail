@@ -1,6 +1,6 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
-  <div (click)="cancelClick($event)" class="dropdown"><br>
-    <a routerLink="/manufactureviewprofile" routerLinkActive="active"> <button mat-button color="primary">View Profile</button><br></a>
+  <div class="dropdown"><br>
+    <a  routerLinkActive="active"> <button mat-button color="primary" (click)="viewProfile()">View Profile</button><br></a>
     <a routerLink="/manufacturervieworders" routerLinkActive="active"><button mat-button color="primary">View Previous orders</button></a>
     <mat-divider></mat-divider>
     <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">LogOut</button></a>
@@ -8,16 +8,14 @@
 </mat-menu>
 
 <div>
-  <mat-toolbar class="header">
+  <mat-toolbar class="header" >
     <mat-toolbar-row>
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+      <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
       <span class="title">TrendMode</span>
-      <span class="example-spacer"></span>
       <span class="spacer"></span>
-      <div fxShow="true" fxHide.lt-md="true">
                    <span>
                        <mat-form-field>
                          <input #searchText matInput placeholder="Search for products">
@@ -26,11 +24,11 @@
                          <mat-icon>search</mat-icon>
                        </button></span>
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a routerLink="/suppliers" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
+        <a routerLink="/manufacturer" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
         <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
           Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 
-      </div>
+
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
@@ -39,7 +37,8 @@
       <app-addmaterialsbutton></app-addmaterialsbutton>
 
    <div class="flex">
-    <mat-card class="tp-card" *ngFor="let order of receivedOrders">
+    <div *ngFor="let order of receivedOrders">
+      <mat-card class="tp-card" *ngIf ="order.orderStatus === 'in-progress'">
         <mat-card-header>
            <div mat-card-avatar class="tp-header-image"></div>
            <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
@@ -50,10 +49,11 @@
                <h5>Quantity: </h5>{{order.quantity}}
            </mat-card-content>
            <mat-card-actions>
-              <button mat-raised-button color="primary">Accept</button>
-              <button mat-raised-button color="primary">Reject</button>
+              <button mat-raised-button color="primary" (click)="accept(order)">Accept</button>
+              <button mat-raised-button color="primary" (click)="reject(order)">Reject</button>
            </mat-card-actions>
-     </mat-card>
+      </mat-card>
+     </div>
    </div>
 
      <!-- <mat-card class="tp-card">

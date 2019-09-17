@@ -156,7 +156,7 @@ import {UniqueEmailValidator} from './sign-up/unique-email-validator';
     MatTableModule,
     MatBottomSheetModule,
     MatBadgeModule,
-    MatSnackBarModule,
+    MatSnackBarModule
   ],
 
   providers: [ProductService, ConsumerService, LoginService, AuthenticateService, OrderService, UniqueEmailValidator,

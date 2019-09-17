@@ -1,17 +1,18 @@
 package com.stackroute.onlinefashionretail.manufacturer.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 
 import javax.persistence.Column;
 import java.util.List;
 
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Manufacturer {
 
     @Id
     @Column
-    @JsonProperty("id")
+    @JsonProperty("userId")
     private String id;
     @Column
     @JsonProperty("name")

@@ -1,16 +1,20 @@
-  mat-toolbar
-  {
-      width:100%;
-      height: 90px;
-      position: fixed;
-      top:0;
-      z-index: 1030;
-      left: 0;
-      right: 0;
-      background-color: black;
-      padding: 10px;
-      padding-left: 5px;
+mat-toolbar{
+    width:100%;
+    height: min-content;
+    position: fixed;
+    top:0;
+    z-index: 1030;
+    left: 0;
+    right: 0;
+    background-color: black;
+    padding: 10px;
+    padding-left: 5px;
 
+  }
+  mat-toolbar-row {
+      height: min-content;
+      display: flex;
+      flex-wrap: wrap;
   }
 
   .header
@@ -77,3 +81,22 @@
         height: 40px;
         width: 40px;
     }
+
+    .tp-card {
+        width: 300px;
+        margin: 20px 20px 20px 20px;
+        min-width: 100px;
+      }
+
+      .tp-header-image {
+        background-image: url('https://cdn.shopify.com/s/files/1/0916/0836/products/44915_Gibson_SG_112790111_1_220x.jpg?v=1565301688');
+        background-size: cover;
+      }
+      .flex
+      {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          margin-bottom: 100px;
+          margin-top: 15%;
+      }

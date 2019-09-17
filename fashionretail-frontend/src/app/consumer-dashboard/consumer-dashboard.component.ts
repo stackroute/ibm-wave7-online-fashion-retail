@@ -18,6 +18,7 @@ export class ConsumerDashboardComponent implements OnInit {
   products: Product[] = [];
   cart: Product[] = [];
 
+
   constructor(private productService: ProductService,
               private consumerService: ConsumerService,
               private matBottomSheet: MatBottomSheet,
@@ -85,4 +86,13 @@ export class ConsumerDashboardComponent implements OnInit {
     }
     return false;
   }
+  search(search)
+  {
+    console.log('inside search method');
+    this.productService.search(search).subscribe(data =>{
+      this.products = data;
+      console.log(data);
+    })
+  }
+
 }

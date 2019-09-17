@@ -1,7 +1,7 @@
 import {DesignerOrder} from './DesignerOrder';
 
 export class Designer {
-  id: string;
+  userId: string;
   name: string;
   city: string;
   rating: number;
@@ -9,8 +9,8 @@ export class Designer {
   contactNumber: number;
   orderList: DesignerOrder[];
 
-  constructor(id: string, name: string, city: string, rating: number, email: string, contactNumber: number, orderList: DesignerOrder[]) {
-    this.id = id;
+  constructor(userId: string, name: string, city: string, rating: number, email: string, contactNumber: number, orderList: DesignerOrder[]) {
+    this.userId = userId;
     this.name = name;
     this.city = city;
     this.rating = rating;

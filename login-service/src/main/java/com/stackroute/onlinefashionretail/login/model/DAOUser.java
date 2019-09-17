@@ -12,7 +12,7 @@ public class DAOUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String id;
 
     @Column
     @JsonProperty("userId")
@@ -33,7 +33,7 @@ public class DAOUser {
     public DAOUser() {
     }
 
-    public DAOUser(int id, String userId, String username, String name, String password, String designation) {
+    public DAOUser(String id, String userId, String username, String name, String password, String designation) {
         this.id = id;
         this.userId = userId;
         this.username = username;
@@ -42,11 +42,11 @@ public class DAOUser {
         this.designation = designation;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

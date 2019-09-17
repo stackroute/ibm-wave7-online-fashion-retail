@@ -1,6 +1,19 @@
 .navbar{
   color:#7e57c2;
 }
+.navbar-toggler{
+    color:white;
+}
+
+.navbar-collapse{
+  background-color:black;
+}
+
+.navbar-default {
+    background-color: #F8F8F8;
+    border-color: #E7E7E7;
+    color: black;
+}
 
     .nav-item {
         font-size: 4vh;
@@ -22,6 +35,12 @@
     }
 .about{
     padding-right:70px;
+}
+#home{
+    padding-right:70px;
+}
+.login{
+  margin-right: 0;
 }
 
     .abc

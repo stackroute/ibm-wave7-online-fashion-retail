@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ManufacturerOrder } from '../models/ManufacturerOrder';
+import { ManufactureService } from '../services/manufacture.service';
 
 @Component({
   selector: 'app-manufacturer-view-order',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./manufacturer-view-order.component.css']
 })
 export class ManufacturerViewOrderComponent implements OnInit {
-
-  constructor() { }
+ public receivedOrders: ManufacturerOrder[];
+  constructor(private _manufactureService: ManufactureService) { }
 
   ngOnInit() {
+    this._manufactureService.getOrders().subscribe(data => {this.receivedOrders = data; console.log('orders: '); console.log(this.receivedOrders); });
   }
 
 }

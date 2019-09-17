@@ -6,17 +6,17 @@ public class ManufacturerOrder {
   @Id
   private String id;
   private String tagId;
-  private Designer designer;
+  private String designerName;
   private String designImage;
-  private int qunatityOfDesign;
+  private int quantityOfDesign;
   private String orderStatus;
 
-  public ManufacturerOrder(String id, String tagId, Designer designer, String designImage, int qunatityOfDesign, String orderStatus) {
+  public ManufacturerOrder(String id, String tagId, String designerName, String designImage, int quantityOfDesign, String orderStatus) {
     this.id = id;
     this.tagId = tagId;
-    this.designer = designer;
+    this.designerName = designerName;
     this.designImage = designImage;
-    this.qunatityOfDesign = qunatityOfDesign;
+    this.quantityOfDesign = quantityOfDesign;
     this.orderStatus = orderStatus;
   }
 
@@ -39,12 +39,12 @@ public class ManufacturerOrder {
     this.tagId = tagId;
   }
 
-  public Designer getDesigner() {
-    return designer;
+  public String getDesignerName() {
+    return designerName;
   }
 
-  public void setDesigner(Designer designer) {
-    this.designer = designer;
+  public void setDesignerName(String designerName) {
+    this.designerName = designerName;
   }
 
   public String getDesignImage() {
@@ -55,12 +55,12 @@ public class ManufacturerOrder {
     this.designImage = designImage;
   }
 
-  public int getQunatityOfDesign() {
-    return qunatityOfDesign;
+  public int getQuantityOfDesign() {
+    return quantityOfDesign;
   }
 
-  public void setQunatityOfDesign(int qunatityOfDesign) {
-    this.qunatityOfDesign = qunatityOfDesign;
+  public void setQuantityOfDesign(int quantityOfDesign) {
+    this.quantityOfDesign = quantityOfDesign;
   }
 
   public String getOrderStatus() {

@@ -11,6 +11,10 @@ import {Design} from '../models/Design';
 import {DesignerOrder} from '../models/DesignerOrder';
 import {ManufacturerOrder} from '../models/ManufacturerOrder';
 import {BasePrice} from '../models/BasePrice';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+import { InterComponentDataService } from '../services/inter-component-data.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -67,19 +71,33 @@ export class DesignerHomePageComponent implements OnInit {
   material: Mapping[] = [];
   MaterialQuantity: number;
 
+  imgSrc: string;
+  selectedImage: any = null;
+  isSubmitted: boolean;
 
+  formTemplate = new FormGroup({
+    caption: new FormControl('', Validators.required),
+    category: new FormControl(''),
+    imageUrl: new FormControl('', Validators.required)
+  });
   private quantityMap: Map<string, number> = new Map([]);
+  storage: any;
+  service: any;
 
   // orderdetails :
 
-  constructor(private dialogue: MatDialog, private userService: UserService) {
+  constructor(private dialogue: MatDialog,
+    private userService: UserService,
+     private interComponent: InterComponentDataService,
+     private router : Router) {
     this.items = [
       {name: 'assets/designer.jpg'},
     ];
   }
 
   ngOnInit() {
-
+     let designer_id = '';
+     this.interComponent.currentId.subscribe(data => designer_id=data);
     this.userService.getAllMaterial().subscribe((data) => {
       this.mapping = data;
       console.log('materials data', this.mapping);
@@ -92,9 +110,9 @@ export class DesignerHomePageComponent implements OnInit {
 
     this.getAllorders();
 
-    this.userService.getDesignerById('1').subscribe((data) => {
+    this.userService.getDesignerById(designer_id).subscribe((data) => {
       // this.Designer = data;
-      console.log(data);
+      console.log("designer data by id",data);
     });
   }
 
@@ -155,7 +173,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
-    this.userService.submitOrder(this.updatedOrder).subscribe(
+    this.userService.submitOrder(this.updatedOrder, 'abc').subscribe(
       (data) => {
         this.orderDetails = data;
         console.log('orderlist', this.orderDetails);
@@ -197,6 +215,11 @@ export class DesignerHomePageComponent implements OnInit {
         // })
       }
     });
+  }
+
+  viewProfile(){
+    let loginId =this.userService.loginCredentials.userId ;
+    this.router.navigate(['/designerviewprofile'],{queryParams : {loginId}});
   }
 }
 

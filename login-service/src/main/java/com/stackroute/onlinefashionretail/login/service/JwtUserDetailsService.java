@@ -18,6 +18,7 @@ import com.stackroute.onlinefashionretail.login.model.DAOUser;
 import com.stackroute.onlinefashionretail.login.model.UserDTO;
 
 import javax.mail.internet.MimeMessage;
+
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
     private final Logger logger = (Logger) LoggerFactory.getLogger(this.getClass());
@@ -65,7 +66,7 @@ public class JwtUserDetailsService implements UserDetailsService {
             System.out.println(username);
             MimeMessage message=javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
-            helper.setTo("srijak890@gmail.com");
+            helper.setTo(username);
             helper.setSubject("Link for Reset your Password");
             helper.setText("http://localhost:4200/reset-password");
             javaMailSender.send(message);

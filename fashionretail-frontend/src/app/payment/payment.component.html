@@ -1,1 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Payment</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf = "!paid">
+      <h3>Your Total is: {{total}}</h3>
+      <button mat-raised-button color="primary" (click)="pay()">Pay</button>
+    </div>
+    <div *ngIf = "paid">
+      <h1>Order placed!</h1>
+      <h3>Redirecting</h3>
+    </div>
+  </mat-card-content>
+</mat-card>
 

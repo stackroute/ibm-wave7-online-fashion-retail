@@ -31,4 +31,7 @@ public interface ProductService {
 
     //method to get a product by id
     Product getProductById(String id) throws ProductNotFoundException;
+
+    //method to search a product by name or category
+    List<Product> searchProduct(String searchText);
 }

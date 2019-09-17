@@ -195,16 +195,24 @@ public class ConsumerServiceImpl implements ConsumerService {
 
             //set status as placed
             consumerOrder.setStatus("placed");
+            logger.info("getting orders of consumer "+consumer.getUserName()+": "+consumer.getConsumerOrders());
             consumer.getConsumerOrders().put(consumerOrder.getId(),consumerOrder);
+            logger.info("getting orders of consumer "+consumer.getUserName()+" after saving: "+consumer.getConsumerOrders());
+
+            //clear the cart because all product in the cart are now bought as an order
+            consumer.getCart().clear();
 
             //save to the consumer repository as well as the consumer orders repository
             consumerRepository.save(consumer);
+
             try {
                 return consumerOrderService.placeOrder(consumerOrder);
             } catch (ConsumerOrderAlreadyExistsException e) {
                 e.printStackTrace();
                 return null;
             }
+
+
         }
         catch (MongoSocketOpenException exception){
             logger.error("Error connecting to database: ",exception);
@@ -291,10 +299,11 @@ public class ConsumerServiceImpl implements ConsumerService {
             logger.info("Entered into removefromCart method in ConsumerSericeImpl");
             Consumer consumer = consumerRepository.findById(consumerId).orElseThrow(() -> new ConsumerNotFoundException("Consumer with given id not found!"));
             //add product to cart
-            logger.info(product.toString());
-            logger.info(consumer.getCart().contains(product)+"");
+            logger.info("cart before deleting product: "+consumer.getCart());
+            logger.info("product to delete: "+product.toString());
+            logger.info("cart contains product? "+consumer.getCart().contains(product)+"");
             consumer.getCart().remove(product);
-            logger.info(consumer.getCart().toString());
+            logger.info("cart after deleting product: "+consumer.getCart().toString());
             //save to the consumer repository
             consumerRepository.save(consumer);
             return product;

@@ -22,6 +22,7 @@ import { ViewOrdersComponent } from './view-orders/view-orders.component';
 import { ManufacturerViewOrderComponent } from './manufacturer-view-order/manufacturer-view-order.component';
 import { CardComponent } from './card/card.component';
 import {ConsumerShippingComponent} from './consumer-shipping/consumer-shipping.component';
+import {PaymentComponent} from './payment/payment.component';
 
 
 
@@ -58,6 +59,9 @@ const routes: Routes = [
     path: 'consumer/shipping' , component: ConsumerShippingComponent
   },
   {
+    path: 'consumer/payment' , component: PaymentComponent
+  },
+  {
       path: '', component: BodyComponent
   },
 
@@ -66,7 +70,7 @@ const routes: Routes = [
   // {
   //     path: '', component: BodyComponent
   // },
-  { path : '**/LogOut' , component: HeroComponent},
+  { path : 'LogOut' , component: HeroComponent},
   { path : '**' , component: HeroComponent},
 
 

@@ -67,6 +67,7 @@ public class DesignerServiceImpl implements DesignerService {
         Optional<Designer> designer1 = designerRepository.findById(id);
         String name=designer1.get().getName();
         String email=designer1.get().getEmail();
+        System.out.println(designer1);
         Designer designer2=new Designer();
         designer2.setId(id);
         designer2.setName(name);

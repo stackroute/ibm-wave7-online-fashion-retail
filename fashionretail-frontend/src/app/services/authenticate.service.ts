@@ -37,6 +37,7 @@ export class AuthenticateService {
 // public loginuser:LoginUser;
 
   login(data: LoginUser): Observable<User> {
+    console.log(data);
     this.loggedIn.next(true);
     return this.httpClient.post<User>(this.apiUrl2, data);
 
