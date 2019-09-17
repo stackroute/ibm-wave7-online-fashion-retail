@@ -87,4 +87,18 @@ public class MappingServiceImpl implements MappingService {
     Mapping savedMapping = mappingRepository.save(mapping);
     return savedMapping;
   }
+
+  @Override
+  public String getSupplierId(String mappingId) {
+    if (mappingRepository.findById(mappingId).isPresent())
+      return mappingRepository.findById(mappingId).get().getSupplier().getId();
+    return null;
+  }
+
+  @Override
+  public Material getMaterialById(String mappingId) {
+    if (mappingRepository.findById(mappingId).isPresent())
+      return mappingRepository.findById(mappingId).get().getMaterial();
+    return null;
+  }
 }

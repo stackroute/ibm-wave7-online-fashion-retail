@@ -109,4 +109,34 @@ public class MappingController {
     }
     return responseEntity;
   }
+
+  @GetMapping("material/supplierId")
+  public ResponseEntity<?> getSupplierId(@RequestParam String mappingId) {
+    logger.info("Inside getSupplierId");
+    ResponseEntity responseEntity;
+    try {
+      logger.info("Entered into getSupplierId in mapping controller");
+      responseEntity = new ResponseEntity<>(mappingService.getSupplierId(mappingId), HttpStatus.OK);
+    } catch (Exception exception) {
+      logger.info("Entered into getSupplierId catch in mapping controller");
+
+      responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+    }
+    return responseEntity;
+  }
+
+  @GetMapping("material/materials")
+  public ResponseEntity<?> getMaterialById(@RequestParam String mappingId) {
+    logger.info("Inside getMaterialById");
+    ResponseEntity responseEntity;
+    try {
+      logger.info("Entered into getMaterialById in mapping controller");
+      responseEntity = new ResponseEntity<>(mappingService.getMaterialById(mappingId), HttpStatus.OK);
+    } catch (Exception exception) {
+      logger.info("Entered into getMaterialById catch in mapping controller");
+
+      responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+    }
+    return responseEntity;
+  }
 }

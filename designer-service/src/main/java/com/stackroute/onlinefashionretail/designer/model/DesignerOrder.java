@@ -12,7 +12,7 @@ public class DesignerOrder {
 
     @Id
     private String id;
-    private Design design;
+    private Design designOrder;
     private List<Map<String,Double>> supplierList;
     private Manufacturer manufacturer;
     private String tagId;
@@ -20,9 +20,9 @@ public class DesignerOrder {
     public DesignerOrder() {
     }
 
-    public DesignerOrder(String id, Design design, List<Map<String, Double>> supplierList, Manufacturer manufacturer, String tagId) {
+    public DesignerOrder(String id, Design designOrder, List<Map<String, Double>> supplierList, Manufacturer manufacturer, String tagId) {
         this.id = id;
-        this.design = design;
+        this.designOrder = designOrder;
         this.supplierList = supplierList;
         this.manufacturer = manufacturer;
         this.tagId = tagId;
@@ -36,12 +36,12 @@ public class DesignerOrder {
         this.id = id;
     }
 
-    public Design getDesign() {
-        return design;
+    public Design getDesignOrder() {
+        return designOrder;
     }
 
-    public void setDesign(Design designOrder) {
-        this.design = designOrder;
+    public void setDesignOrder(Design designOrder) {
+        this.designOrder = designOrder;
     }
 
     public List<Map<String, Double>> getSupplierList() {
@@ -72,7 +72,7 @@ public class DesignerOrder {
     public String toString() {
         return "DesignerOrder{" +
                 "id='" + id + '\'' +
-                ", designOrder=" + design +
+                ", designOrder=" + designOrder +
                 ", supplierList=" + supplierList +
                 ", manufacturer=" + manufacturer +
                 ", tagId='" + tagId + '\'' +

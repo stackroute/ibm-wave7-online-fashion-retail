@@ -46,7 +46,9 @@ public class WorkflowController {
 
     private String DESIGNER_RESOURCE_URL = "http://" + DESIGNER_IP + "/api/v1/designs";
     private String SUPPLIER_RESOURCE_URL = "http://" + SUPPLIER_IP + "/api/v1/material";
+    private String SUPPLIER_ORDER_RESOURCE_URL = "http://" + SUPPLIER_IP + "/api/v1/order";
     private String MANUFACTURER_RESOURCE_URL = "http://" + MANUFACTURER_IP + "/api/v1/baseprice";
+    private String MANUFACTURER_ORDER_RESOURCE_URL = "http://" + MANUFACTURER_IP + "/api/v1/manufactureOrder";
 
     private Logger logger = LoggerFactory.getLogger(WorkflowController.class);
 
@@ -75,24 +77,55 @@ public class WorkflowController {
     public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder, @RequestParam String designerName) throws ApiCallException {
         logger.info("< upload design handler");
         String id = claimTask("Upload Design");
-
+        logger.info(" > designerOrder: "+designerOrder);
+        logger.info(" > designerName: "+designerName);
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
         logger.info("url: "+DESIGNER_RESOURCE_URL);
-        List<SupplierOrder> supplierOrders = new ArrayList<SupplierOrder>();
-        for (Map<String, Double> mappings:
-             designerOrder.getSupplierList()) {
-            supplierOrders.add(new SupplierOrder(RandomIdGenerator.getRandomId(),
-                    designerName,
-                    new Material(),
-                    mappings.get(""),"in-progress",""))
-        }
-        SupplierOrder supplierOrder =
-        //store response in a ResponseEntity
+
+
+//        store response in a ResponseEntity
         entity = new HttpEntity<>(designerOrder, headers);
         ResponseEntity responseEntity = new ResponseEntity(HttpStatus.OK);
 
         try {
+            for (Map.Entry<String,Double> entry: designerOrder.getSupplierList().get(0).entrySet()) {
+                String supplierId = restTemplate.exchange(
+                        SUPPLIER_RESOURCE_URL+"/supplierId?mappingId="+entry.getKey(),
+                        HttpMethod.GET,
+                        new HttpEntity<>(headers),
+                        String.class).getBody();
+
+                Material material = restTemplate.exchange(
+                        SUPPLIER_RESOURCE_URL+"/materials?mappingId="+entry.getKey(),
+                        HttpMethod.GET,
+                        new HttpEntity<>(headers),
+                        Material.class).getBody();
+
+                SupplierOrder supplierOrder = new SupplierOrder(RandomIdGenerator.getRandomId(),
+                        designerName,
+                        material,
+                        entry.getValue(),"in-progress","");
+
+                logger.info("response from supplier: "+restTemplate.exchange(
+                        SUPPLIER_ORDER_RESOURCE_URL+"?id="+supplierId,
+                        HttpMethod.POST,
+                        new HttpEntity<>(supplierOrder,headers),
+                        String.class).getBody());
+            }
+            ManufacturerOrder manufacturerOrder = new ManufacturerOrder(RandomIdGenerator.getRandomId(),
+                    "",
+                    designerName,
+                    designerOrder.getDesignOrder().getDesign_img(),
+                    designerOrder.getDesignOrder().getQuantityOfDesign(),
+                    "in-progress");
+
+            restTemplate.exchange(
+                    MANUFACTURER_ORDER_RESOURCE_URL+"?id="+designerOrder.getManufacturer().getId(),
+                    HttpMethod.POST,
+                    new HttpEntity<>(manufacturerOrder,headers),
+                    String.class);
+
            responseEntity  = restTemplate.exchange(
                     DESIGNER_RESOURCE_URL,
                     HttpMethod.POST,
