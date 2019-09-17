@@ -6,6 +6,7 @@ export class Supplier {
   city: string;
   rating: string;
   email: string;
+  contactNumber: string;
   supplierOrders: SupplierOrder[];
 
   constructor(id: string,

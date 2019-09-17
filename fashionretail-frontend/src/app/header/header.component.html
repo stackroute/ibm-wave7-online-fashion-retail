@@ -1,8 +1,8 @@
 <!-- Navigation bar -->
 <nav class="navbar fixed-top navbar-expand-lg " id="bodu">
-    <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+    <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
     <div>
-        <p id="title">TrendMode</p>
+      <p id="title"><a routerLink="" routerLinkActive="active" >TrendMode</a></p>
     </div>
 
     <button class="navbar-toggler navbar-default" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,12 +11,17 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 50%;">
 
+      <div id="home">
+        <a routerLink="" routerLinkActive="active" >Home</a>
+      </div>
 
         <div class="about">
+
              <a routerLink="/about" routerLinkActive="active" > About us </a>
+
         </div>
 
-        <div >
+        <div class="login">
           <a routerLink="/login" routerLinkActive="active" >Login</a>
         </div>
 

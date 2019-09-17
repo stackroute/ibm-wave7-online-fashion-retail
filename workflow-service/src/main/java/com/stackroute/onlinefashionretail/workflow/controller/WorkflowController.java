@@ -1,10 +1,10 @@
 package com.stackroute.onlinefashionretail.workflow.controller;
 
+import com.stackroute.onlinefashionretail.workflow.RandomIdGenerator;
 import com.stackroute.onlinefashionretail.workflow.exception.ApiCallException;
-import com.stackroute.onlinefashionretail.workflow.models.BasePrice;
-import com.stackroute.onlinefashionretail.workflow.models.DesignerOrder;
-import com.stackroute.onlinefashionretail.workflow.models.Mapping;
+import com.stackroute.onlinefashionretail.workflow.models.*;
 import com.stackroute.onlinefashionretail.workflow.SecurityUtil;
+import com.stackroute.onlinefashionretail.workflow.models.Mapping;
 import org.activiti.api.process.model.ProcessDefinition;
 import org.activiti.api.process.model.ProcessInstance;
 import org.activiti.api.process.model.ProcessInstanceMeta;
@@ -23,7 +23,9 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -70,14 +72,22 @@ public class WorkflowController {
     }
 
     @PostMapping("upload")
-    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder) throws ApiCallException {
+    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder, @RequestParam String designerName) throws ApiCallException {
         logger.info("< upload design handler");
         String id = claimTask("Upload Design");
 
         //RestTemplate gets response from an api
         RestTemplate restTemplate = new RestTemplate();
         logger.info("url: "+DESIGNER_RESOURCE_URL);
-
+        List<SupplierOrder> supplierOrders = new ArrayList<SupplierOrder>();
+        for (Map<String, Double> mappings:
+             designerOrder.getSupplierList()) {
+            supplierOrders.add(new SupplierOrder(RandomIdGenerator.getRandomId(),
+                    designerName,
+                    new Material(),
+                    mappings.get(""),"in-progress",""))
+        }
+        SupplierOrder supplierOrder =
         //store response in a ResponseEntity
         entity = new HttpEntity<>(designerOrder, headers);
         ResponseEntity responseEntity = new ResponseEntity(HttpStatus.OK);

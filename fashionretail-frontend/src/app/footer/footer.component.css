@@ -3,13 +3,21 @@ footer {
     /* position: fixed; */
    height: fit-content;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
     background:#ffc107;
     color: black;
     height: auto;
     overflow: hidden;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    padding:20px;
+    display: flex;
+    flex-wrap: wrap;
 
 }
+  .spacer {
+    flex: 1 1 auto;
+  }
 footer div h6{
     color: white;
 }
@@ -21,4 +29,7 @@ img {
     float: right;
     height: 40px;
     width: 40px;
+}
+footer > div {
+  margin: 20px;
 }

@@ -15,38 +15,52 @@ export interface DialogData {
   styleUrls: ['./designerviewprofile.component.css']
 })
 export class DesignerviewprofileComponent implements OnInit {
-  constructor(private dialog: MatDialog, 
+  constructor(private dialog: MatDialog,
     private designerService: UserService,private authentication : AuthenticateService) { }
-  designer: Designer;
+
   location: string;
-  contact: number;
+  contact: string;
   user : User
-
-
+  designer: Designer={
+    id: "",
+    name: "",
+    contactNumber: 0,
+    city: "",
+    rating : 0,
+    email : "",
+    orderList: null
+ };
+loginId : string;
    data;
 
   ngOnInit() {
     console.log(this.designerService.loginCredentials);
     this.user = this.designerService.loginCredentials;
-    // this.designerService.getDesignerById(loginUserId).subscribe((data) => {
-    //   console.log(data)
-    //   this.user = data;
-    //   console.log(this.designer);
-      
-    // });
+     this.loginId =this.designerService.loginCredentials.userId ;
+     console.log("id of designer",this.loginId)
+    this.designer.name = this.user.name;
+    this.designer.email = this.user.email;
+
+    console.log("desiger name",this.designer)
+    this.designerService.getDesignerById(this.loginId).subscribe((data) => {
+      console.log(data)
+      this.designer = data;
+      console.log(this.designer);
+
+    });
   }
 
 
   updateDesigner(designer: Designer) {
     console.log(designer);
-    this.designerService.updateDesigner(designer.id, designer).subscribe(
+    this.designerService.updateDesigner(this.loginId, designer).subscribe(
       (data) => {
         console.log('updated Designer ', data);
-        // this.designerService.getDesignerById("id").subscribe(
+        this.designerService.getDesignerById("id").subscribe(
 
-          // data => { this.designer = data; }
+         data => { this.designer = data; }
 
-        // );
+         );
 
       }
     );
@@ -81,7 +95,7 @@ export class designerEditDialogue {
     @Inject(MAT_DIALOG_DATA) public data: Designer) { }
   onNoClick(): void {
     this.dialogRef.close();
-    console.log('end og dialog');
+    console.log('end of dialog');
   }
 
 }

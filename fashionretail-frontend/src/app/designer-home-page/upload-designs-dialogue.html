@@ -3,22 +3,13 @@
       <mat-card-title>Upload Designs</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-
+x 
 
 <div class="example-container">
     <mat-form-field>
       <input matInput type="text" placeholder="name of the design" [(ngModel)]="data.name">
     </mat-form-field>
-    <!-- <mat-form-field>
-      <input type="number" matInput [disabled]="true" placeholder="price" [(ngModel)]="data.price">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input type="number" matInput [disabled]="true" placeholder="discount percentage (%)" [(ngModel)]="data.discount" >
-      </mat-form-field>
-      <mat-form-field>
-          <input type="number" matInput [disabled]="true" placeholder="profit percentage (%)" [(ngModel)]="data.profit" >
-        </mat-form-field> -->
+    
         <mat-form-field>
             <input type="number" matInput placeholder="Quality Of Design" [(ngModel)]="data.quantityOfDesign" >
           </mat-form-field>
@@ -42,6 +33,42 @@
    
   </mat-card-actions>
   
-  </mat-card>
-  
-  
+</mat-card>
+
+
+<!-- <div class="card">
+  <div class="card-body">
+    <form [formGroup]="formTemplate" (submit)="onSubmit(formTemplate.value)">
+      <div class="text-center">
+        <img [src]="imgSrc" width="350px" height="250px" (click)="fileUploader.click()">
+      </div>
+      <div class="form-group">
+        <label>Select file to upload</label>
+        <input matInput type="file" accept="image/*" class="form-control" #fileUploader formControlName="imageUrl"
+          (change)="showPreview($event)">
+        <div class="text-danger" *ngIf="isSubmitted && formControls.imageUrl.errors?.required">This field is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <input class="form-control" formControlName="caption" placeholder="Caption">
+        <div class="text-danger" *ngIf="isSubmitted && formControls.caption.errors?.required">This field is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <select formControlName="category" class="form-control">
+          <option value="Animal">Animal</option>
+          <option value="Vehicle">Vehicle</option>
+          <option value="Bird">Bird</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <a routerLink="/image/list" class="btn btn-primary btn-block float-right">Go To Gallery</a>
+        </div>
+        <div class="form-group col-md-6">
+          <button type="submit" class="btn btn-success btn-block float-right">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div> -->

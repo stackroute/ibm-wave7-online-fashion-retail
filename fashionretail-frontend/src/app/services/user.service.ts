@@ -75,10 +75,17 @@ export class UserService {
      return this.http.get<Design[]>(url);
    }
 
-   submitOrder(dOrder: DesignerOrder): Observable<DesignerOrder> {
+   submitOrder(dOrder: DesignerOrder, designerName: string): Observable<DesignerOrder> {
      console.log(dOrder);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
-     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, httpOptions);
+     return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', dOrder, {
+       headers: new HttpHeaders({
+         param: designerName,
+         'Access-Control-Allow-Origin': '*',
+         'Content-Type': 'application/json',
+         Authorization: 'my-auth-token'
+       })
+     });
     // return this.http.request<DesignerOrder>('post','http://172.23.238.169:8081/activiti/upload',{body: dOrder,headers: new HttpHeaders({
     //   'Access-Control-Allow-Origin':'*',
     // })});
@@ -93,19 +100,20 @@ export class UserService {
   //   return this.http.get<Designer>(getUrl);
 
   // }
-  getDesignerById(userId: string): Observable<User> {
+  getDesignerById(userId: string): Observable<Designer> {
     console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
     // const url = `${environment.designerUrl+"designer"}/${userId}`;
-    const url = environment.userUrl + '/user/' + userId;
-    return this.http.get<User>(url, httpOptions);
+    const url = environment.designerUrl + '/designer/' + userId;
+    return this.http.get<Designer>(url, httpOptions);
       // .pipe(
       //   catchError(this.handleError('deleteHero'))
       // );
   }
   updateDesigner(id: string, designer: Designer): Observable<Designer> {
-    const url = environment.designerUrl + '/designer';
-    const updateUrl = `${url}/3`;
-    return this.http.put<Designer>(updateUrl, designer, httpOptions);
+    console.log("designer data from user service",designer)
+    const url = environment.designerUrl + '/designer'+"/"+id;
+    // const updateUrl = `${url}/id`;
+    return this.http.put<Designer>(url, designer, httpOptions);
   }
   // constructor(private http: HttpClient) {
   //   this.userUrl = 'http://localhost:8088/user';

@@ -15,11 +15,9 @@
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+      <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
       <span class="title">TrendMode</span>
-      <span class="example-spacer"></span>
       <span class="spacer"></span>
-      <div fxShow="true" fxHide.lt-md="true">
 
            <span>
                        <mat-form-field>
@@ -33,7 +31,6 @@
         <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd" style="color:aliceblue">
           Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 
-      </div>
     </mat-toolbar-row>
   </mat-toolbar>
 
@@ -49,13 +46,13 @@
             <mat-card-content>
               <br>
               <div class="example-container">
-                <h6>User Name: {{user.name}} <br> </h6>
+                <h6>User Name: {{designer.name}} <br> </h6>
 
-                <h6>Email Id: {{user.email}} <br></h6>
+                <h6>Email Id: {{designer.email}} <br></h6>
 
-                <h6>City: {{user.location}} <br></h6>
+                <h6>City: {{designer.location}} <br></h6>
 
-                <h6>Contact Number: {{user.designation}} <br></h6>
+                <h6>Contact Number: {{designer.designation}} <br></h6>
               </div>
      </mat-card-content>
 
@@ -63,4 +60,5 @@
     <mat-card-actions>
         <button mat-raised-button color="primary" (click)=openDialog()>Edit</button>
     </mat-card-actions>
+</div>
 </div>

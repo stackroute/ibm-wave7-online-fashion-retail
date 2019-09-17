@@ -11,6 +11,8 @@ import {Design} from '../models/Design';
 import {DesignerOrder} from '../models/DesignerOrder';
 import {ManufacturerOrder} from '../models/ManufacturerOrder';
 import {BasePrice} from '../models/BasePrice';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { finalize } from 'rxjs/operators';
 
 
 @Component({
@@ -39,6 +41,7 @@ export class DesignerHomePageComponent implements OnInit {
   updatedOrder: DesignerOrder = {
     id: '',
     tagId: '',
+    designer_id : '',
     designOrder: {
       id: '',
       name: '',
@@ -67,8 +70,18 @@ export class DesignerHomePageComponent implements OnInit {
   material: Mapping[] = [];
   MaterialQuantity: number;
 
+  imgSrc: string;
+  selectedImage: any = null;
+  isSubmitted: boolean;
 
+  formTemplate = new FormGroup({
+    caption: new FormControl('', Validators.required),
+    category: new FormControl(''),
+    imageUrl: new FormControl('', Validators.required)
+  })
   private quantityMap: Map<string, number> = new Map([]);
+  storage: any;
+  service: any;
 
   // orderdetails :
 
@@ -79,7 +92,7 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-
+     let designer_id =this.userService.loginCredentials.userId;
     this.userService.getAllMaterial().subscribe((data) => {
       this.mapping = data;
       console.log('materials data', this.mapping);
@@ -92,10 +105,10 @@ export class DesignerHomePageComponent implements OnInit {
 
     this.getAllorders();
 
-    this.userService.getDesignerById('1').subscribe((data) => {
-      // this.Designer = data;
-      console.log(data);
-    });
+    // this.userService.getDesignerById(designer_id).subscribe((data) => {
+    //   // this.Designer = data;
+    //   console.log("designer data by id",data);
+    // });
   }
 
   Mapping(arg0: string, mapping: any) {
@@ -155,7 +168,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
-    this.userService.submitOrder(this.updatedOrder).subscribe(
+    this.userService.submitOrder(this.updatedOrder,this.Designer.name).subscribe(
       (data) => {
         this.orderDetails = data;
         console.log('orderlist', this.orderDetails);
@@ -197,6 +210,52 @@ export class DesignerHomePageComponent implements OnInit {
         // })
       }
     });
+  }
+
+  showPreview(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => this.imgSrc = e.target.result;
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage = event.target.files[0];
+    }
+    else {
+      this.imgSrc = '/assets/facebook.png';
+      this.selectedImage = null;
+    }
+  }
+
+  onSubmit(formValue) {
+    this.isSubmitted = true;
+    if (this.formTemplate.valid) {
+      var filePath = `${formValue.category}/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+      const fileRef = this.storage.ref(filePath);
+      this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((url) => {
+            formValue['imageUrl'] = url;
+            this.service.insertImageDetails(formValue);
+            this.resetForm();
+          })
+        })
+      ).subscribe();
+    }
+  }
+
+  get formControls() {
+    return this.formTemplate['controls'];
+  }
+
+  resetForm() {
+    this.formTemplate.reset();
+    this.formTemplate.setValue({
+      caption: '',
+      imageUrl: '',
+      category: 'Animal'
+    });
+    this.imgSrc = '/assets/facebook.png';
+    this.selectedImage = null;
+    this.isSubmitted = false;
   }
 }
 

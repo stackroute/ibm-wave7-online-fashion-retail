@@ -1,6 +1,7 @@
 package com.stackroute.onlinefashionretail.designer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,11 +13,14 @@ import java.util.List;
 public class Designer {
 
     @Id
+    @JsonProperty("userId")
     private String id;
+    @JsonProperty("username")
     private String name;
     private long contactNumber;
     private String city;
     private float rating;
+    @JsonProperty("email")
     private String email;
 
     private List<DesignerOrder> orderList;

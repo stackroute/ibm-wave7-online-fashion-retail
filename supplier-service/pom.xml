@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.stackroute</groupId>
-		<artifactId>ibm-wave7-online-fashion-retail</artifactId>
-		<version>1.0.0</version>
-		<relativePath>../pom.xml</relativePath>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.7.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute</groupId>
 	<artifactId>supplier-service</artifactId>
@@ -21,15 +21,6 @@
 	<dependencies>
 
 		<dependency>
-
-			<groupId>com.fasterxml.jackson.core</groupId>
-
-			<artifactId>jackson-databind</artifactId>
-
-<!--			<version>2.7.4</version>-->
-
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -40,6 +31,11 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>2.1.9.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.persistence/javax.persistence-api -->
@@ -53,7 +49,10 @@
 			<groupId>org.springframework.kafka</groupId>
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
 	</dependencies>
 

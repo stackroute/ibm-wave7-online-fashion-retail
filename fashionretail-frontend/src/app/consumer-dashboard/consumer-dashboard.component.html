@@ -14,11 +14,9 @@
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+      <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
       <span class="title">TrendMode</span>
-      <span class="example-spacer"></span>
       <span class="spacer"></span>
-      <div fxShow="true" fxHide.lt-md="true">
                    <span>
                        <mat-form-field>
                          <input #searchText matInput placeholder="Search for products">
@@ -31,7 +29,6 @@
         <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
           Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 
-      </div>
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
@@ -52,10 +49,10 @@
     </mat-card-content>
     <mat-card-actions>
       <button mat-button>
-        <mat-icon>favorite</mat-icon>
+        <mat-icon id="icon">favorite</mat-icon>
       </button>
       <button mat-button (click)="addToCart(product)">
-        <mat-icon>shopping_cart</mat-icon>
+        <mat-icon id="icon1">shopping_cart</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>

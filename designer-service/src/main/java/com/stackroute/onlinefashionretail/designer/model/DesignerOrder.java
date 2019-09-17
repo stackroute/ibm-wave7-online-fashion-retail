@@ -12,6 +12,7 @@ public class DesignerOrder {
 
     @Id
     private String id;
+    private String designer_id;
     private Design design;
     private List<Map<String,Double>> supplierList;
     private Manufacturer manufacturer;
@@ -20,8 +21,9 @@ public class DesignerOrder {
     public DesignerOrder() {
     }
 
-    public DesignerOrder(String id, Design design, List<Map<String, Double>> supplierList, Manufacturer manufacturer, String tagId) {
+    public DesignerOrder(String id, String designer_id, Design design, List<Map<String, Double>> supplierList, Manufacturer manufacturer, String tagId) {
         this.id = id;
+        this.designer_id = designer_id;
         this.design = design;
         this.supplierList = supplierList;
         this.manufacturer = manufacturer;
@@ -36,12 +38,20 @@ public class DesignerOrder {
         this.id = id;
     }
 
+    public String getDesigner_id() {
+        return designer_id;
+    }
+
+    public void setDesigner_id(String designer_id) {
+        this.designer_id = designer_id;
+    }
+
     public Design getDesign() {
         return design;
     }
 
-    public void setDesign(Design designOrder) {
-        this.design = designOrder;
+    public void setDesign(Design design) {
+        this.design = design;
     }
 
     public List<Map<String, Double>> getSupplierList() {
@@ -72,7 +82,8 @@ public class DesignerOrder {
     public String toString() {
         return "DesignerOrder{" +
                 "id='" + id + '\'' +
-                ", designOrder=" + design +
+                ", designer_id='" + designer_id + '\'' +
+                ", design=" + design +
                 ", supplierList=" + supplierList +
                 ", manufacturer=" + manufacturer +
                 ", tagId='" + tagId + '\'' +

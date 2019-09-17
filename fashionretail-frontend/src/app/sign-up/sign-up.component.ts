@@ -17,7 +17,7 @@ export class SignUpComponent implements OnInit {
   validEmail = true;
   emailPlaceholderValue = 'Enter your email';
   user: User = {
-    id: '0',
+  userId: '0',
     name: '',
     password: '',
     email: '',
@@ -54,7 +54,7 @@ export class SignUpComponent implements OnInit {
     this.userService.saveUser(user).subscribe((data) => {
       this.user = data;
       console.log(this.user);
-      // this.router.navigateByUrl('login');
+      this.router.navigateByUrl('login');
       },
     );
   }

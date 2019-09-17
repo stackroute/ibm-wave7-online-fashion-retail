@@ -15,11 +15,9 @@
       <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
       </button>
-      <img src="assets/logo.jpeg" width="60" height="60" class="d-inline-block align-top" alt="App Logo">
+      <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
       <span class="title">TrendMode</span>
-      <span class="example-spacer"></span>
       <span class="spacer"></span>
-      <div fxShow="true" fxHide.lt-md="true">
 
            <span>
                        <mat-form-field>
@@ -29,13 +27,13 @@
                          <mat-icon>search</mat-icon>
                        </button></span>
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a routerLink="/designer" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
+        <a routerLink="/designer" routerLinkActive="active"><button mat-stroked-button style="color:aliceblue">Home</button></a>
         <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd" style="color:aliceblue">
           Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 
-      </div>
     </mat-toolbar-row>
   </mat-toolbar>
+
 
   <mat-tab-group animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex"
     (selectedTabChange)="tabChanged($event)">
@@ -44,19 +42,13 @@
         <div ng2-carouselamos class="slides-wrapper" [width]="1500" [items]="items" [$prev]="prev" [$next]="next"
           [$item]="item">
         </div>
-        <!-- <ng-template #prev>
-          <img src="assets/img/left.jpeg" id="left" />
-        </ng-template>
-        <ng-template #next>
-          <img src="assets/right.jpeg" id="right" />
-        </ng-template> -->
         <ng-template #item let-item let-i="index">
           <div class="items">
             <img src="{{ item.name }}" />
           </div>
         </ng-template>
       </div>
-      <div style="padding-top: 30px" class="uploadDesign">Designer add a new Designs <button mat-button
+      <div style="padding-top: 30px" class="uploadDesign">Designer add new Designs <button mat-button
           (click)="openDialog()">Upload Designs</button></div>
 
 
@@ -90,9 +82,9 @@
 
     </mat-tab>
 
-    <mat-tab label="select Supplier Materials" (click)="getAllUser()">
+    <mat-tab label="Select Supplier Materials" (click)="getAllUser()">
       <div style="padding-top: 50px">
-        <button mat-button (click)="nextStep()"> placeOrder</button>
+        <button mat-button (click)="nextStep()"> Place Order</button>
 
         <div class="cardList">
 
@@ -131,7 +123,7 @@
     </mat-tab>
     <mat-tab label="Select Manufacturers">
       <div style="padding-top: 50px">
-        <button mat-button (click)="submitOrder()"> submitOrder</button>
+        <button mat-button (click)="submitOrder()"> Submit Order</button>
 
         <div class="cardList">
 
