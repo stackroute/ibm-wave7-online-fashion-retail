@@ -65,20 +65,6 @@ public class SupplierController {
     }
 
 
-    @GetMapping("supplier/{id}")
-    public ResponseEntity<?> getSupplierById(@PathVariable String id)
-    {
-        ResponseEntity responseEntity;
-        logger.info("Inside getSupplier By Id");
-        try {
-            logger.info("Entered into getSupplierById try block in SupplierController"+supplierService.getSupplierById(id));
-            responseEntity = new ResponseEntity<Supplier>(supplierService.getSupplierById(id), HttpStatus.OK);
-        } catch (Exception exception) {
-            logger.info("Entered into getSupplierById catch block in SupplierController");
-            responseEntity = new ResponseEntity<String>(exception.toString(), HttpStatus.CONFLICT);
-        }
-        return responseEntity;
-    }
 
     @DeleteMapping("supplier/{id}")
     public ResponseEntity<?> deleteSupplier(@PathVariable String id) {
@@ -167,4 +153,19 @@ public class SupplierController {
     }
     return responseEntity;
   }
+
+    @GetMapping("supplier/{id}")
+    public ResponseEntity<?> getSupplierById(@PathVariable String id)
+    {
+        ResponseEntity responseEntity;
+        logger.info("Inside getSupplier By Id");
+        try {
+            logger.info("Entered into getSupplierById try block in SupplierController"+supplierService.getSupplierById(id));
+            responseEntity = new ResponseEntity<Supplier>(supplierService.getSupplierById(id), HttpStatus.OK);
+        } catch (Exception exception) {
+            logger.info("Entered into getSupplierById catch block in SupplierController");
+            responseEntity = new ResponseEntity<String>(exception.toString(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
 }

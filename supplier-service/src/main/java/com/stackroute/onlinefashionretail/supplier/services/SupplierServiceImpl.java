@@ -57,14 +57,14 @@ public class SupplierServiceImpl implements SupplierService {
     public Supplier updateSupplier(Supplier supplier, String id)
     {
         logger.info("Inside updateSupplier in SupplierServiceImpl");
-        Supplier supplier1 = supplierRepository.findById(id).orElse(null);
+        Optional<Supplier> supplier1 = supplierRepository.findById(id);
 
-        supplier1.setName(supplier.getName());
-        supplier1.setEmail(supplier.getEmail());
-        supplier1.setCity(supplier.getCity());
-        supplier1.setRating(supplier.getRating());
+        supplier.setName(supplier.getName());
+        supplier.setEmail(supplier.getEmail());
+        supplier.setCity(supplier.getCity());
+        supplier.setRating(supplier.getRating());
 
-        Supplier savedSupplier = supplierRepository.save(supplier1);
+        Supplier savedSupplier = supplierRepository.save(supplier);
         return savedSupplier;
     }
 
@@ -152,9 +152,7 @@ public class SupplierServiceImpl implements SupplierService {
 
     @Override
     public Supplier getSupplierById(String id) {
-        Supplier supplier =supplierRepository.findById(id).orElse(null);
-        return supplier;
-
+        return supplierRepository.findById(id).orElse(null);
     }
 
 }

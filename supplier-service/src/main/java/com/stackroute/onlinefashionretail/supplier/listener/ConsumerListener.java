@@ -2,10 +2,9 @@ package com.stackroute.onlinefashionretail.supplier.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.onlinefashionretail.supplier.domain.User;
-import com.stackroute.onlinefashionretail.supplier.repository.MappingRepository;
+import com.stackroute.onlinefashionretail.supplier.repository.SupplierRepository;
 import com.stackroute.onlinefashionretail.supplier.domain.Mapping;
 import com.stackroute.onlinefashionretail.supplier.domain.Supplier;
-import com.stackroute.onlinefashionretail.supplier.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -19,6 +18,7 @@ public class ConsumerListener {
 
   @Autowired
   SupplierRepository supplierRepository;
+
   @KafkaListener(topics = "Kafka_Example", groupId = "supplier")
   public void consumeSupplier(String user) throws IOException {
     System.out.println(user);
