@@ -1,6 +1,7 @@
 package com.stackroute.onlinefashionretail.designer.service;
 
 import com.stackroute.onlinefashionretail.designer.model.Designer;
+import com.stackroute.onlinefashionretail.designer.model.DesignerOrder;
 import com.stackroute.onlinefashionretail.designer.repository.DesignerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,6 +79,39 @@ public class DesignerServiceImpl implements DesignerService {
 
         Designer savedDesigner = designerRepository.save(designer2);
         return savedDesigner;
+    }
+
+    @Override
+    public DesignerOrder saveOrder(DesignerOrder designerOrder, String id) {
+        if (designerRepository.findById(id).isEmpty())
+            return null;
+        Designer designer = designerRepository.findById(id).get();
+        designer.getOrderList().add(designerOrder);
+        designerRepository.save(designer);
+        return designerOrder;
+    }
+
+    @Override
+    public DesignerOrder updateOrder(DesignerOrder designerOrder, String id) {
+        if (designerRepository.findById(id).isEmpty())
+            return null;
+        Designer designer = designerRepository.findById(id).get();
+        for (DesignerOrder designerOrder1: designer.getOrderList()
+        ){
+            if (designerOrder1.getId().equals(designerOrder.getId())){
+                designerOrder1.setDesignOrder(designerOrder.getDesignOrder());
+                break;
+            }
+        }
+        designerRepository.save(designer);
+        return designerOrder;
+    }
+
+    @Override
+    public List<DesignerOrder> getAllOrders(String id) {
+        if (designerRepository.findById(id).isEmpty())
+            return null;
+        return designerRepository.findById(id).get().getOrderList();
     }
 
 }

@@ -75,7 +75,7 @@ export class UserService {
      return this.http.get<Design[]>(url);
    }
 
-   submitOrder(dOrder: DesignerOrder, designerName: string): Observable<DesignerOrder> {
+   submitOrder(dOrder: DesignerOrder, designerName: string, designerId: string): Observable<DesignerOrder> {
      console.log(JSON.stringify(dOrder));
      console.log(dOrder);
      let jsonstring = JSON.stringify(dOrder);
@@ -95,7 +95,7 @@ export class UserService {
      console.log('json after changing: ', jsonstring);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
      return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', jsonstring, {
-       params: {designerName},
+       params: {designerName, designerId},
        headers: new HttpHeaders({
          'Access-Control-Allow-Origin': '*',
          'Content-Type': 'application/json',
@@ -107,8 +107,8 @@ export class UserService {
     // })});
    }
 
-   public getAllOrders(): Observable<DesignerOrder[]> {
-    return this.http.get<DesignerOrder[]>(environment.designerUrl + '/designs');
+   public getAllOrders(designerId: string): Observable<DesignerOrder[]> {
+    return this.http.get<DesignerOrder[]>(environment.designerUrl + '/designs/'+designerId);
   }
 
   getDesignerById(userId: string): Observable<Designer> {

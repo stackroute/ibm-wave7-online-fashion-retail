@@ -108,23 +108,19 @@ export class DesignerHomePageComponent implements OnInit {
       console.log('manufacturer data', this.manufacturer);
     });
 
-    this.getAllorders();
+    this.userService.getAllOrders(designer_id).subscribe((data) => {
+      this.orderlist = data;
+      console.log('orders list', this.orderlist);
+    });
 
     this.userService.getDesignerById(designer_id).subscribe((data) => {
-      // this.Designer = data;
-      console.log("designer data by id",data);
+      this.Designer = data;
+      console.log("designer data by id: ",data);
     });
   }
 
   Mapping(arg0: string, mapping: any) {
     throw new Error('Method not implemented.');
-  }
-
-  getAllorders() {
-    this.userService.getAllOrders().subscribe((data) => {
-      this.orderlist = data;
-      console.log('orders list', this.orderlist);
-    });
   }
 
   openDialog() {
@@ -173,7 +169,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
-    this.userService.submitOrder(this.updatedOrder, 'abc').subscribe(
+    this.userService.submitOrder(this.updatedOrder, this.Designer.name,this.Designer.userId).subscribe(
       (data) => {
         this.orderDetails = data;
         console.log('orderlist', this.orderDetails);

@@ -74,7 +74,7 @@ public class WorkflowController {
     }
 
     @PostMapping("upload")
-    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder, @RequestParam String designerName) throws ApiCallException {
+    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder, @RequestParam String designerName, @RequestParam String designerId) throws ApiCallException {
         logger.info("< upload design handler");
         String id = claimTask("Upload Design");
         logger.info(" > designerOrder: "+designerOrder);
@@ -127,7 +127,7 @@ public class WorkflowController {
                     String.class);
 
            responseEntity  = restTemplate.exchange(
-                    DESIGNER_RESOURCE_URL,
+                    DESIGNER_RESOURCE_URL+"/"+designerId,
                     HttpMethod.POST,
                     entity,
                     DesignerOrder.class);

@@ -1,6 +1,7 @@
 package com.stackroute.onlinefashionretail.designer.controller;
 
 import com.stackroute.onlinefashionretail.designer.model.Designer;
+import com.stackroute.onlinefashionretail.designer.model.DesignerOrder;
 import com.stackroute.onlinefashionretail.designer.service.DesignerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
