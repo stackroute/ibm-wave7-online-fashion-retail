@@ -133,8 +133,8 @@ public class WorkflowController {
                     DesignerOrder.class);
         }
         catch (Exception e){
-            logger.error("In exception block");
-            throw new ApiCallException(e.getMessage(),e.getCause());
+            logger.error("In exception block > "+e.toString());
+            throw new ApiCallException(e.toString(),e.getCause());
         }
 
         finally {

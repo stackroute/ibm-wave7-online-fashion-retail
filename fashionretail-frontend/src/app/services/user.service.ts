@@ -91,6 +91,7 @@ export class UserService {
      const ind1 = jsonstring.indexOf(']', ind);
      console.log('index of ] found: ', jsonstring[ind1]);
      jsonstring = jsonstring.slice(0, ind + 15) + supplierlist + jsonstring.slice(ind1 + 1);
+     jsonstring = jsonstring.replace('"userId"','"id"');
      console.log('json after changing: ', jsonstring);
       // return this.http.post<DesignerOrder>(environment.designerUrl+"/designs",dOrder,httpOptions);
      return this.http.post<DesignerOrder>(environment.workflowUrl + '/upload', jsonstring, {
@@ -109,7 +110,7 @@ export class UserService {
    public getAllOrders(): Observable<DesignerOrder[]> {
     return this.http.get<DesignerOrder[]>(environment.designerUrl + '/designs');
   }
- 
+
   getDesignerById(userId: string): Observable<Designer> {
     console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
     // const url = `${environment.designerUrl+"designer"}/${userId}`;
@@ -125,5 +126,5 @@ export class UserService {
     // const updateUrl = `${url}/id`;
     return this.http.put<Designer>(url, designer, httpOptions);
   }
- 
+
 }
