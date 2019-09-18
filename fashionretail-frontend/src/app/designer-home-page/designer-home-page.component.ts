@@ -116,6 +116,8 @@ export class DesignerHomePageComponent implements OnInit {
     this.userService.getDesignerById(designer_id).subscribe((data) => {
       this.Designer = data;
       console.log("designer data by id: ",data);
+      console.log("saved in desginer: ",this.Designer);
+      console.log("Designer name: ",this.Designer.name);
     });
   }
 
@@ -169,6 +171,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
+    this.updatedOrder.tagId = this.Designer.userId + '-' + this.updatedOrder.id;
     this.userService.submitOrder(this.updatedOrder, this.Designer.name,this.Designer.userId).subscribe(
       (data) => {
         this.orderDetails = data;
