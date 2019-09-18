@@ -147,7 +147,7 @@ public class ManufactureController {
         ResponseEntity responseEntity;
         System.out.println(manufacturerOrder);
         try {
-            responseEntity = new ResponseEntity(manufactureService.updateOrder(manufacturerOrder,id), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(manufactureService.updateOrder(manufacturerOrder,id), HttpStatus.OK);
             System.out.println(responseEntity);
         } catch (Exception exception1) {
             responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);
