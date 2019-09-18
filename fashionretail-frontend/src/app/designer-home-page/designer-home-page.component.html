@@ -55,7 +55,7 @@
 
 <div class="cardList">
     <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist"> -->
-        <mat-card class="card-picture" *ngFor="let designs of orderlist | slice :13; let i =index;">
+        <mat-card class="card-picture" *ngFor="let designs of orderlist">
       <mat-card-header>
 
         <mat-card-title>Designs</mat-card-title>
@@ -64,17 +64,21 @@
           <mat-divider></mat-divider>
       <mat-card-content><br/>
         <p>
-          Manufacturer Name: {{designs.design.name}}
+          Order Id: {{designs.designOrder.id}}
         </p>
         <p>
-         {{designs.design.quantityOfDesign}}
+          Order Status: {{designs.designOrder.orderStatus}}
         </p>
         <p>Quantity</p>
+        <p>
+         {{designs.designOrder.quantityOfDesign}}
+        </p>
+
 
         <p>Rating</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="openDialogPrice()">Add price</button>
+        <button mat-button (click)="openDialogPrice(designs)">Add price</button>
         <!-- <button mat-button (click)="saveManufacture(manufacturer)">select</button> -->
         <!-- <button mat-raised-button (click)="openDialog()">cancel</button> -->
       </mat-card-actions>
