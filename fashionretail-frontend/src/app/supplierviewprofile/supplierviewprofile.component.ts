@@ -5,6 +5,7 @@ import { SupplierService } from '../services/supplier.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/User';
 import { Router, ActivatedRoute } from '@angular/router';
+import { InterComponentDataService } from '../services/inter-component-data.service';
 
 export interface DialogData {
   city: string;
@@ -19,7 +20,7 @@ export interface DialogData {
 export class SupplierviewprofileComponent implements OnInit {
 
   constructor(private dialog: MatDialog, private supplierService: SupplierService,private userService: UserService,
-    private route : Router, private router : ActivatedRoute ) { }
+    private route : Router, private router : ActivatedRoute,private intercomponentService: InterComponentDataService ) { }
 
  supplier: Supplier;
  city: string;
@@ -50,6 +51,7 @@ export class SupplierviewprofileComponent implements OnInit {
       this.supplierService.getSupplierById(loginId).subscribe((data) => {
         console.log("data recieved is: ",data)
         this.supplier = data;
+        this.intercomponentService.changeSupplier(this.supplier);
         console.log(this.supplier);
       });
     })
