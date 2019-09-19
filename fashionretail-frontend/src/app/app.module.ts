@@ -72,6 +72,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ManufacturerViewOrderComponent } from './manufacturer-view-order/manufacturer-view-order.component';
 import { PaymentComponent } from './payment/payment.component';
 import {UniqueEmailValidator} from './sign-up/unique-email-validator';
+import { CustomerViewProfileComponent } from './customer-view-profile/customer-view-profile.component';
+import { CustomerViewOrdersComponent } from './customer-view-orders/customer-view-orders.component';
 
 
 @NgModule({
@@ -124,6 +126,10 @@ import {UniqueEmailValidator} from './sign-up/unique-email-validator';
     PaymentComponent,
 
     ManufacturerViewOrderComponent,
+
+    CustomerViewProfileComponent,
+
+    CustomerViewOrdersComponent,
 
 
   ],

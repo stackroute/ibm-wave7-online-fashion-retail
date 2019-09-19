@@ -5,6 +5,7 @@ import { Material } from '../models/Material';
 import { Mapping } from '../models/Mapping';
 import { OrderService } from '../services/order.service';
 import { InterComponentDataService } from '../services/inter-component-data.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { InterComponentDataService } from '../services/inter-component-data.serv
 export class AddmaterialPageComponent implements OnInit {
   name;
   supplier:Supplier;
-  constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router,private intercomponentService: InterComponentDataService) { }
+  constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router,private intercomponentService: InterComponentDataService,private userService: UserService) { }
 
   ngOnInit() {
   }
@@ -31,6 +32,13 @@ export class AddmaterialPageComponent implements OnInit {
     this._orderService.submit(mapping).subscribe(data => {
       console.log(data);
       this.name = data; });
+  }
+  viewProfile(){
+    console.log("hgfhdgfj");
+    console.log("jjjj: ",this.userService.loginCredentials.userId);
+    let loginId =this.userService.loginCredentials.userId;
+    console.log("loginid: ",loginId);
+    this.router.navigate(['/supplierviewprofile'],{queryParams : {loginId}});
   }
 
 }
