@@ -33,6 +33,14 @@ public class DAOUser {
     public DAOUser() {
     }
 
+    public DAOUser(String userId, String username, String name, String password, String designation) {
+        this.userId = userId;
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.designation = designation;
+    }
+
     public DAOUser(int id, String userId, String username, String name, String password, String designation) {
         this.id = id;
         this.userId = userId;

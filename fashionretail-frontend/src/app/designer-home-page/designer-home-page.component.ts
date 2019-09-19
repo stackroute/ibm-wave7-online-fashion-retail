@@ -269,7 +269,7 @@ export class AddPriceDialogueComponent implements OnInit {
   onClick(data: DesignerOrder): void {
     this.profitPrice = this.data.designOrder.price + this.data.designOrder.price * this.data.designOrder.profitPercent / 100;
     this.calculatedPrice = this.profitPrice - this.profitPrice * this.data.designOrder.discountPercent / 100;
-    data.designOrder.price = this.calculatedPrice;
+    data.designOrder.price = this.profitPrice;
     this.dialogRef.close(data);
   }
 }
