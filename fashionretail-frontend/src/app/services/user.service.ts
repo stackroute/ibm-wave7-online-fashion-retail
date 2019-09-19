@@ -40,8 +40,13 @@ export class UserService {
   private manufactureUrl: string;
   public loginCredentials: User;
 
-  updateOrder(result: any, id: any) {
-    throw new Error('Method not implemented.');
+  updateOrder(id: string, order: DesignerOrder) {
+    console.log('in update order');
+    const url = environment.designerUrl + '/designs/' + id;
+    return this.http.put<DesignerOrder>(url,order, httpOptions);
+    // .pipe(
+    //   catchError(this.handleError('deleteHero'))
+    // );
   }
 
    saveUser(user: User): Observable<User> {

@@ -8,7 +8,7 @@ public class Design {
     private float profitPercent;
     private float discountPercent;
     private int quantityOfDesign;
-    private  String orderStatus;
+    private String orderStatus;
 
     public Design() {
     }

@@ -15,6 +15,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { InterComponentDataService } from '../services/inter-component-data.service';
 import { Router } from '@angular/router';
+import {Product} from "../models/product";
+import {ProductService} from "../services/product.service";
 
 
 @Component({
@@ -89,7 +91,8 @@ export class DesignerHomePageComponent implements OnInit {
   constructor(private dialogue: MatDialog,
     private userService: UserService,
      private interComponent: InterComponentDataService,
-     private router : Router) {
+     private router : Router,
+              private productService: ProductService) {
     this.items = [
       {name: 'assets/designer.jpg'},
     ];
@@ -116,6 +119,8 @@ export class DesignerHomePageComponent implements OnInit {
     this.userService.getDesignerById(designer_id).subscribe((data) => {
       this.Designer = data;
       console.log("designer data by id: ",data);
+      console.log("saved in desginer: ",this.Designer);
+      console.log("Designer name: ",this.Designer.name);
     });
   }
 
@@ -169,6 +174,7 @@ export class DesignerHomePageComponent implements OnInit {
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     console.log('random number is ', num);
     this.updatedOrder.id = '' + num;
+    this.updatedOrder.tagId = this.Designer.userId + '-' + this.updatedOrder.id;
     this.userService.submitOrder(this.updatedOrder, this.Designer.name,this.Designer.userId).subscribe(
       (data) => {
         this.orderDetails = data;
@@ -195,20 +201,23 @@ export class DesignerHomePageComponent implements OnInit {
     this.selectedIndex = 0;
   }
 
-  openDialogPrice(dorderData: DesignerOrder) {
+  openDialogPrice(designerOrder: DesignerOrder) {
     const dialogRef = this.dialogue.open(AddPriceDialogueComponent,
       {
         width: '350px',
         // data: dorderData
-        data: this.orderlist
+        // data: this.orderlist
+        data: designerOrder
       });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
       if (result != undefined) {
-        // this.userService.updateOrder(result,result.id).subscribe((data) => {
-        //   this.getAllorders();
-        // })
+        this.userService.updateOrder(this.Designer.userId, result).subscribe((data) => {
+          console.log("printing data received from update method");
+          let product: Product = new Product("",data.designOrder.name,"",this.Designer,data.designOrder.price,data.designOrder.discountPercent,0,data.designOrder.design_img);
+          this.productService.saveProduct(product).subscribe(data2 => console.log("data from product service: ",data2));
+        })
       }
     });
   }
@@ -244,17 +253,22 @@ export class UploadDesignsDialogueComponent {
 })
 
 export class AddPriceDialogueComponent implements OnInit {
-
+  profitPrice;
+  calculatedPrice;
   constructor(
     public dialogRef: MatDialogRef<AddPriceDialogueComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DesignerOrder[]) {
+    @Inject(MAT_DIALOG_DATA) public data: DesignerOrder) {
   }
 
   ngOnInit() {
-    console.log(this.data);
+    console.log("data received from main page: ", this.data);
+    this.profitPrice = (this.data.designOrder.price + this.data.designOrder.price * this.data.designOrder.profitPercent / 100);
+    this.calculatedPrice = (this.data.designOrder.price + this.data.designOrder.price * this.data.designOrder.profitPercent / 100) - (this.data.designOrder.price + this.data.designOrder.price * this.data.designOrder.profitPercent / 100) * this.data.designOrder.discountPercent / 100;
   }
-
-  onNoClick(): void {
-    this.dialogRef.close();
+  onClick(data: DesignerOrder): void {
+    this.profitPrice = this.data.designOrder.price + this.data.designOrder.price * this.data.designOrder.profitPercent / 100;
+    this.calculatedPrice = this.profitPrice - this.profitPrice * this.data.designOrder.discountPercent / 100;
+    data.designOrder.price = this.calculatedPrice;
+    this.dialogRef.close(data);
   }
 }

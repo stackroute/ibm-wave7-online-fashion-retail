@@ -146,7 +146,7 @@ public class SupplierController {
     logger.info("Inside updateOrder");
     try {
         logger.info("Entered into updateOrders try block in SupplierController");
-      responseEntity = new ResponseEntity(supplierService.updateOrder(supplierOrder,id), HttpStatus.OK);
+      responseEntity = new ResponseEntity<>(supplierService.updateOrder(supplierOrder,id), HttpStatus.OK);
     } catch (Exception exception1) {
         logger.info("Entered into updateOrders catch block in SupplierController");
       responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);

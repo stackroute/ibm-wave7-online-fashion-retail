@@ -105,7 +105,7 @@ public class WorkflowController {
                 SupplierOrder supplierOrder = new SupplierOrder(RandomIdGenerator.getRandomId(),
                         designerName,
                         material,
-                        entry.getValue(),"in-progress","");
+                        entry.getValue(),"in-progress",designerOrder.getTagId());
 
                 logger.info("response from supplier: "+restTemplate.exchange(
                         SUPPLIER_ORDER_RESOURCE_URL+"?id="+supplierId,
@@ -114,7 +114,7 @@ public class WorkflowController {
                         String.class).getBody());
             }
             ManufacturerOrder manufacturerOrder = new ManufacturerOrder(RandomIdGenerator.getRandomId(),
-                    "",
+                    designerOrder.getTagId(),
                     designerName,
                     designerOrder.getDesignOrder().getDesign_img(),
                     designerOrder.getDesignOrder().getQuantityOfDesign(),
