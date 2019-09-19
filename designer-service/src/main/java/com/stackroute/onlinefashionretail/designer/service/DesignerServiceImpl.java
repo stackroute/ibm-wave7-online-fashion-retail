@@ -31,10 +31,10 @@ public class DesignerServiceImpl implements DesignerService {
 
 
     @Override
-    public Optional<Designer> getDesigner(String id) {
+    public Designer getDesigner(String id) {
         logger.info("Entered into getDesigner into DesignerServiceImpl");
 //        Designer designer = designerRepository.findById(id);
-        return designerRepository.findById(id);
+        return designerRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -83,9 +83,12 @@ public class DesignerServiceImpl implements DesignerService {
 
     @Override
     public DesignerOrder saveOrder(DesignerOrder designerOrder, String id) {
-        if (designerRepository.findById(id).isEmpty())
+        if (designerRepository.findById(id).isEmpty()){
+            logger.info("inside save order method in DesignerService, find by id is null");
             return null;
+        }
         Designer designer = designerRepository.findById(id).get();
+        logger.info("got order list: "+designer.getOrderList());
         designer.getOrderList().add(designerOrder);
         designerRepository.save(designer);
         return designerOrder;

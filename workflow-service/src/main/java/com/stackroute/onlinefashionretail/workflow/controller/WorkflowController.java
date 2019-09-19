@@ -120,11 +120,11 @@ public class WorkflowController {
                     designerOrder.getDesignOrder().getQuantityOfDesign(),
                     "in-progress");
 
-            restTemplate.exchange(
+            logger.info("response from manufacturer: "+restTemplate.exchange(
                     MANUFACTURER_ORDER_RESOURCE_URL+"?id="+designerOrder.getManufacturer().getId(),
                     HttpMethod.POST,
                     new HttpEntity<>(manufacturerOrder,headers),
-                    String.class);
+                    String.class));
 
            responseEntity  = restTemplate.exchange(
                     DESIGNER_RESOURCE_URL+"/"+designerId,
@@ -133,6 +133,7 @@ public class WorkflowController {
                     DesignerOrder.class);
         }
         catch (Exception e){
+            e.printStackTrace();
             logger.error("In exception block > "+e.toString());
             throw new ApiCallException(e.toString(),e.getCause());
         }

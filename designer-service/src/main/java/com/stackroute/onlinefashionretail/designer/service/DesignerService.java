@@ -10,7 +10,7 @@ public interface DesignerService {
 
     public Designer saveDesigner(Designer designer);
 
-    public Optional<Designer> getDesigner(String id);
+    public Designer getDesigner(String id);
     public List<Designer> getAllDesigners();
 
     public boolean deleteDesigner(String id) ;

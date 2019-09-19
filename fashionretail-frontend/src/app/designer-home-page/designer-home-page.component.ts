@@ -99,8 +99,7 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-     let designer_id = '';
-     this.interComponent.currentId.subscribe(data => designer_id=data);
+
     this.userService.getAllMaterial().subscribe((data) => {
       this.mapping = data;
       console.log('materials data', this.mapping);
@@ -111,12 +110,12 @@ export class DesignerHomePageComponent implements OnInit {
       console.log('manufacturer data', this.manufacturer);
     });
 
-    this.userService.getAllOrders(designer_id).subscribe((data) => {
+    this.userService.getAllOrders(this.Designer.userId).subscribe((data) => {
       this.orderlist = data;
       console.log('orders list', this.orderlist);
     });
 
-    this.userService.getDesignerById(designer_id).subscribe((data) => {
+    this.userService.getDesignerById(this.Designer.userId).subscribe((data) => {
       this.Designer = data;
       console.log("designer data by id: ",data);
       console.log("saved in desginer: ",this.Designer);
