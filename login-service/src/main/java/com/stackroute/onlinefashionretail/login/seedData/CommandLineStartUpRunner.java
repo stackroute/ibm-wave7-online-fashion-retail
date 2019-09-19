@@ -32,16 +32,16 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         /* *Pre-fill the database whenever application starts*/
 
-        DAOUser DAOUser = new DAOUser("1","Sabyasachi","123456","designs@sabyasachi.com","Designer");
-        DAOUser DAOUser1 = new DAOUser("2","Manish Malhotra","123456","designs@manishmalhotra.com","Designer");
+        DAOUser DAOUser = new DAOUser("1","designs@sabyasachi.com","Sabyasachi","123456","Designer");
+        DAOUser DAOUser1 = new DAOUser("2","designs@manishmalhotra.com","Manish Malhotra","123456","Designer");
 
-        DAOUser DAOUser2 = new DAOUser("1","RJ Enterprise","123456","rj@gmail.com","Manufacturer");
-        DAOUser DAOUser3 = new DAOUser("2","KSV Enterprise","123456","ksv@gmail.com","Manufacturer");
-        DAOUser DAOUser4 = new DAOUser("3","LM Footwear Works","123456","lm34@gmail.com","Manufacturer");
-        DAOUser DAOUser5 = new DAOUser("1","CG Fabrics and Accesories","123456","cgfabrics@gmail.com","Supplier");
-        DAOUser DAOUser6 = new DAOUser("2","BH Fabrics and Leathers","123456","bhfabandacc@gmail.com","Supplier");
-        DAOUser DAOUser7 = new DAOUser("1","shruti67","123456","shruti67@gmail.com","Consumer");
-        DAOUser DAOUser8 = new DAOUser("2","mahima","123456","mahi78@gmail.com","Consumer");
+        DAOUser DAOUser2 = new DAOUser("1","rj@gmail.com","RJ Enterprise","123456","Manufacturer");
+        DAOUser DAOUser3 = new DAOUser("2","ksv@gmail.com","KSV Enterprise","123456","Manufacturer");
+        DAOUser DAOUser4 = new DAOUser("3","lm34@gmail.com","LM Footwear Works","123456","Manufacturer");
+        DAOUser DAOUser5 = new DAOUser("1","cgfabrics@gmail.com","CG Fabrics and Accesories","123456","Supplier");
+        DAOUser DAOUser6 = new DAOUser("2","bhfabandacc@gmail.com","BH Fabrics and Leathers","123456","Supplier");
+        DAOUser DAOUser7 = new DAOUser("1","shruti67@gmail.com","shruti67","123456","Consumer");
+        DAOUser DAOUser8 = new DAOUser("2","mahi78@gmail.com","mahima","123456","Consumer");
 
         try{
             DAOUser.setPassword(passwordEncoder.encode(DAOUser.getPassword()));
