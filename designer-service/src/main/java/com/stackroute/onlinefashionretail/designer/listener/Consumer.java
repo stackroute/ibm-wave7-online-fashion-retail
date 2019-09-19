@@ -59,6 +59,8 @@ public class Consumer {
                 if (designerOrder.getId().equals(designerOrderId)){
                     String currentStatus = designerOrder.getDesignOrder().getOrderStatus();
                     logger.info("found! current status is <"+currentStatus+">");
+                    if (currentStatus == null)
+                        currentStatus = "";
                     designerOrder.getDesignOrder().setOrderStatus(currentStatus+orderStatus);
                     logger.info("after changing status is <"+designerOrder.getDesignOrder().getOrderStatus()+">");
                     break;

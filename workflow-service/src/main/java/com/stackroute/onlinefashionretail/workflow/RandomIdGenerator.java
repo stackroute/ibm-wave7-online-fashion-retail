@@ -1,10 +1,7 @@
 package com.stackroute.onlinefashionretail.workflow;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class RandomIdGenerator {
     public static String getRandomId(){
-        return new SimpleDateFormat("ddMMyyyyHHmmss").format(new Date());
+        return Double.toString(Math.floor(Math.random() * (999999 - 100000)) + 100000);
     }
 }
