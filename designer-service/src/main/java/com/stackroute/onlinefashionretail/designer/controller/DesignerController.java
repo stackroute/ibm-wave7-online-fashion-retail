@@ -48,7 +48,7 @@ public class DesignerController {
         try {
 
             responseEntity = new ResponseEntity<>(designerService.getDesigner(id), HttpStatus.OK);
-            logger.info("got designer : "+designer);
+            logger.info("got designer : "+designerService.getDesigner(id));
         } catch (Exception exception) {
             logger.info("Entered into getDesignersById exception: "+exception.toString());
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);

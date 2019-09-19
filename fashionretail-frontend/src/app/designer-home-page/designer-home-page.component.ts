@@ -1,20 +1,17 @@
-import {Component, OnInit, Inject} from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {User} from '../models/User';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Designer} from '../models/Designer';
 import {UserService} from '../services/user.service';
 import {MatTabChangeEvent} from '@angular/material';
-import {Material} from '../models/Material';
 import {Manufacturer} from '../models/Manufacturer';
 import {Mapping} from '../models/Mapping';
 import {Design} from '../models/Design';
 import {DesignerOrder} from '../models/DesignerOrder';
 import {ManufacturerOrder} from '../models/ManufacturerOrder';
 import {BasePrice} from '../models/BasePrice';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
-import { InterComponentDataService } from '../services/inter-component-data.service';
-import { Router } from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {InterComponentDataService} from '../services/inter-component-data.service';
+import {Router} from '@angular/router';
 import {Product} from "../models/product";
 import {ProductService} from "../services/product.service";
 
@@ -120,6 +117,10 @@ export class DesignerHomePageComponent implements OnInit {
       this.Designer = data;
       console.log("designer data by id: ",data);
       console.log("saved in desginer: ",this.Designer);
+      let designerString = JSON.stringify(this.Designer);
+      console.log(designerString);
+      const pos = designerString.indexOf('"username"')+11;
+      this.Designer.name = designerString.slice(pos, designerString.indexOf('"', pos));
       console.log("Designer name: ",this.Designer.name);
     });
   }

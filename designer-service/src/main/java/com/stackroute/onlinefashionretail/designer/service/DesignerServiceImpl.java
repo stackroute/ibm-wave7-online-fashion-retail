@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,6 +90,9 @@ public class DesignerServiceImpl implements DesignerService {
         }
         Designer designer = designerRepository.findById(id).get();
         logger.info("got order list: "+designer.getOrderList());
+        if (designer.getOrderList() == null){
+            designer.setOrderList(new ArrayList<>());
+        }
         designer.getOrderList().add(designerOrder);
         designerRepository.save(designer);
         return designerOrder;
