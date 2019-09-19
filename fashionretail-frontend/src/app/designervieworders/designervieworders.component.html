@@ -1,21 +1,73 @@
-<p>designervieworders works!</p>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <mat-menu #dd="matMenu" [overlapTrigger]="false">
+    <div class="dropdown"><br>
+      <!-- <a routerLink="/designerviewprofile" routerLinkActive="active"></a> -->
+        <a routerLinkActive="active"> <button mat-button color="primary" (click) = "viewProfile()">View Profile</button><br></a>
+        <button mat-button color="primary">View Previous orders</button>
+        <mat-divider></mat-divider>
+        <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">LogOut</button></a>
+
+      </div>
+  </mat-menu>
+
+  <div>
+    <mat-toolbar class="header">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
+        <span class="title">TrendMode</span>
+        <span class="spacer"></span>
+
+            <span>
+                        <mat-form-field>
+                          <input #searchText matInput placeholder="Search for products">
+                        </mat-form-field>
+                        <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
+                          <mat-icon>search</mat-icon>
+                        </button></span>
+          <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+          <a routerLink="/designer" routerLinkActive="active"><button mat-stroked-button style="color:aliceblue">Home</button></a>
+          <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd" style="color:aliceblue">
+            Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
 
 
+    
+  <div class="cardList">
+      <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist"> -->
+          <mat-card class="card-picture" *ngFor="let designs of orderlist">
+        <mat-card-header>
 
-<div style="padding-top: 100px">
-    <table border="2" style="margin-left: 30%">
-      <tr class="table-align">
-      
-        <th>Product Name</th>
-        <th>BasePrice</th>
-      </tr>
-       <tr *ngFor="let base of baseprice">  
+          <mat-card-title>Designs</mat-card-title>
 
-          <td>Product Name: {{base.name}}</td>
-            
-             <td>BasePrice: {{base.price}}</td> 
-           
-        
-      </tr>
-      </table> 
-      </div>  
+        </mat-card-header>
+            <mat-divider></mat-divider>
+        <mat-card-content><br/>
+          <p>
+            Order Id: {{designs.designOrder.id}}
+          </p>
+          <p>
+            Order Status: {{designs.designOrder.orderStatus}}
+          </p>
+          <p>Quantity</p>
+          <p>
+          {{designs.designOrder.quantityOfDesign}}
+          </p>
+
+
+          <p>Rating</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-card *ngFor="let song of Material">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>Track</mat-card-title>
+        <mat-card-subtitle>{{song.email}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+

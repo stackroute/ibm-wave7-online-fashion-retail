@@ -3,12 +3,12 @@
   <div class="dropdown"><br>
     <!-- <a routerLink="/designerviewprofile" routerLinkActive="active"></a> -->
     <a routerLinkActive="active"> <button mat-button color="primary" (click) = "viewProfile()">View Profile</button><br></a>
-    <button mat-button color="primary">View Previous orders</button>
+    <button mat-button color="primary"><a routerLink="/designervieworders" routerLinkActive="active">View Previous orders</a></button>
     <mat-divider></mat-divider>
     <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">LogOut</button></a>
-
   </div>
-</mat-menu>
+  </mat-menu>
+
 
 <div>
   <mat-toolbar class="header">

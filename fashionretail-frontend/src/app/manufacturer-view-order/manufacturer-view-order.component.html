@@ -1,8 +1,7 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div class="dropdown"><br>
-    <button mat-button color="primary"><a routerLink="/manufactureviewprofile" routerLinkActive="active" >View Profile</a></button><br>
-
-    <button mat-button color="primary"><a routerLink="/manufacturervieworders" routerLinkActive="active" >View Previous orders</a></button><br>
+    <a  routerLinkActive="active"> <button mat-button color="primary" (click)="viewProfile()">View Profile</button><br></a>
+    <a routerLink="/manufacturervieworders" routerLinkActive="active"><button mat-button color="primary">View Previous orders</button></a>
     <mat-divider></mat-divider>
     <button mat-button color="primary"><a routerLink = "/logout" routerLinkActive="active" >LogOut</a></button>
   </div>
