@@ -120,7 +120,7 @@ export class DesignerHomePageComponent implements OnInit {
       let designerString = JSON.stringify(this.Designer);
       console.log(designerString);
       const pos = designerString.indexOf('"username"')+11;
-      this.Designer.name = designerString.slice(pos, designerString.indexOf('"', pos));
+      this.Designer.name = designerString.slice(pos+1, designerString.indexOf('"', pos+1));
       console.log("Designer name: ",this.Designer.name);
     });
   }
