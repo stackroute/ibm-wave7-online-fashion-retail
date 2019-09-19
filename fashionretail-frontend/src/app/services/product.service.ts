@@ -20,4 +20,7 @@ export class ProductService {
   public search(search :String):Observable<Product[]>{
     return this.httpClient.get<Product[]>(environment.consumerUrl+'/product/search?searchText='+search,{headers:this.headers});
   }
+  public saveProduct(product:Product): Observable<Product> {
+    return this.httpClient.post<Product>( environment.consumerUrl + '/product',product, {headers: this.headers});
+  }
 }
