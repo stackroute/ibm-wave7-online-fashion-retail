@@ -74,6 +74,7 @@ import { PaymentComponent } from './payment/payment.component';
 import {UniqueEmailValidator} from './sign-up/unique-email-validator';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -122,7 +123,6 @@ import {UniqueEmailValidator} from './sign-up/unique-email-validator';
     ManufactureEditDialogComponent,
     ConsumerShippingComponent,
     PaymentComponent,
-
     ManufacturerViewOrderComponent,
 
 

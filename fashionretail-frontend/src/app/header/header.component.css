@@ -1,18 +1,27 @@
 .navbar{
+   height: fit-content;
   color:#7e57c2;
+  display:flex;
+  flex-wrap:wrap;
+  width: 100vw;
 }
+/*
 .navbar-toggler{
     color:white;
 }
+*/
 
 .navbar-collapse{
   background-color:black;
 }
+  .spacer {
+    flex: 1 1 auto;
+  }
 
 .navbar-default {
     background-color: #F8F8F8;
     border-color: #E7E7E7;
-    color: black;
+    /*color: black;*/
 }
 
     .nav-item {
@@ -39,9 +48,9 @@
 #home{
     padding-right:70px;
 }
-.login{
+/*.login{
   margin-right: 0;
-}
+}*/
 
     .abc
     {

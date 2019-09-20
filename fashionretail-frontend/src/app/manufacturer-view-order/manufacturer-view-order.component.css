@@ -29,31 +29,36 @@ mat-toolbar{
      width: 60px;
      height: 60px;
   }
-  .title{
+  .title
+   {
           font-size: 4vh;
           padding-left: 4px;
-          /*color: #F4F6F7;*//*color: #F4F6F7;*/
-                  padding-top: 8px;
-                  font-family: 'Open Sans', sans-serif;
-  }
+          padding-top: 8px;
+         font-family: 'Open Sans', sans-serif;
+   }
+
     .spacer {
       flex: 1 1 auto;
     }
+
     #menu{
         color: white;
     }
+
     button{
         color: white;
     }
 
-    .tp-card {
+    .tp-card
+    {
         width: 300px;
-        margin: 20px 20px 20px 20px;
+/*        margin: 20px 20px 20px 20px;*/
         min-width: 100px;
-      }
-
+        background-color: white;
+        border-style: outset;
+    }
       .tp-header-image {
-        background-image: url('https://cdn.shopify.com/s/files/1/0916/0836/products/44915_Gibson_SG_112790111_1_220x.jpg?v=1565301688');
+        background-image: url('https://startupfashion-startupfashion.netdna-ssl.com/wp-content/uploads/2016/01/fabric-sourcing-fashion-designers.jpg');
         background-size: cover;
       }
       .flex
@@ -61,8 +66,14 @@ mat-toolbar{
           display: flex;
           flex-wrap: wrap;
           justify-content: space-around;
-          margin-bottom: 100px;
-          margin-top: 15%;
+            padding-top: 15%;
+          padding-bottom: 2.6%;
+          background-image: url("/assets/manu1.png");
+                  height: 100%;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  width:100%;
       }
       footer {
         position: fixed;
@@ -82,21 +93,4 @@ mat-toolbar{
         width: 40px;
     }
 
-    .tp-card {
-        width: 300px;
-        margin: 20px 20px 20px 20px;
-        min-width: 100px;
-      }
 
-      .tp-header-image {
-        background-image: url('https://cdn.shopify.com/s/files/1/0916/0836/products/44915_Gibson_SG_112790111_1_220x.jpg?v=1565301688');
-        background-size: cover;
-      }
-      .flex
-      {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
-          margin-bottom: 100px;
-          margin-top: 15%;
-      }
