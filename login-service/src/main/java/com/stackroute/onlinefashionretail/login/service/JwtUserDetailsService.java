@@ -59,28 +59,29 @@ public class JwtUserDetailsService implements UserDetailsService {
     public String forgotPassword(String username) throws org.springframework.messaging.MessagingException, javax.mail.MessagingException {
         logger.info("Entered into forgotPassword in JwtUserDetailsService");
         String status = "Failed";
-        System.out.println(username);
-        System.out.println(userDao.findByUsername(username));
-        System.out.println("abcd");
+        //System.out.println(username);
+        //System.out.println(userDao.findByUsername(username));
+        //System.out.println("abcd");
         if (userDao.findByUsername(username) != null) {
             System.out.println(username);
             MimeMessage message=javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(username);
             helper.setSubject("Link for Reset your Password");
-            helper.setText("http://localhost:4200/reset-password");
+            helper.setText("http://13.126.224.142:4200/reset-password?id=" +userDTO.getUserId()+ "&designation=" +userDTO.getDesignation());
             javaMailSender.send(message);
-            System.out.println("hello");
+          //  System.out.println("hello");
             status = "Sent";
         }
         else {
 
         }
+        logger.error("user not found");
         return status;
     }
 
     //    @Override
-    public DAOUser update(UserDTO userDTO) throws Exception {
+    public DAOUser updatePassword(UserDTO userDTO) throws Exception {
         logger.info("Entered into update in JwtUserDetailsService");
         DAOUser user = userDao.findByUsername(userDTO.getUsername());
         if (user != null) {
