@@ -10,6 +10,7 @@ img{
 	text-align: center;
 	color: white;
 	font-size: 2rem;
+	/*width: 100vw;*/
 
 }
 
@@ -37,9 +38,9 @@ padding-top:15%;
  /* background-image: url("/assets/background1.jpg");*/
 }
 
-.hero-body {
+/*.hero-body {
     width: 100%;
-}
+}*/
 
 #join-us img{
   height:550px;

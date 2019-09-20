@@ -2,6 +2,8 @@
     width: 300px;
     margin: 20px 20px 20px 20px;
     min-width: 100px;
+     background-color: white;
+      border-style: outset;
   }
 
   .tp-header-image {
@@ -21,13 +23,19 @@
 
   .addmaterial
   {
-  margin-top: 3.5cm;
-   display: flex;
+  margin-top: 0cm;
+  margin-left: auto;
+  margin-right: auto;
+  height: fit-content;
+  padding-top: 4cm;
+  width: fit-content;
+
+   /*display: flex;
         flex-wrap: wrap;
         flex-direction: row;
         padding-left: 650px;
         margin-bottom:0px;
-        font-size:20px;
+        font-size:20px;*/
 
   }
   footer {
@@ -94,4 +102,13 @@ mat-toolbar{
   }
   mat-card-actions{
       padding-left: 65px;
+  }
+  .bg{
+     background-image: url("/assets/clothes.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width:100%;
+
   }

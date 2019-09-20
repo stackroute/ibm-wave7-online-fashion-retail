@@ -17,7 +17,7 @@ export class InterComponentDataService {
   currentAddress = this.addressSource.asObservable();
   currentCart = this.cartSource.asObservable();
   currentSupplier = this.supplierSource.asObservable();
-  
+
 
   constructor() { }
 

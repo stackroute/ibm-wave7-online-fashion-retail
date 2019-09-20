@@ -1,11 +1,13 @@
 .tp-card {
     width: 300px;
-    margin: 20px 20px 20px 20px;
+    margin: 50px 50px 50px 50px;
     min-width: 100px;
+       background-color: white;
+          border-style: outset;
   }
 
   .tp-header-image {
-    background-image: url('https://cdn.shopify.com/s/files/1/0916/0836/products/44915_Gibson_SG_112790111_1_220x.jpg?v=1565301688');
+    background-image: url('https://startupfashion-startupfashion.netdna-ssl.com/wp-content/uploads/2016/01/fabric-sourcing-fashion-designers.jpg');
     background-size: cover;
   }
   .flex
@@ -13,8 +15,15 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      margin-bottom: 100px;
-      margin-top: 15%;
+     /* margin-bottom: 100px;*/
+     /* margin-top: 15%;*/
+          background-image: url("/assets/clothes.jpg");
+              height: 100%;
+              background-position: center;
+              background-repeat: no-repeat;
+              background-size: cover;
+              width:100%;
+              padding-top: 100px;
   }
   footer {
     position: fixed;

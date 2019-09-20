@@ -23,6 +23,7 @@ import { ManufacturerViewOrderComponent } from './manufacturer-view-order/manufa
 import { CardComponent } from './card/card.component';
 import {ConsumerShippingComponent} from './consumer-shipping/consumer-shipping.component';
 import {PaymentComponent} from './payment/payment.component';
+import {PaymentComponent} from './payment/payment.component';
 import { DesignerviewordersComponent } from './designervieworders/designervieworders.component';
 import { CustomerViewProfileComponent } from './customer-view-profile/customer-view-profile.component';
 
@@ -54,7 +55,7 @@ const routes: Routes = [
 { path: 'manufacturervieworders', component: ManufacturerViewOrderComponent },
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {path:'designervieworders',component:DesignerviewordersComponent},
-  
+
   {  path: 'materials' , component: AddmaterialPageComponent},
     { path: 'consumer' , component: ConsumerDashboardComponent
   },

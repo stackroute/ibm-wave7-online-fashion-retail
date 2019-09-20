@@ -3,7 +3,7 @@
     <a  routerLinkActive="active"> <button mat-button color="primary" (click)="viewProfile()">View Profile</button><br></a>
     <a routerLink="/manufacturervieworders" routerLinkActive="active"><button mat-button color="primary">View Previous orders</button></a>
     <mat-divider></mat-divider>
-    <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">LogOut</button></a>
+    <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">Logout</button></a>
   </div>
 </mat-menu>
 
@@ -32,9 +32,9 @@
     </mat-toolbar-row>
   </mat-toolbar>
 </div>
+<div class="bg">
 
-
-      <app-addmaterialsbutton></app-addmaterialsbutton>
+      <app-addmaterialsbutton></app-addmaterialsbutton> <br/>
 
    <div class="flex">
     <div *ngFor="let order of receivedOrders">
@@ -55,7 +55,7 @@
       </mat-card>
      </div>
    </div>
-
+</div>
      <!-- <mat-card class="tp-card">
       <mat-card-header>
          <div mat-card-avatar class="tp-header-image"></div>

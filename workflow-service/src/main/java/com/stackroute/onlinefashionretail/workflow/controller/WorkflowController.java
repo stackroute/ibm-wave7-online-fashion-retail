@@ -31,12 +31,11 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "api/v1")
 public class WorkflowController {
-
-   // private String DESIGNER_IP = "localhost:8187";
-   // private String SUPPLIER_IP = "localhost:8188";
-   // private String MANUFACTURER_IP = "localhost:8189";
-   // private String CONSUMER_IP = "localhost:8190";
-   // private String USER_IP = "localhost:8192";
+    // private String DESIGNER_IP = "localhost:8187";
+    // private String SUPPLIER_IP = "localhost:8188";
+    // private String MANUFACTURER_IP = "localhost:8189";
+    // private String CONSUMER_IP = "localhost:8190";
+    // private String USER_IP = "localhost:8192";
 
     private String DESIGNER_IP = "13.126.224.142:8187";
     private String SUPPLIER_IP = "13.126.224.142:8188";
@@ -126,7 +125,7 @@ public class WorkflowController {
                     new HttpEntity<>(manufacturerOrder,headers),
                     String.class));
 
-           responseEntity  = restTemplate.exchange(
+            responseEntity  = restTemplate.exchange(
                     DESIGNER_RESOURCE_URL+"/"+designerId,
                     HttpMethod.POST,
                     entity,
