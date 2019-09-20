@@ -1,13 +1,15 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div class="dropdown"><br>
-    <a routerLink="/designerviewprofile" routerLinkActive="active"> <button mat-button color="primary">View Profile</button><br></a>
-    <button mat-button color="primary">View Previous orders</button>
+    <!-- <a routerLink="/designerviewprofile" routerLinkActive="active"></a> -->
+    <a routerLinkActive="active"> <button mat-button color="primary" (click) = "viewProfile()">View Profile</button><br></a>
+    <button mat-button color="primary"><a routerLink="/designervieworders" routerLinkActive="active">View Previous orders</a></button>
     <mat-divider></mat-divider>
     <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">Logout</button></a>
 
   </div>
-</mat-menu>
+  </mat-menu>
+
 
 <div>
   <mat-toolbar class="header">
@@ -23,7 +25,8 @@
                        <mat-form-field>
                          <input #searchText matInput placeholder="Search for products">
                        </mat-form-field>
-                       <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
+                       <button mat-icon-button aria-label="icon-button with a search icon"
+                               (click)="search(searchText.value)">
                          <mat-icon>search</mat-icon>
                        </button></span>
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
@@ -40,45 +43,49 @@
     <mat-tab label="Upload Designs">
       <div id="container" style="padding-top: 30px">
         <div ng2-carouselamos class="slides-wrapper" [width]="1500" [items]="items" [$prev]="prev" [$next]="next"
-          [$item]="item">
+             [$item]="item">
         </div>
         <ng-template #item let-item let-i="index">
           <div class="items">
-            <img src="{{ item.name }}" />
+            <img src="{{ item.name }}"/>
           </div>
         </ng-template>
       </div>
-      <div style="padding-top: 30px" class="uploadDesign">Designer add new Designs <button mat-button
-          (click)="openDialog()">Upload Designs</button></div>
+      <div style="padding-top: 30px" class="uploadDesign">Designer add new Designs
+        <button mat-button
+                (click)="openDialog()">Upload Designs
+        </button>
+      </div>
 
 
-<div class="cardList">
-    <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist"> -->
-        <mat-card class="card-picture" *ngFor="let designs of orderlist | slice :13; let i =index;">
-      <mat-card-header>
-
-        <mat-card-title>Designs</mat-card-title>
-
-      </mat-card-header>
+      <div class="cardList">
+        <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist"> -->
+        <mat-card class="card-picture" *ngFor="let designs of orderlist">
+          <mat-card-header>
+            <mat-card-title>
+              {{designs.designOrder.id}}<br>
+              {{designs.designOrder.name}}
+            </mat-card-title>
+          </mat-card-header>
           <mat-divider></mat-divider>
-      <mat-card-content><br/>
-        <p>
-          Manufacturer Name: {{designs.design.name}}
-        </p>
-        <p>
-         {{designs.design.quantityOfDesign}}
-        </p>
-        <p>Quantity</p>
-
-        <p>Rating</p>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button (click)="openDialogPrice()">Add price</button>
-        <!-- <button mat-button (click)="saveManufacture(manufacturer)">select</button> -->
-        <!-- <button mat-raised-button (click)="openDialog()">cancel</button> -->
-      </mat-card-actions>
-    </mat-card>
-  </div>
+          <mat-card-content><br/>
+            <img mat-card-image src="assets/{{designs.designOrder.design_img}}" alt="Image of the design">
+            <p>
+              Order Status: {{designs.designOrder.orderStatus}}
+            </p>
+            <p>Quantity</p>
+            <p>
+              {{designs.designOrder.quantityOfDesign}}
+            </p>
+            <p>Rating</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button (click)="openDialogPrice(designs)">Add price</button>
+            <!-- <button mat-button (click)="saveManufacture(manufacturer)">select</button> -->
+            <!-- <button mat-raised-button (click)="openDialog()">cancel</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </div>
 
     </mat-tab>
 
@@ -91,7 +98,7 @@
           <!-- <div *ngFor="let song of tracks"> -->
           <mat-card class="card-picture" *ngFor="let material of mapping">
 
-          <!-- <mat-card class="card-picture" *ngFor="let material of Materials"> -->
+            <!-- <mat-card class="card-picture" *ngFor="let material of Materials"> -->
             <mat-card-header>
 
               <mat-card-title>Material</mat-card-title>

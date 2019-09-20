@@ -6,6 +6,7 @@ import com.stackroute.onlinefashionretail.manufacturer.repository.ManufactureRep
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,10 +19,15 @@ public class ManufactureServiceImpl implements ManufactureService {
 
     ManufactureRepository manufactureRepository;
 
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
+    private static final String TOPIC = "ORDER_STATUS";
+
     @Autowired
-    public ManufactureServiceImpl(ManufactureRepository manufactureRepository)
+    public ManufactureServiceImpl(ManufactureRepository manufactureRepository, KafkaTemplate<String, String> kafkaTemplate)
     {
         this.manufactureRepository = manufactureRepository;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @Override
@@ -33,6 +39,7 @@ public class ManufactureServiceImpl implements ManufactureService {
     @Override
     public Optional<Manufacturer> getManufacture(String id) {
         logger.info("inside getManufacturer in ManufactureServiceimpl");
+        logger.info("find by id: "+manufactureRepository.findById(id).orElse(null));
         return manufactureRepository.findById(id);
     }
 
@@ -106,6 +113,7 @@ public class ManufactureServiceImpl implements ManufactureService {
     @Override
     public ManufacturerOrder updateOrder(ManufacturerOrder manufacturerOrder, String id) {
         Manufacturer manufacturer = manufactureRepository.findById(id).orElse(null);
+        ManufacturerOrder manufacturerOrder1 = null;
         for (ManufacturerOrder sup:
                 manufacturer.getManufacturerOrders()) {
             if (sup.getId().equals(manufacturerOrder.getId()))
@@ -113,10 +121,31 @@ public class ManufactureServiceImpl implements ManufactureService {
                 System.out.println("inside");
                 sup.setOrderStatus(manufacturerOrder.getOrderStatus());
                 manufactureRepository.save(manufacturer);
-                return sup;
+                manufacturerOrder1 =  sup;
             }
         }
-        return null;
+        boolean inProgress = false;
+        boolean rejected = false;
+        for (ManufacturerOrder sup:
+                manufacturer.getManufacturerOrders()) {
+            if (sup.getTagId().equals(manufacturerOrder.getTagId()) && sup.getOrderStatus().equals("in-progress")){
+                inProgress = true;
+            }
+            if (sup.getTagId().equals(manufacturerOrder.getTagId()) && sup.getOrderStatus().equals("rejected")){
+                rejected = true;
+            }
+        }
+        if (!inProgress && rejected){
+            //send Kafka message to update order status to rejected
+            kafkaTemplate.send(TOPIC,manufacturerOrder.getTagId()+"-manufacturer_rejected");
+            logger.info("sending manufacturer_rejected message on TOPIC: "+TOPIC);
+        }
+        else if (!inProgress){
+            //send Kafka message to update order status to accepted
+            kafkaTemplate.send(TOPIC,manufacturerOrder.getTagId()+"-manufacturer_accepted");
+            logger.info("sending manufacturer_accepted message on TOPIC: "+TOPIC);
+        }
+        return manufacturerOrder1;
     }
 
 }

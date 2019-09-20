@@ -73,8 +73,10 @@ public class JwtAuthenticationController {
             logger.info("Entered into authentication method in jwtAuthenticationToken");
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException e) {
+            logger.info("Exception catched: "+e.toString());
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
+            logger.info("Exception catched: "+e.toString());
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }

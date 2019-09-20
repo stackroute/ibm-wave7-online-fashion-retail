@@ -72,4 +72,10 @@ public class ProductController {
         logger.info("Entered into getProductByid method in ProductController");
         return new ResponseEntity<>(productService.getProductById(id), HttpStatus.OK);
     }
+
+    @GetMapping("product/search")
+    public ResponseEntity<?> searchProduct(@RequestParam String searchText){
+        logger.info("Entered into searchProduct method in ProductController");
+        return new ResponseEntity<>(productService.searchProduct(searchText), HttpStatus.OK);
+    }
 }

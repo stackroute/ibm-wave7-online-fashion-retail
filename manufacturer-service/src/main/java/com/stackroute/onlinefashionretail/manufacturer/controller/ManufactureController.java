@@ -71,10 +71,10 @@ public class ManufactureController {
         ResponseEntity responseEntity;
         try {
             logger.info("Inside getDesigner method try block in ManufacturerController");
-            responseEntity = new ResponseEntity<>(manufactureService.getManufacture(id), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(manufactureService.getManufacture(id).get(), HttpStatus.OK);
         } catch (Exception exception) {
             logger.info("Inside getDesigner method catch block in ManufacturerController");
-            responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
+            responseEntity = new ResponseEntity<String>(exception.toString(), HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
@@ -147,7 +147,7 @@ public class ManufactureController {
         ResponseEntity responseEntity;
         System.out.println(manufacturerOrder);
         try {
-            responseEntity = new ResponseEntity(manufactureService.updateOrder(manufacturerOrder,id), HttpStatus.OK);
+            responseEntity = new ResponseEntity<>(manufactureService.updateOrder(manufacturerOrder,id), HttpStatus.OK);
             System.out.println(responseEntity);
         } catch (Exception exception1) {
             responseEntity = new ResponseEntity<String>(exception1.getMessage(), HttpStatus.CONFLICT);

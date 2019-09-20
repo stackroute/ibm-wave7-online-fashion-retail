@@ -23,6 +23,19 @@
     border-color: #E7E7E7;
     /*color: black;*/
 }
+.navbar-toggler{
+    color:white;
+}
+
+.navbar-collapse{
+  background-color:black;
+}
+
+.navbar-default {
+    background-color: #F8F8F8;
+    border-color: #E7E7E7;
+    color: black;
+}
 
     .nav-item {
         font-size: 4vh;

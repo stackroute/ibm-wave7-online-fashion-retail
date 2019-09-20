@@ -1,33 +1,41 @@
-    
-      <div class="cardList">
+<div class="cardList">
 
-          
-          <!-- <mat-card class="card-picture" *ngFor="let designs of data | slice :13; let i =index;"> -->
-            <mat-card-header>
-              
-              <mat-card-title>Designs</mat-card-title>
-              
-            </mat-card-header>
-           
-            <mat-card-content>
-              <p>
-                <!-- Manufacturer Name: {{data.Design.Name}}  -->
-              </p>
-              <p>
-               {{data.id}}
-              </p>
-              <mat-form-field>
-                  <input type="number" matInput placeholder="discount percentage (%)" [(ngModel)]="data.discount" >
-                </mat-form-field>
-                <mat-form-field>
-                    <input type="number" matInput placeholder="profit percentage (%)" [(ngModel)]="data.profit" >
-                  </mat-form-field>
-                  <mat-form-field>
-                      <input type="number" matInput placeholder="Quality Of Design" [(ngModel)]="data.QuantityOfDesign" >
-                    </mat-form-field>
-             <!-- <button mat-button >save</button> -->
 
-            </mat-card-content>
-            <button mat-raised-button color="Primary" [mat-dialog-close]="data" cdkFocusInitial>save</button>
-            <!-- </mat-card> -->
-            </div>
+  <!-- <mat-card class="card-picture" *ngFor="let designs of data | slice :13; let i =index;"> -->
+  <mat-card-header>
+
+    <mat-card-title>Designs</mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>
+      <!-- Manufacturer Name: {{data.Design.Name}}  -->
+    </p>
+    <p>
+      {{data.id}}
+    </p>
+    <mat-form-field>
+      <input type="number" matInput placeholder="discount percentage (%)"
+             [(ngModel)]="data.designOrder.discountPercent">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="profit percentage (%)" [(ngModel)]="data.designOrder.profitPercent">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Enter base price" [(ngModel)]="data.designOrder.price">
+    </mat-form-field>
+    <p>Final price after discount and profit margin: {{(data.designOrder.price
+        + data.designOrder.price
+        * data.designOrder.profitPercent
+        / 100)
+    - (data.designOrder.price
+        + data.designOrder.price
+        * data.designOrder.profitPercent
+        / 100)
+    * data.designOrder.discountPercent
+    / 100}}
+    </p>
+  </mat-card-content>
+  <button mat-raised-button color="Primary" (click)="onClick(data)" cdkFocusInitial>save</button>
+</div>

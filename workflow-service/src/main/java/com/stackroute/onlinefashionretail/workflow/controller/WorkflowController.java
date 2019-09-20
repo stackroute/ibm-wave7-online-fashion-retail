@@ -31,18 +31,17 @@ import java.util.Map;
 @RestController
 @RequestMapping(value = "api/v1")
 public class WorkflowController {
+    // private String DESIGNER_IP = "localhost:8187";
+    // private String SUPPLIER_IP = "localhost:8188";
+    // private String MANUFACTURER_IP = "localhost:8189";
+    // private String CONSUMER_IP = "localhost:8190";
+    // private String USER_IP = "localhost:8192";
 
-    private String DESIGNER_IP = "localhost:8187";
-    private String SUPPLIER_IP = "localhost:8188";
-    private String MANUFACTURER_IP = "localhost:8189";
-    private String CONSUMER_IP = "localhost:8190";
-    private String USER_IP = "localhost:8192";
-
-   // private String DESIGNER_IP = "13.126.224.142:8187";
-   // private String SUPPLIER_IP = "13.126.224.142:8188";
-   // private String MANUFACTURER_IP = "13.126.224.142:8189";
-   // private String CONSUMER_IP = "13.126.224.142:8190";
-   // private String USER_IP = "13.126.224.142:8192";
+    private String DESIGNER_IP = "13.126.224.142:8187";
+    private String SUPPLIER_IP = "13.126.224.142:8188";
+    private String MANUFACTURER_IP = "13.126.224.142:8189";
+    private String CONSUMER_IP = "13.126.224.142:8190";
+    private String USER_IP = "13.126.224.142:8192";
 
     private String DESIGNER_RESOURCE_URL = "http://" + DESIGNER_IP + "/api/v1/designs";
     private String SUPPLIER_RESOURCE_URL = "http://" + SUPPLIER_IP + "/api/v1/material";
@@ -74,7 +73,7 @@ public class WorkflowController {
     }
 
     @PostMapping("upload")
-    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder, @RequestParam String designerName) throws ApiCallException {
+    public ResponseEntity<?> uploadDesign(@RequestBody DesignerOrder designerOrder, @RequestParam String designerName, @RequestParam String designerId) throws ApiCallException {
         logger.info("< upload design handler");
         String id = claimTask("Upload Design");
         logger.info(" > designerOrder: "+designerOrder);
@@ -105,7 +104,7 @@ public class WorkflowController {
                 SupplierOrder supplierOrder = new SupplierOrder(RandomIdGenerator.getRandomId(),
                         designerName,
                         material,
-                        entry.getValue(),"in-progress","");
+                        entry.getValue(),"in-progress",designerOrder.getTagId());
 
                 logger.info("response from supplier: "+restTemplate.exchange(
                         SUPPLIER_ORDER_RESOURCE_URL+"?id="+supplierId,
@@ -114,27 +113,28 @@ public class WorkflowController {
                         String.class).getBody());
             }
             ManufacturerOrder manufacturerOrder = new ManufacturerOrder(RandomIdGenerator.getRandomId(),
-                    "",
+                    designerOrder.getTagId(),
                     designerName,
                     designerOrder.getDesignOrder().getDesign_img(),
                     designerOrder.getDesignOrder().getQuantityOfDesign(),
                     "in-progress");
 
-            restTemplate.exchange(
+            logger.info("response from manufacturer: "+restTemplate.exchange(
                     MANUFACTURER_ORDER_RESOURCE_URL+"?id="+designerOrder.getManufacturer().getId(),
                     HttpMethod.POST,
                     new HttpEntity<>(manufacturerOrder,headers),
-                    String.class);
+                    String.class));
 
-           responseEntity  = restTemplate.exchange(
-                    DESIGNER_RESOURCE_URL,
+            responseEntity  = restTemplate.exchange(
+                    DESIGNER_RESOURCE_URL+"/"+designerId,
                     HttpMethod.POST,
                     entity,
                     DesignerOrder.class);
         }
         catch (Exception e){
-            logger.error("In exception block");
-            throw new ApiCallException(e.getMessage(),e.getCause());
+            e.printStackTrace();
+            logger.error("In exception block > "+e.toString());
+            throw new ApiCallException(e.toString(),e.getCause());
         }
 
         finally {

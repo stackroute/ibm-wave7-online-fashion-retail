@@ -62,5 +62,14 @@ export class ManufactureService {
     updateOrder(order: ManufacturerOrder) {
       return this.httpClient.put(this._url, order, {headers: this.headers});
     }
+    getManufacturerById(userId: string): Observable<Manufacturer> {
+      console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
+      // const url = `${environment.designerUrl+"designer"}/${userId}`;
+      const url = environment.manufacturerUrl + '/manufacture/' + userId;
+      return this.httpClient.get<Manufacturer>(url, httpOptions);
+        // .pipe(
+        //   catchError(this.handleError('deleteHero'))
+        // );
+    }
 
 }

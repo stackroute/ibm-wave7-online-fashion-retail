@@ -4,6 +4,8 @@ import { Supplier } from '../models/Supplier';
 import { Material } from '../models/Material';
 import { Mapping } from '../models/Mapping';
 import { OrderService } from '../services/order.service';
+import { InterComponentDataService } from '../services/inter-component-data.service';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -13,18 +15,30 @@ import { OrderService } from '../services/order.service';
 })
 export class AddmaterialPageComponent implements OnInit {
   name;
-  constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  supplier:Supplier;
+  constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router,private intercomponentService: InterComponentDataService,private userService: UserService) { }
 
   ngOnInit() {
   }
 
 
   submit(name, price, quantity, category) {
-    const supplier = new Supplier('1', 'nilakshi', 'bangalore', '5', 'nilakshi@gmail.com');
-    const material = new Material('2', category, name, '');
-    const mapping = new Mapping('1', quantity, price, material, supplier, '');
+    this.intercomponentService.currentSupplier.subscribe(data => (this.supplier =data ))
+    const num1 = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+       const num2 = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    const material = new Material(num1.toString(), category, name, '');
+    const mapping = new Mapping(num2.toString(), quantity, price, material, this.supplier, '');
 
-    this._orderService.submit(mapping).subscribe(data => {this.name = data; });
+    this._orderService.submit(mapping).subscribe(data => {
+      console.log(data);
+      this.name = data; });
+  }
+  viewProfile(){
+    console.log("hgfhdgfj");
+    console.log("jjjj: ",this.userService.loginCredentials.userId);
+    let loginId =this.userService.loginCredentials.userId;
+    console.log("loginid: ",loginId);
+    this.router.navigate(['/supplierviewprofile'],{queryParams : {loginId}});
   }
 
 }

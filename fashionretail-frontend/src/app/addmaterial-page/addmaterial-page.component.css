@@ -47,6 +47,11 @@ mat-toolbar{
       display: flex;
       flex-wrap: wrap;
   }
+  mat-toolbar-row {
+      height: min-content;
+      display: flex;
+      flex-wrap: wrap;
+  }
 
   .header{
     font-family: 'Open Sans', sans-serif;

@@ -1,6 +1,6 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
-  <div (click)="cancelClick($event)" class="dropdown"><br>
-    <button mat-button color="primary">View Profile</button><br>
+  <div class="dropdown"><br>
+    <button mat-button color="primary"><a  routerLinkActive="active" (click)="viewProfile()">View Profile</a></button><br>
 
     <button mat-button color="primary">View Previous orders</button><br>
     <mat-divider></mat-divider>

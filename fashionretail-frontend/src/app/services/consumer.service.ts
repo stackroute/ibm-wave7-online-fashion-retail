@@ -4,6 +4,7 @@ import {Product} from '../models/product';
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
 import {ConsumerOrder} from '../models/consumer-order';
+import { Consumer } from '../models/consumer';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +29,9 @@ export class ConsumerService {
   }
   public placeOrder(consumerOrder: ConsumerOrder) {
   return this.httpClient.post<ConsumerOrder>(environment.consumerUrl + '/consumer/order', consumerOrder, {headers: this.headers});
+}
+getConsumerById(userId: string): Observable<Consumer> {
+  console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
+    return this.httpClient.get<Consumer>(environment.consumerUrl + '/consumer/1/cart'+userId, {headers: this.headers});
 }
 }

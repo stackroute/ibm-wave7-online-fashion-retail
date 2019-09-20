@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Product} from '../models/product';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import {ProductService} from '../services/product.service';
 import {MatBottomSheet, MatBottomSheetConfig} from '@angular/material/bottom-sheet';
 import {CartBottomSheetComponent} from '../cart-bottom-sheet/cart-bottom-sheet.component';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ConsumerService} from '../services/consumer.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-consumer-dashboard',
@@ -18,11 +19,14 @@ export class ConsumerDashboardComponent implements OnInit {
   products: Product[] = [];
   cart: Product[] = [];
 
+
   constructor(private productService: ProductService,
               private consumerService: ConsumerService,
               private matBottomSheet: MatBottomSheet,
               private httpClient: HttpClient,
-              private _snackBar: MatSnackBar) {
+              private _snackBar: MatSnackBar,
+              private router: Router,
+              private userService : UserService) {
   }
 
   public getProducts() {
@@ -85,4 +89,21 @@ export class ConsumerDashboardComponent implements OnInit {
     }
     return false;
   }
+  search(search)
+  {
+    console.log('inside search method');
+    this.productService.search(search).subscribe(data =>{
+      this.products = data;
+      console.log(data);
+    })
+  }
+  viewProfile(){
+    console.log("hgfhdgfj");
+    console.log("jjjj: ",this.userService.loginCredentials.userId);
+    let loginId =this.userService.loginCredentials.userId;
+    console.log("loginid: ",loginId);
+    this.router.navigate(['/consumerviewprofile'],{queryParams : {loginId}});
+  }
+
+
 }

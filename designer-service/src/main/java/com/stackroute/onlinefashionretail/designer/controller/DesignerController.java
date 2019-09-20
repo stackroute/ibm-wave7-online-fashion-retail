@@ -1,6 +1,7 @@
 package com.stackroute.onlinefashionretail.designer.controller;
 
 import com.stackroute.onlinefashionretail.designer.model.Designer;
+import com.stackroute.onlinefashionretail.designer.model.DesignerOrder;
 import com.stackroute.onlinefashionretail.designer.service.DesignerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,8 +48,9 @@ public class DesignerController {
         try {
 
             responseEntity = new ResponseEntity<>(designerService.getDesigner(id), HttpStatus.OK);
+            logger.info("got designer : "+designerService.getDesigner(id));
         } catch (Exception exception) {
-
+            logger.info("Entered into getDesignersById exception: "+exception.toString());
             responseEntity = new ResponseEntity<String>(exception.getMessage(), HttpStatus.CONFLICT);
         }
         return responseEntity;
