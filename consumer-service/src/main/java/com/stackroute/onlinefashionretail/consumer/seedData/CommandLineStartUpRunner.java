@@ -8,18 +8,18 @@ import com.stackroute.onlinefashionretail.consumer.service.interfaces.ConsumerSe
 import com.stackroute.onlinefashionretail.consumer.service.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class CommandLineStartUpRunner implements CommandLineRunner {
     private ConsumerOrderService consumerOrderService;
     private ConsumerService consumerService;
     private ProductService productService;
+    private KafkaTemplate<String ,ConsumerOrder> kafkaTemplate1;
+
 
     /**
      * Use constructor based DI to inject TrackService here
@@ -27,10 +27,11 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
     @Autowired
     public CommandLineStartUpRunner(ConsumerOrderService consumerOrderService,
                                     ConsumerService consumerService,
-                                    ProductService productService) {
+                                    ProductService productService, KafkaTemplate<String, ConsumerOrder> kafkaTemplate1) {
         this.consumerOrderService = consumerOrderService;
         this.consumerService = consumerService;
         this.productService = productService;
+        this.kafkaTemplate1 = kafkaTemplate1;
     }
 
     @Override
@@ -78,19 +79,34 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
                 "Lucknow",
                 "222034");
 
+        Address address1 = new Address("1",
+                "Mahima",
+                "Patel",
+                "E/90, Purva Panorama",
+                "Ambavadi",
+                "",
+                "Gujarat",
+                "Ahmedabad",
+                "380239");
+
+
+        ConsumerOrder consumerOrder = new ConsumerOrder("1","1",List.of(product3,product4),7030.1,address,"placed",new Date());
+        ConsumerOrder consumerOrder1 = new ConsumerOrder("2","2",List.of(product1,product2),7030.1,address1,"placed",new Date());
+
         Consumer consumer1 = new Consumer("1",
                 "shruti67",
                 "shruti67@gmail.com",
                 Map.of("1",address),
-                new HashMap<>(),
+                Map.of("1",consumerOrder),
                 List.of(product1,product2));
-
+        kafkaTemplate1.send("recommendationConsumer",consumerOrder);
         Consumer consumer2 = new Consumer("2",
                 "mahima",
                 "mahi78@gmail.com",
-                new HashMap<>(),
-                new HashMap<>(),
+                Map.of("1",address1),
+                Map.of("2",consumerOrder1),
                 List.of(product4,product3));
+        kafkaTemplate1.send("recommendationConsumer",consumerOrder1);
         try {
             productService.addProduct(product1);
             productService.addProduct(product2);

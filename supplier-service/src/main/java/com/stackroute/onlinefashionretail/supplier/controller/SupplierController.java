@@ -31,7 +31,7 @@ public class SupplierController {
     @Autowired
     private KafkaTemplate<String, Supplier> kafkaTemplate;
 
-    private static final String TOPIC = "Login";
+    private static final String TOPIC = "recommendationSupplier";
 
     //Post mapping to save the user details
     @PostMapping("supplier")

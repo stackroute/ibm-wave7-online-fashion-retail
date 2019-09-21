@@ -1,75 +1,33 @@
 package com.stackroute.neo4j.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.Id;
+import org.neo4j.ogm.annotation.NodeEntity;
 
+
+@NodeEntity
+@NoArgsConstructor
+@Data
+@AllArgsConstructor
 public class SupplierOrder
 {
     @Id
+    @JsonProperty("id")
     private String id;
-    private Designer designer;
+    @JsonProperty("designerName")
+    private String designerName;
+    @JsonProperty("material")
     private Material material;
+    @JsonProperty("quantity")
     private double quantity;
+    @JsonProperty("orderStatus")
     private String orderStatus;
+    @JsonProperty("tagId")
     private String tagId;
 
 
 
-    public String getTagId() {
-        return tagId;
-    }
-
-    public void setTagId(String tagId) {
-        this.tagId = tagId;
-    }
-
-    public String getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(String orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Designer getDesigner() {
-        return designer;
-    }
-
-    public void setDesigner(Designer designer) {
-        this.designer = designer;
-    }
-
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(double quantity) {
-        this.quantity = quantity;
-    }
-    @Override
-    public String toString() {
-        return "SupplierOrder{" +
-                "id='" + id + '\'' +
-                ", designer=" + designer +
-                ", material=" + material +
-                ", quantity=" + quantity +
-                ", orderStatus='" + orderStatus + '\'' +
-                ", tagId='" + tagId + '\'' +
-                '}';
-    }
 }

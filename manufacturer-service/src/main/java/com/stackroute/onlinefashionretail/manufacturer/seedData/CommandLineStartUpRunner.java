@@ -9,6 +9,7 @@ import com.stackroute.onlinefashionretail.manufacturer.services.BasepriceService
 import com.stackroute.onlinefashionretail.manufacturer.services.ManufactureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -22,6 +23,9 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
     /**
      * Use constructor based DI to inject TrackService here
      */
+    @Autowired
+    private KafkaTemplate<String, Manufacturer> kafkaTemplate;
+
     @Autowired
     public CommandLineStartUpRunner(ManufactureService manufactureService, BasepriceService basepriceService) {
         this.manufactureService = manufactureService;
@@ -53,10 +57,13 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
         ManufacturerOrder manufacturerOrder3 = new ManufacturerOrder("3","","Manish Malhotra","imageEarrings",100,"in-progress");
         ManufacturerOrder manufacturerOrder4 = new ManufacturerOrder("4","","Manish Malhotra","imageDress",50,"in-progress");
 
-        Manufacturer manufacturer1 = new Manufacturer("1","RJ Enterprise","rj@gmail.com","bangalore","tailor",4.5f,9836199304L,List.of(manufacturerOrder1,manufacturerOrder3));
-        Manufacturer manufacturer2 = new Manufacturer("2","KSV Enterprise","ksv@gmail.com","delhi","tailor",3.5f,9836123304L, List.of(manufacturerOrder2,manufacturerOrder4));
-        Manufacturer manufacturer3 = new Manufacturer("3","LM Footwear Works","lm34@gmail.com","bangalore","shoemaker",4f,9830299304L,new ArrayList<>());
 
+        Manufacturer manufacturer1 = new Manufacturer("1","RJ Enterprise","rj@gmail.com","bangalore","tailor",4.5f,9836199304L,List.of(manufacturerOrder1,manufacturerOrder3));
+        kafkaTemplate.send("recommendationManufacturer",manufacturer1);
+        Manufacturer manufacturer2 = new Manufacturer("2","KSV Enterprise","ksv@gmail.com","delhi","tailor",3.5f,9836123304L, List.of(manufacturerOrder2,manufacturerOrder4));
+        kafkaTemplate.send("recommendationManufacturer",manufacturer2);
+        Manufacturer manufacturer3 = new Manufacturer("3","LM Footwear Works","lm34@gmail.com","bangalore","shoemaker",4f,9830299304L,new ArrayList<>());
+        kafkaTemplate.send("recommendationManufacturer",manufacturer3);
         BasePrice basePrice1 = new BasePrice("1","Lehenga",250f);
         BasePrice basePrice2 = new BasePrice("2","Shirt",150f);
         BasePrice basePrice3 = new BasePrice("3","Skirt",190f);

@@ -26,18 +26,21 @@ public class ConsumerController {
     private final Logger logger = LoggerFactory.getLogger(ConsumerController.class);
     private final String TOPIC = "PRODUCTS_BOUGHT";
     private final KafkaTemplate<String ,Integer> kafkaTemplate;
+    private final KafkaTemplate<String ,ConsumerOrder> kafkaTemplate1;
     private final ConsumerOrderService consumerOrderService;
 
     @Autowired
-    public ConsumerController(ConsumerService consumerService, KafkaTemplate<String, Integer> kafkaTemplate, ConsumerOrderService consumerOrderService) {
+    public ConsumerController(ConsumerService consumerService, KafkaTemplate<String, Integer> kafkaTemplate, KafkaTemplate<String, ConsumerOrder> kafkaTemplate1, ConsumerOrderService consumerOrderService) {
         this.consumerService = consumerService;
         this.kafkaTemplate = kafkaTemplate;
+        this.kafkaTemplate1 = kafkaTemplate1;
         this.consumerOrderService = consumerOrderService;
     }
 
     @PostMapping("consumer")
     public ResponseEntity<?> addConsumer(@RequestBody Consumer consumer) throws ConsumerAlreadyExistsException {
         logger.info("Entered into addConsumer method in ConsumerController");
+
         return new ResponseEntity<>(consumerService.addConsumer(consumer), HttpStatus.CREATED);
     }
 
@@ -99,6 +102,7 @@ public class ConsumerController {
     public ResponseEntity<?> placeOrder(@RequestBody ConsumerOrder consumerOrder) throws ConsumerNotFoundException {
         logger.info("Entered into placeOrder method in ConsumerController");
         ConsumerOrder order = consumerService.placeOrder(consumerOrder);
+        kafkaTemplate1.send("recommendationConsumer",order);
         kafkaTemplate.send(TOPIC,consumerOrderService.getProductCount());
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }

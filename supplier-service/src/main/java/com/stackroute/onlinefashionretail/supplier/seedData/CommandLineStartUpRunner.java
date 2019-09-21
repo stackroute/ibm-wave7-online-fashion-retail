@@ -9,6 +9,7 @@ import com.stackroute.onlinefashionretail.supplier.services.MaterialService;
 import com.stackroute.onlinefashionretail.supplier.services.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -23,11 +24,15 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
      * Use constructor based DI to inject TrackService here
      */
     @Autowired
+    private KafkaTemplate<String, Supplier> kafkaTemplate;
+
     public CommandLineStartUpRunner(SupplierService supplierService, MaterialService materialService, MappingService mappingService) {
         this.supplierService = supplierService;
         this.materialService = materialService;
         this.mappingService = mappingService;
     }
+
+
 
 
 
@@ -46,8 +51,9 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
         SupplierOrder supplierOrder3 = new SupplierOrder("3","Manish Malhotra",material3,90.0,"in-progress","");
 
         Supplier supplier1 = new Supplier("1","CG Fabrics and Accesories","Delhi",4.5f,"cgfabrics@gmail.com",List.of(supplierOrder1,supplierOrder2));
+        kafkaTemplate.send("recommendationSupplier",supplier1);
         Supplier supplier2 = new Supplier("2","BH Fabrics and Leathers","Banngalore",3.4f,"bhfabandacc@gmail.com",List.of(supplierOrder3));
-
+        kafkaTemplate.send("recommendationSupplier",supplier2);
         Mapping mapping1 = new Mapping("1",45.5,890,material1,supplier1,"metres");
         Mapping mapping2 = new Mapping("2",66.5,400,material2,supplier1,"metres");
         Mapping mapping3 = new Mapping("3",125,800,material3,supplier2,"metres");

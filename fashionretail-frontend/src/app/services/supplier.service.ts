@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Supplier} from '../models/Supplier';
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
+import {Mapping} from "../models/Mapping";
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -40,5 +41,16 @@ export class SupplierService {
       // .pipe(
       //   catchError(this.handleError('deleteHero'))sy
       // );
+  }
+  getAllMaterials(email:string):Observable<Mapping[]>{
+    console.log("in get all materials");
+    const url = environment.supplierUrl+'/materials';
+    return  this.http.get<Mapping[]>(url,{
+      params:{email},
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'my-auth-token'
+      })
+    })
   }
 }

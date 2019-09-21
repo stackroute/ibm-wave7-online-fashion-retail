@@ -30,7 +30,7 @@ public class ManufactureController {
 
     @Autowired
     private KafkaTemplate<String, Manufacturer> kafkaTemplate;
-    private static final String TOPIC = "Kafka_Example";
+    private static final String TOPIC = "recommendationManufacturer";
 
     @GetMapping("test")
     public String test() {

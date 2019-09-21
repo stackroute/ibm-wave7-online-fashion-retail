@@ -1,5 +1,6 @@
 package com.stackroute.neo4j.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.GeneratedValue;
@@ -12,9 +13,13 @@ import java.awt.*;
 public class Material
 {
     @Id
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("category")
     private String category;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("image")
     private String image;
 
     public String getId() {

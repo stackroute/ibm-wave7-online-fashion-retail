@@ -65,3 +65,21 @@
     </form>
   </mat-card>
 </div>
+<div class="cardList">
+  <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist"> -->
+  <mat-card class="card-picture" *ngFor="let map of mapping">
+    <mat-card-header>
+      <mat-card-title>
+        {{map.material.name}}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content><br/>
+      <p>
+        Category: {{map.material.category}}
+      </p>
+
+      <p>Rating</p>
+    </mat-card-content>
+  </mat-card>
+</div>

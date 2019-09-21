@@ -1,5 +1,6 @@
 package com.stackroute.neo4j.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.neo4j.ogm.annotation.Id;
 
 import java.util.List;
@@ -8,11 +9,17 @@ import java.util.Map;
 
 public class DesignerOrder {
     @Id
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("designOrder")
     private Design designOrder;
+    @JsonProperty("supplierList")
     private List<Map<String,Double>> supplierList;
+    @JsonProperty("manufacturer")
     private Manufacturer manufacturer;
+    @JsonProperty("designer")
     private Designer designer;
+    @JsonProperty("tagId")
     private String tagId;
 
 

@@ -1,5 +1,6 @@
 package com.stackroute.neo4j.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.Id;
@@ -11,13 +12,21 @@ import org.neo4j.ogm.annotation.NodeEntity;
 public class Product {
 
     @Id
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("category")
     private String category;
-    private String designerName;
+    @JsonProperty("designer")
+    private Designer designer;
+    @JsonProperty("price")
     private double price;
+    @JsonProperty("discount")
     private double discount;
+    @JsonProperty("rating")
     private float rating;
+    @JsonProperty("image")
     private String image;
 
     public String getId() {
@@ -44,12 +53,12 @@ public class Product {
         this.category = category;
     }
 
-  public String getDesignerName() {
-    return designerName;
+  public Designer getDesigner() {
+    return designer;
   }
 
-  public void setDesignerName(String designerName) {
-    this.designerName = designerName;
+  public void setDesigner(Designer designer) {
+    this.designer = designer;
   }
 
   public double getPrice() {
@@ -90,7 +99,7 @@ public class Product {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", category='" + category + '\'' +
-                ", designer=" + designerName +
+                ", designer=" + designer +
                 ", price=" + price +
                 ", discount=" + discount +
                 ", rating=" + rating +

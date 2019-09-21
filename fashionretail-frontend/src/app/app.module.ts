@@ -132,6 +132,7 @@ import { CustomerViewOrdersComponent } from './customer-view-orders/customer-vie
     CustomerViewOrdersComponent,
 
 
+
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ import {InterComponentDataService} from '../services/inter-component-data.servic
 import {Router} from '@angular/router';
 import {Product} from "../models/product";
 import {ProductService} from "../services/product.service";
+import { RecommendationService } from '../services/recommendation.service';
+import { Supplier } from '../models/Supplier';
 
 
 @Component({
@@ -26,6 +28,8 @@ export class DesignerHomePageComponent implements OnInit {
   uploadDesigns: Design;
   uploadDesigns1: Design[];
   manufacturer: Manufacturer[];
+  manufacturer1:Manufacturer[];
+  supplier1:Supplier[];
   Designer: Designer;
   selectedIndex = 0;
   items: Array<any> = [];
@@ -89,7 +93,8 @@ export class DesignerHomePageComponent implements OnInit {
     private userService: UserService,
      private interComponent: InterComponentDataService,
      private router : Router,
-              private productService: ProductService) {
+              private productService: ProductService,
+              private recommendationService: RecommendationService) {
     this.items = [
       {name: 'assets/designer.jpg'},
     ];
@@ -111,6 +116,14 @@ export class DesignerHomePageComponent implements OnInit {
     this.userService.getAllOrders(designer_id).subscribe((data) => {
       this.orderlist = data;
       console.log('orders list', this.orderlist);
+    });
+
+    this.recommendationService.getManufacturers().subscribe((data) =>{
+      this.manufacturer1 = data;
+    });
+
+    this.recommendationService.getSuppliers().subscribe((data) =>{
+      this.supplier1 = data;
     });
 
     this.userService.getDesignerById(designer_id).subscribe((data) => {

@@ -1,5 +1,6 @@
 package com.stackroute.neo4j.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 
@@ -8,13 +9,21 @@ import java.util.List;
 public class Design {
 
     @Id
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("design_img")
     private String design_img;
+    @JsonProperty("price")
     private float price;
+    @JsonProperty("profitPercent")
     private float profitPercent;
+    @JsonProperty("discountPercent")
     private float discountPercent;
+    @JsonProperty("quantityOfDesign")
     private int quantityOfDesign;
+    @JsonProperty("orderStatus")
     private  String orderStatus;
 
     public Design(String id, String name, String design_img, float price, float profitPercent, float discountPercent, int quantityOfDesign, String orderStatus) {

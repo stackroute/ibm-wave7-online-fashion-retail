@@ -2,12 +2,17 @@
 <mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div class="dropdown"><br>
     <!-- <a routerLink="/designerviewprofile" routerLinkActive="active"></a> -->
-    <a routerLinkActive="active"> <button mat-button color="primary" (click) = "viewProfile()">View Profile</button><br></a>
-    <button mat-button color="primary"><a routerLink="/designervieworders" routerLinkActive="active">View Previous orders</a></button>
+    <a routerLinkActive="active">
+      <button mat-button color="primary" (click)="viewProfile()">View Profile</button>
+      <br></a>
+    <button mat-button color="primary"><a routerLink="/designervieworders" routerLinkActive="active">View Previous
+      orders</a></button>
     <mat-divider></mat-divider>
-    <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">LogOut</button></a>
+    <a routerLink="/logout" routerLinkActive="active">
+      <button mat-button color="primary">LogOut</button>
+    </a>
   </div>
-  </mat-menu>
+</mat-menu>
 
 
 <div>
@@ -93,7 +98,16 @@
     <mat-tab label="Select Supplier Materials" (click)="getAllUser()">
       <div style="padding-top: 50px">
         <button mat-button (click)="nextStep()"> Place Order</button>
+        <h5>Recommended Suppliers</h5>
+        <div class="cardList">
+          <mat-card *ngFor="let supplier of supplier1">
+              <mat-card-content>
+                {{supplier.name}}
+              </mat-card-content>
 
+          </mat-card>
+        </div>
+        <hr/>
         <div class="cardList">
 
           <!-- <div *ngFor="let song of tracks"> -->
@@ -109,15 +123,17 @@
             <mat-card-content>
               <p> Material name: <b>{{material.material.name}}</b></p>
               <p>Material category: <b>{{material.material.category}}</b></p>
-              <!-- <p><img src="{{material.material.image}}"></p> -->
               <p>
                 Available quantity: <b>{{material.quantity}}</b></p>
               <p>
                 Material price: <b>{{material.price}}</b>
               </p>
+              <p>
+                Supplied By: <b>{{material.supplier.name}}</b>
+              </p>
               <p>Rating: <b>{{material.supplier.rating}}</b></p>
               <mat-form-field>
-                <label>Enter Quantity:</label><input matInput type="text" placeholder="write quantity in units"
+                <input matInput type="text" placeholder="enter quantity in units"
                                                      [(ngModel)]="material.designerEnterQuantity">
               </mat-form-field>
             </mat-card-content>
@@ -133,6 +149,37 @@
       <div style="padding-top: 50px">
         <button mat-button (click)="submitOrder()"> Submit Order</button>
 
+        <div class="cardList">
+
+          <h5>Recommended Manufacturers</h5>
+          <mat-card class="card-picture" *ngFor="let manufacturer of manufacturer1">
+            <mat-card-header>
+
+              <mat-card-title>Manufacturer</mat-card-title>
+
+            </mat-card-header>
+
+            <mat-card-content>
+              <p>
+                Manufacturer Name:{{manufacturer.name}}
+              </p>
+              <p>
+
+              </p>
+              <p>Quantity</p>
+
+              <p>Rating</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button>View</button>
+              <button mat-button (click)="saveManufacture(manufacturer)">select</button>
+              <button mat-raised-button (click)="openDialog()">cancel</button>
+            </mat-card-actions>
+          </mat-card>
+
+        </div>
+
+      <hr>
         <div class="cardList">
 
 

@@ -1,4 +1,5 @@
 package com.stackroute.neo4j.entity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.Id;
@@ -13,13 +14,19 @@ import java.util.List;
 public class Designer
 {
     @Id
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("city")
     private String city;
+    @JsonProperty("rating")
     private float rating;
+    @JsonProperty("email")
     private String email;
+    @JsonProperty("contactNumber")
     private long contactNumber;
-
+    @JsonProperty("orderList")
     @Relationship(type = "has_ordered")
     private List<DesignerOrder> orderList;
 

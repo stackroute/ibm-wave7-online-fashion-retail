@@ -7,10 +7,22 @@ public class ManufacturerOrder
     @Id
     private String id;
     private String tagId;
-    private Designer designer;
+    private String designerName;
     private String designImage;
     private int quantityOfDesign;
     private String orderStatus;
+
+    public ManufacturerOrder(String id, String tagId, String designerName, String designImage, int quantityOfDesign, String orderStatus) {
+        this.id = id;
+        this.tagId = tagId;
+        this.designerName = designerName;
+        this.designImage = designImage;
+        this.quantityOfDesign = quantityOfDesign;
+        this.orderStatus = orderStatus;
+    }
+
+    public ManufacturerOrder() {
+    }
 
     public String getId() {
         return id;
@@ -28,12 +40,12 @@ public class ManufacturerOrder
         this.tagId = tagId;
     }
 
-    public Designer getDesigner() {
-        return designer;
+    public String getDesignerName() {
+        return designerName;
     }
 
-    public void setDesigner(Designer designer) {
-        this.designer = designer;
+    public void setDesignerName(String designerName) {
+        this.designerName = designerName;
     }
 
     public String getDesignImage() {
@@ -58,17 +70,5 @@ public class ManufacturerOrder
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    @Override
-    public String toString() {
-        return "ManufacturerOrder{" +
-                "id='" + id + '\'' +
-                ", tagId='" + tagId + '\'' +
-                ", designer=" + designer +
-                ", designImage='" + designImage + '\'' +
-                ", quantityOfDesign=" + quantityOfDesign +
-                ", orderStatus='" + orderStatus + '\'' +
-                '}';
     }
 }

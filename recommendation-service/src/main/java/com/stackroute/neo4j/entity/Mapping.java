@@ -1,5 +1,6 @@
 package com.stackroute.neo4j.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.GeneratedValue;
@@ -12,11 +13,17 @@ import org.neo4j.ogm.annotation.NodeEntity;
 public class Mapping {
 
     @Id
+    @JsonProperty("id")
     private String id;
+    @JsonProperty("price")
     private double price;
+    @JsonProperty("quantity")
     private double quantity;
+    @JsonProperty("material")
     private Material material;
+    @JsonProperty("supplier")
     private Supplier supplier;
+    @JsonProperty("unit")
     private String unit;
 
     public String getId() {

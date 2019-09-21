@@ -6,6 +6,8 @@ import { Mapping } from '../models/Mapping';
 import { OrderService } from '../services/order.service';
 import { InterComponentDataService } from '../services/inter-component-data.service';
 import { UserService } from '../services/user.service';
+import {SupplierService} from "../services/supplier.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -14,11 +16,13 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./addmaterial-page.component.css']
 })
 export class AddmaterialPageComponent implements OnInit {
+  mapping: Mapping[];
   name;
   supplier:Supplier;
-  constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router,private intercomponentService: InterComponentDataService,private userService: UserService) { }
+  constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router,private intercomponentService: InterComponentDataService,private userService: UserService,private supplierService : SupplierService) { }
 
   ngOnInit() {
+   this.supplierService.getAllMaterials(this.userService.loginCredentials.email).subscribe(data => this.mapping = data);
   }
 
 
@@ -40,5 +44,6 @@ export class AddmaterialPageComponent implements OnInit {
     console.log("loginid: ",loginId);
     this.router.navigate(['/supplierviewprofile'],{queryParams : {loginId}});
   }
+
 
 }

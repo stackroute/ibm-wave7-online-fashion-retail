@@ -1,5 +1,6 @@
 package com.stackroute.neo4j.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.neo4j.ogm.annotation.Id;
@@ -10,14 +11,23 @@ import org.neo4j.ogm.annotation.NodeEntity;
 public class Address
 {
         @Id
+        @JsonProperty("id")
         private String id;
+        @JsonProperty("firstName")
         private String firstName;
+        @JsonProperty("lastName")
         private String lastName;
+        @JsonProperty("firstLine")
         private String firstLine;
+        @JsonProperty("secondLine")
         private String secondLine;
+        @JsonProperty("thirdLine")
         private String thirdLine;
+        @JsonProperty("state")
         private String state;
+        @JsonProperty("city")
         private String city;
+        @JsonProperty("pinCode")
         private String pinCode;
 
     public String getId() {
