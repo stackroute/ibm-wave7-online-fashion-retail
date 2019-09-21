@@ -2,6 +2,8 @@
     width: 300px;
     margin: 20px 20px 20px 20px;
     min-width: 100px;
+       background-color: white;
+          border-style: outset;
   }
 
   .tp-header-image {
@@ -63,3 +65,12 @@ mat-toolbar{
     button{
         color: white;
     }
+     .bg{
+        background-image: url("/assets/manu1.png");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width:100%;
+
+      }

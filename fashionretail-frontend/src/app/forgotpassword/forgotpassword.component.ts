@@ -12,7 +12,7 @@ import { LoginUser } from '../models/LoginUser';
 
 
 export class ForgotpasswordComponent implements OnInit {
-  private user = new LoginUser('', '', '');
+  private user = new LoginUser('','','','');
   private emailid;
   constructor(private authenticateService: AuthenticateService,
               private formBuilder: FormBuilder,

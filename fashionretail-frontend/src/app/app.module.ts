@@ -76,6 +76,7 @@ import { CustomerViewProfileComponent } from './customer-view-profile/customer-v
 import { CustomerViewOrdersComponent } from './customer-view-orders/customer-view-orders.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,7 +125,6 @@ import { CustomerViewOrdersComponent } from './customer-view-orders/customer-vie
     ManufactureEditDialogComponent,
     ConsumerShippingComponent,
     PaymentComponent,
-
     ManufacturerViewOrderComponent,
 
     CustomerViewProfileComponent,

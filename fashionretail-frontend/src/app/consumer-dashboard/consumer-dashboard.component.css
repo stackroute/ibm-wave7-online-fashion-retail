@@ -16,6 +16,9 @@
   background: no-repeat center center;
   position: relative;
   min-height: 250px;
+  background-color: white;
+  border-style: outset;
+  box-shadow: 8px 8px 15px #888888 !important;
 }
 .mat-card-image {
   max-height: 300px;

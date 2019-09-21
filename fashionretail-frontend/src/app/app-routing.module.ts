@@ -54,7 +54,7 @@ const routes: Routes = [
 { path: 'manufacturervieworders', component: ManufacturerViewOrderComponent },
   // {path:'edit/designerviewprofile',component:DesignerviewprofileComponent},
   {path:'designervieworders',component:DesignerviewordersComponent},
-  
+
   {  path: 'materials' , component: AddmaterialPageComponent},
     { path: 'consumer' , component: ConsumerDashboardComponent
   },

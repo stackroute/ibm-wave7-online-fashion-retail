@@ -71,5 +71,4 @@ export class ManufactureService {
         //   catchError(this.handleError('deleteHero'))
         // );
     }
-
 }

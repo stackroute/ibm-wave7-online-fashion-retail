@@ -1,6 +1,8 @@
 
 <app-header></app-header>
 <!-- <button mat-raised-button (click)="logout()" color="primary">LogOut</button> -->
+
+<div class="bg">
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>Login</mat-card-title>
@@ -15,9 +17,7 @@
               </mat-form-field>
             </td>
           </tr>
-          <tr>
-         
-          </tr>
+
           <tr>
           <td><mat-form-field class="example-full-width">
             <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
@@ -27,17 +27,19 @@
 </table>
       </form>
     </mat-card-content>
-    <p> For creating New Account <a routerLink="/sign-up">Sign-Up</a></p>
+
     <mat-card-actions>
       <button mat-raised-button (click)="loginUser()" color="primary">Login</button>
     </mat-card-actions>
+    <p class="para"> For creating New Account <a routerLink="/sign-up">Sign-Up</a></p>
 
     <!-- <mat-card-actions>
       <button mat-raised-button color="primary">Sign up</button>
     </mat-card-actions> -->
 
-    <mat-card-actions>
+    <mat-card-actions id="click">
       <p>Forgot password?</p>
-      <button mat-raised-button [routerLink]="['/forgotpassword']" >Click Here</button>
+      <button mat-raised-button [routerLink]="['/forgotpassword']" color="primary">Click Here</button>
     </mat-card-actions>
   </mat-card>
+  </div>

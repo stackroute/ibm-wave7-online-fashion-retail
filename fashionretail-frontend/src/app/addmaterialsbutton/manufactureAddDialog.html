@@ -1,25 +1,25 @@
 <mat-card class="example-card">
     <mat-card-header>
- <mat-card-title>Add Materials</mat-card-title>
+ <mat-card-title>Add Base Price</mat-card-title>
     </mat-card-header>
     <mat-card-content>
       <div class="example-container" >
 
-          
-        
+
+
               <mat-form-field>
                 <input matInput type="text" placeholder="enter name" [(ngModel)]="data.name">
               </mat-form-field>
-           
-        
+
+
         <mat-form-field>
-          <input type="text" matInput placeholder="Enter price" [(ngModel)]="data.price" >
+          <input type="number" matInput placeholder="Enter price"  [(ngModel)]="data.price" >
         </mat-form-field>
       </div>
     </mat-card-content>
     <mat-card-actions>
       <button mat-raised-button color="primary" [mat-dialog-close]="data" cdkFocusInitial>Save</button>
-      
+
       <button mat-raised-button (click)="onNoClick()" color="primary">Cancel</button>
 
     </mat-card-actions>

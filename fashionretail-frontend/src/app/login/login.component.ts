@@ -14,7 +14,7 @@ import { InterComponentDataService } from '../services/inter-component-data.serv
 export class LoginComponent implements OnInit {
 
   public result;
-  private user = new LoginUser('', '', '');
+  private user = new LoginUser('','','','');
   loginForm: FormGroup;
 
   constructor(private authenticateService: AuthenticateService,

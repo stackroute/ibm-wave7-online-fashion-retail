@@ -98,7 +98,7 @@ public class JwtAuthenticationController {
         logger.info("Entered into getNewPassword in JwtAuthenticationToken");
         System.out.println(userDTO);
         ResponseEntity responseEntity;
-        responseEntity = new ResponseEntity<>(userDetailsService.update(userDTO), HttpStatus.OK);
+        responseEntity = new ResponseEntity<>(userDetailsService.updatePassword(userDTO), HttpStatus.OK);
         return responseEntity;
     }
 }

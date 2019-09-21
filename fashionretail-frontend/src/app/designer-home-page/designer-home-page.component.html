@@ -11,6 +11,8 @@
     <a routerLink="/logout" routerLinkActive="active">
       <button mat-button color="primary">LogOut</button>
     </a>
+    <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">Logout</button></a>
+
   </div>
 </mat-menu>
 
@@ -18,14 +20,14 @@
 <div>
   <mat-toolbar class="header">
     <mat-toolbar-row>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+      <!--<button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
         <mat-icon>menu</mat-icon>
-      </button>
+      </button>-->
       <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
       <span class="title">TrendMode</span>
       <span class="spacer"></span>
 
-      <span>
+           <span>
                        <mat-form-field>
                          <input #searchText matInput placeholder="Search for products">
                        </mat-form-field>
@@ -43,10 +45,10 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-
+</div>
   <mat-tab-group animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex"
-                 (selectedTabChange)="tabChanged($event)">
-    <mat-tab label="UploadDesigns">
+    (selectedTabChange)="tabChanged($event)">
+    <mat-tab label="Upload Designs">
       <div id="container" style="padding-top: 30px">
         <div ng2-carouselamos class="slides-wrapper" [width]="1500" [items]="items" [$prev]="prev" [$next]="next"
              [$item]="item">
@@ -133,7 +135,7 @@
               </p>
               <p>Rating: <b>{{material.supplier.rating}}</b></p>
               <mat-form-field>
-                <input matInput type="text" placeholder="enter quantity in units"
+                <input matInput type="number" placeholder="enter quantity in units"
                                                      [(ngModel)]="material.designerEnterQuantity">
               </mat-form-field>
             </mat-card-content>
@@ -202,9 +204,9 @@
               <p>Rating</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>View</button>
+              <!--<button mat-button>View</button>-->
               <button mat-button (click)="saveManufacture(manufacturer)">select</button>
-              <button mat-raised-button (click)="openDialog()">cancel</button>
+              <button mat-raised-button routerLink="/designer" routerLinkActive="active">cancel</button>
             </mat-card-actions>
           </mat-card>
 

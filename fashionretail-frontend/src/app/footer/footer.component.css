@@ -1,11 +1,12 @@
-
+.f1{
+  padding-left: 200px;
+}
 footer {
-    /* position: fixed; */
    height: fit-content;
     bottom: 0;
     width: 100vw;
     background:#ffc107;
-    color: black;
+    /*color: black;*/
     height: auto;
     overflow: hidden;
     overflow-x:hidden;
@@ -13,16 +14,17 @@ footer {
     padding:20px;
     display: flex;
     flex-wrap: wrap;
-
 }
+
   .spacer {
-    flex: 1 1 auto;
+    flex: 0.2 0.2 auto;
   }
-footer div h6{
-    color: white;
+
+footer div h5{
+    color: black;
 }
 p, a{
-    color: white;
+    color: black;
 }
 img {
     padding-left: 5px;
@@ -33,3 +35,4 @@ img {
 footer > div {
   margin: 20px;
 }
+

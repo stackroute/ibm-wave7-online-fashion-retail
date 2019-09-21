@@ -3,7 +3,7 @@
     <a  routerLinkActive="active"> <button mat-button color="primary" (click)="viewProfile()">View Profile</button><br></a>
     <a routerLink="/manufacturervieworders" routerLinkActive="active"><button mat-button color="primary">View Previous orders</button></a>
     <mat-divider></mat-divider>
-    <button mat-button color="primary"><a routerLink = "/logout" routerLinkActive="active" >LogOut</a></button>
+    <button mat-button color="primary"><a routerLink = "/logout" routerLinkActive="active" >Logout</a></button>
   </div>
 </mat-menu>
 
@@ -38,12 +38,12 @@
     <mat-card class="tp-card" *ngIf ="order.orderStatus === 'accepted' || order.orderStatus === 'rejected' ">
       <mat-card-header>
         <div mat-card-avatar class="tp-header-image"></div>
-        <mat-card-title><h4>Order ID: {{order.id}}</h4></mat-card-title>
-        <mat-card-subtitle><h3>Designer Name:{{order.designerName}}</h3></mat-card-subtitle>
+        <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
+        <mat-card-title><h5>Designer Name: </h5>{{order.designerName}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <h3>Quantity of Design: </h3>{{order.quantity}}
-        <h3>Order Status:</h3>{{order.orderStatus}}
+        <h5>Quantity of Design: </h5>{{order.quantity}}
+        <h5>Order Status:</h5>{{order.orderStatus}}
       </mat-card-content>
     </mat-card>
   </div>
