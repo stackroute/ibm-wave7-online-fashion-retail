@@ -179,6 +179,7 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   submitOrder() {
+    this.uploadDesigns.design_img = this.uploadDesigns.design_img.replace(/^.*\\/, "");
     console.log('designs: ', this.uploadDesigns);
     console.log('manufacturer: ', this.savaManufacture);
     console.log('material: ', this.supplierMaterialList);

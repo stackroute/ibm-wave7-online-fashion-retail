@@ -108,7 +108,8 @@
       </div>
 
 
-        <div *ngFor="let designs of orderlist" class="flex-container">
+      <div class="flex-container">
+        <div *ngFor="let designs of orderlist">
         <mat-card class="example-card" *ngIf="designs.designOrder.orderStatus.indexOf('manufacturer_completed')!== -1
         && designs.designOrder.orderStatus.indexOf('supplier_completed')!== -1">
           <mat-card-header>
@@ -132,6 +133,7 @@
           </mat-card-actions>
         </mat-card>
         </div>
+      </div>
 
     </mat-tab>
 

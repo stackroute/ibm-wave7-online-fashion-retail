@@ -70,7 +70,6 @@ button {
   box-sizing: border-box;
   padding: 20px;
   margin: 20px;
-  display: inline;
   background-size: contain;
   background: no-repeat center center;
   position: relative;
