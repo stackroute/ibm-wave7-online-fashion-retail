@@ -38,6 +38,7 @@
 		<module>workflow-service</module>
 		<module>reports-service</module>
 		<module>designer-service</module>
+		<module>recommendation-service</module>
 	</modules>
 
 	<dependencies>

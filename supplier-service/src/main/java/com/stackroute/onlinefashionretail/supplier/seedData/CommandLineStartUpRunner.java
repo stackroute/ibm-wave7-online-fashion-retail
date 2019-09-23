@@ -39,12 +39,12 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         /* *Pre-fill the database whenever application starts*/
-        Material material1 = new Material("1","Clothing","Linen","imageLinen");
-        Material material2 = new Material("2","Clothing","Cotton","imageCotton");
-        Material material3 = new Material("3","Footwear","Tan Leather","imageTanLeather");
-        Material material4 = new Material("4","Footwear","Black Laces","imageBlackLaces");
-        Material material5 = new Material("5","Jewellery","Steel 5mm rings","imageSteelRings");
-        Material material6 = new Material("6","Jewellery","Decorative Feathers","imageDecorativeFeathers");
+        Material material1 = new Material("1","Clothing","Linen","imageLinen.jpeg");
+        Material material2 = new Material("2","Clothing","Cotton","imageCotton.jpeg");
+        Material material3 = new Material("3","Footwear","Tan Leather","imageTanLeather.jpeg");
+        Material material4 = new Material("4","Footwear","Black Laces","imageBlackLaces.jpeg");
+        Material material5 = new Material("5","Jewellery","Steel 5mm rings","imageSteelRings.jpeg");
+        Material material6 = new Material("6","Jewellery","Decorative Feathers","imageDecorativeFeathers.jpeg");
 
         SupplierOrder supplierOrder1 = new SupplierOrder("1","Ritu Mehta",material1,45.0,"in-progress","");
         SupplierOrder supplierOrder2 = new SupplierOrder("2","Ritu Mehta",material2,235.0,"in-progress","");

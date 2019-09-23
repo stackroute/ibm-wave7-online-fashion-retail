@@ -79,7 +79,8 @@
         <mat-card-title><h5>Designer Name: </h5>{{order.designerName}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <h5>Quantity of Design: </h5>{{order.quantity}}
+        <img style="height: 250px" mat-card-image src="assets/{{order.designImage}}" alt="Image of the design">
+        <h5>Quantity of Design: </h5>{{order.quantityOfDesign}}
         <h5>Order Status:</h5>{{order.orderStatus}}
       </mat-card-content>
     </mat-card>

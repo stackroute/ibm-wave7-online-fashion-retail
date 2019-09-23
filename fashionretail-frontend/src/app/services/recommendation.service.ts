@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Product } from '../models/product';
 import { Manufacturer } from '../models/Manufacturer';
 import { Supplier } from '../models/Supplier';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,16 @@ export class RecommendationService {
   constructor(private httpClient: HttpClient) {
   }
   public getProducts(id:string): Observable<Product[]> {
-    const url="http://localhost:9099/product"
+    const url=environment.recommendationUrl+"/product";
     return this.httpClient.get<Product[]>(url+id, {headers: this.headers});
 
   }
   public getManufacturers():Observable<Manufacturer[]>{
-    const url= "http://localhost:9099/getmanufacturers"
+    const url= environment.recommendationUrl+"/getmanufacturers";
     return this.httpClient.get<Manufacturer[]>(url,{headers: this.headers});
   }
   public getSuppliers():Observable<Supplier[]>{
-    const url= "http://localhost:9099/getsuppliers"
+    const url= environment.recommendationUrl+"/getsuppliers";
     return this.httpClient.get<Supplier[]>(url,{headers: this.headers});
   }
 }

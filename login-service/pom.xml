@@ -10,6 +10,7 @@
 	</parent>
 	<artifactId>login-service</artifactId>
 	<name>login-service</name>
+	<version>1.0.0</version>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

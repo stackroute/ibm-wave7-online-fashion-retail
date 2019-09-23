@@ -18,7 +18,7 @@ export const environment = {
 supplierUrl: 'http://13.126.224.142:8280/supplier-service/api/v1',
 manufacturerUrl: 'http://13.126.224.142:8280/manufacturer-service/api/v1',
 consumerUrl: 'http://13.126.224.142:8280/consumer-service/api/v1',
-recommendationUrl: 'http://13.126.224.142:8280/recommendation-service/api/v1',
+recommendationUrl: 'http://13.126.224.142:8280/recommendation-service',
 userUrl: 'http://13.126.224.142:8280/user-service/api/v1',
 loginUrl: 'http://13.126.224.142:8280/login-service/api/v1',
 workflowUrl: 'http://13.126.224.142:8280/workflow-service/api/v1',

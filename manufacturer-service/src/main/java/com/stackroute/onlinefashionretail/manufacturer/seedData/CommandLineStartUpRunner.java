@@ -52,10 +52,10 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
                 9847132560L,
                 new ArrayList<>());
 
-        ManufacturerOrder manufacturerOrder1 = new ManufacturerOrder("1","","Sabyasachi","imageLehenga",50,"in-progress");
-        ManufacturerOrder manufacturerOrder2 = new ManufacturerOrder("2","","Sabyasachi","imageShirt",200,"in-progress");
-        ManufacturerOrder manufacturerOrder3 = new ManufacturerOrder("3","","Manish Malhotra","imageEarrings",100,"in-progress");
-        ManufacturerOrder manufacturerOrder4 = new ManufacturerOrder("4","","Manish Malhotra","imageDress",50,"in-progress");
+        ManufacturerOrder manufacturerOrder1 = new ManufacturerOrder("1","","Sabyasachi","imageLehenga.jpeg",50,"in-progress");
+        ManufacturerOrder manufacturerOrder2 = new ManufacturerOrder("2","","Sabyasachi","imageShirt.jpeg",200,"in-progress");
+        ManufacturerOrder manufacturerOrder3 = new ManufacturerOrder("3","","Manish Malhotra","imageEarrings.jpeg",100,"in-progress");
+        ManufacturerOrder manufacturerOrder4 = new ManufacturerOrder("4","","Manish Malhotra","imageDress.jpeg",50,"in-progress");
 
 
         Manufacturer manufacturer1 = new Manufacturer("1","RJ Enterprise","rj@gmail.com","bangalore","tailor",4.5f,9836199304L,List.of(manufacturerOrder1,manufacturerOrder3));

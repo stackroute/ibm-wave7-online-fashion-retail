@@ -55,7 +55,7 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
 
         Product product1 = new Product("1",
                 "Embroidered Lehenga",
-                "Clothing",designer1,4565,23,3.5f,"imageLehenga.jpg");
+                "Clothing",designer1,4565,23,3.5f,"imageLehenga.jpeg");
 
         Product product2 = new Product("2",
                 "Pin-Striped Shirt",
@@ -67,7 +67,7 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
 
         Product product4 = new Product("4",
                 "Metallic Detail Earrings",
-                "Jewellery",designer1,4565,23,3.5f,"imageEarrings.jpg");
+                "Jewellery",designer1,4565,23,3.5f,"imageEarrings.jpeg");
 
         Address address = new Address("1",
                 "Shruti",

@@ -107,6 +107,11 @@ button {
   box-shadow: 8px 8px 15px #888888 !important;
 }
 
+.cardList{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .card-picture {
   width: 23%;
   margin-bottom: 2%;

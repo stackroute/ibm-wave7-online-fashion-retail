@@ -45,7 +45,7 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
 
         Design design1 = new Design("1",
                 "Embroidered Lehenga",
-                "imageLehenga",
+                "imageLehenga.jpeg",
                 0,
                 0,
                 0f,
@@ -54,7 +54,7 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
 
         Design design2 = new Design("4",
                 "Metallic Detail Earrings",
-                "imageEarrings",
+                "imageEarrings.jpeg",
                 0,
                 0,
                 0f,

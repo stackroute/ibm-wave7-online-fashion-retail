@@ -50,6 +50,22 @@ services:
     healthcheck:
       test: "exit 0"
 
+  neo4j:
+    image: neo4j:latest
+    restart: always
+    network_mode: "host"
+    hostname: localhost
+    environment:
+      - NEO4J_AUTH=neo4j/123456
+    ports:
+      - 7474:7474
+      - 8191:8191
+    volumes:
+      - /DB/neo4j/data:/data
+      - /DB/neo4j/import:/import
+    healthcheck:
+      test: "exit 0"
+
   mysql:
     image: mysql:latest
     restart: always
@@ -81,9 +97,12 @@ services:
     healthcheck:
       test: "exit 0"
 
-   recomendation-service :
+  recomendation-service :
     build: recommendation-service/
     depends_on:
+      - neo4j
+      - eureka-server
+      - config-server
       - consumer-service
       - designer-service
       - supplier-service
