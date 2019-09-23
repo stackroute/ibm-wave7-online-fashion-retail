@@ -14,5 +14,10 @@ export class ViewOrdersComponent implements OnInit {
   ngOnInit() {
     this._orderService.getOrders().subscribe(data => {this.receivedOrders = data; console.log('orders: '); console.log(this.receivedOrders); });
   }
+  complete(order: SupplierOrder) {
+    console.log('order', order);
+    order.orderStatus = 'completed';
+    this._orderService.updateOrder(order).subscribe();
+  }
 
 }

@@ -122,6 +122,8 @@ services:
     build: manufacturer-service/
     depends_on:
       - mongo
+      - neo4j
+      - recomendation-service
       - user-service
       - eureka-server
       - config-server
@@ -140,6 +142,8 @@ services:
     build: supplier-service/
     depends_on:
       - mongo
+      - neo4j
+      - recomendation-service
       - user-service
       - eureka-server
       - config-server
@@ -178,6 +182,8 @@ services:
     build: consumer-service/
     depends_on:
       - mongo
+      - neo4j
+      - recomendation-service
       - user-service
       - eureka-server
       - config-server

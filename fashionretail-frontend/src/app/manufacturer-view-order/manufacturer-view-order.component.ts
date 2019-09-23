@@ -23,6 +23,10 @@ export class ManufacturerViewOrderComponent implements OnInit {
     console.log("loginid: ",loginId);
     this.router.navigate(['/manufactureviewprofile'],{queryParams : {loginId}});
   }
-
+  complete(order: ManufacturerOrder) {
+    console.log('order', order);
+    order.orderStatus = 'completed';
+    this._manufactureService.updateOrder(order).subscribe();
+  }
 
 }

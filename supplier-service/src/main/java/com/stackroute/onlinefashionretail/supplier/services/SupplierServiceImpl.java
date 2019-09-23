@@ -156,6 +156,17 @@ public class SupplierServiceImpl implements SupplierService {
             kafkaTemplate.send(TOPIC,supplierOrder.getTagId()+"-supplier_accepted");
             logger.info("sending supplier_accepted message on TOPIC: "+TOPIC);
         }
+        boolean allCompleted = true;
+        for (SupplierOrder sup : supplier.getSupplierOrders()) {
+            if (sup.getTagId().equals(supplierOrder.getTagId()) && !sup.getOrderStatus().equals("completed")){
+                allCompleted = false;
+            }
+        }
+        if (allCompleted && !(inProgress || rejected)){
+            //send Kafka message to update order status to rejected
+            kafkaTemplate.send(TOPIC,supplierOrder.getTagId()+"-supplier_completed");
+            logger.info("sending supplier_completed message on TOPIC: "+TOPIC);
+        }
         return supplierOrder1;
     }
 

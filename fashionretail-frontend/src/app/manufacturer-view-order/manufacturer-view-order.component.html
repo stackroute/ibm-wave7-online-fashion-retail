@@ -83,6 +83,9 @@
         <h5>Quantity of Design: </h5>{{order.quantityOfDesign}}
         <h5>Order Status:</h5>{{order.orderStatus}}
       </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="complete(order)">Completed</button>
+      </mat-card-actions>
     </mat-card>
   </div>
 </div>

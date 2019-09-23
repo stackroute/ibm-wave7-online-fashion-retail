@@ -87,6 +87,7 @@
               <h5>The material required is: </h5>{{order.material.name}}
                <h5>Quantity: </h5>{{order.quantity}}
                <h5>Order Status:</h5>{{order.orderStatus}}
+             <button mat-raised-button color="primary" (click)="complete(order)">Complete</button>
            </mat-card-content>
         </mat-card>
     </div>

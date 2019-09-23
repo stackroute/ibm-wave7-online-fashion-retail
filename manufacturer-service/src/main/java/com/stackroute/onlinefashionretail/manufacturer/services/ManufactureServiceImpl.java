@@ -145,6 +145,17 @@ public class ManufactureServiceImpl implements ManufactureService {
             kafkaTemplate.send(TOPIC,manufacturerOrder.getTagId()+"-manufacturer_accepted");
             logger.info("sending manufacturer_accepted message on TOPIC: "+TOPIC);
         }
+        boolean allCompleted = true;
+        for (ManufacturerOrder sup : manufacturer.getManufacturerOrders()) {
+            if (sup.getTagId().equals(manufacturerOrder.getTagId()) && !sup.getOrderStatus().equals("completed")){
+                allCompleted = false;
+            }
+        }
+        if (allCompleted && !(inProgress || rejected)){
+            //send Kafka message to update order status to rejected
+            kafkaTemplate.send(TOPIC,manufacturerOrder.getTagId()+"-manufacturer_completed");
+            logger.info("sending manufacturer_completed message on TOPIC: "+TOPIC);
+        }
         return manufacturerOrder1;
     }
 
