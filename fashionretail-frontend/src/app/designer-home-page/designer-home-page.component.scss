@@ -1,11 +1,16 @@
+.dummy{
+  visibility: hidden;
+}
+.visible-header{
+  position: fixed;
+  top:0;
+  z-index: 1030;
+  left: 0;
+  right: 0;
+}
 mat-toolbar{
     width:100%;
     height: min-content;
-    position: fixed;
-    top:0;
-    z-index: 1030;
-    left: 0;
-    right: 0;
     background-color: black;
     padding: 10px;
     padding-left: 5px;
@@ -46,34 +51,23 @@ mat-toolbar{
 
   #container {
     width: 100%;
+    height: auto;
    //  height: 600px;
     /* margin: auto; */
-    padding-top: 80px;
     background: #fff;
  }
- /* .items {
-    width: 500px;
-    height: 600px;
-    background: #ECECEC;
- } */
  .slides-wrapper {
     width: 100%;
  }
  img {
-    width: 1500px;
-    height: 490px;
-   //  padding-top: 10px;
+   width: 100%;
+   height: auto;
  }
  #left,
  #right {
     /* margin: 10px; */
     height: 30px;
     width: 30px;
- }
- .tab{
-    padding-top: 7%;
-   //  background: url('../../assets/img/back.jpg') no-repeat center center fixed;
-   //  height: 852px;
  }
  .tab button{
     background-color: blue;

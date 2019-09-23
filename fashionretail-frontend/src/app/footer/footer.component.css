@@ -1,19 +1,14 @@
-.f1{
-  padding-left: 200px;
-}
-footer {
+.footer {
    height: fit-content;
     bottom: 0;
-    width: 100vw;
     background:#ffc107;
-    /*color: black;*/
-    height: auto;
+    color: black;
     overflow: hidden;
-    overflow-x:hidden;
-    overflow-y:hidden;
     padding:20px;
     display: flex;
     flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
 }
 
   .spacer {
