@@ -9,15 +9,19 @@ font-family: arial;
 h6{
 padding-top:10px;
 }
-
+.dummy{
+  visibility: hidden;
+}
+.visible-header{
+  position: fixed;
+  top:0;
+  z-index: 1030;
+  left: 0;
+  right: 0;
+}
 mat-toolbar{
     width:100%;
     height: min-content;
-    position: fixed;
-    top:0;
-    z-index: 1030;
-    left: 0;
-    right: 0;
     background-color: black;
     padding: 10px;
     padding-left: 5px;

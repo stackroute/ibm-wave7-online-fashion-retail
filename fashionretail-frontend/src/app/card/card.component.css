@@ -27,7 +27,7 @@
   margin-left: auto;
   margin-right: auto;
   height: fit-content;
-  padding-top: 4cm;
+  padding-top: 20px;
   width: fit-content;
 
    /*display: flex;
@@ -55,14 +55,21 @@ img {
     height: 40px;
     width: 40px;
 }
+
+.dummy{
+  visibility: hidden;
+}
+.visible-header{
+  position: fixed;
+  top:0;
+  z-index: 1030;
+  left: 0;
+  right: 0;
+}
+
 mat-toolbar{
     width:100%;
     height: min-content;
-    position: fixed;
-    top:0;
-    z-index: 1030;
-    left: 0;
-    right: 0;
     background-color: black;
     padding: 10px;
     padding-left: 5px;

@@ -17,7 +17,6 @@
   position: relative;
   min-height: 250px;
   background-color: white;
-  border-style: outset;
   box-shadow: 8px 8px 15px #888888 !important;
 }
 .mat-card-image {
@@ -35,7 +34,7 @@
   flex-wrap: wrap;
   justify-content: space-around;
   margin-bottom: 100px;
-  margin-top: 120px;
+  margin-top: 20px;
 }
 .cart-button{
   position: fixed;
@@ -46,19 +45,25 @@
   margin-right: 20px;
   font-size: 20px;
   padding: 10px;
+  z-index: 1;
 }
 /*
 mat-form-field{
   width: stretch;
 }*/
+.dummy{
+  visibility: hidden;
+}
+.visible-header{
+  position: fixed;
+  top:0;
+  z-index: 1030;
+  left: 0;
+  right: 0;
+}
 mat-toolbar{
     width:100%;
     height: min-content;
-    position: fixed;
-    top:0;
-    z-index: 1030;
-    left: 0;
-    right: 0;
     background-color: black;
     padding: 10px;
     padding-left: 5px;

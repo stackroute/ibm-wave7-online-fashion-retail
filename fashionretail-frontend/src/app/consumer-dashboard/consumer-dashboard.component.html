@@ -1,4 +1,4 @@
-<mat-menu #dd="matMenu" [overlapTrigger]="false">
+<div class="visible-header"><mat-menu #dd="matMenu" [overlapTrigger]="false">
   <div class="dropdown"><br>
     <button mat-button color="primary"><a  routerLinkActive="active" (click)="viewProfile()">View Profile</a></button><br>
 
@@ -8,16 +8,16 @@
   </div>
 </mat-menu>
 
-<div>
-  <mat-toolbar class="header">
-    <mat-toolbar-row>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
-      <span class="title">TrendMode</span>
-      <span class="spacer"></span>
-                   <span>
+  <div>
+    <mat-toolbar class="header">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
+        <span class="title">TrendMode</span>
+        <span class="spacer"></span>
+        <span>
                        <mat-form-field>
                          <input #searchText matInput placeholder="Search for products">
                        </mat-form-field>
@@ -29,37 +29,75 @@
         <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
           Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 
-    </mat-toolbar-row>
-  </mat-toolbar>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+</div>
+<div class="dummy">
+  <mat-menu #dd="matMenu" [overlapTrigger]="false">
+    <div class="dropdown"><br>
+      <button mat-button color="primary"><a  routerLinkActive="active" (click)="viewProfile()">View Profile</a></button><br>
+
+      <button mat-button color="primary">View Previous orders</button><br>
+      <mat-divider></mat-divider>
+      <button mat-button color="primary"><a routerLink = "/logout" routerLinkActive="active" >LogOut</a></button>
+    </div>
+  </mat-menu>
+
+  <div>
+    <mat-toolbar class="header">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
+        <span class="title">TrendMode</span>
+        <span class="spacer"></span>
+        <span>
+                       <mat-form-field>
+                         <input #searchText matInput placeholder="Search for products">
+                       </mat-form-field>
+                       <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
+                         <mat-icon>search</mat-icon>
+                       </button></span>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/consumer" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
+        <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
+          Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
 </div>
 
+<div style="position: relative">
 
+  <button mat-raised-button [matBadge]=cart.length.toString() class="cart-button" (click)="openBottomSheet()"
+          color="primary" matBadgeColor="accent">
+    Cart
+    <mat-icon>shopping_cart</mat-icon>
+  </button>
 
-<div class="flex-container" style="padding-top: 100px;">
-  <mat-card class="example-card" *ngFor="let product of products">
-    <mat-card-header>
-      <mat-card-title>{{product.name}}</mat-card-title>
-      <mat-card-subtitle>{{product.designer.name}}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="assets/{{product.image}}" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      &#x20B9; <span class="product-price">{{product.price}}</span>
-      <span class="product-discounted"> &#x20B9; {{product.price - product.price * product.discount / 100}}</span>
-      <div> {{product.discount}} % discount</div>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>
-        <mat-icon id="icon">favorite</mat-icon>
-      </button>
-      <button mat-button (click)="addToCart(product)">
-        <mat-icon id="icon1">shopping_cart</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+  <div class="flex-container">
+    <mat-card class="example-card" *ngFor="let product of products">
+      <mat-card-header>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>{{product.designer.name}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="assets/{{product.image}}.jpeg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        &#x20B9; <span class="product-price">{{product.price}}</span>
+        <span class="product-discounted"> &#x20B9; {{product.price - product.price * product.discount / 100}}</span>
+        <div> {{product.discount}} % discount</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>
+          <mat-icon id="icon">favorite</mat-icon>
+        </button>
+        <button mat-button (click)="addToCart(product)">
+          <mat-icon id="icon1">shopping_cart</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
 </div>
-<button mat-raised-button [matBadge]=cart.length.toString() class="cart-button" (click)="openBottomSheet()"
-        color="primary" matBadgeColor="accent">
-  Cart
-  <mat-icon>shopping_cart</mat-icon>
-</button>
-
