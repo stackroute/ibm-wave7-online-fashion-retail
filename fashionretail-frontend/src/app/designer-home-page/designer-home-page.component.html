@@ -108,8 +108,7 @@
       </div>
 
 
-      <div class="flex-container">
-        <div *ngFor="let designs of orderlist">
+        <div *ngFor="let designs of orderlist" class="flex-container">
         <mat-card class="example-card" *ngIf="designs.designOrder.orderStatus.indexOf('manufacturer_completed')!== -1
         && designs.designOrder.orderStatus.indexOf('supplier_completed')!== -1">
           <mat-card-header>
@@ -121,7 +120,7 @@
           <mat-card-content><br/>
             <img style="height: 250px" mat-card-image src="assets/{{designs.designOrder.design_img}}" alt="Image of the design">
             <p>
-              Order Status: {{designs.designOrder.orderStatus}}
+              Order Status: Completed
             </p>
             <p>
               Quantity: {{designs.designOrder.quantityOfDesign}}
@@ -133,7 +132,6 @@
           </mat-card-actions>
         </mat-card>
         </div>
-      </div>
 
     </mat-tab>
 
@@ -215,7 +213,6 @@
                </div>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button>View</button>
               <button mat-button (click)="saveManufacture(manufacturer)">select</button>
               <button mat-raised-button (click)="openDialog()">cancel</button>
             </mat-card-actions>
@@ -238,7 +235,7 @@
               <p>
                 Manufacturer Name:{{manufacturer.name}}
               </p>
-              <<p>
+              <p>
               Rating: {{manufacturer.rating}}
             </p>
               <p>

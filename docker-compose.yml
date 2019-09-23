@@ -103,11 +103,6 @@ services:
       - neo4j
       - eureka-server
       - config-server
-      - consumer-service
-      - designer-service
-      - supplier-service
-      - manufacturer-service
-      - user-service
     restart: always
     network_mode: host
     container_name: recommendation-service
