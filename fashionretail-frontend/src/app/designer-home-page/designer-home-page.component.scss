@@ -1,105 +1,127 @@
-.dummy{
+.dummy {
   visibility: hidden;
 }
-.visible-header{
+
+.visible-header {
   position: fixed;
-  top:0;
+  top: 0;
   z-index: 1030;
   left: 0;
   right: 0;
 }
-mat-toolbar{
-    width:100%;
-    height: min-content;
-    background-color: black;
-    padding: 10px;
-    padding-left: 5px;
 
-  }
-  mat-toolbar-row {
-      height: min-content;
-      display: flex;
-      flex-wrap: wrap;
-  }
+mat-toolbar {
+  width: 100%;
+  height: min-content;
+  background-color: black;
+  padding: 10px;
+  padding-left: 5px;
 
-  .header{
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    background-color: black;
-    color:white;
-  }
-   .d-inline-block {
-   width: 60px;
-   height: 60px;
 }
-.title{
-        font-size: 4vh;
-        padding-left: 4px;
-        color: #F4F6F7;
-                padding-top: 8px;
-                font-family: 'Open Sans', sans-serif;
+
+mat-toolbar-row {
+  height: min-content;
+  display: flex;
+  flex-wrap: wrap;
 }
-  .spacer {
-    flex: 1 1 auto;
-  }
-  #menu{
-      color: white;
-  }
-  button{
-      color: white;
-  }
 
-  #container {
-    width: 100%;
-    height: auto;
-   //  height: 600px;
-    /* margin: auto; */
-    background: #fff;
- }
- .slides-wrapper {
-    width: 100%;
- }
- img {
-   width: 100%;
-   height: auto;
- }
- #left,
- #right {
-    /* margin: 10px; */
-    height: 30px;
-    width: 30px;
- }
- .tab button{
-    background-color: blue;
- }
- .uploadDesign{
-    padding-left: 19%;
- }
- .cardList {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   margin-left: 10px;
-   margin-right: auto;
-   justify-content: flex-start;
-   height: 10%;
-   padding-top: 4%;
+.header {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
 
- }
- .card-picture {
-     width: 23%;
-     margin-bottom: 2%;
-     margin-left: auto;
-     margin-right: auto;
-     background-color: white;
-     box-shadow: 8px 8px 15px #888888 !important;
-      border-style: outset;
-   }
-   .image{
-     width: 250px;
-     margin-left: 50px;
-   }
-.mat-tab-label
-{
-font-size:medium;
+.d-inline-block {
+  width: 60px;
+  height: 60px;
+}
+
+.title {
+  font-size: 4vh;
+  padding-left: 4px;
+  color: #F4F6F7;
+  padding-top: 8px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#menu {
+  color: white;
+}
+
+button {
+  color: white;
+}
+
+#container {
+  width: 100%;
+  height: auto;
+  //  height: 600px;
+  /* margin: auto; */
+  background: #fff;
+}
+
+.slides-wrapper {
+  width: 100%;
+}
+
+
+#left,
+#right {
+  /* margin: 10px; */
+  height: 30px;
+  width: 30px;
+}
+
+.tab button {
+  background-color: blue;
+}
+
+.uploadDesign {
+  padding-left: 19%;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 100px;
+  margin-top: 20px;
+}
+
+.example-card {
+  width: 300px;
+  box-sizing: border-box;
+  padding: 20px;
+  margin: 20px;
+  display: inline;
+  background-size: contain;
+  background: no-repeat center center;
+  position: relative;
+  min-height: 250px;
+  background-color: white;
+  box-shadow: 8px 8px 15px #888888 !important;
+}
+
+.card-picture {
+  width: 23%;
+  margin-bottom: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  box-shadow: 8px 8px 15px #888888 !important;
+  border-style: outset;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.mat-tab-label {
+  font-size: medium;
 }

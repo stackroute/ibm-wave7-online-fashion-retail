@@ -81,23 +81,23 @@ services:
     healthcheck:
       test: "exit 0"
 
-  #  recomendation-service :
-  #   build: neo4j/
-  #   depends_on:
-  #     - consumer-service
-  #     - designer-service
-  #     - supplier-service
-  #     - manufacturer-service
-  #     - user-service
-  #   restart: always
-  #   network_mode: host
-  #   container_name: neo4j
-  #   image: neo4j
-  #   hostname: localhost
-  #   ports:
-  #     - 8191:8191
-  #   healthcheck:
-  #     test: "exit 0"
+   recomendation-service :
+    build: recommendation-service/
+    depends_on:
+      - consumer-service
+      - designer-service
+      - supplier-service
+      - manufacturer-service
+      - user-service
+    restart: always
+    network_mode: host
+    container_name: recommendation-service
+    image: recommendation-service
+    hostname: localhost
+    ports:
+      - 8191:8191
+    healthcheck:
+      test: "exit 0"
 
   manufacturer-service:
     build: manufacturer-service/

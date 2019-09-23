@@ -1,51 +1,21 @@
-
 <div class="visible-header">
   <mat-menu #dd="matMenu" [overlapTrigger]="false">
-  <div class="dropdown"><br>
-    <a  routerLinkActive="active"> <button mat-button color="primary" (click)="viewProfile()">View Profile</button><br></a>
-    <a routerLink="/manufacturervieworders" routerLinkActive="active"><button mat-button color="primary">View Previous orders</button></a>
-    <mat-divider></mat-divider>
-    <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">Logout</button></a>
-  </div>
-</mat-menu>
-
-<div>
-  <mat-toolbar class="header" >
-    <mat-toolbar-row>
-      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
-      <span class="title">TrendMode</span>
-      <span class="spacer"></span>
-      <span>
-                       <mat-form-field>
-                         <input #searchText matInput placeholder="Search for products">
-                       </mat-form-field>
-                       <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
-                         <mat-icon>search</mat-icon>
-                       </button></span>
-      <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-      <a routerLink="/manufacturer" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
-      <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
-        Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
-
-
-    </mat-toolbar-row>
-  </mat-toolbar>
-</div>
-<div class="dummy">
-  <mat-menu #dd="matMenu" [overlapTrigger]="false">
-  <div class="dropdown"><br>
-    <a  routerLinkActive="active"> <button mat-button color="primary" (click)="viewProfile()">View Profile</button><br></a>
-    <a routerLink="/manufacturervieworders" routerLinkActive="active"><button mat-button color="primary">View Previous orders</button></a>
-    <mat-divider></mat-divider>
-    <a routerLink = "/logout"  routerLinkActive="active"><button mat-button color="primary">Logout</button></a>
-  </div>
+    <div class="dropdown"><br>
+      <a routerLinkActive="active">
+        <button mat-button color="primary" (click)="viewProfile()">View Profile</button>
+        <br></a>
+      <a routerLink="/manufacturervieworders" routerLinkActive="active">
+        <button mat-button color="primary">View Previous orders</button>
+      </a>
+      <mat-divider></mat-divider>
+      <a routerLink="/logout" routerLinkActive="active">
+        <button mat-button color="primary">Logout</button>
+      </a>
+    </div>
   </mat-menu>
 
   <div>
-    <mat-toolbar class="header" >
+    <mat-toolbar class="header">
       <mat-toolbar-row>
         <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
           <mat-icon>menu</mat-icon>
@@ -57,11 +27,14 @@
                        <mat-form-field>
                          <input #searchText matInput placeholder="Search for products">
                        </mat-form-field>
-                       <button mat-icon-button aria-label="icon-button with a search icon" (click)="search(searchText.value)">
+                       <button mat-icon-button aria-label="icon-button with a search icon"
+                               (click)="search(searchText.value)">
                          <mat-icon>search</mat-icon>
                        </button></span>
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
-        <a routerLink="/manufacturer" routerLinkActive="active"><button mat-stroked-button>Home</button></a>
+        <a routerLink="/manufacturer" routerLinkActive="active">
+          <button mat-stroked-button>Home</button>
+        </a>
         <button mat-stroked-button #ddTrigger="matMenuTrigger" [matMenuTriggerFor]="dd">
           Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
 
@@ -70,44 +43,72 @@
     </mat-toolbar>
   </div>
 </div>
+<div class="dummy">
+  <mat-menu #ddd="matMenu" [overlapTrigger]="false">
+    <div class="dropdown"><br>
+      <a routerLinkActive="active">
+        <button mat-button color="primary" (click)="viewProfile()">View Profile</button>
+        <br></a>
+      <a routerLink="/manufacturervieworders" routerLinkActive="active">
+        <button mat-button color="primary">View Previous orders</button>
+      </a>
+      <mat-divider></mat-divider>
+      <a routerLink="/logout" routerLinkActive="active">
+        <button mat-button color="primary">Logout</button>
+      </a>
+    </div>
+  </mat-menu>
+
+  <div>
+    <mat-toolbar class="header">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+          <mat-icon>menu</mat-icon>
+        </button>
+        <img src="assets/logo.png" width="90" height="80" class="d-inline-block align-top" alt="App Logo">
+        <span class="title">TrendMode</span>
+        <span class="spacer"></span>
+        <span>
+                       <mat-form-field>
+                         <input #searchText matInput placeholder="Search for products">
+                       </mat-form-field>
+                       <button mat-icon-button aria-label="icon-button with a search icon"
+                               (click)="search(searchText.value)">
+                         <mat-icon>search</mat-icon>
+                       </button></span>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/manufacturer" routerLinkActive="active">
+          <button mat-stroked-button>Home</button>
+        </a>
+        <button mat-stroked-button #dddTrigger="matMenuTrigger" [matMenuTriggerFor]="ddd">
+          Profile <i _ngcontent-fnv-c19="" class="material-icons icon-image-preview">arrow_drop_down</i></button>
+
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
 </div>
 <div class="bg">
-
-      <app-addmaterialsbutton></app-addmaterialsbutton> <br/>
-
-   <div class="flex">
+<app-addmaterialsbutton></app-addmaterialsbutton>
+  <div class="flex">
     <div *ngFor="let order of receivedOrders">
-      <mat-card class="tp-card" *ngIf ="order.orderStatus === 'in-progress'">
-        <mat-card-header>
-           <div mat-card-avatar class="tp-header-image"></div>
-           <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
-           <mat-card-subtitle><h5>Designer Name:</h5>{{order.customer_name}}</mat-card-subtitle>
-         </mat-card-header>
-           <mat-card-content>
-<!--              <h5>The material required is: </h5>{{order.material}}-->
-               <h5>Quantity: </h5>{{order.quantity}}
-           </mat-card-content>
-           <mat-card-actions>
-              <button mat-raised-button color="primary" (click)="accept(order)">Accept</button>
-              <button mat-raised-button color="primary" (click)="reject(order)">Reject</button>
-           </mat-card-actions>
+      <mat-card class="tp-card" *ngIf="order.orderStatus === 'in-progress'">
+        <div>
+          <mat-card-header>
+            <div mat-card-avatar class="tp-header-image"></div>
+            <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
+            <mat-card-title><h5>Designer Name:</h5>{{order.designerName}}</mat-card-title>
+            <!--  <mat-card-title><h5>Designer Name:</h5>{{order.designer}}</mat-card-title>-->
+          </mat-card-header>
+          <mat-card-content>
+            <h5>Quantity: </h5>{{order.quantityOfDesign}}
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="accept(order)">Accept</button>
+            <button mat-raised-button color="primary" (click)="reject(order)">Reject</button>
+          </mat-card-actions>
+        </div>
       </mat-card>
-     </div>
-   </div>
+    </div>
+  </div>
 </div>
-     <!-- <mat-card class="tp-card">
-      <mat-card-header>
-         <div mat-card-avatar class="tp-header-image"></div>
-         <mat-card-title><h4>Order ID: 123</h4></mat-card-title>
-         <mat-card-subtitle><h3>Designer Name: Designer</h3></mat-card-subtitle>
-       </mat-card-header>
-         <mat-card-content>
-            <h3>The material required is: Cotton </h3>
-             <h3>Quantity: 4 </h3>
-         </mat-card-content>
-         <mat-card-actions>
-            <button mat-button>Accept</button>
-            <button mat-button>Reject</button>
-         </mat-card-actions>
-   </mat-card>
-   -->

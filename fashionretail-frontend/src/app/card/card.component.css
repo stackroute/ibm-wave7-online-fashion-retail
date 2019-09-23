@@ -112,7 +112,6 @@ mat-toolbar{
   }
   .bg{
      background-image: url("/assets/clothes.jpg");
-        height: 100%;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
