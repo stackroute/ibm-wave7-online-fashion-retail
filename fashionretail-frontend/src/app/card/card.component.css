@@ -118,3 +118,19 @@ mat-toolbar{
         width:100%;
 
   }
+table {
+  margin: auto;
+}
+
+table th{
+  width: 338px;
+  height: 100px;
+  text-align: center;
+  background-color: white;
+}
+
+table tr{
+  height: 50px;
+  background-color: white;
+  text-align: center;
+}

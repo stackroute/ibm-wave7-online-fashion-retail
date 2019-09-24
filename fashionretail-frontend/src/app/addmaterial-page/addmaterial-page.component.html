@@ -86,6 +86,10 @@
         <input type="number" matInput placeholder="Enter the quantity" #quantity>
       </mat-form-field>
 
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter the unit" #unit>
+      </mat-form-field>
+
       <mat-form-field>
         <mat-label>Select the Category</mat-label>
         <select matNativeControl id="mySelectId" #category>
@@ -98,26 +102,8 @@
 
       <div class="example-button-row">
         <button mat-raised-button color="primary"
-          (click)="submit(name.value,price.value,quantity.value,category.value)">Submit</button>
+          (click)="submit(name.value,price.value,quantity.value,category.value,unit.value)">Submit</button>
       </div>
     </form>
-  </mat-card>
-</div>
-<div class="cardList">
-  <!-- <mat-card class="card-picture" *ngFor="let designs of orderlist"> -->
-  <mat-card class="card-picture" *ngFor="let map of mapping">
-    <mat-card-header>
-      <mat-card-title>
-        {{map.material.name}}
-      </mat-card-title>
-    </mat-card-header>
-    <mat-divider></mat-divider>
-    <mat-card-content><br/>
-      <p>
-        Category: {{map.material.category}}
-      </p>
-
-      <p>Rating</p>
-    </mat-card-content>
   </mat-card>
 </div>

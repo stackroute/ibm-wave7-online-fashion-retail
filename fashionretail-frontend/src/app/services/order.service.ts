@@ -10,20 +10,20 @@ import {environment} from '../../environments/environment';
 export class OrderService {
   headers = new HttpHeaders({'Access-Control-Allow-Origin': '*'});
   public data: string;
-  private _url: string = environment.supplierUrl + '/order/1';
+  private _url: string = environment.supplierUrl + '/order/';
 
   constructor(private http: HttpClient) {
   }
 
-  getOrders(): Observable<SupplierOrder[]> {
-    return this.http.get<SupplierOrder[]>(this._url);
+  getOrders(id: string): Observable<SupplierOrder[]> {
+    return this.http.get<SupplierOrder[]>(this._url+id);
   }
 
   submit(mapping) {
     return this.http.post(environment.workflowUrl + '/add-material', mapping);
   }
 
-  updateOrder(order: SupplierOrder) {
-    return this.http.put(this._url, order, {headers: this.headers});
+  updateOrder(order: SupplierOrder,id: string) {
+    return this.http.put(this._url+id, order, {headers: this.headers});
   }
 }

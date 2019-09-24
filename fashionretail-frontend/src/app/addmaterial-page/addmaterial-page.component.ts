@@ -16,22 +16,20 @@ import {Observable} from "rxjs";
   styleUrls: ['./addmaterial-page.component.css']
 })
 export class AddmaterialPageComponent implements OnInit {
-  mapping: Mapping[];
   name;
   supplier:Supplier;
   constructor(private _orderService: OrderService, private activatedRoute: ActivatedRoute, private router: Router,private intercomponentService: InterComponentDataService,private userService: UserService,private supplierService : SupplierService) { }
 
   ngOnInit() {
-   this.supplierService.getAllMaterials(this.userService.loginCredentials.email).subscribe(data => this.mapping = data);
+    this.supplierService.getSupplierById(this.userService.loginCredentials.userId).subscribe(data => this.supplier = data);
   }
 
 
-  submit(name, price, quantity, category) {
-    this.intercomponentService.currentSupplier.subscribe(data => (this.supplier =data ))
+  submit(name, price, quantity, category,unit) {
     const num1 = Math.floor(Math.random() * (999999 - 100000)) + 100000;
-       const num2 = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    const num2 = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     const material = new Material(num1.toString(), category, name, '');
-    const mapping = new Mapping(num2.toString(), quantity, price, material, this.supplier, '');
+    const mapping = new Mapping(num2.toString(), quantity, price, material, this.supplier, unit);
 
     this._orderService.submit(mapping).subscribe(data => {
       console.log(data);

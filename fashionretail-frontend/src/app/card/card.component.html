@@ -87,7 +87,20 @@
   <button mat-raised-button color="primary" routerLink="/materials" routerLinkActive="active">Add More Materials</button>
 </div><br>
 <!-- </button> -->
-
+  <div class="materialsTable">
+    <table border="2">
+      <tr class="table-align">
+        <th>Material Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+      <tr *ngFor="let mapping of materials">
+          <td>{{mapping.material.name}}</td>
+          <td>{{mapping.price}}</td>
+          <td>{{mapping.quantity}}</td>
+      </tr>
+    </table>
+  </div>
 <div class="flex">
   <div *ngFor="let order of receivedOrders">
     <mat-card class="tp-card" *ngIf="order.orderStatus === 'in-progress'">
