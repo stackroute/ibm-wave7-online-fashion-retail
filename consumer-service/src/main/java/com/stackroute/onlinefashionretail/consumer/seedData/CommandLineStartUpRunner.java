@@ -38,18 +38,18 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         /* *Pre-fill the database whenever application starts*/
         Designer designer1 = new Designer("1",
-                "Sabyasachi",
+                "Arpita",
                 "Kolkata",
                 4.7f,
-                "designs@sabyasachi.com",
+                "arpi@gmail.com",
                 9847287456L,
                 new ArrayList<>());
 
         Designer designer2 = new Designer("2",
-                "Manish Malhotra",
+                "Suchita",
                 "Delhi",
                 4.6f,
-                "designs@manishmalhotra.com",
+                "suchita@gmail.com",
                 9847132560L,
                 new ArrayList<>());
 

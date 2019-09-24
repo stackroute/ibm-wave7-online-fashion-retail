@@ -6,8 +6,11 @@
       <a routerLinkActive="active">
         <button mat-button color="primary" (click)="viewProfile()">View Profile</button>
         <br></a>
-      <button mat-button color="primary"><a routerLink="/designervieworders" routerLinkActive="active">View Previous
-        orders</a></button>
+      <button mat-button color="primary">
+        <a routerLink="/designervieworders" routerLinkActive="active">
+          View Previous orders
+        </a>
+      </button>
       <mat-divider></mat-divider>
       <a routerLink="/logout" routerLinkActive="active">
         <button mat-button color="primary">Logout</button>
@@ -114,7 +117,7 @@
       <div class="flex-container">
         <div *ngFor="let designs of orderlist">
         <mat-card class="example-card" *ngIf="designs.designOrder.orderStatus.indexOf('manufacturer_completed')!== -1
-        && designs.designOrder.orderStatus.indexOf('supplier_completed')!== -1 && designs.designOrder.orderStatus.indexOf('final')=== -1">
+        && designs.designOrder.orderStatus.indexOf('supplier_completed')!== -1 && designs.designOrder.orderStatus.indexOf('final') === -1">
           <mat-card-header>
             <mat-card-title>
               {{designs.designOrder.id}}<br>
@@ -210,8 +213,6 @@
               <p>
                 Rating: {{manufacturer.rating}}
               </p>
-              <p>
-                Base prices:</p>
               <div *ngFor="let prices of manufacturer.basePrices">
                 {{prices.name}}: {{prices.price}}
                </div>

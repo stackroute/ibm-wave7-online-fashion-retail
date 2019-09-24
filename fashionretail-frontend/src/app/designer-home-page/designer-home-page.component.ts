@@ -194,6 +194,7 @@ export class DesignerHomePageComponent implements OnInit {
     console.log('designs: ', this.uploadDesigns);
     console.log('manufacturer: ', this.savaManufacture);
     console.log('material: ', this.supplierMaterialList);
+    this.uploadDesigns.orderStatus = "in-progress";
     this.updatedOrder.designOrder = this.uploadDesigns;
     this.updatedOrder.manufacturer = this.savaManufacture;
     console.log('updated order', this.updatedOrder);
@@ -210,10 +211,13 @@ export class DesignerHomePageComponent implements OnInit {
   }
 
   submitFinal(design: DesignerOrder) {
+    design.designOrder.orderStatus = "final";
     this.userService.updateOrder(this.Designer.userId, design).subscribe((data) => {
-      console.log("printing data received from update method: ",data);
+      console.log("printing data received from update method in submit final: ",data);
     });
-    let product: Product = new Product("",design.designOrder.name,"",this.Designer,design.designOrder.price,design.designOrder.discountPercent,0,design.designOrder.design_img);
+    const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
+    console.log('random number is ', num);
+    let product: Product = new Product(num.toPrecision(6).toString(),design.designOrder.name,"",this.Designer,design.designOrder.price,design.designOrder.discountPercent,0,design.designOrder.design_img);
     this.productService.saveProduct(product).subscribe(data2 => console.log("data from product service: ",data2));
   }
 

@@ -1,6 +1,6 @@
 .tp-card {
     width: 300px;
-    margin: 50px 50px 50px 50px;
+    margin: 20px;
     min-width: 100px;
        background-color: white;
           border-style: outset;
@@ -18,7 +18,7 @@
      /* margin-bottom: 100px;*/
      /* margin-top: 15%;*/
           background-image: url("/assets/clothes.jpg");
-              height: 100%;
+              height: min-content;
               background-position: center;
               background-repeat: no-repeat;
               background-size: cover;

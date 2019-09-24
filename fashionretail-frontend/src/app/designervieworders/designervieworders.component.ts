@@ -15,10 +15,20 @@ export class DesignerviewordersComponent implements OnInit {
     private router : Router) { }
 
   ngOnInit() {
-    let designer_id = '';
+    let designer_id = this.userService.loginCredentials.userId;
     this.userService.getAllOrders(designer_id).subscribe((data) => {
       this.orderlist = data;
       console.log('orders list', this.orderlist);
+      for (let order of this.orderlist){
+        if(order.designOrder.orderStatus.indexOf('manufacturer_completed') !== -1)
+          order.designOrder.orderStatus = 'Manufacturer Completed';
+        else if(order.designOrder.orderStatus.indexOf('manufacturer_accepted') !== -1)
+          order.designOrder.orderStatus = 'Manufacturer Accepted';
+        else if(order.designOrder.orderStatus.indexOf('supplier_completed') !== -1)
+          order.designOrder.orderStatus = 'Supplier Completed';
+        else if(order.designOrder.orderStatus.indexOf('supplier_accepted') !== -1)
+          order.designOrder.orderStatus = 'Supplier Accepted';
+      }
     });
   }
   viewProfile(){

@@ -40,7 +40,9 @@ export class ConsumerDashboardComponent implements OnInit {
   }
   public getRecommendedProducts(){
     this.recommendedService.getProducts(this.userService.loginCredentials.userId).subscribe(data =>
-    this.recommended = data);
+    {console.log("id was: ",this.userService.loginCredentials.userId);
+    this.recommended = data;
+    console.log("data is: ",this.recommended)});
   }
 
   public getCart() {
@@ -60,7 +62,7 @@ export class ConsumerDashboardComponent implements OnInit {
     this.loginId =this.userService.loginCredentials.userId;
     console.log("loginid: ",this.loginId);
     this.getProducts();
-    this.getRecommendedProducts()
+    this.getRecommendedProducts();
     this.getCart();
   }
 
