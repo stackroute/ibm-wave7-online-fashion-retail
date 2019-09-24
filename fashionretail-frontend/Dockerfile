@@ -21,4 +21,4 @@ RUN npm install -g @angular/cli@8.2.0
 COPY . /app
 
 # start app
-CMD ng serve --host 0.0.0.0 --port 4201
+CMD ng serve --host 0.0.0.0  --publicHost trendmode.stackroute.io --port 4201
