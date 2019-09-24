@@ -170,22 +170,20 @@
               <p> Material name: <b>{{material.material.name}}</b></p>
               <p>Material category: <b>{{material.material.category}}</b></p>
               <p>
-                Available quantity: <b>{{material.quantity}}</b></p>
+                Available quantity: <b>{{material.quantity}} {{material.unit}}</b></p>
               <p>
-                Material price: <b>{{material.price}}</b>
+                Material price/unit: <b>{{material.price}} / {{material.unit}}</b>
               </p>
               <p>
                 Supplied By: <b>{{material.supplier.name}}</b>
               </p>
               <p>Rating: <b>{{material.supplier.rating}}</b></p>
               <mat-form-field>
-                <input matInput type="number" placeholder="enter quantity in units"
-                                                     [(ngModel)]="material.designerEnterQuantity">
+                <input matInput type="number" placeholder="enter quantity in units" #quantityInput>
               </mat-form-field>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button (click)="saveMaterial(material)">Add</button>
-              <button mat-raised-button (click)="openDialog(material)">cancel</button>
+              <button mat-button (click)="saveMaterial(material,quantityInput.value)">Add</button>
             </mat-card-actions>
           </mat-card>
         </div>

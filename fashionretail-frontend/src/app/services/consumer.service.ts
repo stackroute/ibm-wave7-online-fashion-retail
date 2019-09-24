@@ -16,15 +16,15 @@ export class ConsumerService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public viewCart(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(environment.consumerUrl + '/consumer/1/cart', {headers: this.headers});
+  public viewCart(userId: string): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(environment.consumerUrl + '/consumer/'+userId+'/cart', {headers: this.headers});
   }
-  public addToCart(product: Product): Observable<Product> {
-    return this.httpClient.post<Product>(environment.consumerUrl + '/consumer/1/cart', product, {headers: this.headers});
+  public addToCart(product: Product, userId: string): Observable<Product> {
+    return this.httpClient.post<Product>(environment.consumerUrl + '/consumer/'+userId+'/cart', product, {headers: this.headers});
   }
-  public removeFromCart(product: Product): Observable<Product> {
+  public removeFromCart(product: Product, userId: string): Observable<Product> {
     return this.httpClient.request<Product>('delete',
-      environment.consumerUrl + '/consumer/1/cart',
+      environment.consumerUrl + '/consumer/'+userId+'/cart',
       {body: product, headers: this.headers});
   }
   public placeOrder(consumerOrder: ConsumerOrder) {
@@ -32,6 +32,6 @@ export class ConsumerService {
 }
 getConsumerById(userId: string): Observable<Consumer> {
   console.log('getxhghjdghjhfdghjfdfhjfdgjdhj');
-    return this.httpClient.get<Consumer>(environment.consumerUrl + '/consumer/1/cart'+userId, {headers: this.headers});
+    return this.httpClient.get<Consumer>(environment.consumerUrl + '/consumer/'+userId, {headers: this.headers});
 }
 }

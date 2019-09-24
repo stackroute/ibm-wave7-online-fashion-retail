@@ -27,7 +27,9 @@ public class Manufacturer {
     private List<ManufacturerOrder> manufacturerOrders;
     private List<BasePrice> basePrices;
 
-  public Manufacturer() {
+
+
+    public Manufacturer() {
   }
 
   public Manufacturer(String id, String name, String email, String city, String specifications, float rating, long contact_number, List<ManufacturerOrder> manufacturerOrders) {
@@ -104,6 +106,14 @@ public class Manufacturer {
   public void setManufacturerOrders(List<ManufacturerOrder> manufacturerOrders) {
     this.manufacturerOrders = manufacturerOrders;
   }
+
+    public List<BasePrice> getBasePrices() {
+        return basePrices;
+    }
+
+    public void setBasePrices(List<BasePrice> basePrices) {
+        this.basePrices = basePrices;
+    }
 
   @Override
   public String toString() {

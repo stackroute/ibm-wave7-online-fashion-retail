@@ -37,15 +37,15 @@ export class ManufactureService {
     return this.httpClient.get<Manufacturer>(url);
   }
 
-  saveBasePrice(baseprice: BasePrice): Observable<BasePrice> {
+  saveBasePrice(baseprice: BasePrice, id: string): Observable<BasePrice> {
     // const url="http://localhost:8090/baseprice";
-    const url = environment.workflowUrl + '/manufacturer';
+    const url = environment.workflowUrl + '/manufacturer/'+id;
     // const updateUrl=`${url}/5`
     return this.httpClient.post<BasePrice>(url, baseprice, httpOptions);
   }
 
-  getAllBasePrice(): Observable<BasePrice> {
-    const url = environment.manufacturerUrl + '/baseprice';
+  getAllBasePrice(id: string): Observable<BasePrice> {
+    const url = environment.manufacturerUrl + '/baseprice/'+id;
     // const getUrl=`${url}/5`
     return this.httpClient.get<BasePrice>(url);
   }

@@ -1,5 +1,6 @@
 package com.stackroute.onlinefashionretail.manufacturer.services;
 
+import com.stackroute.onlinefashionretail.manufacturer.domain.BasePrice;
 import com.stackroute.onlinefashionretail.manufacturer.domain.Manufacturer;
 import com.stackroute.onlinefashionretail.manufacturer.domain.ManufacturerOrder;
 import com.stackroute.onlinefashionretail.manufacturer.repository.ManufactureRepository;
@@ -157,6 +158,28 @@ public class ManufactureServiceImpl implements ManufactureService {
             logger.info("sending manufacturer_completed message on TOPIC: "+TOPIC);
         }
         return manufacturerOrder1;
+    }
+
+    @Override
+    public BasePrice saveBaseprice(BasePrice baseprice, String id) {
+        Manufacturer manufacturer = manufactureRepository.findById(id).orElse(null);
+        if (manufacturer == null)
+            return null;
+        if (manufacturer.getBasePrices() == null)
+            manufacturer.setBasePrices(new ArrayList<>());
+        manufacturer.getBasePrices().add(baseprice);
+        manufactureRepository.save(manufacturer);
+        return baseprice;
+    }
+
+    @Override
+    public List<BasePrice> getAllBaseprice(String id) {
+        Manufacturer manufacturer = manufactureRepository.findById(id).orElse(null);
+        if (manufacturer == null)
+            return null;
+        if (manufacturer.getBasePrices() == null)
+            manufacturer.setBasePrices(new ArrayList<>());
+        return manufacturer.getBasePrices();
     }
 
 }

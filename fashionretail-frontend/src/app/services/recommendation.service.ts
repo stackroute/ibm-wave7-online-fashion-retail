@@ -15,7 +15,7 @@ export class RecommendationService {
   constructor(private httpClient: HttpClient) {
   }
   public getProducts(id:string): Observable<Product[]> {
-    const url=environment.recommendationUrl+"/product";
+    const url=environment.recommendationUrl+"/product/";
     return this.httpClient.get<Product[]>(url+id, {headers: this.headers});
 
   }

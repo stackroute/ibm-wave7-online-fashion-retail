@@ -180,8 +180,8 @@ public class WorkflowController {
         return responseEntity;
     }
 
-    @PostMapping("manufacturer")
-    public ResponseEntity<?> registerUser(@RequestBody BasePrice basePrice) throws ApiCallException {
+    @PostMapping("manufacturer/{userId}")
+    public ResponseEntity<?> registerUser(@RequestBody BasePrice basePrice,@PathVariable String userId) throws ApiCallException {
         String id = claimTask("Add Baseprice");
 
         //RestTemplate gets response from an api
@@ -193,7 +193,7 @@ public class WorkflowController {
 
         try {
             responseEntity  = restTemplate.exchange(
-                    MANUFACTURER_RESOURCE_URL,
+                    MANUFACTURER_RESOURCE_URL+"/"+userId,
                     HttpMethod.POST,
                     entity,
                     String.class);

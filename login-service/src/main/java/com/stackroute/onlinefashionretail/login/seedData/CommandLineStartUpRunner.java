@@ -32,8 +32,8 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         /* *Pre-fill the database whenever application starts*/
 
-        DAOUser DAOUser = new DAOUser("1","designs@sabyasachi.com","Sabyasachi","123456","Designer");
-        DAOUser DAOUser1 = new DAOUser("2","designs@manishmalhotra.com","Manish Malhotra","123456","Designer");
+        DAOUser DAOUser = new DAOUser("1","arpi@gmail.com","Arpita","123456","Designer");
+        DAOUser DAOUser1 = new DAOUser("2","suchita@gmail.com","Suchita","123456","Designer");
 
         DAOUser DAOUser2 = new DAOUser("1","rj@gmail.com","RJ Enterprise","123456","Manufacturer");
         DAOUser DAOUser3 = new DAOUser("2","ksv@gmail.com","KSV Enterprise","123456","Manufacturer");

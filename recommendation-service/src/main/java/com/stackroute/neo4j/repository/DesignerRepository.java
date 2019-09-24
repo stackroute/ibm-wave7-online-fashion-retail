@@ -9,7 +9,7 @@ import java.util.List;
 public interface DesignerRepository extends Neo4jRepository<Designer,String> {
   @Query("MATCH(s:Manufacturer) RETURN s ORDER BY s.rating DESC limit 2")
   List<Manufacturer> getManufacturers();
-  @Query("MATCH(s:Supplier) RETURN s ORDER BY s.rating DESC limit 5")
+  @Query("MATCH(s:Supplier) RETURN s ORDER BY s.rating DESC limit 2")
   List<Supplier> getSuppliers();
 //  @Query("")
 //  List<Designer> getSuppliersAndManufacturersBasedOnPreviousOrders(@Param("name") String name);

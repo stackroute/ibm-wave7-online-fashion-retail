@@ -15,6 +15,7 @@ import {of} from 'rxjs';
 export class CartBottomSheetComponent implements OnInit {
 
   total = 0;
+  loginId;
 
   constructor(private consumerService: ConsumerService,
               private _bottomSheetRef: MatBottomSheetRef<CartBottomSheetComponent>,
@@ -24,7 +25,7 @@ export class CartBottomSheetComponent implements OnInit {
               private interComponentDataService: InterComponentDataService) {}
 
   ngOnInit(): void {
-    this.calculateTotal();
+    this.interComponentDataService.currentId.subscribe(data => {this.loginId = data; this.calculateTotal();})
   }
 
   openLink(event: MouseEvent): void {
@@ -49,7 +50,7 @@ export class CartBottomSheetComponent implements OnInit {
 
 
   public removeCart(product: Product) {
-    this.consumerService.removeFromCart(product).subscribe(data => {
+    this.consumerService.removeFromCart(product,this.loginId).subscribe(data => {
     });
   }
 

@@ -29,17 +29,17 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
         /* *Pre-fill the database whenever application starts*/
         Designer designer1 = new Designer("1",
                 9847287456L,
-                "Sabyasachi",
+                "Arpita",
                 "Kolkata",
-                "designs@sabyasachi.com",
+                "arpi@gmail.com",
                 4.7f,
                 new ArrayList<>());
 
         Designer designer2 = new Designer("2",
                 9847132560L,
-                "Manish Malhotra",
+                "Suchita",
                 "Delhi",
-                "designs@manishmalhotra.com",
+                "suchita@gmail.com",
                 4.6f,
                 new ArrayList<>());
 

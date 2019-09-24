@@ -13,9 +13,5 @@ import java.util.List;
 
 public interface ConsumerRepository extends Neo4jRepository<Consumer,String> {
 
-@Query("MATCH (c:Consumer {firstName:{name}})-[r1:has_ordered]->(o:ConsumerOrder)\n" +
-        "            MATCH (o:ConsumerOrder)-[r2:PRODUCTS]->(p:Product)\n" +
-        "            MATCH (p:Product)-[r3:DESIGNER_NAME]->(d:Designer)\n" +
-        "            RETURN p")
-    public List<Product> getProducts(@Param("name") String name);
+
 }

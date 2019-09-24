@@ -1,6 +1,6 @@
 img{
     width: 90%;
-    height:600px;
+    height:auto;
     /* padding-top: 20px; */
     /*margin-top: 92px; */
 }
@@ -22,7 +22,7 @@ padding-top:15%;
 
 #join{
 	width:101.5%;
-	height: 50rem;
+	height: auto;
 }
 
 #join{
@@ -43,11 +43,11 @@ padding-top:15%;
 }*/
 
 #join-us img{
-  height:550px;
+  height:100%;
 }
 
 h1 {
-    font-size: 45px;
+    font-size: 4vw;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 

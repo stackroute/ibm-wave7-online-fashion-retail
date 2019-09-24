@@ -48,11 +48,11 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
 
         SupplierOrder supplierOrder1 = new SupplierOrder("1","Ritu Mehta",material1,45.0,"in-progress","");
         SupplierOrder supplierOrder2 = new SupplierOrder("2","Ritu Mehta",material2,235.0,"in-progress","");
-        SupplierOrder supplierOrder3 = new SupplierOrder("3","Manish Malhotra",material3,90.0,"in-progress","");
+        SupplierOrder supplierOrder3 = new SupplierOrder("3","Suchita",material3,90.0,"in-progress","");
 
         Supplier supplier1 = new Supplier("1","CG Fabrics and Accesories","Delhi",4.5f,"cgfabrics@gmail.com",List.of(supplierOrder1,supplierOrder2));
         kafkaTemplate.send("recommendationSupplier",supplier1);
-        Supplier supplier2 = new Supplier("2","BH Fabrics and Leathers","Banngalore",3.4f,"bhfabandacc@gmail.com",List.of(supplierOrder3));
+        Supplier supplier2 = new Supplier("2","BH Fabrics and Leathers","Bangalore",3.4f,"bhfabandacc@gmail.com",List.of(supplierOrder3));
         kafkaTemplate.send("recommendationSupplier",supplier2);
         Mapping mapping1 = new Mapping("1",45.5,890,material1,supplier1,"metres");
         Mapping mapping2 = new Mapping("2",66.5,400,material2,supplier1,"metres");

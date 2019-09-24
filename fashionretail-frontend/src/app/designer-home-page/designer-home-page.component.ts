@@ -111,6 +111,11 @@ export class DesignerHomePageComponent implements OnInit {
     this.userService.getAllManufacture().subscribe((data) => {
       this.manufacturer = data;
       console.log('manufacturer data', this.manufacturer);
+      console.log("manufacturers in recommendation service call: ",this.manufacturer);
+      console.log("baseprices in recommendation service call: ");
+      for (let manufacturer of this.manufacturer){
+        console.log(">>",manufacturer.basePrices);
+      }
     });
 
     this.userService.getAllOrders(designer_id).subscribe((data) => {
@@ -120,6 +125,11 @@ export class DesignerHomePageComponent implements OnInit {
 
     this.recommendationService.getManufacturers().subscribe((data) =>{
       this.manufacturer1 = data;
+      console.log("manufacturers in recommendation service call: ",this.manufacturer1);
+      console.log("baseprices in recommendation service call: ");
+      for (let manufacturer of this.manufacturer1){
+        console.log(">>",manufacturer.basePrices);
+      }
     });
 
     this.recommendationService.getSuppliers().subscribe((data) =>{
@@ -162,10 +172,11 @@ export class DesignerHomePageComponent implements OnInit {
   saveDesigns(design: Design) {
   }
 
-  saveMaterial(mapping: Mapping) {
+  saveMaterial(mapping: Mapping,quantity: string) {
     console.log(mapping);
     this.material.push(mapping);
-    this.quantityMap.set(mapping.id, mapping.quantity);
+    this.quantityMap.set(mapping.id, (<number>(<unknown>quantity)));
+    console.log("quantity map: ",this.quantityMap.get(mapping.id));
     this.updatedOrder.designOrder = this.uploadDesigns;
     this.updatedOrder.supplierList.push(this.quantityMap);
     console.log(this.updatedOrder);

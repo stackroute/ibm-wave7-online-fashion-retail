@@ -1,5 +1,6 @@
 package com.stackroute.onlinefashionretail.manufacturer.services;
 
+import com.stackroute.onlinefashionretail.manufacturer.domain.BasePrice;
 import com.stackroute.onlinefashionretail.manufacturer.domain.Manufacturer;
 import com.stackroute.onlinefashionretail.manufacturer.domain.ManufacturerOrder;
 
@@ -22,5 +23,9 @@ public interface ManufactureService {
     public List<ManufacturerOrder> getAllOrders(String id);
     public boolean deleteOrder(String id);
     public ManufacturerOrder updateOrder(ManufacturerOrder manufacturerOrder, String id);
+
+    public BasePrice saveBaseprice(BasePrice baseprice, String id);
+
+    public List<BasePrice> getAllBaseprice(String id);
 
 }

@@ -27,8 +27,8 @@ public class CommandLineStartUpRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         /* *Pre-fill the database whenever application starts*/
-        User user = new User("1","Sabyasachi","123456","designs@sabyasachi.com","Designer");
-        User user1 = new User("2","Manish Malhotra","123456","designs@manishmalhotra.com","Designer");
+        User user = new User("1","Arpita","123456","arpi@gmail.com","Designer");
+        User user1 = new User("2","Suchita","123456","suchita@gmail.com","Designer");
 
         User user2 = new User("1","RJ Enterprise","123456","rj@gmail.com","Manufacturer");
         User user3 = new User("2","KSV Enterprise","123456","ksv@gmail.com","Manufacturer");

@@ -8,6 +8,7 @@ import {CartBottomSheetComponent} from '../cart-bottom-sheet/cart-bottom-sheet.c
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {ConsumerService} from '../services/consumer.service';
 import { UserService } from '../services/user.service';
+import {RecommendationService} from "../services/recommendation.service";
 
 @Component({
   selector: 'app-consumer-dashboard',
@@ -18,6 +19,8 @@ export class ConsumerDashboardComponent implements OnInit {
 
   products: Product[] = [];
   cart: Product[] = [];
+  recommended: Product[]=[];
+  loginId;
 
 
   constructor(private productService: ProductService,
@@ -26,7 +29,8 @@ export class ConsumerDashboardComponent implements OnInit {
               private httpClient: HttpClient,
               private _snackBar: MatSnackBar,
               private router: Router,
-              private userService : UserService) {
+              private userService : UserService,
+              private recommendedService : RecommendationService) {
   }
 
   public getProducts() {
@@ -34,20 +38,29 @@ export class ConsumerDashboardComponent implements OnInit {
       this.products = data;
     });
   }
+  public getRecommendedProducts(){
+    this.recommendedService.getProducts(this.userService.loginCredentials.userId).subscribe(data =>
+    this.recommended = data);
+  }
 
   public getCart() {
-    this.consumerService.viewCart().subscribe(data => {
+    this.consumerService.viewCart(this.loginId).subscribe(data => {
       this.cart = data;
     });
   }
 
   public addCart(product: Product) {
-    this.consumerService.addToCart(product).subscribe(data => {
+    this.consumerService.addToCart(product,this.loginId).subscribe(data => {
     });
   }
 
   ngOnInit() {
+    console.log("hgfhdgfj");
+    console.log("jjjj: ",this.userService.loginCredentials.userId);
+    this.loginId =this.userService.loginCredentials.userId;
+    console.log("loginid: ",this.loginId);
     this.getProducts();
+    this.getRecommendedProducts()
     this.getCart();
   }
 
@@ -98,10 +111,7 @@ export class ConsumerDashboardComponent implements OnInit {
     })
   }
   viewProfile(){
-    console.log("hgfhdgfj");
-    console.log("jjjj: ",this.userService.loginCredentials.userId);
-    let loginId =this.userService.loginCredentials.userId;
-    console.log("loginid: ",loginId);
+    let loginId = this.loginId;
     this.router.navigate(['/consumerviewprofile'],{queryParams : {loginId}});
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BasePrice } from '../models/BasePrice';
 import { ManufactureService } from '../services/manufacture.service';
+import {InterComponentDataService} from "../services/inter-component-data.service";
 
 
 @Component({
@@ -11,17 +12,20 @@ import { ManufactureService } from '../services/manufacture.service';
 })
 export class AddmaterialsbuttonComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private manufactureService: ManufactureService) { }
+  constructor(private dialog: MatDialog, private manufactureService: ManufactureService, private interComponentDataService: InterComponentDataService) { }
   public updatedbase: BasePrice;
   baseprice: BasePrice;
+  loginId;
 
   data;
 
   ngOnInit() {
-    this.manufactureService.getAllBasePrice().subscribe((data) => {
-      this.baseprice = data;
-      console.log(this.baseprice);
-    });
+    this.interComponentDataService.currentId.subscribe(data => {this.loginId=data;
+      this.manufactureService.getAllBasePrice(this.loginId).subscribe((data1) => {
+        this.baseprice = data1;
+        console.log(this.baseprice);
+      });
+    })
   }
 
   // updateBasePrice(baseprice:BasePrice) {
@@ -40,9 +44,9 @@ export class AddmaterialsbuttonComponent implements OnInit {
     console.log('Random number is', 'num');
     baseprice.id = 'num';
     console.log(baseprice);
-    this.manufactureService.saveBasePrice(baseprice).subscribe((data) => {
+    this.manufactureService.saveBasePrice(baseprice,this.loginId).subscribe((data) => {
       console.log('result is ', data);
-      this.manufactureService.getAllBasePrice().subscribe((data) => {this.baseprice = data; });
+      this.manufactureService.getAllBasePrice(this.loginId).subscribe((data) => {this.baseprice = data; });
     });
   }
 openDialog() {
