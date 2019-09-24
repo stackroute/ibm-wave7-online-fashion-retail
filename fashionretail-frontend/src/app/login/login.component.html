@@ -1,45 +1,39 @@
-
 <app-header></app-header>
-<!-- <button mat-raised-button (click)="logout()" color="primary">LogOut</button> -->
 
 <div class="bg">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="example-form" [formGroup]="loginForm">
-        <table class="example-full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width">
-              <input matInput placeholder="Enter email" formControlName="username" name="username" required>
-              </mat-form-field>
-            </td>
-          </tr>
+  <div class="medium-list">
+    <div class="list-viewer-wrapper">
+      <div class="list-header-title">Login</div>
 
-          <tr>
-          <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" formControlName="password" type="password" name="password" required>
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+        <div class="form-container">
+          <mat-form-field>
+            <input id="username"
+                   name="username"
+                   matInput
+                   formControlName="username"
+                   placeholder="Enter email"
+                   required
+            />
           </mat-form-field>
-        </td>
-        </tr>
-</table>
+
+          <mat-form-field>
+            <input id="password"
+                   matInput
+                   formControlName="password"
+                   placeholder="Password"
+                   type="password"
+                   name="password"
+                   required
+                  />
+          </mat-form-field>
+          <button mat-button type="submit" class="mat-raised-button mat-primary">
+            Login
+          </button><br>
+          For creating New Account
+          <button mat-raised-button routerLink="/sign-up" routerLinkActive="active" class="divider">Sign-Up</button>
+        </div>
       </form>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-raised-button (click)="loginUser()" color="primary">Login</button>
-    </mat-card-actions>
-    <p class="para"> For creating New Account <a routerLink="/sign-up">Sign-Up</a></p>
-
-    <!-- <mat-card-actions>
-      <button mat-raised-button color="primary">Sign up</button>
-    </mat-card-actions> -->
-
-    <mat-card-actions id="click">
-      <p>Forgot password?</p>
-      <button mat-raised-button [routerLink]="['/forgotpassword']" color="primary">Click Here</button>
-    </mat-card-actions>
-  </mat-card>
+    </div>
   </div>
+</div>
