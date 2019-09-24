@@ -198,6 +198,14 @@ export class DesignerHomePageComponent implements OnInit {
     this.previousStep();
   }
 
+  submitFinal(design: DesignerOrder) {
+    this.userService.updateOrder(this.Designer.userId, design).subscribe((data) => {
+      console.log("printing data received from update method: ",data);
+    });
+    let product: Product = new Product("",design.designOrder.name,"",this.Designer,design.designOrder.price,design.designOrder.discountPercent,0,design.designOrder.design_img);
+    this.productService.saveProduct(product).subscribe(data2 => console.log("data from product service: ",data2));
+  }
+
   getAllUser() {
     alert('entered into get all users');
     this.userService.getAllUsers().subscribe((data) => {
@@ -229,9 +237,7 @@ export class DesignerHomePageComponent implements OnInit {
       console.log(result);
       if (result != undefined) {
         this.userService.updateOrder(this.Designer.userId, result).subscribe((data) => {
-          console.log("printing data received from update method");
-          let product: Product = new Product("",data.designOrder.name,"",this.Designer,data.designOrder.price,data.designOrder.discountPercent,0,data.designOrder.design_img);
-          this.productService.saveProduct(product).subscribe(data2 => console.log("data from product service: ",data2));
+          console.log("printing data received from update method: ",data);
         })
       }
     });

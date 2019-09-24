@@ -72,7 +72,7 @@
 
 <div class="flex">
   <div  *ngFor="let order of receivedOrders">
-    <mat-card class="tp-card" *ngIf ="order.orderStatus === 'accepted' || order.orderStatus === 'rejected' ">
+    <mat-card class="tp-card" *ngIf ="order.orderStatus === 'accepted' || order.orderStatus === 'rejected' || order.orderStatus === 'completed' ">
       <mat-card-header>
         <div mat-card-avatar class="tp-header-image"></div>
         <mat-card-title><h5>Order ID: {{order.id}}</h5></mat-card-title>
@@ -83,7 +83,7 @@
         <h5>Quantity of Design: </h5>{{order.quantityOfDesign}}
         <h5>Order Status:</h5>{{order.orderStatus}}
       </mat-card-content>
-      <mat-card-actions>
+      <mat-card-actions *ngIf="order.orderStatus === 'accepted'">
         <button mat-raised-button color="primary" (click)="complete(order)">Completed</button>
       </mat-card-actions>
     </mat-card>

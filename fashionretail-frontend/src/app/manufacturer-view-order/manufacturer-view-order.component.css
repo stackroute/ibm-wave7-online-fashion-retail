@@ -1,101 +1,97 @@
-.dummy{
+.dummy {
   visibility: hidden;
 }
-.visible-header{
+
+.visible-header {
   position: fixed;
-  top:0;
+  top: 0;
   z-index: 1030;
   left: 0;
   right: 0;
 }
-mat-toolbar{
-    width:100%;
-    height: min-content;
-    background-color: black;
-    padding: 10px;
-    padding-left: 5px;
 
-  }
-  mat-toolbar-row {
-      height: min-content;
-      display: flex;
-      flex-wrap: wrap;
-  }
+mat-toolbar {
+  width: 100%;
+  height: min-content;
+  background-color: black;
+  padding: 10px;
+  padding-left: 5px;
 
-  .header
-  {
-      font-family: 'Open Sans', sans-serif;
-      text-align: center;
-      background-color: black;
-       color:white;
-  }
-     .d-inline-block
-      {
-     width: 60px;
-     height: 60px;
-  }
-  .title
-   {
-          font-size: 4vh;
-          padding-left: 4px;
-          padding-top: 8px;
-         font-family: 'Open Sans', sans-serif;
-   }
+}
 
-    .spacer {
-      flex: 1 1 auto;
-    }
+mat-toolbar-row {
+  height: min-content;
+  display: flex;
+  flex-wrap: wrap;
+}
 
-    #menu{
-        color: white;
-    }
+.header {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
 
-    button{
-        color: white;
-    }
+.d-inline-block {
+  width: 60px;
+  height: 60px;
+}
 
-    .tp-card
-    {
-        width: 300px;
-/*        margin: 20px 20px 20px 20px;*/
-        min-width: 100px;
-        background-color: white;
-        border-style: outset;
-    }
-      .tp-header-image {
-        background-image: url('https://startupfashion-startupfashion.netdna-ssl.com/wp-content/uploads/2016/01/fabric-sourcing-fashion-designers.jpg');
-        background-size: cover;
-      }
-      .flex
-      {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
-            padding-top: 15%;
-          padding-bottom: 2.6%;
-          background-image: url("/assets/manu1.png");
-                  height: 100%;
-                  background-position: center;
-                  background-repeat: no-repeat;
-                  background-size: cover;
-                  width:100%;
-      }
-      footer {
-        position: fixed;
-       height: fit-content;
-        bottom: 0;
-        width: 100%;
-        background-color: khaki;
-        color: black;
-        overflow: hidden;
+.title {
+  font-size: 4vh;
+  padding-left: 4px;
+  padding-top: 8px;
+  font-family: 'Open Sans', sans-serif;
+}
 
-    }
+.spacer {
+  flex: 1 1 auto;
+}
 
-    img {
-        padding-left: 5px;
-        float: right;
-        height: 40px;
-        width: 40px;
-    }
+#menu {
+  color: white;
+}
+
+button {
+  color: white;
+}
+
+.tp-card {
+  width: 300px;
+  /*        margin: 20px 20px 20px 20px;*/
+  min-width: 100px;
+  background-color: white;
+  border-style: outset;
+}
+
+.tp-header-image {
+  background-image: url('https://startupfashion-startupfashion.netdna-ssl.com/wp-content/uploads/2016/01/fabric-sourcing-fashion-designers.jpg');
+  background-size: cover;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-top: 15%;
+  padding-bottom: 2.6%;
+  background-image: url("/assets/manu1.png");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+footer {
+  position: fixed;
+  height: fit-content;
+  bottom: 0;
+  width: 100%;
+  background-color: khaki;
+  color: black;
+  overflow: hidden;
+
+}
 
 

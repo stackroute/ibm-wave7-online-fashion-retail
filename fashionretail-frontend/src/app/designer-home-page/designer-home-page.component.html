@@ -96,8 +96,11 @@
   </div>
 </div>
   <mat-tab-group dynamicHeight animationDuration="0ms" class="tab" [(selectedIndex)]="selectedIndex"
-    (selectedTabChange)="tabChanged($event)">
-    <mat-tab label="Upload Designs">
+    (selectedTabChange)="tabChanged($event)" style="min-height: 500px">
+    <mat-tab>
+      <ng-template mat-tab-label style="background-color: white;opacity: 1">
+        Upload Designs
+      </ng-template>
       <div id="container">
        <img class="image" src = "assets/designer.jpg"/>
       </div>
@@ -111,7 +114,7 @@
       <div class="flex-container">
         <div *ngFor="let designs of orderlist">
         <mat-card class="example-card" *ngIf="designs.designOrder.orderStatus.indexOf('manufacturer_completed')!== -1
-        && designs.designOrder.orderStatus.indexOf('supplier_completed')!== -1">
+        && designs.designOrder.orderStatus.indexOf('supplier_completed')!== -1 && designs.designOrder.orderStatus.indexOf('final')=== -1">
           <mat-card-header>
             <mat-card-title>
               {{designs.designOrder.id}}<br>
@@ -126,10 +129,11 @@
             <p>
               Quantity: {{designs.designOrder.quantityOfDesign}}
             </p>
-            <p>Rating</p>
+            <p>Price: {{designs.designOrder.price}}</p>
           </mat-card-content>
           <mat-card-actions>
             <button mat-button (click)="openDialogPrice(designs)">Add price</button>
+            <button mat-button (click)="submitFinal(designs)">Submit as final</button>
           </mat-card-actions>
         </mat-card>
         </div>
