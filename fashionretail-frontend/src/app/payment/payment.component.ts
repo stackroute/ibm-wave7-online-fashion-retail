@@ -5,6 +5,7 @@ import {Address} from '../models/address';
 import {ConsumerOrder} from '../models/consumer-order';
 import {ConsumerService} from '../services/consumer.service';
 import {Router} from '@angular/router';
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-payment',
@@ -20,6 +21,7 @@ export class PaymentComponent implements OnInit {
   consumerOrder: ConsumerOrder = new ConsumerOrder();
   constructor(private interComponentDataService: InterComponentDataService,
               private consumerService: ConsumerService,
+              private userService: UserService,
               private router: Router) { }
 
   ngOnInit() {
@@ -41,7 +43,7 @@ export class PaymentComponent implements OnInit {
     this.consumerOrder.date = new Date();
     const num = Math.floor(Math.random() * (999999 - 100000)) + 100000;
     this.consumerOrder.id = num.toString();
-    this.consumerOrder.consumerId = '1';
+    this.consumerOrder.consumerId = this.userService.loginCredentials.userId;
     this.consumerOrder.products = this.cart;
     this.consumerOrder.shippingAddress = this.address;
     this.consumerOrder.totalAmount = this.total;
